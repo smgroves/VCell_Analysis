@@ -43,11 +43,11 @@ def convert_hdf5_to_csv(file_name, dir_path = '', model_name = "", simulation_na
                                         f"Variable names {list(h5[sim_key].keys())} \n \n" \
                                         f"2D Slice for variable {key} at time {timesteps[i]} in plane XY at Z = 0 \n \n" \
                                         "X in rows, Y in columns \n"
-                        with open(f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_00{i}.csv", 'w') as f:
+                        with open(f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_{i:04d}.csv", 'w') as f:
                             f.write(header_text)
                             f.close()
                         df = pd.DataFrame(arr[:,:,i])
-                        df.to_csv(f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_00{i}.csv", index=False, mode = 'a', header = False)
+                        df.to_csv(f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_{i:04d}.csv", index=False, mode = 'a', header = False)
                 except ValueError: pass
 
 
