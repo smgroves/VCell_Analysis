@@ -2,15 +2,23 @@ import pandas as pd
 import h5py
 import os
 import sys
+import time
 
 #read in arguments from command line using sys.argv
-file_name = sys.argv[1]
-dir_path = sys.argv[2]
-model_name = sys.argv[3]
-simulation_name = sys.argv[4]
+if True:
+    file_name = sys.argv[1]
+    dir_path = sys.argv[2]
+    model_name = sys.argv[3]
+    simulation_name = sys.argv[4]
+else:
+    # Use example data
+    file_name = 'SimID_259656558_0__exported.hdf5'
+    dir_path = '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/'
+    model_name = "08_21_23_CPC_relaxed_RefModel_Mps1_phos_Plk1a transactiv_sarah"
+    simulation_name = "08_21_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_KmMps1_5.4"
 
 
-def convert_hdf5_to_csv(file_name, dir_path, model_name = "", simulation_name = ""):
+def convert_hdf5_to_csv(file_name, dir_path = '', model_name = "", simulation_name = ""):
     output_folder = f"{dir_path}/{file_name.split('.')[0]}"
     #make directory if it doesn't exist
     if not os.path.exists(output_folder):
@@ -32,7 +40,7 @@ def convert_hdf5_to_csv(file_name, dir_path, model_name = "", simulation_name = 
                                         f"(SimID_{sim_key_name} (PDE Simulation)) \n" \
                                         f"Sim time range ({min(timesteps)} {max(timesteps)}) (saved timepoints {len(timesteps)}) \n" \
                                         f"Number of variables {len(h5[sim_key].keys())-2} \n" \
-                                        f"Variable names {h5[sim_key].keys()} \n \n" \
+                                        f"Variable names {list(h5[sim_key].keys())} \n \n" \
                                         f"2D Slice for variable {key} at time {timesteps[i]} in plane XY at Z = 0 \n \n" \
                                         "X in rows, Y in columns \n"
                         with open(f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_00{i}.csv", 'w') as f:
@@ -42,11 +50,10 @@ def convert_hdf5_to_csv(file_name, dir_path, model_name = "", simulation_name = 
                         df.to_csv(f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_00{i}.csv", index=False, mode = 'a', header = False)
                 except ValueError: pass
 
-# example run
-# dir_path = '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/'
-# file_name = 'SimID_259656558_0__exported.hdf5'
-# model_name = "08_21_23_CPC_relaxed_RefModel_Mps1_phos_Plk1a transactiv_sarah"
-# simulation_name = "08_21_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_KmMps1_5.4"
-#
-# convert_hdf5_to_csv(file_name, dir_path, model_name, simulation_name)
-#
+
+if __name__ == "__main__":
+    t1 = time.time()
+    convert_hdf5_to_csv(file_name, dir_path, model_name, simulation_name)
+    t2 = time.time()
+    print("Processing took ", (t2-t1), " seconds")
+
