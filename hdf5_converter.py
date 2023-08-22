@@ -1,6 +1,13 @@
 import pandas as pd
 import h5py
 import os
+import sys
+
+#read in arguments from command line using sys.argv
+file_name = sys.argv[1]
+dir_path = sys.argv[2]
+model_name = sys.argv[3]
+simulation_name = sys.argv[4]
 
 
 def convert_hdf5_to_csv(file_name, dir_path, model_name = "", simulation_name = ""):
@@ -36,9 +43,10 @@ def convert_hdf5_to_csv(file_name, dir_path, model_name = "", simulation_name = 
                 except ValueError: pass
 
 # example run
-dir_path = '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/'
-file_name = 'SimID_259656558_0__exported.hdf5'
-model_name = "08_21_23_CPC_relaxed_RefModel_Mps1_phos_Plk1a transactiv_sarah"
-simulation_name = "08_21_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_KmMps1_5.4"
-
-convert_hdf5_to_csv(file_name, dir_path, model_name, simulation_name)
+# dir_path = '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/'
+# file_name = 'SimID_259656558_0__exported.hdf5'
+# model_name = "08_21_23_CPC_relaxed_RefModel_Mps1_phos_Plk1a transactiv_sarah"
+# simulation_name = "08_21_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_KmMps1_5.4"
+#
+# convert_hdf5_to_csv(file_name, dir_path, model_name, simulation_name)
+#
