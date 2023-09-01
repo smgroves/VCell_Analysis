@@ -6,10 +6,10 @@ tic("total")
 
 
 # CHANGE
-funcPath<-"/Users/sam/Research/JanesLab/functions"
-importPath<-"/Users/sam/Research/JanesLab/vcell_data"
-exportPath<-"/Users/sam/Research/JanesLab/vcell_plots"
-desktop<-"/Users/sam/Desktop"
+funcPath<-"/Users/smgroves/Documents/Github/VCell_Analysis/functions"
+importPath<-"/Users/smgroves/Box/CPC_Model_Project/VCell_Exports"
+exportPath<-"/Users/smgroves/Box/CPC_Model_Project/vcell_plots"
+# desktop<-"/Users/sam/Desktop"
 
 
 # Functions
@@ -59,20 +59,20 @@ heatmap_info_list[[2]] <- c("all pH2A")
 heatmap_info_list[[3]] <- c("all pH3")
 
 
-H <- 2
-
-heatmap_species <- vector("list", H)
-heatmap_info_list <- vector("list", H)
-
-# Change, IN ORDER
-heatmap_species[[1]] <- Bub1a
-heatmap_species[[2]] <- pKnl1_Bub1a
-
-
-
-# Change, name of plot in plot directory, also name in heatmap, IN ORDER
-heatmap_info_list[[1]] <- c("Bub1a")
-heatmap_info_list[[2]] <- c("pKnl1_Bub1a")
+# H <- 2
+# 
+# heatmap_species <- vector("list", H)
+# heatmap_info_list <- vector("list", H)
+# 
+# # Change, IN ORDER
+# heatmap_species[[1]] <- Bub1a
+# heatmap_species[[2]] <- pKnl1_Bub1a
+# 
+# 
+# 
+# # Change, name of plot in plot directory, also name in heatmap, IN ORDER
+# heatmap_info_list[[1]] <- c("Bub1a")
+# heatmap_info_list[[2]] <- c("pKnl1_Bub1a")
 
 
 
@@ -102,69 +102,55 @@ species_info_list[[5]] <- c("pH2A_species", "Inactive pH2A Species", "Active pH2
 species_info_list[[6]] <- c("H2A & H3", "Inactive H2A & H3", "Active H2A & H3", "H2A & H3", FALSE, FALSE, TRUE, FALSE)
 
 
-
-# How many line plots to return
-# Change
-L <- 6
-
-all_data <- vector("list", L)
-species_info_list <- vector("list", L)
-
-# Change, IN ORDER
-all_species <- c(Bub1a_pKnl1_species, Haspin_P_species)
-
-# Change, IN ORDER
-all_data[[1]] <- Bub1a_pKnl1_species
-all_data[[2]] <- Haspin_P_species
-
-
-# Change, IN ORDER
-
-species_info_list[[1]] <- c("Bub1a_pKnl1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-species_info_list[[2]] <- c("Haspin_Plk1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-
+# 
+# # How many line plots to return
+# # Change
+# L <- 6
+# 
+# all_data <- vector("list", L)
+# species_info_list <- vector("list", L)
+# 
+# # Change, IN ORDER
+# all_species <- c(Bub1a_pKnl1_species, Haspin_P_species)
+# 
+# # Change, IN ORDER
+# all_data[[1]] <- Bub1a_pKnl1_species
+# all_data[[2]] <- Haspin_P_species
+# 
+# 
+# # Change, IN ORDER
+# 
+# species_info_list[[1]] <- c("Bub1a_pKnl1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+# species_info_list[[2]] <- c("Haspin_Plk1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+# 
 
 
 # ---------------- SIMULATION SPECIFICS ---------------
 
 # Model type, goes on the left of the heatmap
 # Change
-names <- c("Relaxed Model")
+names <- c("Relaxed Model", "Tensed Model")
 
 # All simulation IDs
 # Change
 sims <- c(
-  "SimID_259272049_0__exported",
-  "SimID_259272049_1__exported",
-  "SimID_259272049_2__exported",
-  "SimID_259272049_3__exported",
-  "SimID_259272049_4__exported",
-  "SimID_259272049_5__exported",
-  "SimID_259272046_0__exported",
-  "SimID_259272052_0__exported",
-  "SimID_259272052_1__exported"
-  
+  "SimID_259801920_0__exported",
+  "SimID_259918334_0__exported"
 )
 
 # Folder naming corresponding to specific simulation ID
 # Change
 var <- c(
-  "Eq Module1 Plk1a_fracs III - Plk1a_frac 0.05p",
-  "Eq Module1 Plk1a_fracs III - Plk1a_frac 0.1p",
-  "Eq Module1 Plk1a_fracs III - Plk1a_frac 0.2p",
-  "Eq Module1 Plk1a_fracs III - Plk1a_frac 0.5p",
-  "Eq Module1 Plk1a_fracs III - Plk1a_frac 0.8p",
-  "Eq Module1 Plk1a_fracs III - Plk1a_frac 1.0p",
-  "Eq Module Plk1a_frac 2.5p",
-  "Eq Module1 Plk1a_fracs II - Plk1a_frac 0.3p",
-  "Eq Module1 Plk1a_fracs II - Plk1a_frac 0.4p"
+  "08_21_23_relaxed_RefModel_Mps1_phos_Plk1s transactiv",
+  "08_29_23_tensed_CPCic_from_relaxed_20Pac"
 )
 
+kt_width = 'relaxed'
 #########################################################
 
 
 for(i in 1:length(sims)){
-  if(file.exists("/Users/sam/Research/JanesLab/vcell_data") == TRUE){
+  if(file.exists(importPath) == TRUE){
     
     
     sweep_name<-var[i]
@@ -177,7 +163,7 @@ for(i in 1:length(sims)){
 
     
     save_plots(sims[i],
-               names,
+               names[i],
                heatmap_species,
                heatmap_info_list,
                all_data,
@@ -189,7 +175,8 @@ for(i in 1:length(sims)){
                cutoff=1,
                funcPath,
                importPath,
-               exportPath_new)
+               exportPath_new,
+               kt_width)
     
     # vcell_table(sims[i],
     #             var[i],

@@ -12,7 +12,8 @@ save_plots <- function(
     cutoff,
     funcPath,
     importPath,
-    exportPath
+    exportPath,
+    kt_width
     )
   
 {
@@ -80,7 +81,8 @@ tryCatch(
         col_1=1,
         col_2=dataDim[2],
         importPath=importPath,
-        exportPath=exportPath
+        exportPath=exportPath,
+        kt_width = kt_width
     )
 },
 error = function(e){
