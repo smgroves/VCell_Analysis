@@ -129,23 +129,22 @@ species_info_list[[6]] <- c("H2A & H3", "Inactive H2A & H3", "Active H2A & H3", 
 
 # Model type, goes on the left of the heatmap
 # Change
-names <- c("Relaxed Model", "Tensed Model")
+kt_width = c('Tensed')
 
 # All simulation IDs
 # Change
 sims <- c(
-  "SimID_259801920_0__exported",
+  # "SimID_259801920_0__exported",
   "SimID_259918334_0__exported"
 )
 
 # Folder naming corresponding to specific simulation ID
 # Change
 var <- c(
-  "08_21_23_relaxed_RefModel_Mps1_phos_Plk1s transactiv",
+  # "08_21_23_relaxed_RefModel_Mps1_phos_Plk1s transactiv",
   "08_29_23_tensed_CPCic_from_relaxed_20Pac"
 )
 
-kt_width = 'relaxed'
 #########################################################
 
 
@@ -163,20 +162,20 @@ for(i in 1:length(sims)){
 
     
     save_plots(sims[i],
-               names[i],
+               paste(kt_width[i], "Model"),
                heatmap_species,
                heatmap_info_list,
                all_data,
                all_species,
                species_info_list,
                tInit=0,
-               tSpan=500,
+               tSpan=400,
                desiredInterval=100,
                cutoff=1,
                funcPath,
                importPath,
                exportPath_new,
-               kt_width)
+               kt_width[i])
     
     # vcell_table(sims[i],
     #             var[i],

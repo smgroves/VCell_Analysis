@@ -16,7 +16,8 @@ all_plot <- function(
     importPath="/Users/sam/Research/JanesLab/vcell_data",
     exportPath="/Users/sam/Research/JanesLab/vcell_plots",
     linewidth=0.7,
-    kt_width = 'relaxed' #can be 'relaxed' or 'tense'){
+    kt_width = 'Relaxed' #can be 'Relaxed' or 'Tensed'
+    ){
   
   #######################################  TESTING  #################################################
   
@@ -208,14 +209,14 @@ all_plot <- function(
       y2 = ceiling(1.9 * dataDim[1] / chromHeight)
       
       #For relaxed state
-      if(kt_width == 'relaxed'){
+      if(kt_width == 'Relaxed'){
       x1 = ceiling(0.425 * dataDim[2] / chromWidth)
       x2 = ceiling(0.500 * dataDim[2] / chromWidth)
       x3 = ceiling(0.700 * dataDim[2] / chromWidth) + 1
       x4 = ceiling(0.900 * dataDim[2] / chromWidth) - 1
       x5 = ceiling(1.100 * dataDim[2] / chromWidth)
       x6 = ceiling(1.175 * dataDim[2] / chromWidth)
-      }elif(kt_width == 'tense'){
+      }else if(kt_width == 'Tensed'){
       #For tensed state
       x1 = ceiling(0.125 * dataDim[2] / chromWidth)
       x2 = ceiling(0.200 * dataDim[2] / chromWidth)
