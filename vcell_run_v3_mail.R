@@ -129,20 +129,22 @@ species_info_list[[6]] <- c("H2A & H3", "Inactive H2A & H3", "Active H2A & H3", 
 
 # Model type, goes on the left of the heatmap
 # Change
-kt_width = c('Tensed')
+kt_width = c('Relaxed')
 
 # All simulation IDs
 # Change
 sims <- c(
-  # "SimID_259801920_0__exported",
-  "SimID_259918334_0__exported"
+  "SimID_259801922_0__exported",
+  "SimID_259801920_0__exported"
+  # "SimID_259918334_0__exported"
 )
 
 # Folder naming corresponding to specific simulation ID
 # Change
 var <- c(
-  # "08_21_23_relaxed_RefModel_Mps1_phos_Plk1s transactiv",
-  "08_29_23_tensed_CPCic_from_relaxed_20Pac"
+  "08_21_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac transactiv",
+  "08_21_23_relaxed_RefModel_Mps1_phos_Plk1s transactiv"
+  # "08_29_23_tensed_CPCic_from_relaxed_20Pac"
 )
 
 #########################################################
@@ -169,9 +171,9 @@ for(i in 1:length(sims)){
                all_species,
                species_info_list,
                tInit=0,
-               tSpan=400,
+               tSpan=500, #400 for relaxed to tense
                desiredInterval=100,
-               cutoff=1,
+               cutoff=10,
                funcPath,
                importPath,
                exportPath_new,

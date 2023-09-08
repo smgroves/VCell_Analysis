@@ -10,6 +10,7 @@ if True:
     dir_path = sys.argv[2]
     model_name = sys.argv[3]
     simulation_name = sys.argv[4]
+
 else:
     # Use example data
     file_name = 'SimID_259656558_0__exported.hdf5'
@@ -19,15 +20,16 @@ else:
 
 
 def convert_hdf5_to_csv(file_name, dir_path = '', model_name = "", simulation_name = ""):
-    output_folder = f"{dir_path}/{file_name.split('.')[0]}"
-    #make directory if it doesn't exist
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
     with h5py.File(f"{dir_path}/{file_name}", 'r') as h5:
         print(len(h5.keys()), "simulation(s) found")
         for sim_key in h5.keys():
             sim_key_name = ("_".join(sim_key.split("[")[1].split("]")[0].split(",")[0:2]))
             print(sim_key_name)
+            sweep_no = sim_key_name.split("_")[1]
+            output_folder = f"{dir_path}/SimID_{sim_key_name}__exported"
+            # make directory if it doesn't exist
+            if not os.path.exists(output_folder):
+                os.makedirs(output_folder)
             timesteps = h5[sim_key]['TIMES'][:]
             for key in h5[sim_key].keys():
                 try:
@@ -43,17 +45,18 @@ def convert_hdf5_to_csv(file_name, dir_path = '', model_name = "", simulation_na
                                         f"Variable names {list(h5[sim_key].keys())} \n \n" \
                                         f"2D Slice for variable {key} at time {timesteps[i]} in plane XY at Z = 0 \n \n" \
                                         "X in rows, Y in columns \n"
-                        with open(f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_{i:04d}.csv", 'w') as f:
+                        with open(f"{output_folder}/SimID_{sim_key_name}__Slice_XY_{sweep_no}_{key}_{i:04d}.csv", 'w') as f:
                             f.write(header_text)
                             f.close()
                         df = pd.DataFrame(arr[:,:,i])
-                        df.to_csv(f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_{i:04d}.csv", index=False, mode = 'a', header = False)
+                        df.to_csv(f"{output_folder}/SimID_{sim_key_name}__Slice_XY_{sweep_no}_{key}_{i:04d}.csv", index=False, mode = 'a', header = False)
                 except ValueError: pass
 
 
 if __name__ == "__main__":
     t1 = time.time()
     convert_hdf5_to_csv(file_name, dir_path, model_name, simulation_name)
+
     t2 = time.time()
     print("Processing took ", (t2-t1), " seconds")
 
