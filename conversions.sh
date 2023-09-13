@@ -41,3 +41,6 @@ python hdf5_converter.py "SimID_259918334_0__exported.hdf5" '/Users/smgroves/Box
 
 #9/8/23
 python hdf5_converter.py "SimID_260381013_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "09_11_23_CPC_tensed_RefModel_Mps1_phos_Plk1a transctiv_sarah" "09_08_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_pp_sweep"
+
+#9/11/2023
+python hdf5_converter.py "SimID_260380935_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "09_11_23_CPC_tensed_RefModel_Mps1_phos_Plk1a transctiv_sarah" "09_08_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80"
