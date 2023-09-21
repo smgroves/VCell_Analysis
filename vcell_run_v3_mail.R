@@ -60,47 +60,47 @@ heatmap_info_list[[3]] <- c("all pH3")
 
 
 # H <- 2
-# 
-# heatmap_species <- vector("list", H)
-# heatmap_info_list <- vector("list", H)
-# 
-# # Change, IN ORDER
-# heatmap_species[[1]] <- Bub1a
-# heatmap_species[[2]] <- pKnl1_Bub1a
-# 
-# 
-# 
-# # Change, name of plot in plot directory, also name in heatmap, IN ORDER
-# heatmap_info_list[[1]] <- c("Bub1a")
-# heatmap_info_list[[2]] <- c("pKnl1_Bub1a")
+
+heatmap_species <- vector("list", H)
+heatmap_info_list <- vector("list", H)
+
+# Change, IN ORDER
+heatmap_species[[1]] <- Bub1a
+heatmap_species[[2]] <- pKnl1_Bub1a
+
+
+
+# Change, name of plot in plot directory, also name in heatmap, IN ORDER
+heatmap_info_list[[1]] <- c("Bub1a")
+heatmap_info_list[[2]] <- c("pKnl1_Bub1a")
 
 
 
 # ---------------- LINE PLOTS ---------------
-# L <- 6
-# 
-# all_data <- vector("list", L)
-# species_info_list <- vector("list", L)
-# 
-# # Change, IN ORDER
-# all_species <- c(CPC_species, Mps1_species, Haspin_Plk1_species, pH3_species, pH2A_species, only_H3_H2A_species)
-# 
-# # Change, IN ORDER
-# all_data[[1]] <- CPC_species
-# all_data[[2]] <- Mps1_species
-# all_data[[3]] <- Haspin_Plk1_species
-# all_data[[4]] <- pH3_species
-# all_data[[5]] <- pH2A_species
-# all_data[[6]] <- only_H3_H2A_species
-# 
-# 
-# # Change, IN ORDER
-# species_info_list[[1]] <- c("CPC", "Inactive CPC", "Active CPC", "CPC Activation", TRUE, FALSE, FALSE, TRUE)
-# species_info_list[[2]] <- c("Mps1", "Inactive Mps1", "Active Mps1", "Mps1 Activation", TRUE, FALSE, FALSE, TRUE)
-# species_info_list[[3]] <- c("Haspin_Plk1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-# species_info_list[[4]] <- c("pH3_species", "Inactive pH3 Species", "Active pH3 Species", "All pH3 Species", FALSE, TRUE, TRUE, FALSE)
-# species_info_list[[5]] <- c("pH2A_species", "Inactive pH2A Species", "Active pH2A Species", "All pH2A Species", FALSE, TRUE, TRUE, FALSE)
-# species_info_list[[6]] <- c("H2A & H3", "Inactive H2A & H3", "Active H2A & H3", "H2A & H3", FALSE, FALSE, TRUE, FALSE)
+L <- 6
+
+all_data <- vector("list", L)
+species_info_list <- vector("list", L)
+
+# Change, IN ORDER
+all_species <- c(CPC_species, Mps1_species, Haspin_Plk1_species, pH3_species, pH2A_species, only_H3_H2A_species)
+
+# Change, IN ORDER
+all_data[[1]] <- CPC_species
+all_data[[2]] <- Mps1_species
+all_data[[3]] <- Haspin_Plk1_species
+all_data[[4]] <- pH3_species
+all_data[[5]] <- pH2A_species
+all_data[[6]] <- only_H3_H2A_species
+
+
+# Change, IN ORDER
+species_info_list[[1]] <- c("CPC", "Inactive CPC", "Active CPC", "CPC Activation", TRUE, FALSE, FALSE, TRUE)
+species_info_list[[2]] <- c("Mps1", "Inactive Mps1", "Active Mps1", "Mps1 Activation", TRUE, FALSE, FALSE, TRUE)
+species_info_list[[3]] <- c("Haspin_Plk1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+species_info_list[[4]] <- c("pH3_species", "Inactive pH3 Species", "Active pH3 Species", "All pH3 Species", FALSE, TRUE, TRUE, FALSE)
+species_info_list[[5]] <- c("pH2A_species", "Inactive pH2A Species", "Active pH2A Species", "All pH2A Species", FALSE, TRUE, TRUE, FALSE)
+species_info_list[[6]] <- c("H2A & H3", "Inactive H2A & H3", "Active H2A & H3", "H2A & H3", FALSE, FALSE, TRUE, FALSE)
 
 
 
@@ -133,32 +133,53 @@ species_info_list[[2]] <- c("Haspin_Plk1_species", "Inactive Species", "Active S
 # Change
 kt_width = c(
              # 'Tensed',
-             'Relaxed',
-             'Tensed'
+             # 'Relaxed'
+             # 'Tensed'
+              'Tensed',
+              'Tensed',
+              'Tensed'
+              # 'Tensed'
              )
 
 # All simulation IDs
 # Change
 sims <- c(
-  "SimID_259801922_0__exported",
+  # "SimID_259801922_0__exported"
   # "SimID_259801920_0__exported"
   # "SimID_259918334_0__exported"
   # "SimID_260381013_0__exported",
-  "SimID_260380935_0__exported"
+  # "SimID_260380935_0__exported"
   # "SimID_260381013_1__exported",
   # "SimID_260381013_2__exported"
+  # "SimID_260578621_0__exported",
+  # "SimID_260578621_1__exported",
+  # "SimID_260578621_2__exported"
+  # "SimID_260758704_0__exported"
+  "SimID_260769407_0__exported.hdf5",
+  "SimID_260769407_1__exported.hdf5",
+  "SimID_260769407_2__exported.hdf5" 
+  
+  
+  
 )
 
 # Folder naming corresponding to specific simulation ID
 # Change
 var <- c(
-  "08_21_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac transactiv",
+  # "08_21_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac transactiv"
   # "08_21_23_relaxed_RefModel_Mps1_phos_Plk1s transactiv"
   # "08_29_23_tensed_CPCic_from_relaxed_20Pac"
   # "09_08_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_pp_sweep pp = 0.05",
-  "09_08_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80"
+  # "09_08_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80"
   # "09_08_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_pp_sweep pp = 0.2",
   # "09_08_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_pp_sweep pp = 0.3"
+  # "09_13_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdSgo1_sweep - .15",
+  # "09_13_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdSgo1_sweep - .30",
+  # "09_13_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdSgo1_sweep - .45"
+  # "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80"
+  "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdph2aSgo1_sweep .3",
+  "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdph2aSgo1_sweep .45",
+  "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdph2aSgo1_sweep .6"
 )
 
 #########################################################
@@ -225,6 +246,7 @@ for(i in 1:length(sims)){
 #   "SimID_259214165_0__exported",
 #   "SimID_259214169_0__exported",
 #   "SimID_259214169_1__exported"
+
 # 
 # )
 # 
