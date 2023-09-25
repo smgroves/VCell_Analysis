@@ -135,10 +135,10 @@ kt_width = c(
              # 'Tensed',
              # 'Relaxed'
              # 'Tensed'
-              'Tensed',
-              'Tensed',
-              'Tensed'
+              # 'Tensed',
+              # 'Tensed',
               # 'Tensed'
+              'Tensed'
              )
 
 # All simulation IDs
@@ -155,18 +155,17 @@ sims <- c(
   # "SimID_260578621_1__exported",
   # "SimID_260578621_2__exported"
   # "SimID_260758704_0__exported"
-  "SimID_260769407_0__exported.hdf5",
-  "SimID_260769407_1__exported.hdf5",
-  "SimID_260769407_2__exported.hdf5" 
-  
-  
-  
+  # "SimID_260769407_0__exported",
+  # "SimID_260769407_1__exported",
+  # "SimID_260769407_2__exported" 
+  "SimID_261016524_0__exported"
+
 )
 
 # Folder naming corresponding to specific simulation ID
 # Change
 var <- c(
-  # "08_21_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac transactiv"
+  # "08_21_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac transactiv smaller range"
   # "08_21_23_relaxed_RefModel_Mps1_phos_Plk1s transactiv"
   # "08_29_23_tensed_CPCic_from_relaxed_20Pac"
   # "09_08_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_pp_sweep pp = 0.05",
@@ -176,10 +175,11 @@ var <- c(
   # "09_13_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdSgo1_sweep - .15",
   # "09_13_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdSgo1_sweep - .30",
   # "09_13_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdSgo1_sweep - .45"
-  # "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80"
-  "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdph2aSgo1_sweep .3",
-  "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdph2aSgo1_sweep .45",
-  "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdph2aSgo1_sweep .6"
+  # "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80 smaller range"
+  # "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdph2aSgo1_sweep .3",
+  # "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdph2aSgo1_sweep .45",
+  # "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdph2aSgo1_sweep .6"
+  "09_25_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC"
 )
 
 #########################################################
