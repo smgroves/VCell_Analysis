@@ -138,7 +138,8 @@ kt_width = c(
               # 'Tensed',
               # 'Tensed',
               # 'Tensed'
-              'Tensed'
+              # 'Tensed',
+              "Tensed"
              )
 
 # All simulation IDs
@@ -158,7 +159,10 @@ sims <- c(
   # "SimID_260769407_0__exported",
   # "SimID_260769407_1__exported",
   # "SimID_260769407_2__exported" 
-  "SimID_261016524_0__exported"
+  # "SimID_261016524_0__exported"
+  # "SimID_261020427_0__exported"
+  # "SimID_261167707_0__exported"
+  "SimID_261167914_0__exported"
 
 )
 
@@ -179,7 +183,10 @@ var <- c(
   # "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdph2aSgo1_sweep .3",
   # "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdph2aSgo1_sweep .45",
   # "09_19_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_10p_Ndc80_kdph2aSgo1_sweep .6"
-  "09_25_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC"
+  # "09_25_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC"
+  # "09_25_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC"
+  # "09_25_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC Full Length"
+  "09_25_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC"
 )
 
 #########################################################
@@ -206,28 +213,28 @@ for(i in 1:length(sims)){
                all_species,
                species_info_list,
                tInit=0,
-               tSpan=400, #400 for relaxed to tense
+               tSpan=450, #400 for relaxed to tense
                desiredInterval=100,
                cutoff=10, #for heatmap color bar
                funcPath,
                importPath,
                exportPath_new,
                kt_width[i])
-    
-    # vcell_table(sims[i],
-    #             var[i],
-    #             tPoints=c(200, 500),
-    #             all_species=CPC_species,
-    #             name='CPC',
-    #             chromWidth=1.6,
-    #             chromHeight=3.5,
-    #             dataDim=c(149,68),
-    #             row_1=1,
-    #             row_2=dataDim[1],
-    #             col_1=1,
-    #             col_2=dataDim[2],
-    #             importPath,
-    #             exportPath_new)
+
+    vcell_table(sims[i],
+                var[i],
+                tPoints=c(200, 400),
+                all_species=CPC_species,
+                name='CPC',
+                chromWidth=1.6,
+                chromHeight=3.5,
+                dataDim=c(149,68),
+                row_1=1,
+                row_2=dataDim[1],
+                col_1=1,
+                col_2=dataDim[2],
+                importPath,
+                exportPath_new)
     
     
   }
