@@ -62,3 +62,8 @@ python hdf5_converter.py "SimID_261020427_0__exported.hdf5" '/Users/smgroves/Box
 python hdf5_converter.py "SimID_261167707_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "09_19_23_CPC_tensed_RefModel_Mps1_phos_Plk1a transctiv_sarah" "09_25_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC Full Length"
 python hdf5_converter.py "SimID_261167914_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "09_19_23_CPC_tensed_RefModel_Mps1_phos_Plk1a transctiv_sarah" "09_25_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC"
 
+#10/09/23
+python hdf5_converter.py "SimID_261397503_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "08_21_23_CPC_relaxed_RefModel_Mps1_phos_Plk1a transactiv_sarah" "10_05_23_relaxed_RefModel_Mps1_phos_Plk1a_sweep"
+python hdf5_converter.py "SimID_261397648_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "09_19_23_CPC_tensed_RefModel_Mps1_phos_Plk1a transctiv_sarah" "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep"
+python hdf5_converter.py "SimID_261397624_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "09_19_23_CPC_tensed_RefModel_Mps1_phos_Plk1a transctiv_sarah" "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC_Plk1a_sweep"
+python hdf5_converter.py "SimID_261397602_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "09_19_23_CPC_tensed_RefModel_Mps1_phos_Plk1a transctiv_sarah" "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_Plk1a_sweep"

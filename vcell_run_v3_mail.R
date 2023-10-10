@@ -60,19 +60,19 @@ heatmap_info_list[[3]] <- c("all pH3")
 
 
 # H <- 2
-
-heatmap_species <- vector("list", H)
-heatmap_info_list <- vector("list", H)
-
-# Change, IN ORDER
-heatmap_species[[1]] <- Bub1a
-heatmap_species[[2]] <- pKnl1_Bub1a
-
-
-
-# Change, name of plot in plot directory, also name in heatmap, IN ORDER
-heatmap_info_list[[1]] <- c("Bub1a")
-heatmap_info_list[[2]] <- c("pKnl1_Bub1a")
+# 
+# heatmap_species <- vector("list", H)
+# heatmap_info_list <- vector("list", H)
+# 
+# # Change, IN ORDER
+# heatmap_species[[1]] <- Bub1a
+# heatmap_species[[2]] <- pKnl1_Bub1a
+# 
+# 
+# 
+# # Change, name of plot in plot directory, also name in heatmap, IN ORDER
+# heatmap_info_list[[1]] <- c("Bub1a")
+# heatmap_info_list[[2]] <- c("pKnl1_Bub1a")
 
 
 
@@ -107,24 +107,24 @@ species_info_list[[6]] <- c("H2A & H3", "Inactive H2A & H3", "Active H2A & H3", 
 # 
 # # How many line plots to return
 # # Change
-L <- 2
-
-all_data <- vector("list", L)
-species_info_list <- vector("list", L)
-
-# Change, IN ORDER
-all_species <- c(Bub1a_pKnl1_species, Haspin_P_species)
-
-# Change, IN ORDER
-all_data[[1]] <- Bub1a_pKnl1_species
-all_data[[2]] <- Haspin_P_species
-
-
-# Change, IN ORDER
-
-species_info_list[[1]] <- c("Bub1a_pKnl1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-species_info_list[[2]] <- c("Haspin_Plk1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-
+# L <- 2
+# 
+# all_data <- vector("list", L)
+# species_info_list <- vector("list", L)
+# 
+# # Change, IN ORDER
+# all_species <- c(Bub1a_pKnl1_species, Haspin_P_species)
+# 
+# # Change, IN ORDER
+# all_data[[1]] <- Bub1a_pKnl1_species
+# all_data[[2]] <- Haspin_P_species
+# 
+# 
+# # Change, IN ORDER
+# 
+# species_info_list[[1]] <- c("Bub1a_pKnl1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+# species_info_list[[2]] <- c("Haspin_Plk1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+# 
 
 
 # ---------------- SIMULATION SPECIFICS ---------------
@@ -132,13 +132,11 @@ species_info_list[[2]] <- c("Haspin_Plk1_species", "Inactive Species", "Active S
 # Model type, goes on the left of the heatmap
 # Change
 kt_width = c(
-             # 'Tensed',
-             # 'Relaxed'
-             # 'Tensed'
-              # 'Tensed',
-              # 'Tensed',
-              # 'Tensed'
-              # 'Tensed',
+              # 'Relaxed',
+              # 'Relaxed',
+              # 'Relaxed'
+              "Tensed",
+              "Tensed",
               "Tensed"
              )
 
@@ -162,8 +160,23 @@ sims <- c(
   # "SimID_261016524_0__exported"
   # "SimID_261020427_0__exported"
   # "SimID_261167707_0__exported"
-  "SimID_261167914_0__exported"
-
+  # "SimID_261167914_0__exported"
+  
+  # "SimID_261397503_0__exported",
+  # "SimID_261397503_1__exported",
+  # "SimID_261397503_2__exported"
+  
+  "SimID_261397624_0__exported",
+  "SimID_261397624_1__exported",
+  "SimID_261397624_2__exported"
+  # "SimID_261397648_0__exported",
+  # "SimID_261397648_1__exported",
+  # "SimID_261397648_2__exported"#,
+  # "SimID_261397602_0__exported",
+  # "SimID_261397602_1__exported",
+  # "SimID_261397602_2__exported"
+  
+  
 )
 
 # Folder naming corresponding to specific simulation ID
@@ -186,7 +199,21 @@ var <- c(
   # "09_25_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC"
   # "09_25_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC"
   # "09_25_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC Full Length"
-  "09_25_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC"
+  # "09_25_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC"
+  
+  # "10_05_23_relaxed_RefModel_Mps1_phos_Plk1a_sweep 0.02",
+  # "10_05_23_relaxed_RefModel_Mps1_phos_Plk1a_sweep 0.05",
+  # "10_05_23_relaxed_RefModel_Mps1_phos_Plk1a_sweep 0.1"
+  
+  "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep 0.02",
+  "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep 0.05",
+  "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep 0.1"
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC_Plk1a_sweep 0.02",
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC_Plk1a_sweep 0.05",
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC_Plk1a_sweep 0.1"
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_Plk1a_sweep 0.02",
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_Plk1a_sweep 0.05",
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_Plk1a_sweep 0.1"
 )
 
 #########################################################
@@ -213,7 +240,7 @@ for(i in 1:length(sims)){
                all_species,
                species_info_list,
                tInit=0,
-               tSpan=450, #400 for relaxed to tense
+               tSpan=490, #400 for relaxed to tense
                desiredInterval=100,
                cutoff=10, #for heatmap color bar
                funcPath,
@@ -221,21 +248,21 @@ for(i in 1:length(sims)){
                exportPath_new,
                kt_width[i])
 
-    vcell_table(sims[i],
-                var[i],
-                tPoints=c(200, 400),
-                all_species=CPC_species,
-                name='CPC',
-                chromWidth=1.6,
-                chromHeight=3.5,
-                dataDim=c(149,68),
-                row_1=1,
-                row_2=dataDim[1],
-                col_1=1,
-                col_2=dataDim[2],
-                importPath,
-                exportPath_new)
-    
+    # vcell_table(sims[i],
+                # var[i],
+                # tPoints=c(200, 400),
+                # all_species=CPC_species,
+                # name='CPC',
+                # chromWidth=1.6,
+                # chromHeight=3.5,
+                # dataDim=c(149,68),
+                # row_1=1,
+                # row_2=dataDim[1],
+                # col_1=1,
+                # col_2=dataDim[2],
+                # importPath,
+                # exportPath_new)
+                # 
     
   }
 }
