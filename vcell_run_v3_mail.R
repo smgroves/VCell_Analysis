@@ -166,9 +166,9 @@ sims <- c(
   # "SimID_261397503_1__exported",
   # "SimID_261397503_2__exported"
   
-  "SimID_261397624_0__exported",
-  "SimID_261397624_1__exported",
-  "SimID_261397624_2__exported"
+  # "SimID_261397624_0__exported",
+  # "SimID_261397624_1__exported",
+  # "SimID_261397624_2__exported"
   # "SimID_261397648_0__exported",
   # "SimID_261397648_1__exported",
   # "SimID_261397648_2__exported"#,
@@ -176,6 +176,21 @@ sims <- c(
   # "SimID_261397602_1__exported",
   # "SimID_261397602_2__exported"
   
+  # "SimID_261581379_0__exported",
+  # "SimID_261581379_1__exported",
+  # "SimID_261581379_2__exported"
+  
+  # "SimID_261581300_0__exported",
+  # "SimID_261581300_1__exported",
+  # "SimID_261581300_2__exported"
+  
+  "SimID_261581325_0__exported",
+  "SimID_261581325_1__exported",
+  "SimID_261581325_2__exported"
+  
+  # "SimID_261581351_0__exported",
+  # "SimID_261581351_1__exported",
+  # "SimID_261581351_2__exported"
   
 )
 
@@ -205,15 +220,29 @@ var <- c(
   # "10_05_23_relaxed_RefModel_Mps1_phos_Plk1a_sweep 0.05",
   # "10_05_23_relaxed_RefModel_Mps1_phos_Plk1a_sweep 0.1"
   
-  "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep 0.02",
-  "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep 0.05",
-  "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep 0.1"
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep 0.02",
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep 0.05",
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep 0.1"
   # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC_Plk1a_sweep 0.02",
   # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC_Plk1a_sweep 0.05",
   # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC_Plk1a_sweep 0.1"
   # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_Plk1a_sweep 0.02",
   # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_Plk1a_sweep 0.05",
   # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_Plk1a_sweep 0.1"
+  
+  # "10_05_23_relaxed_RefModel_Mps1_phos_Plk1a_sweep 0",
+  # "10_05_23_relaxed_RefModel_Mps1_phos_Plk1a_sweep 0.005",
+  # "10_05_23_relaxed_RefModel_Mps1_phos_Plk1a_sweep 0.01"
+  
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep 0",
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep 0.005",
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep 0.01"
+  "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC_Plk1a_sweep 0",
+  "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC_Plk1a_sweep 0.005",
+  "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC_Plk1a_sweep 0.01"
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_Plk1a_sweep 0",
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_Plk1a_sweep 0.005",
+  # "10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_Plk1a_sweep 0.01"
 )
 
 #########################################################
@@ -240,7 +269,7 @@ for(i in 1:length(sims)){
                all_species,
                species_info_list,
                tInit=0,
-               tSpan=490, #400 for relaxed to tense
+               tSpan=450, #400 for relaxed to tense
                desiredInterval=100,
                cutoff=10, #for heatmap color bar
                funcPath,
