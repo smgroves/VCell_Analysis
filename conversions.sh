@@ -73,3 +73,16 @@ python hdf5_converter.py "SimID_261581379_0__exported.hdf5" '/Users/smgroves/Box
 python hdf5_converter.py "SimID_261581300_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "09_19_23_CPC_tensed_RefModel_Mps1_phos_Plk1a transctiv_sarah" "Copy of 10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep"
 python hdf5_converter.py "SimID_261581325_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "09_19_23_CPC_tensed_RefModel_Mps1_phos_Plk1a transctiv_sarah" "Copy of 10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC_Plk1a_sweep"
 python hdf5_converter.py "SimID_261581351_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "09_19_23_CPC_tensed_RefModel_Mps1_phos_Plk1a transctiv_sarah" "Copy of 10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_Plk1a_sweep"
+
+#10/16/23
+python hdf5_converter.py "SimID_261651389_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "09_19_23_CPC_tensed_RefModel_Mps1_phos_Plk1a transctiv_noRxn27" "Copy of 10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_10sIC_Plk1a_sweep"
+python hdf5_converter.py "SimID_261651395_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "09_19_23_CPC_tensed_RefModel_Mps1_phos_Plk1a transctiv_noRxn27" "Copy of 10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_50sIC_Plk1a_sweep"
+
+python hdf5_converter.py "SimID_261651381_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "09_19_23_CPC_tensed_RefModel_Mps1_phos_Plk1a transctiv_noRxn27" "Copy of 10_05_23_relaxed_to_tense_halved_innerCT_CPC_distributed_to_diffuse_CPC_Plk1a_sweep"
+python hdf5_converter.py "SimID_261870599_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_noRxn27" "Copy of 10_05_23_relaxed_RefModel_Mps1_phos_Plk1a_sweep"
+
+python hdf5_converter.py "SimID_261879026_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_transactiv"
+python hdf5_converter.py "SimID_261879028_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv"
+
+
+
