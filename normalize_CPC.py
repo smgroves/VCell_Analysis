@@ -47,6 +47,7 @@ def rescale_vcell_output(folder_name, in_dir, model_name = "", simulation_name =
 
     nrows= sum_data_array.shape[0]
     ncols= sum_data_array.shape[1]
+    sum_data_array.max()
 
     np.savetxt(os.path.join(in_dir,folder_name,f"{model_name}_{simulation_name}_{timepoint}_{nrows}x{ncols}.csv"), sum_data_array, delimiter=",")
 
