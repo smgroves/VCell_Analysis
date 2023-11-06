@@ -131,9 +131,9 @@ vcell_heatmap <- function(
     dim_data<-dataFolder
     
     # dataDim<-c(row_diff,col_diff)
-    dataDim<-c(149,68)
-    row_diff<-149
-    col_diff<-68
+    # dataDim<-c(149,68)
+    row_diff<-row_2
+    col_diff<-col_2
     
     # model geometry
     # set X and Y coordinates using system dimensions
@@ -164,7 +164,9 @@ vcell_heatmap <- function(
         return("ERROR: This function does not have the capability to read data in different folders yet.")
       }else{
         if(clamped==FALSE){
+          print(dataPoint)
           for(i in 1:length(species)){
+            print(species[i])
             pattern<-paste("[A-Za-z0-9_]*_Slice_XY_\\d",
                            species[i],
                            dataPoint,

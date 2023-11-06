@@ -204,9 +204,13 @@ all_plot <- function(
     for(q in 1:length(all_species)){
       
       
-      
+      if(dataDim=c(149,68)){
       y1 = ceiling(1.6 * dataDim[1] / chromHeight)
       y2 = ceiling(1.9 * dataDim[1] / chromHeight)
+      }else if(dataDim=c(128,64)){
+      y1 = ceiling(1.45 * dataDim[1] / chromHeight)
+      y2 = ceiling(1.75 * dataDim[1] / chromHeight)
+      }
       
       #For relaxed state
       if(kt_width == 'Relaxed'){
