@@ -87,3 +87,13 @@ python hdf5_converter.py "SimID_261879028_0__exported.hdf5" '/Users/smgroves/Box
 #10/25/23
 python hdf5_converter.py "SimID_262253748_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_24_23_CPC_tensed_RefModel_128x64_post_transition" "10_25_23_400s_post_transition_base_20Pac"
 
+#11/21/2023
+python hdf5_converter.py "SimID_263145281_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_volratio_1.0"
+python hdf5_converter.py "SimID_263145284_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_10p"
+
+#11/22/2023
+python hdf5_converter.py "SimID_262204806_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_tensed_RefModel_128x64" "10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv"
+python hdf5_converter.py "SimID_263407250_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_tensed_RefModel_128x64" "11_21_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_10p"
+
+#11/27/2023- not done
+python hdf5_converter.py "SimID_263432940_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan"
