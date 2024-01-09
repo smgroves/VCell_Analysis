@@ -1,0 +1,5 @@
+# CompartmentSubDomain name, handle
+# MembraneSubDomain name, inside compartment name, handle, outside compartment name, handle
+CompartmentSubDomain, void, 2
+CompartmentSubDomain, chromosome, 0
+MembraneSubDomain, chromosome_void_membrane, chromosome, 0, void, 2

@@ -3,9 +3,11 @@ import h5py
 import os
 import sys
 import time
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 #read in arguments from command line using sys.argv
-if True:
+if False:
     file_name = sys.argv[1]
     dir_path = sys.argv[2]
     model_name = sys.argv[3]
@@ -68,7 +70,6 @@ def convert_hdf5_to_csv(file_name, dir_path = '', model_name = "", simulation_na
 if __name__ == "__main__":
     t1 = time.time()
     convert_hdf5_to_csv(file_name, dir_path, model_name, simulation_name)
-
     t2 = time.time()
     print("Processing took ", (t2-t1), " seconds")
 

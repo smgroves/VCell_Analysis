@@ -1,0 +1,1053 @@
+vcell_plots_WORKING <- function(
+    SimID, # vector of strings of SimIDs in the form c("SimID_209081149_0__exported","SimID_209081149_0__exported")
+    sweepName=NULL,
+    names=SimID,
+    speciesDesired="inactive CPC",
+    speciesName=speciesDesired,
+    tInit=0, # in s
+    tSpan, # in s
+    chromWidth=1.6, #um
+    chromHeight=3.5, #um
+    dataDim=c(149,68), # rows,columns in concentration matrix; depends on mesh size
+    row_1=1,
+    row_2=dataDim[1],
+    col_1=1,
+    col_2=dataDim[2],
+    importPath="/Users/sam/Research/JanesLab/vcell_data",
+    exportPath="/Users/sam/Research/JanesLab/vcell_plots",
+    full=FALSE,
+    collapsible=FALSE,
+    save=FALSE,
+    sums=TRUE,
+    var,
+    linewidth=0.7){
+  
+  #######################################  TESTING  #################################################
+
+  # sims<-c("SimID_258078183_0__exported")
+  # names<-c("Relaxed model")
+  # 
+  # var <-"both - MBP - Mod2 - HA2 mod —"
+  # 
+  # # what to name the output graph file, as a string "name"
+  # sweep_name<-paste("Relaxed_Base model", var)
+  # 
+  # exportPath<-"/Users/sam/Research/JanesLab/vcell_plots"
+  # 
+  # 
+  # 
+  #   SimID=sims
+  #   sweepName=sweep_name
+  #   names=names
+  #   speciesDesired=c("all CPC")
+  #   speciesName=
+  #   tInit=0
+  #   tSpan=500
+  #   chromWidth=1.6 #um
+  #   chromHeight=3.5 #um
+  #   dataDim=c(149,68)
+  #   row_1=1
+  #   row_2=dataDim[1]
+  #   col_1=2
+  #   col_2=dataDim[2]
+  #   importPath="/Users/sam/Research/JanesLab/vcell_data"
+  #   exportPath="/Users/sam/Research/JanesLab/vcell_plots"
+  #   full=TRUE
+  #   collapsible=FALSE
+  #   save=FALSE
+  #   var=var
+  #   sums=TRUE
+  #   linewidth <- 0.7
+  
+  ####################################################################################################
+  
+  
+  # misc
+  folderVar <- 0
+  leader <- 10
+  offset <- NULL
+  
+  
+  pattern<-paste("[A-Za-z0-9_]*","exported",sep="")
+  cond<-grepl(pattern,SimID)
+  print(SimID)
+  SimID<-ifelse(cond,SimID,paste(SimID,"exported",sep="_"))
+  print(SimID)
+  
+  
+  #All the following data is updated until the vcell version 03-27-23
+  #All species
+  all_species<-c("Plk1a",
+                 "Plk1i",
+                 "Haspini",
+                 "Haspina",
+                 "Knl1",
+                 "pKnl1",
+                 "pKnl1_Bub1a",
+                 "Bub1a",
+                 "Bub1a_his",
+                 "Sgo1",
+                 "H2A",
+                 "pH2A",
+                 "H3",
+                 "pH3",
+                 "pH2A_Sgo1",
+                 "CPCi",
+                 "pH2A_Sgo1_CPCi",
+                 "pH2A_Sgo1_CPCa",
+                 "pH3_CPCi",
+                 "pH2A_Sgo1_pH3_CPCi", 
+                 "CPCa",
+                 "pH3_CPCa",
+                 "pH2A_Sgo1_CPCa",
+                 "pH2A_Sgo1_pH3_CPCa", "Mps1a", "pMps1a", "Ndc80_Mps1a", "Ndc80_pMps1a", "pNdc80_Mps1a", "pNdc80_pMps1a",
+                 "Mps1i", "pMps1i", "Ndc80_Mps1i", "Ndc80_pMps1i", "pNdc80_Mps1i", "pNdc80_pMps1i")
+  
+  # initial concentrations (uM) -> Without vol_ratio or fractions multiplications
+  # clamped
+  Haspini_ic_uM<- 0.55071118
+  Plk1_init_uM<-0.23394
+  CPCi_init_uM <- 0.07838
+  Bub1a_init_uM<-0.02018
+  Sgo1_init_uM<-0.02583
+  
+
+  
+  
+  # special species commands
+  if(speciesDesired=="inactive CPC"){ 
+    
+    species<-c("CPCi", "pH2A_Sgo1_CPCi", "pH3_CPCi", "pH2A_Sgo1_pH3_CPCi")
+    name <- "CPCi"
+    speciesInactive = "Inactive CPC"
+    speciesActive = ""
+    speciesFull = "Inactive CPC Activation"
+    
+  }else if(speciesDesired=="total Haspin"){
+    
+    species<-c("Haspini","Haspina")
+    name <- "Haspin"
+    speciesInactive = "Inactive Haspin"
+    speciesActive = "Active Haspin"
+    speciesFull = "Haspin Activation"
+    
+    
+  }else if(speciesDesired=="inactive Trimolecular CPC"){
+    
+    species<-c("pH2A_Sgo1_pH3_CPCi")
+    name <- speciesDesired
+    
+  }else if(speciesDesired=="active CPC"){
+    
+    species<-c("CPCa", "pH2A_Sgo1_CPCa", "pH3_CPCa", "pH2A_Sgo1_pH3_CPCa")
+    name <- "CPCa"
+    
+  }else if(speciesDesired=="all CPC"){
+    
+    species<-c("CPCa", "pH2A_Sgo1_CPCa", "pH3_CPCa", "pH2A_Sgo1_pH3_CPCa", "CPCi", "pH2A_Sgo1_CPCi", "pH3_CPCi", "pH2A_Sgo1_pH3_CPCi")
+    name <- "CPC"
+    speciesInactive = "Inactive CPC"
+    speciesActive = "Active CPC"
+    speciesFull = "CPC Activation"
+    
+  }else if(speciesDesired=="all Mps1a"){
+    
+    species<-c("Mps1a", "pMps1a", "Ndc80_Mps1a", "Ndc80_pMps1a", "pNdc80_Mps1a", "pNdc80_pMps1a")
+    name <- "Mps1a"
+    
+  }else if(speciesDesired=="all Mps1i"){
+    
+    species<-c("Mps1i", "pMps1i", "Ndc80_Mps1i", "Ndc80_pMps1i", "pNdc80_Mps1i", "pNdc80_pMps1i")
+    name <- "Mps1i"
+    
+  }else if(speciesDesired=="all Mps1"){
+    species<-c("Mps1a", "pMps1a", "Ndc80_Mps1a", "Ndc80_pMps1a", "pNdc80_Mps1a", "pNdc80_pMps1a", "Mps1i", "pMps1i", "Ndc80_Mps1i", "Ndc80_pMps1i", "pNdc80_Mps1i", "pNdc80_pMps1i")
+    name <- "Mps1"
+    speciesInactive = "Inactive Mps1"
+    speciesActive = "Active Mps1"
+    speciesFull = "Mps1 Activation"
+    
+  }else if(speciesDesired=="Todd"){
+    species<-c("Plk1a", "Plk1i", "Haspina", "Haspini", "pH3", "pH3_CPCa", "pH3_CPCi", "pH2A_Sgo1_CPCi", "pH2A_Sgo1_CPCa")
+    #species<-c("Haspina", "Haspini", "pH3", "pH3_CPCa", "pH3_CPCi", "pH2A_Sgo1_CPCi", "pH2A_Sgo1_CPCa", "Knl1", "pKnl1")
+    name <- "Todd"
+    speciesInactive = "Inactive Species"
+    speciesActive = "Active Species"
+    speciesFull = "All Species"
+  }
+  
+  kt_species <- vector("list", length(species))
+  ic_species <- vector("list", length(species))
+  L <- list()
+  
+  # Initialize empty vectors for each species
+  for (i in 1:length(species)) {
+    kt_species[[i]] <- vector("numeric", ((tSpan/10) + 1))
+    ic_species[[i]] <- vector("numeric", ((tSpan/10) + 1))
+  }
+  
+  
+  # change working directory
+  setwd(importPath)
+  
+  custom_colors <- c("#e41a1c",
+                     "#377eb8", 
+                     "#4daf4a", 
+                     "#984ea3", 
+                     "#a6761d", 
+                     "#e6ab02", 
+                     "#ff7f00")
+  linewidth <- linewidth
+  
+  
+  # data processing
+  for(z in 0:(tSpan/10)){
+    
+    t <- z
+    
+    # convert timepoint to string
+    dataPoint<-as.character(round(x=t,digits=0))
+    if(nchar(dataPoint)==1){
+      dataPoint<-paste("000",dataPoint,sep="")
+    }else if(nchar(dataPoint)==2){
+      dataPoint<-paste("00",dataPoint,sep="")
+    }else if(nchar(dataPoint)==3){
+      dataPoint<-paste("0",dataPoint,sep="")
+    }
+    
+    
+    for(i in 1:length(species)){
+      pattern<-paste("[A-Za-z0-9_]*_Slice_XY_\\d",
+                     species[i],
+                     dataPoint,
+                     sep="_")
+      
+      
+      
+      # read the csv file to a matrix, M
+      L[[i]]<-data.matrix(read.csv(paste(importPath,SimID,grep(pattern, list.files(SimID), value = TRUE),sep="/"),header=FALSE,skip=leader))[row_1:row_2,col_1:col_2]
+    }
+    
+    # set any negative concentration values to zero
+    L<-matrixZero(matrixList=L)
+    
+    
+    
+    
+    
+    for(i in 1:length(species)){
+      y1 = ceiling(1.6 * dataDim[1] / 3.5)
+      y2 = ceiling(1.9 * dataDim[1] / 3.5)
+      
+      x1 = ceiling(0.425 * dataDim[2] / 1.6) - 1
+      x2 = ceiling(0.500 * dataDim[2] / 1.6) - 1
+      x3 = ceiling(0.700 * dataDim[2] / 1.6)
+      x4 = ceiling(0.900 * dataDim[2] / 1.6) - 2
+      x5 = ceiling(1.100 * dataDim[2] / 1.6) - 1
+      x6 = ceiling(1.175 * dataDim[2] / 1.6) - 1
+      
+      
+      matrix <- L[[i]]
+      
+      x_indices_LK <- x1:x2
+      x_indices_RK <- x5:x6
+      x_indices_IC <- x3:x4
+      y_indices <- y1:y2
+      
+      
+      left_kinetichore <-matrix[y_indices, x_indices_LK]
+      right_kinetichore <-matrix[y_indices, x_indices_RK]
+      inner_centromere <-matrix[y_indices, x_indices_IC]
+
+      
+      lk <- mean(left_kinetichore)
+      rk <- mean(right_kinetichore)
+      ic <- mean(inner_centromere)
+      kt <- mean(lk, rk)
+      
+      
+      kt_species[[i]][z+1] <- kt
+      ic_species[[i]][z+1] <- ic
+
+    }
+    
+  }
+  
+
+  
+  data_ic <- data.frame(
+    Time = 0:(tSpan/10),
+    Species = rep(species, each = ((tSpan/10) + 1)),
+    IC = unlist(ic_species)
+  )
+  
+  data_kt <- data.frame(
+    Time = 0:(tSpan/10),
+    Species = rep(species, each = ((tSpan/10) + 1)),
+    KT = unlist(kt_species)
+  )
+  
+  # Reshape to wide
+  data_ic <- reshape(data_ic, idvar = "Time", timevar = "Species", direction = "wide")
+  data_kt <- reshape(data_kt, idvar = "Time", timevar = "Species", direction = "wide")
+  
+  # Rename columns
+  colnames(data_ic)[2:ncol(data_ic)] <- gsub("IC.", "", colnames(data_ic)[2:ncol(data_ic)])
+  colnames(data_kt)[2:ncol(data_kt)] <- gsub("KT.", "", colnames(data_kt)[2:ncol(data_kt)])
+  
+  # Get active and inactive df for IC and KT
+  data_active_ic <- data_ic %>% select("Time", ends_with('a'))
+  data_inactive_ic <- data_ic %>% select("Time", ends_with('i'))
+  data_active_kt <- data_kt %>% select("Time", ends_with('a'))
+  data_inactive_kt <- data_kt %>% select("Time", ends_with('i'))
+  
+  # Get all active and inactive species
+  active_species <- colnames(data_active_ic %>% select(-c('Time')))
+  inactive_species <- colnames(data_inactive_ic %>% select(-c('Time')))
+
+  if(sums==TRUE){
+  # Add in Sum Columns
+    
+  if (ncol(data_inactive_kt) > 1){
+    data_inactive_ic$Sum_Inactive <- rowSums(data_inactive_ic[, 2:(length(inactive_species)+1)], na.rm = TRUE)
+    data_inactive_kt$Sum_Inactive <- rowSums(data_inactive_kt[, 2:(length(inactive_species)+1)], na.rm = TRUE)
+  }
+    
+    if (ncol(data_inactive_kt) < 2){
+      data_inactive_ic$Sum_Inactive <- 0
+      data_inactive_kt$Sum_Inactive <- 0
+    }
+    
+    if (ncol(data_active_kt) > 1){
+      data_active_ic$Sum_Active <- rowSums(data_active_ic[, 2:(length(active_species)+1)], na.rm = TRUE)
+      data_active_kt$Sum_Active <- rowSums(data_active_kt[, 2:(length(active_species)+1)], na.rm = TRUE)
+    }
+    
+    if (ncol(data_active_kt) < 2){
+      data_active_ic$Sum_Active <- 0
+      data_active_kt$Sum_Active <- 0
+    }
+    
+  }
+  
+  if (ncol(data_active_kt) > 1) {
+  species_plot_data <- data.frame(Species = species, 
+                                  Linetype = ifelse(species %in% active_species, "solid", "dashed"),
+                                  Color = ifelse(species %in% active_species, custom_colors[match(species, active_species)], custom_colors[match(gsub(".$", "", species), gsub(".$", "", active_species))])
+                                  )
+  }
+  
+  
+    if(ncol(data_inactive_kt) > 1){
+    species_plot_data <- data.frame(Species = species, 
+                                    Linetype = ifelse(species %in% active_species, "solid", "dashed"),
+                                    Color = ifelse(species %in% inactive_species, custom_colors[match(species, inactive_species)], custom_colors[match(gsub(".$", "", species), gsub(".$", "", inactive_species))])
+    )
+  
+  }
+  
+  if(sums==TRUE){
+  sum_active_row <- data.frame(Species = "Sum_Active", Linetype = "solid", Color = "black")
+  sum_inactive_row <- data.frame(Species = "Sum_Inactive", Linetype = "dashed", Color = "black")
+  
+  species_plot_data <- rbind(sum_active_row, sum_inactive_row, species_plot_data)
+  }
+  
+  my_theme <- theme(panel.background = element_rect(fill = "transparent"),
+                    legend.background = element_rect(fill = "transparent"),
+                    axis.line = element_line(color = "black"),
+                    axis.text=element_text(size=12),
+                    axis.title=element_text(size=16),
+                    plot.title=element_text(size=16),
+                    legend.text=element_text(size=12))
+  
+  if(full==TRUE){ 
+    
+    #                                                             Active IC
+    
+    active_ic_long <- data_active_ic %>% gather("Species", "Concentration", -Time)
+    
+    # Plot the data
+    plot_active_ic <- ggplot() +
+      geom_line(data = active_ic_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
+      labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
+      ggtitle(paste(speciesActive, "concentration at inner centromere")) +
+      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
+      scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
+      theme(panel.background = element_rect(fill = "transparent"),
+            legend.background = element_rect(fill = "transparent"),
+            axis.line = element_line(color = "black"),
+            axis.text=element_text(size=12),
+            axis.title=element_text(size=14))
+
+    
+    #                                                             Inactive IC
+    
+    inactive_ic_long <- data_inactive_ic %>% gather("Species", "Concentration", -Time)
+    
+    # Plot the data
+    plot_inactive_ic <- ggplot() +
+      geom_line(data = inactive_ic_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
+      labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
+      ggtitle(paste(speciesInactive, "concentration at inner centromere")) +
+      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
+      scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
+      theme(panel.background = element_rect(fill = "transparent"),
+            legend.background = element_rect(fill = "transparent"),
+            axis.line = element_line(color = "black"),
+            axis.text=element_text(size=12),
+            axis.title=element_text(size=14))
+    
+    #                                                             Active KT
+    
+    active_kt_long <- data_active_kt %>% gather("Species", "Concentration", -Time)
+    
+    # Plot the data
+    plot_active_kt <- ggplot() +
+      geom_line(data = active_kt_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
+      labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
+      ggtitle(paste(speciesActive, "concentration at kinetochore")) +
+      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
+      scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
+      theme(panel.background = element_rect(fill = "transparent"),
+            legend.background = element_rect(fill = "transparent"),
+            axis.line = element_line(color = "black"),
+            axis.text=element_text(size=12),
+            axis.title=element_text(size=14))
+    
+    #                                                             Inactive KT
+    
+    inactive_kt_long <- data_inactive_kt %>% gather("Species", "Concentration", -Time)
+    
+    # Plot the data
+    plot_inactive_kt <- ggplot() +
+      geom_line(data = inactive_kt_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
+      labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
+      ggtitle(paste(speciesInactive, "concentration at kinetochore")) +
+      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
+      scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
+      theme(panel.background = element_rect(fill = "transparent"),
+            legend.background = element_rect(fill = "transparent"),
+            axis.line = element_line(color = "black"),
+            axis.text=element_text(size=12),
+            axis.title=element_text(size=14))
+    
+    
+    #                                                             All IC
+    
+    if(sums == TRUE){
+    data_ic$Sum_Active <- data_active_ic$Sum_Active
+    data_ic$Sum_Inactive <- data_inactive_ic$Sum_Inactive
+    }
+    
+    ic_long <- data_ic %>% gather("Species", "Concentration", -Time)
+    
+    # Plot the data
+    plot_ic <- ggplot() +
+      geom_line(data = ic_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
+      labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
+      ggtitle(paste(speciesFull, "at inner centromere")) +
+      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
+      scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
+      theme(panel.background = element_rect(fill = "transparent"),
+            legend.background = element_rect(fill = "transparent"),
+            axis.line = element_line(color = "black"),
+            axis.text=element_text(size=12),
+            axis.title=element_text(size=14))
+    
+    #                                                             All KT
+    
+    if(sums == TRUE){
+    data_kt$Sum_Active <- data_active_kt$Sum_Active
+    data_kt$Sum_Inactive <- data_inactive_kt$Sum_Inactive
+    }
+    
+    
+    kt_long <- data_kt %>% gather("Species", "Concentration", -Time)
+    
+    # Plot the data
+    plot_kt <- ggplot() +
+      geom_line(data = kt_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
+      labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
+      ggtitle(paste(speciesFull, "at kinetochore")) +
+      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
+      scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
+      theme(panel.background = element_rect(fill = "transparent"),
+            legend.background = element_rect(fill = "transparent"),
+            axis.line = element_line(color = "black"),
+            axis.text=element_text(size=12),
+            axis.title=element_text(size=14))
+    
+    
+    
+  }
+  
+  else if(collapsible==TRUE){
+    
+    colMax <- function(data) sapply(data, max, na.rm = TRUE)
+    
+    n_highlight <- 4
+    
+    
+    #                                                             Active IC
+    
+    if(sums == TRUE){
+    filtered_active_ic <- data_active_ic %>% select(-c('Time', 'Sum_Active'))
+    }else{
+      filtered_active_ic <- data_active_ic %>% select(-c('Time'))
+    }
+    active_ic <- which(colSums(filtered_active_ic) > 0)
+    
+    # Find either the top n_highlight columns or the columns that are != 0
+    if(length(active_ic) < n_highlight){
+      highlight_active_ic <- filtered_active_ic %>% select(all_of(active_ic))
+    }else{
+      highlight_active_ic <- filtered_active_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
+      highlight_active_ic <- filtered_active_ic %>% select(all_of(order(highlight_active_ic, decreasing = TRUE))[1:n_highlight])
+    }
+    
+    # Add in Time and Sum
+    if(sums == TRUE){
+    highlight_active_ic <- cbind(data_active_ic$Time, data_active_ic$Sum_Active, highlight_active_ic)
+    }else{
+      highlight_active_ic <- cbind(data_active_ic$Time, highlight_active_ic)
+    }
+    
+    # Change names
+    names(highlight_active_ic)[names(highlight_active_ic) == 'data_active_ic$Time'] <- 'Time'
+    if(sums == TRUE){
+    names(highlight_active_ic)[names(highlight_active_ic) == 'data_active_ic$Sum_Active'] <- 'Sum_Active'
+    }
+    bleached_active_ic <- data_active_ic %>% select(-c(names(highlight_active_ic %>% select(-c("Time")))))
+    
+    if (ncol(bleached_active_ic) < 2){
+      bleached_active_ic$Others <- 0
+    }
+    
+    # Convert to long for plotting
+    highlight_active_ic_long <- highlight_active_ic %>% gather("Species", "Concentration", -Time)
+    bleached_active_ic_long <- bleached_active_ic %>% gather("Species", "Concentration", -Time)
+  
+    
+    # Plot the data
+    plot_active_ic <- ggplot() +
+      geom_line(data = bleached_active_ic_long, aes(x = Time, y = Concentration, color = Species, group = Species), linetype = "solid", color = "gray", linewidth = linewidth) +
+      geom_line(data = highlight_active_ic_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
+      labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
+      ggtitle(paste(speciesActive, "concentration at inner centromere")) +
+      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
+      scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
+      theme(panel.background = element_rect(fill = "transparent"),
+            legend.background = element_rect(fill = "transparent"),
+            axis.line = element_line(color = "black"),
+            axis.text=element_text(size=12),
+            axis.title=element_text(size=14))
+
+    
+    
+    
+    #                                                             Inactive IC
+    
+    
+    if(sums == TRUE){
+      filtered_inactive_ic <- data_inactive_ic %>% select(-c('Time', 'Sum_Inactive'))
+    }else{
+      filtered_inactive_ic <- data_inactive_ic %>% select(-c('Time'))
+    }
+    active_ic <- which(colSums(filtered_inactive_ic) > 0)
+    
+    # Find either the top n_highlight columns or the columns that are != 0
+    if(length(active_ic) < n_highlight){
+      highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(active_ic))
+    }else{
+      highlight_inactive_ic <- filtered_inactive_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
+      highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(order(highlight_inactive_ic, decreasing = TRUE))[1:n_highlight])
+    }
+    
+    # Add in Time and Sum
+    if(sums == TRUE){
+      highlight_inactive_ic <- cbind(data_inactive_ic$Time, data_inactive_ic$Sum_Inactive, highlight_inactive_ic)
+    }else{
+      highlight_inactive_ic <- cbind(data_inactive_ic$Time, highlight_inactive_ic)
+    }
+    
+    # Change names
+    names(highlight_inactive_ic)[names(highlight_inactive_ic) == 'data_inactive_ic$Time'] <- 'Time'
+    if(sums == TRUE){
+      names(highlight_inactive_ic)[names(highlight_inactive_ic) == 'data_inactive_ic$Sum_Inactive'] <- 'Sum_Inactive'
+    }
+    bleached_inactive_ic <- data_inactive_ic %>% select(-c(names(highlight_inactive_ic %>% select(-c("Time")))))
+    
+    if (ncol(bleached_inactive_ic) < 2){
+      bleached_inactive_ic$Others <- 0
+    }
+    
+    # Convert to long for plotting
+    highlight_inactive_ic_long <- highlight_inactive_ic %>% gather("Species", "Concentration", -Time)
+    bleached_inactive_ic_long <- bleached_inactive_ic %>% gather("Species", "Concentration", -Time)
+    
+    
+    # Plot the data
+    plot_inactive_ic <- ggplot() +
+      geom_line(data = bleached_inactive_ic_long, aes(x = Time, y = Concentration, color = Species, group = Species), linetype = "solid", color = "gray", linewidth = linewidth) +
+      geom_line(data = highlight_inactive_ic_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
+      labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
+      ggtitle(paste(speciesActive, "concentration at inner centromere")) +
+      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
+      scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
+      theme(panel.background = element_rect(fill = "transparent"),
+            legend.background = element_rect(fill = "transparent"),
+            axis.line = element_line(color = "black"),
+            axis.text=element_text(size=12),
+            axis.title=element_text(size=14))
+    
+    
+    
+    #                                                             Active KT
+    
+    
+    if(sums == TRUE){
+      filtered_active_kt <- data_active_kt %>% select(-c('Time', 'Sum_Active'))
+    }else{
+      filtered_active_kt <- data_active_kt %>% select(-c('Time'))
+    }
+    active_kt <- which(colSums(filtered_active_kt) > 0)
+    
+    # Find either the top n_highlight columns or the columns that are != 0
+    if(length(active_kt) < n_highlight){
+      highlight_active_kt <- filtered_active_kt %>% select(all_of(active_kt))
+    }else{
+      highlight_active_kt <- filtered_active_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
+      highlight_active_kt <- filtered_active_kt %>% select(all_of(order(highlight_active_kt, decreasing = TRUE))[1:n_highlight])
+    }
+    
+    # Add in Time and Sum
+    if(sums == TRUE){
+      highlight_active_kt <- cbind(data_active_kt$Time, data_active_kt$Sum_Active, highlight_active_kt)
+    }else{
+      highlight_active_kt <- cbind(data_active_kt$Time, highlight_active_kt)
+    }
+    
+    # Change names
+    names(highlight_active_kt)[names(highlight_active_kt) == 'data_active_kt$Time'] <- 'Time'
+    if(sums == TRUE){
+      names(highlight_active_kt)[names(highlight_active_kt) == 'data_active_kt$Sum_Active'] <- 'Sum_Active'
+    }
+    bleached_active_kt <- data_active_kt %>% select(-c(names(highlight_active_kt %>% select(-c("Time")))))
+    
+    if (ncol(bleached_active_kt) < 2){
+      bleached_active_kt$Others <- 0
+    }
+    
+    # Convert to long for plotting
+    highlight_active_kt_long <- highlight_active_kt %>% gather("Species", "Concentration", -Time)
+    bleached_active_kt_long <- bleached_active_kt %>% gather("Species", "Concentration", -Time)
+    
+    
+    # Plot the data
+    plot_active_kt <- ggplot() +
+      geom_line(data = bleached_active_kt_long, aes(x = Time, y = Concentration, color = Species, group = Species), linetype = "solid", color = "gray", linewidth = linewidth) +
+      geom_line(data = highlight_active_kt_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
+      labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
+      ggtitle(paste(speciesActive, "concentration at inner centromere")) +
+      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
+      scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
+      theme(panel.background = element_rect(fill = "transparent"),
+            legend.background = element_rect(fill = "transparent"),
+            axis.line = element_line(color = "black"),
+            axis.text=element_text(size=12),
+            axis.title=element_text(size=14))
+    
+    
+    
+    #                                                             Inactive KT
+    
+    
+    
+    if(sums == TRUE){
+      filtered_inactive_kt <- data_inactive_kt %>% select(-c('Time', 'Sum_Inactive'))
+    }else{
+      filtered_inactive_kt <- data_inactive_kt %>% select(-c('Time'))
+    }
+    active_kt <- which(colSums(filtered_inactive_kt) > 0)
+    
+    # Find either the top n_highlight columns or the columns that are != 0
+    if(length(active_kt) < n_highlight){
+      highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(active_kt))
+    }else{
+      highlight_inactive_kt <- filtered_inactive_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
+      highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(order(highlight_inactive_kt, decreasing = TRUE))[1:n_highlight])
+    }
+    
+    # Add in Time and Sum
+    if(sums == TRUE){
+      highlight_inactive_kt <- cbind(data_inactive_kt$Time, data_inactive_kt$Sum_Inactive, highlight_inactive_kt)
+    }else{
+      highlight_inactive_kt <- cbind(data_inactive_kt$Time, highlight_inactive_kt)
+    }
+    
+    # Change names
+    names(highlight_inactive_kt)[names(highlight_inactive_kt) == 'data_inactive_kt$Time'] <- 'Time'
+    if(sums == TRUE){
+      names(highlight_inactive_kt)[names(highlight_inactive_kt) == 'data_inactive_kt$Sum_Inactive'] <- 'Sum_Inactive'
+    }
+    bleached_inactive_kt <- data_inactive_kt %>% select(-c(names(highlight_inactive_kt %>% select(-c("Time")))))
+    
+    if (ncol(bleached_inactive_kt) < 2){
+      bleached_inactive_kt$Others <- 0
+    }
+    
+    # Convert to long for plotting
+    highlight_inactive_kt_long <- highlight_inactive_kt %>% gather("Species", "Concentration", -Time)
+    bleached_inactive_kt_long <- bleached_inactive_kt %>% gather("Species", "Concentration", -Time)
+    
+    
+    # Plot the data
+    plot_inactive_kt <- ggplot() +
+      geom_line(data = bleached_inactive_kt_long, aes(x = Time, y = Concentration, color = Species, group = Species), linetype = "solid", color = "gray", linewidth = linewidth) +
+      geom_line(data = highlight_inactive_kt_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
+      labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
+      ggtitle(paste(speciesActive, "concentration at inner centromere")) +
+      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
+      scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
+      theme(panel.background = element_rect(fill = "transparent"),
+            legend.background = element_rect(fill = "transparent"),
+            axis.line = element_line(color = "black"),
+            axis.text=element_text(size=12),
+            axis.title=element_text(size=14))
+    
+    
+    #                                                             All IC
+    
+    
+    filtered_ic <- data_ic %>% select(-c('Time'))
+    ic <- which(colSums(filtered_ic) > 0)
+    
+    # Find either the top n_highlight columns or the columns that are != 0
+    if(length(ic) < n_highlight){
+      highlight_ic <- filtered_ic %>% select(all_of(ic))
+    }else{
+      highlight_ic <- filtered_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
+      highlight_ic <- filtered_ic %>% select(all_of(order(highlight_ic, decreasing = TRUE))[1:n_highlight])
+    }
+    
+    # Add in Time and Sum
+    if(sums == TRUE){
+    highlight_ic <- cbind(data_ic$Time, data_active_ic$Sum_Active, data_inactive_ic$Sum_Inactive, highlight_ic)
+    }else{
+      highlight_ic <- cbind(data_ic$Time, highlight_ic)
+    }
+    
+    # Change names
+    names(highlight_ic)[names(highlight_ic) == 'data_ic$Time'] <- 'Time'
+    if(sums == TRUE){
+    names(highlight_ic)[names(highlight_ic) == 'data_active_ic$Sum_Active'] <- 'Sum_Active'
+    names(highlight_ic)[names(highlight_ic) == 'data_inactive_ic$Sum_Inactive'] <- 'Sum_Inactive'
+    bleached_ic <- data_ic %>% select(-c(names(highlight_ic %>% select(-c("Time", "Sum_Active", "Sum_Inactive")))))
+    }else{
+      bleached_ic <- data_ic %>% select(-c(names(highlight_ic %>% select(-c("Time")))))
+    }
+    
+    if (ncol(bleached_ic) < 2){
+      bleached_ic$Others <- 0
+    }
+    
+    # Convert to long for plotting
+    highlight_ic_long <- highlight_ic %>% gather("Species", "Concentration", -Time)
+    bleached_ic_long <- bleached_ic %>% gather("Species", "Concentration", -Time)
+    
+    
+    # Plot the data
+    plot_ic <- ggplot() +
+      geom_line(data = bleached_ic_long, aes(x = Time, y = Concentration, color = Species, group = Species), linetype = "solid", color = "gray", linewidth = linewidth) +
+      geom_line(data = highlight_ic_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
+      labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
+      ggtitle(paste(speciesFull, "at inner centromere")) +
+      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
+      scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
+      theme(panel.background = element_rect(fill = "transparent"),
+            legend.background = element_rect(fill = "transparent"),
+            axis.line = element_line(color = "black"),
+            axis.text=element_text(size=12),
+            axis.title=element_text(size=14))
+    
+    
+    #                                                             All KT
+    
+    
+    filtered_kt <- data_kt %>% select(-c('Time'))
+    kt <- which(colSums(filtered_kt) > 0)
+    
+    # Find either the top n_highlight columns or the columns that are != 0
+    if(length(kt) < n_highlight){
+      highlight_kt <- filtered_kt %>% select(all_of(kt))
+    }else{
+      highlight_kt <- filtered_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
+      highlight_kt <- filtered_kt %>% select(all_of(order(highlight_kt, decreasing = TRUE))[1:n_highlight])
+    }
+    
+    # Add in Time and Sum
+    if(sums == TRUE){
+    highlight_kt <- cbind(data_kt$Time, data_active_kt$Sum_Active, data_inactive_kt$Sum_Inactive, highlight_kt)
+    }else{
+      highlight_kt <- cbind(data_kt$Time, highlight_kt)
+    }
+    
+    # Change names
+    names(highlight_kt)[names(highlight_kt) == 'data_kt$Time'] <- 'Time'
+    if(sums == TRUE){
+    names(highlight_kt)[names(highlight_kt) == 'data_active_kt$Sum_Active'] <- 'Sum_Active'
+    names(highlight_kt)[names(highlight_kt) == 'data_inactive_kt$Sum_Inactive'] <- 'Sum_Inactive'
+    bleached_kt <- data_kt %>% select(-c(names(highlight_kt %>% select(-c("Time", "Sum_Active", "Sum_Inactive")))))
+    }else{
+      bleached_kt <- data_kt %>% select(-c(names(highlight_kt %>% select(-c("Time")))))
+    }
+    
+    if (ncol(bleached_kt) < 2){
+      bleached_kt$Others <- 0
+    }
+    
+    # Convert to long for plotting
+    highlight_kt_long <- highlight_kt %>% gather("Species", "Concentration", -Time)
+    bleached_kt_long <- bleached_kt %>% gather("Species", "Concentration", -Time)
+    
+    
+    # Plot the data
+    plot_kt <- ggplot() +
+      geom_line(data = bleached_kt_long, aes(x = Time, y = Concentration, color = Species, group = Species), linetype = "solid", color = "gray", linewidth = linewidth) +
+      geom_line(data = highlight_kt_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
+      labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
+      ggtitle(paste(speciesFull, "at kinetochore")) +
+      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
+      scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
+      theme(panel.background = element_rect(fill = "transparent"),
+            legend.background = element_rect(fill = "transparent"),
+            axis.line = element_line(color = "black"),
+            axis.text=element_text(size=12),
+            axis.title=element_text(size=14))
+    
+
+    
+  }
+  
+  else{
+    
+    #                                                             All IC
+    if(sums == TRUE){
+    
+    data_ic$Sum_Active <- data_active_ic$Sum_Active
+    data_ic$Sum_Inactive <- data_inactive_ic$Sum_Inactive
+    }
+    
+    ic_long <- data_ic %>% gather("Species", "Concentration", -Time)
+    
+    # Plot the data
+    plot_ic <- ggplot() +
+      geom_line(data = ic_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
+      labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
+      ggtitle(paste(speciesFull, "at inner centromere")) +
+      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
+      scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
+      theme(panel.background = element_rect(fill = "transparent"),
+            legend.background = element_rect(fill = "transparent"),
+            axis.line = element_line(color = "black"),
+            axis.text=element_text(size=12),
+            axis.title=element_text(size=14))
+    
+    #                                                             All KT
+    if(sums == TRUE){
+    data_kt$Sum_Active <- data_active_kt$Sum_Active
+    data_kt$Sum_Inactive <- data_inactive_kt$Sum_Inactive
+    }
+    
+    kt_long <- data_kt %>% gather("Species", "Concentration", -Time)
+    
+    # Plot the data
+    plot_kt <- ggplot() +
+      geom_line(data = kt_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
+      labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
+      ggtitle(paste(speciesFull, "at kinetochore")) +
+      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
+      scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
+      theme(panel.background = element_rect(fill = "transparent"),
+            legend.background = element_rect(fill = "transparent"),
+            axis.line = element_line(color = "black"),
+            axis.text=element_text(size=12),
+            axis.title=element_text(size=14))
+    
+  }
+  
+  
+  if(save == TRUE){
+
+    exportFilename_ic <-paste(sweep_name, "IC", name,sep="_")
+    exportFilename_ic <- paste(exportFilename_ic,"pdf",sep=".")
+    
+    ggsave(
+      exportFilename_ic,
+      plot = plot_ic,
+      device = "pdf",
+      path = exportPath,
+      scale = 1,
+      width = 12,
+      height = 10,
+      units = "in",
+      dpi = 300,
+      limitsize = TRUE)
+    
+    exportFilename_kt <-paste(sweep_name, "KT", name, sep="_")
+    exportFilename_kt <- paste(exportFilename_kt,"pdf",sep=".")
+    
+    ggsave(
+      exportFilename_kt,
+      plot = plot_kt,
+      device = "pdf",
+      path = exportPath,
+      scale = 1,
+      width = 12,
+      height = 10,
+      units = "in",
+      dpi = 300,
+      limitsize = TRUE)
+    
+  }
+  
+
+  if(save == TRUE & speciesDesired == "all CPC"){
+    
+    ic_name <- paste(name, "IC", sep="_")
+    kt_name <- paste(name, "KT", sep="_")
+    
+    
+    exportFilename_ic<-paste(ic_name,var,sep="_")
+    exportFilename_ic <- paste(exportFilename_ic,"pdf",sep=".")
+    
+    exportFilename_kt<-paste(kt_name,var,sep="_")
+    exportFilename_kt <- paste(exportFilename_kt,"pdf",sep=".")
+    
+    # save graph to png file
+    ggsave(
+      exportFilename_ic,
+      plot = plot_ic,
+      device = "pdf",
+      path = exportPath,
+      scale = 1,
+      width = 5,
+      height = 5,
+      units = "in",
+      dpi = 300,
+      limitsize = TRUE)
+    
+    ggsave(
+      exportFilename_kt,
+      plot = plot_kt,
+      device = "pdf",
+      path = exportPath,
+      scale = 1,
+      width = 5,
+      height = 5,
+      units = "in",
+      dpi = 300,
+      limitsize = TRUE)
+    
+  }
+  
+  if(save == TRUE & speciesDesired == "all Mps1"){
+    
+    ic_name_active <- paste(name, "IC", "active", sep="_")
+    ic_name_inactive <- paste(name, "IC", "inactive", sep="_")
+    kt_name_active <- paste(name, "KT", "active", sep="_")
+    kt_name_inactive <- paste(name, "KT", "inactive", sep="_")
+    
+    
+    exportFilename_ic_active<-paste(ic_name_active,var,sep="_")
+    exportFilename_ic_active <- paste(exportFilename_ic_active,"pdf",sep=".")
+    
+    exportFilename_ic_inactive<-paste(ic_name_inactive,var,sep="_")
+    exportFilename_ic_inactive <- paste(exportFilename_ic_inactive,"pdf",sep=".")
+    
+    exportFilename_kt_active<-paste(kt_name_active,var,sep="_")
+    exportFilename_kt_active <- paste(exportFilename_kt_active,"pdf",sep=".")
+    
+    exportFilename_kt_inactive<-paste(kt_name_inactive,var,sep="_")
+    exportFilename_kt_inactive <- paste(exportFilename_kt_inactive,"pdf",sep=".")
+    
+    KT_side <- grid.arrange(plot_active_ic, plot_inactive_ic, ncol=2)
+    IC_side <- grid.arrange(plot_active_kt, plot_inactive_kt, ncol=2)
+    
+    # save graph to png file
+    ggsave(
+      exportFilename_ic_active,
+      plot = plot_active_ic,
+      device = "pdf",
+      path = exportPath,
+      scale = 1,
+      width = 5,
+      height = 5,
+      units = "in",
+      dpi = 300,
+      limitsize = TRUE)
+    
+    ggsave(
+      exportFilename_ic_inactive,
+      plot = plot_inactive_ic,
+      device = "pdf",
+      path = exportPath,
+      scale = 1,
+      width = 5,
+      height = 5,
+      units = "in",
+      dpi = 300,
+      limitsize = TRUE)
+    
+    ggsave(
+      exportFilename_kt_active,
+      plot = plot_active_kt,
+      device = "pdf",
+      path = exportPath,
+      scale = 1,
+      width = 5,
+      height = 5,
+      units = "in",
+      dpi = 300,
+      limitsize = TRUE)
+    
+    ggsave(
+      exportFilename_kt_inactive,
+      plot = plot_inactive_kt,
+      device = "pdf",
+      path = exportPath,
+      scale = 1,
+      width = 5,
+      height = 5,
+      units = "in",
+      dpi = 300,
+      limitsize = TRUE)
+    
+  }
+  
+  
+  all_plots <- list(plot_ic, plot_kt)
+  
+  if(full==TRUE | collapsible==TRUE){
+    all_plots <- list(plot_ic, plot_kt, plot_active_ic, plot_inactive_ic, plot_active_kt, plot_inactive_kt)
+  }
+  
+  return(all_plots)
+  
+  
+}

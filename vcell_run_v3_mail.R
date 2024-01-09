@@ -135,17 +135,17 @@ species_info_list[[7]] <- c("Bub1a_pKnl1_species", "Inactive Species", "Active S
 kt_width = c(
               # 'Relaxed',
               # 'Relaxed',
-              # 'Relaxed'
-              "Relaxed",
-              "Relaxed",
-              "Relaxed",
-              "Relaxed",
-              "Relaxed",
-              "Relaxed",
-              "Relaxed",
-              "Relaxed",
-              "Relaxed",
-              "Relaxed"
+              # # 'Relaxed'
+              # "Tensed",
+              # "Tensed",
+              # "Tensed",
+              # "Tensed",
+              # "Tensed",
+              # "Tensed",
+              # "Tensed",
+              # "Tensed",
+              # "Tensed",
+              "Tensed"
               # "Relaxed"
              )
 
@@ -220,17 +220,27 @@ sims <- c(
   # "SimID_262204806_0__exported",
   # "SimID_263407250_0__exported"
 
-  "SimID_263432940_0__exported",
-  "SimID_263432940_1__exported",
-  "SimID_263432940_2__exported",
-  "SimID_263432940_3__exported",
-  "SimID_263432940_4__exported",
-  "SimID_263432940_5__exported",
-  "SimID_263432940_6__exported",
-  "SimID_263432940_7__exported",
-  "SimID_263432940_8__exported",
-  "SimID_263432940_9__exported"
-  
+  # "SimID_263432940_0__exported",
+  # "SimID_263432940_1__exported",
+  # "SimID_263432940_2__exported",
+  # "SimID_263432940_3__exported",
+  # "SimID_263432940_4__exported",
+  # "SimID_263432940_5__exported",
+  # "SimID_263432940_6__exported",
+  # "SimID_263432940_7__exported",
+  # "SimID_263432940_8__exported",
+  # "SimID_263432940_9__exported"
+  # "SimID_263632871_0__exported",
+  # "SimID_263632871_1__exported",
+  # "SimID_263632871_2__exported",
+  # "SimID_263632871_3__exported",
+  # "SimID_263632871_4__exported",
+  # "SimID_263632871_5__exported",
+  # "SimID_263632871_6__exported",
+  # "SimID_263632871_7__exported",
+  # "SimID_263632871_8__exported",
+  "SimID_263632871_9__exported"
+
 )
 
 # Folder naming corresponding to specific simulation ID
@@ -302,16 +312,16 @@ var <- c(
   # "10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv",
   # "11_21_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_10p"
   
-  "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 0",
-  "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 1",
-  "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 2",
-  "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 3",
-  "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 4",
-  "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 5",
-  "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 6",
-  "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 7",
-  "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 8",
-  "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 9"
+  # "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 0",
+  # "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 1",
+  # "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 2",
+  # "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 3",
+  # "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 4",
+  # "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 5",
+  # "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 6",
+  # "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 7",
+  # "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 8",
+  "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 9"
   
   )
 
@@ -347,25 +357,41 @@ for(i in 1:length(sims)){
                exportPath_new,
                kt_width[i])
 
-    vcell_table(sims[i],
-    var[i],
-    tPoints=c(0, 100, 200,300,400, 500),
-    all_species=CPC_species,
-    name='CPC',
-    chromWidth=1.2,
-    chromHeight=3.6,
-    dataDim=c(128,64),
-    row_1=1,
-    row_2=dataDim[1],
-    col_1=1,
-    col_2=dataDim[2],
-    importPath,
-    exportPath_new,
-    kt_width = kt_width[i])
+    # vcell_table(sims[i],
+    # var[i],
+    # tPoints=c(0, 100, 200,300,400, 500),
+    # all_species=CPC_species,
+    # name='CPC',
+    # chromWidth=1.2,
+    # chromHeight=3.6,
+    # dataDim=c(128,64),
+    # row_1=1,
+    # row_2=dataDim[1],
+    # col_1=1,
+    # col_2=dataDim[2],
+    # importPath,
+    # exportPath_new,
+    # kt_width = kt_width[i])
 
     
   }
 }
+
+# vcell_table(sims,
+#             var,
+#             tPoints=c(0, 100, 200,300,400, 500),
+#             all_species=CPC_species,
+#             name='CPC',
+#             chromWidth=1.2,
+#             chromHeight=3.6,
+#             dataDim=c(128,64),
+#             row_1=1,
+#             row_2=dataDim[1],
+#             col_1=1,
+#             col_2=dataDim[2],
+#             importPath,
+#             exportPath_new,
+#             kt_width = "Relaxed")
 
 ################################# GOOGLE SLIDES #####################################
 

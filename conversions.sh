@@ -97,3 +97,4 @@ python hdf5_converter.py "SimID_263407250_0__exported.hdf5" '/Users/smgroves/Box
 
 #11/27/2023- not done
 python hdf5_converter.py "SimID_263432940_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan"
+python hdf5_converter.py "SimID_263632871_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_tensed_RefModel_128x64" "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan"

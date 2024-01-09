@@ -19,87 +19,6 @@ all_plot <- function(
     kt_width = 'Relaxed' #can be 'Relaxed' or 'Tensed'
     ){
   
-  #######################################  TESTING  #################################################
-  
-#   CPC_species <-c("CPCa", "pH2A_Sgo1_CPCa", "pH3_CPCa", "pH2A_Sgo1_pH3_CPCa", "CPCi", "pH2A_Sgo1_CPCi", "pH3_CPCi", "pH2A_Sgo1_pH3_CPCi")
-#   Mps1_species <-c("Mps1a", "pMps1a", "Ndc80_Mps1a", "Ndc80_pMps1a", "pNdc80_Mps1a", "pNdc80_pMps1a", "Mps1i", "pMps1i", "Ndc80_Mps1i", "Ndc80_pMps1i", "pNdc80_Mps1i", "pNdc80_pMps1i")
-#   Todd_species <-c("Plk1a", "Plk1i", "Haspina", "Haspini", "pH3", "pH3_CPCa", "pH3_CPCi", "pH2A_Sgo1_CPCi", "pH2A_Sgo1_CPCa")
-#   pH3_species <- c("pH3", "pH3_CPCa", "pH3_CPCi", "pH2A_Sgo1_pH3_CPCa", "pH2A_Sgo1_pH3_CPCi")
-#   pH2A_species <- c("pH2A", "pH2A_Sgo1", "pH2A_Sgo1_CPCa", "pH2A_Sgo1_CPCi", "pH2A_Sgo1_pH3_CPCi", "pH2A_Sgo1_pH3_CPCa")
-#   Haspin_Plk1_species <- c("Haspina", "Haspini", "Plk1a", "Plk1i")
-#   only_H3_H2A_species <- c("H3", "H2A")
-# 
-# 
-#   # All simulation IDs
-#   # Change
-#   sims <- c(
-#     "SimID_258548403_0__exported"
-# 
-#   )
-# 
-#   # Folder naming corresponding to specific simulation ID
-#   # Change
-#   var <- c(
-#     "diffAhis - kpp=0.1 kppKT=0.3"
-#   )
-# 
-# 
-#   L <- 6
-# 
-#   all_data <- vector("list", L)
-#   species_info_list <- vector("list", L)
-# 
-#   # Change
-#   all_species <- c(CPC_species, Mps1_species, Haspin_Plk1_species, pH3_species, pH2A_species, only_H3_H2A_species)
-# 
-#   # Change
-#   all_data[[1]] <- CPC_species
-#   all_data[[2]] <- Mps1_species
-#   all_data[[3]] <- Haspin_Plk1_species
-#   all_data[[4]] <- pH3_species
-#   all_data[[5]] <- pH2A_species
-#   all_data[[6]] <- only_H3_H2A_species
-# 
-#   # Change
-#   species_info_list[[1]] <- c("CPC", "Inactive CPC", "Active CPC", "CPC Activation", TRUE, FALSE, FALSE, TRUE)
-#   species_info_list[[2]] <- c("Mps1", "Inactive Mps1", "Active Mps1", "Mps1 Activation", TRUE, FALSE, FALSE, TRUE)
-#   species_info_list[[3]] <- c("Haspin_Plk1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-#   species_info_list[[4]] <- c("pH3_species", "Inactive pH3 Species", "Active pH3 Species", "All pH3 Species", FALSE, TRUE, TRUE, FALSE)
-#   species_info_list[[5]] <- c("pH2A_species", "Inactive pH2A Species", "Active pH2A Species", "All pH2A Species", FALSE, TRUE, TRUE, FALSE)
-#   species_info_list[[6]] <- c("H2A & H3", "Inactive H2A & H3", "Active H2A & H3", "H2A & H3", FALSE, FALSE, TRUE, FALSE)
-# 
-# 
-#   # what to name the output graph file, as a string "name"
-#   sweep_name<-paste("Relaxed_Base model", var)
-#   exportPath<-"/Users/sam/Research/JanesLab/vcell_plots"
-# 
-# 
-# 
-# SimID=sims
-# names=names
-# tInit=0
-# tSpan=500
-# chromWidth=1.6 #um
-# chromHeight=3.5 #um
-# dataDim=c(149,68)
-# 
-#   row_1=1
-#   row_2=dataDim[1]
-#   col_1=1
-#   col_2=dataDim[2]
-#   importPath="/Users/sam/Research/JanesLab/vcell_data"
-#   exportPath="/Users/sam/Research/JanesLab/vcell_plots"
-# 
-#   full=TRUE
-#   collapsible=FALSE
-#   save=FALSE
-#   var=var
-#   sums=TRUE
-#   linewidth <- 0.7
-  
-  ####################################################################################################
-  
-  
   # misc
   folderVar <- 0
   leader <- 10
@@ -948,7 +867,7 @@ all_plot <- function(
   
   
   plots <- grid.arrange(plot_ic, plot_kt, ncol=2)
-  
+
   
   exportF <- paste(identity, "plot", sep="_")
   exportFilename <- paste(exportF,"pdf",sep=".")
@@ -971,6 +890,14 @@ all_plot <- function(
     
     setwd(exportPath)
     pdf_convert(exportP, format = "png")
+    write.csv(data_active_ic, paste(exportPath,"data_active_ic.csv",sep="/"), row.names = FALSE)
+    write.csv(data_inactive_ic, paste(exportPath,"data_inactive_ic.csv",sep="/"), row.names = FALSE)
+    write.csv(data_active_kt, paste(exportPath,"data_active_kt.csv",sep="/"), row.names = FALSE)
+    write.csv(data_inactive_kt, paste(exportPath,"data_inactive_kt.csv",sep="/"), row.names = FALSE)
+    write.csv(data_ic, paste(exportPath,"data_ic.csv",sep="/"), row.names = FALSE)
+    write.csv(data_kt, paste(exportPath,"data_kt.csv",sep="/"), row.names = FALSE)
+    
+    
     setwd(importPath)
     
     
