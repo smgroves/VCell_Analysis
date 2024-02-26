@@ -98,3 +98,33 @@ python hdf5_converter.py "SimID_263407250_0__exported.hdf5" '/Users/smgroves/Box
 #11/27/2023- not done
 python hdf5_converter.py "SimID_263432940_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan"
 python hdf5_converter.py "SimID_263632871_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_tensed_RefModel_128x64" "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan"
+
+
+#2/5/24
+python hdf5_converter.py "SimID_264596885_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "TEST_10_16_23_CPC_tensed_RefModel_128x64_to_omex" "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan"
+python hdf5_converter.py "SimID_264596882_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "TEST_10_16_23_CPC_tensed_RefModel_128x64_to_omex" "10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv"
+
+#2/13/24 - cyto models
+python hdf5_converter.py "SimID_268178107_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "02_09_24_cyto_CPC_relaxed_RefModel_128x64" "02_12_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv"
+python hdf5_converter.py "SimID_268178107_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "02_09_24_cyto_CPC_relaxed_RefModel_128x64" "02_12_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv" --species "Bub1a_cyt" "CPCi_cyt" "CPCa_cyt" 'Mps1i_cyt' 'Mps1a_cyt' 'pMps1i_cyt' 'pMps1a_cyt' 'Plk1i_cyt' 'Plk1a_cyt' 'Sgo1_cyt'
+
+#2/14/24
+python hdf5_converter.py "SimID_268256170_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "02_09_24_cyto_CPC_relaxed_RefModel_128x64" "02_13_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv_mass_balanced_origCPCic"
+python hdf5_converter.py "SimID_268256170_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "02_09_24_cyto_CPC_relaxed_RefModel_128x64" "02_13_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv_mass_balanced_origCPCic" --species "Bub1a_cyt" "CPCi_cyt" "CPCa_cyt" 'Mps1i_cyt' 'Mps1a_cyt' 'pMps1i_cyt' 'pMps1a_cyt' 'Plk1i_cyt' 'Plk1a_cyt' 'Sgo1_cyt'
+
+
+python hdf5_converter.py "SimID_268300317_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "02_09_24_cyto_CPC_relaxed_RefModel_128x64" "02_14_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv_mass_balanced_MCF10A"
+python hdf5_converter.py "SimID_268300317_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "02_09_24_cyto_CPC_relaxed_RefModel_128x64" "02_14_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv_mass_balanced_MCF10A" --species "Bub1a_cyt" "CPCi_cyt" "CPCa_cyt" 'Mps1i_cyt' 'Mps1a_cyt' 'pMps1i_cyt' 'pMps1a_cyt' 'Plk1i_cyt' 'Plk1a_cyt' 'Sgo1_cyt'
+
+python hdf5_converter.py "SimID_268312869_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "02_09_24_cyto_CPC_relaxed_RefModel_128x64" "02_12_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_mass_balanced"
+python hdf5_converter.py "SimID_268312869_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "02_09_24_cyto_CPC_relaxed_RefModel_128x64" "02_12_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_mass_balanced" --species "Bub1a_cyt" "CPCi_cyt" "CPCa_cyt" 'Mps1i_cyt' 'Mps1a_cyt' 'pMps1i_cyt' 'pMps1a_cyt' 'Plk1i_cyt' 'Plk1a_cyt' 'Sgo1_cyt'
+
+#2/19/24
+python hdf5_converter.py "SimID_268566963_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED"
+
+python hdf5_converter.py "SimID_268585648_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED_not20Pac"
+
+#2/23/24
+python hdf5_converter.py "SimID_268758880_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "02_09_24_cyto_CPC_relaxed_RefModel_128x64" "02_22_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv_mass_balanced_MCF10A_Bub1_Plk1_orig"
+python hdf5_converter.py "SimID_268758880_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "02_09_24_cyto_CPC_relaxed_RefModel_128x64" "02_22_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv_mass_balanced_MCF10A_Bub1_Plk1_orig" --species "Bub1a_cyt" "CPCi_cyt" "CPCa_cyt" 'Mps1i_cyt' 'Mps1a_cyt' 'pMps1i_cyt' 'pMps1a_cyt' 'Plk1i_cyt' 'Plk1a_cyt' 'Sgo1_cyt'
+

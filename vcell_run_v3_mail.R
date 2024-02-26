@@ -145,8 +145,18 @@ kt_width = c(
               # "Tensed",
               # "Tensed",
               # "Tensed",
-              "Tensed"
-              # "Relaxed"
+              # # "Tensed"
+              # "Relaxed",
+              # "Relaxed",
+              # "Relaxed",
+              # "Relaxed",
+              # "Relaxed",
+              # "Relaxed",
+              # "Relaxed",
+              # "Relaxed",
+              # "Relaxed",
+              # "Relaxed",
+              "Relaxed"
              )
 
 # All simulation IDs
@@ -239,8 +249,28 @@ sims <- c(
   # "SimID_263632871_6__exported",
   # "SimID_263632871_7__exported",
   # "SimID_263632871_8__exported",
-  "SimID_263632871_9__exported"
+  # "SimID_263632871_9__exported"
+  
+  # "SimID_268178107_0__exported"
+  # "SimID_261879026_0__exported"
 
+  # "SimID_268256170_0__exported"
+  # "SimID_268300317_0__exported"
+  # "SimID_268312869_0__exported"
+  
+  # "SimID_268585648_0__exported",
+  # "SimID_268585648_1__exported",
+  # "SimID_268585648_2__exported",
+  # "SimID_268585648_3__exported",
+  # "SimID_268585648_4__exported",
+  # "SimID_268585648_5__exported",
+  # "SimID_268585648_6__exported",
+  # "SimID_268585648_7__exported",
+  # "SimID_268585648_8__exported",
+  # "SimID_268585648_9__exported",
+  # "SimID_268585648_10__exported"
+
+  "SimID_268758880_0__exported"
 )
 
 # Folder naming corresponding to specific simulation ID
@@ -321,8 +351,29 @@ var <- c(
   # "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 6",
   # "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 7",
   # "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 8",
-  "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 9"
+  # "11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan 9"
   
+  # "02_12_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv"
+  # "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_transactiv"
+  
+  # "02_13_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv_mass_balanced_origCPCic"
+  
+  # "02_14_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv_mass_balanced_MCF10A"
+  # "02_12_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_mass_balanced"
+  
+  # "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED_not20Pac 0",
+  # "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED_not20Pac 1",
+  # "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED_not20Pac 2",
+  # "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED_not20Pac 3",
+  # "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED_not20Pac 4",
+  # "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED_not20Pac 5",
+  # "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED_not20Pac 6",
+  # "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED_not20Pac 7",
+  # "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED_not20Pac 8",
+  # "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED_not20Pac 9",
+  # "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED_not20Pac 10"
+  
+  "02_22_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv_mass_balanced_MCF10A_Bub1_Plk1_orig"
   )
 
 #########################################################

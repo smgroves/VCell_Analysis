@@ -16,7 +16,7 @@ if True:
 
 else:
     # Use example data
-    model_name = "_06_23_23_model1"
+    model_name = "_10_16_23"
     dir_path = f"/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/{model_name}"
     file_name = "reports.h5"
 
@@ -78,16 +78,12 @@ def convert_h5_to_csvs(
             "_".join(i.split("_")[1:]) for i in list(h5[f"{model_name}.sedml"].keys())
         ]
         for simulation_name in simulation_names:
-            species = [
-                i.decode("utf-8").split("[")[0]
-                for i in list(
-                    set(
-                        h5[f"{model_name}.sedml"][f"report_{simulation_name}"].attrs[
-                            "sedmlDataSetNames"
-                        ]
-                    )
-                )
-            ]
+            species = []
+            for i in h5[f"{model_name}.sedml"][f"report_{simulation_name}"].attrs[
+                "sedmlDataSetNames"
+            ]:
+                if i.decode("utf-8").split("[")[0] not in species:
+                    species.append(i.decode("utf-8").split("[")[0])
             # for each species, grab the correct 3D numpy array, and then for each timepoint save the numpy array as a csv
             # output_folder = f"{dir_path}/{simulation_name}/data"
             # # make directory if it doesn't exist
