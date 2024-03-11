@@ -146,16 +146,16 @@ kt_width = c(
               # "Tensed",
               # "Tensed",
               # # "Tensed"
-              # "Relaxed",
-              # "Relaxed",
-              # "Relaxed",
-              # "Relaxed",
-              # "Relaxed",
-              # "Relaxed",
-              # "Relaxed",
-              # "Relaxed",
-              # "Relaxed",
-              # "Relaxed",
+              "Relaxed",
+              "Relaxed",
+              "Relaxed",
+              "Relaxed",
+              "Relaxed",
+              "Relaxed",
+              "Relaxed",
+              "Relaxed",
+              "Relaxed",
+              "Relaxed",
               "Relaxed"
              )
 
@@ -270,7 +270,19 @@ sims <- c(
   # "SimID_268585648_9__exported",
   # "SimID_268585648_10__exported"
 
-  "SimID_268758880_0__exported"
+  # "SimID_268758880_0__exported"
+  "SimID_269572244_0__exported",
+  "SimID_269572244_1__exported",
+  "SimID_269572244_2__exported",
+  "SimID_269572244_3__exported",
+  "SimID_269572244_4__exported",
+  "SimID_269572244_5__exported",
+  "SimID_269572244_6__exported",
+  "SimID_269572244_7__exported",
+  "SimID_269572244_8__exported",
+  "SimID_269572244_9__exported",
+  "SimID_269572244_10__exported"
+  
 )
 
 # Folder naming corresponding to specific simulation ID
@@ -373,7 +385,21 @@ var <- c(
   # "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED_not20Pac 9",
   # "02_19_24_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan_FIXED_not20Pac 10"
   
-  "02_22_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv_mass_balanced_MCF10A_Bub1_Plk1_orig"
+  # "02_22_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv_mass_balanced_MCF10A_Bub1_Plk1_orig"
+  
+  "03_08_24_relaxed_RefModel_Bub1_scan0",
+  "03_08_24_relaxed_RefModel_Bub1_scan1",
+  "03_08_24_relaxed_RefModel_Bub1_scan2",
+  "03_08_24_relaxed_RefModel_Bub1_scan3",
+  "03_08_24_relaxed_RefModel_Bub1_scan4",
+  "03_08_24_relaxed_RefModel_Bub1_scan5",
+  "03_08_24_relaxed_RefModel_Bub1_scan6",
+  "03_08_24_relaxed_RefModel_Bub1_scan7",
+  "03_08_24_relaxed_RefModel_Bub1_scan8",
+  "03_08_24_relaxed_RefModel_Bub1_scan9",
+  "03_08_24_relaxed_RefModel_Bub1_scan10"
+  
+  
   )
 
 #########################################################
@@ -402,7 +428,7 @@ for(i in 1:length(sims)){
                tInit=0,
                tSpan=500, #400 for relaxed to tense
                desiredInterval=100,
-               cutoff=5, #for heatmap color bar
+               cutoff=10, #for heatmap color bar
                funcPath,
                importPath,
                exportPath_new,

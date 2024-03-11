@@ -128,3 +128,16 @@ python hdf5_converter.py "SimID_268585648_0__exported.hdf5" '/Users/smgroves/Box
 python hdf5_converter.py "SimID_268758880_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "02_09_24_cyto_CPC_relaxed_RefModel_128x64" "02_22_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv_mass_balanced_MCF10A_Bub1_Plk1_orig"
 python hdf5_converter.py "SimID_268758880_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "02_09_24_cyto_CPC_relaxed_RefModel_128x64" "02_22_24_relaxed_RefModel_Mps1_phos_Plk1a_transactiv_mass_balanced_MCF10A_Bub1_Plk1_orig" --species "Bub1a_cyt" "CPCi_cyt" "CPCa_cyt" 'Mps1i_cyt' 'Mps1a_cyt' 'pMps1i_cyt' 'pMps1a_cyt' 'Plk1i_cyt' 'Plk1a_cyt' 'Sgo1_cyt'
 
+#3/11/2024
+python hdf5_converter.py "SimID_269572244_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "03_08_24_relaxed_RefModel_Bub1_scan"
+
+python hdf5_converter.py "SimID_269572011_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "03_08_24_relaxed_RefModel_Knl1_scan"
+python hdf5_converter.py "SimID_269572011_1__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "03_08_24_relaxed_RefModel_Knl1_scan"
+python hdf5_converter.py "SimID_269572011_2__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "03_08_24_relaxed_RefModel_Knl1_scan"
+python hdf5_converter.py "SimID_269572011_3__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "03_08_24_relaxed_RefModel_Knl1_scan"
+python hdf5_converter.py "SimID_269572011_4__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "03_08_24_relaxed_RefModel_Knl1_scan"
+# python hdf5_converter.py "SimID_269572011_5__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "03_08_24_relaxed_RefModel_Knl1_scan"
+python hdf5_converter.py "SimID_269572011_6__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "03_08_24_relaxed_RefModel_Knl1_scan"
+python hdf5_converter.py "SimID_269572011_7__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "03_08_24_relaxed_RefModel_Knl1_scan"
+python hdf5_converter.py "SimID_269572011_8__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "03_08_24_relaxed_RefModel_Knl1_scan"
+python hdf5_converter.py "SimID_269572011_9__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_16_23_CPC_relaxed_RefModel_128x64" "03_08_24_relaxed_RefModel_Knl1_scan"

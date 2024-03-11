@@ -887,15 +887,16 @@ all_plot <- function(
     limitsize = TRUE)
   
     exportP <- paste(exportPath, exportFilename, sep="/")
-    
     setwd(exportPath)
     pdf_convert(exportP, format = "png")
-    write.csv(data_active_ic, paste(exportPath,paste0("data_active_ic_",identity,".csv"),sep="/"), row.names = FALSE)
-    write.csv(data_inactive_ic, paste(exportPath,paste0("data_inactive_ic_",identity,".csv"),sep="/"), row.names = FALSE)
-    write.csv(data_active_kt, paste(exportPath,paste0("data_active_kt_",identity,".csv"),sep="/"), row.names = FALSE)
-    write.csv(data_inactive_kt, paste(exportPath,paste0("data_inactive_kt_",identity,".csv"),sep="/"), row.names = FALSE)
-    write.csv(data_ic, paste(exportPath,paste0("data_ic_",identity,".csv"),sep="/"), row.names = FALSE)
-    write.csv(data_kt, paste(exportPath,paste0("data_kt_",identity,".csv"),sep="/"), row.names = FALSE)
+    
+    dir.create(file.path(exportPath, 'data'))
+    write.csv(data_active_ic, paste(exportPath,paste0("data/data_active_ic_",identity,".csv"),sep="/"), row.names = FALSE)
+    write.csv(data_inactive_ic, paste(exportPath,paste0("data/data_inactive_ic_",identity,".csv"),sep="/"), row.names = FALSE)
+    write.csv(data_active_kt, paste(exportPath,paste0("data/data_active_kt_",identity,".csv"),sep="/"), row.names = FALSE)
+    write.csv(data_inactive_kt, paste(exportPath,paste0("data/data_inactive_kt_",identity,".csv"),sep="/"), row.names = FALSE)
+    write.csv(data_ic, paste(exportPath,paste0("data/data_ic_",identity,".csv"),sep="/"), row.names = FALSE)
+    write.csv(data_kt, paste(exportPath,paste0("data/data_kt_",identity,".csv"),sep="/"), row.names = FALSE)
     
     
     setwd(importPath)
