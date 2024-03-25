@@ -145,17 +145,17 @@ kt_width = c(
               # "Tensed",
               # "Tensed",
               # "Tensed",
-              # # "Tensed"
-              "Relaxed",
-              "Relaxed",
-              "Relaxed",
-              "Relaxed",
-              "Relaxed",
-              "Relaxed",
+              # # # "Tensed"
               # "Relaxed",
-              "Relaxed",
-              "Relaxed",
-              "Relaxed",
+              # "Relaxed",
+              # "Relaxed",
+              # "Relaxed",
+              # "Relaxed",
+              # "Relaxed",
+              # # "Relaxed",
+              # "Relaxed",
+              # "Relaxed",
+              # "Relaxed",
               "Relaxed"
              )
 
@@ -283,18 +283,18 @@ sims <- c(
   # "SimID_269572244_9__exported",
   # "SimID_269572244_10__exported"
 
-  "SimID_269572011_0__exported",
-  "SimID_269572011_1__exported",
-  "SimID_269572011_2__exported",
-  "SimID_269572011_3__exported",
-  "SimID_269572011_4__exported",
-  # "SimID_269572011_5__exported",
-  "SimID_269572011_6__exported",
-  "SimID_269572011_7__exported",
-  "SimID_269572011_8__exported",
-  "SimID_269572011_9__exported"
+  # "SimID_269572011_0__exported",
+  # "SimID_269572011_1__exported",
+  # "SimID_269572011_2__exported",
+  # "SimID_269572011_3__exported",
+  # "SimID_269572011_4__exported",
+  # # "SimID_269572011_5__exported",
+  # "SimID_269572011_6__exported",
+  # "SimID_269572011_7__exported",
+  # "SimID_269572011_8__exported",
+  # "SimID_269572011_9__exported"
   
-  
+  "SimID_267816141_0__exported"
 )
 
 # Folder naming corresponding to specific simulation ID
@@ -411,18 +411,18 @@ var <- c(
   # "03_08_24_relaxed_RefModel_Bub1_scan9",
   # "03_08_24_relaxed_RefModel_Bub1_scan10"
   
-  "03_08_24_relaxed_RefModel_Knl1_scan0",
-  "03_08_24_relaxed_RefModel_Knl1_scan1",
-  "03_08_24_relaxed_RefModel_Knl1_scan2",
-  "03_08_24_relaxed_RefModel_Knl1_scan3",
-  "03_08_24_relaxed_RefModel_Knl1_scan4",
+  # "03_08_24_relaxed_RefModel_Knl1_scan0",
+  # "03_08_24_relaxed_RefModel_Knl1_scan1",
+  # "03_08_24_relaxed_RefModel_Knl1_scan2",
+  # "03_08_24_relaxed_RefModel_Knl1_scan3",
+  # "03_08_24_relaxed_RefModel_Knl1_scan4",
   # "03_08_24_relaxed_RefModel_Knl1_scan5",
-  "03_08_24_relaxed_RefModel_Knl1_scan6",
-  "03_08_24_relaxed_RefModel_Knl1_scan7",
-  "03_08_24_relaxed_RefModel_Knl1_scan8",
-  "03_08_24_relaxed_RefModel_Knl1_scan9"
+  # "03_08_24_relaxed_RefModel_Knl1_scan6",
+  # "03_08_24_relaxed_RefModel_Knl1_scan7",
+  # "03_08_24_relaxed_RefModel_Knl1_scan8",
+  # "03_08_24_relaxed_RefModel_Knl1_scan9"
   
-  
+  "10_01_2023_relaxed_base_model"
   
   
   )
