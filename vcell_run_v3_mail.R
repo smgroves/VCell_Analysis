@@ -151,11 +151,11 @@ kt_width = c(
               # "Relaxed",
               # "Relaxed",
               # "Relaxed",
-              # "Relaxed",
-              # # "Relaxed",
-              # "Relaxed",
-              # "Relaxed",
-              # "Relaxed",
+              "Relaxed",
+              "Relaxed",
+              "Relaxed",
+              "Relaxed",
+              "Relaxed",
               "Relaxed"
              )
 
@@ -294,7 +294,14 @@ sims <- c(
   # "SimID_269572011_8__exported",
   # "SimID_269572011_9__exported"
   
-  "SimID_267816141_0__exported"
+  # "SimID_267816141_0__exported"
+  
+  "SimID_270418739_0__exported",
+  "SimID_270418739_1__exported",
+  "SimID_270418739_2__exported",
+  "SimID_270418739_3__exported",
+  "SimID_270418739_4__exported",
+  "SimID_270418739_5__exported"
 )
 
 # Folder naming corresponding to specific simulation ID
@@ -422,7 +429,13 @@ var <- c(
   # "03_08_24_relaxed_RefModel_Knl1_scan8",
   # "03_08_24_relaxed_RefModel_Knl1_scan9"
   
-  "10_01_2023_relaxed_base_model"
+  # "10_01_2023_relaxed_base_model"
+  "04_01_24_relaxed_RefModel_Bub1_his_scan0",
+  "04_01_24_relaxed_RefModel_Bub1_his_scan1",
+  "04_01_24_relaxed_RefModel_Bub1_his_scan2",
+  "04_01_24_relaxed_RefModel_Bub1_his_scan3",
+  "04_01_24_relaxed_RefModel_Bub1_his_scan4",
+  "04_01_24_relaxed_RefModel_Bub1_his_scan5"
   
   
   )
