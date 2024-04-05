@@ -148,3 +148,12 @@ python hdf5_converter.py "SimID_270418739_3__exported.hdf5" '/Users/smgroves/Box
 #4/2/24
 python hdf5_converter.py "SimID_270423544_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "03_25_24_CPC_relaxed_RefModel_128x64" "04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan"
 
+#4/5/24
+MODEL_NAME=TEST_10_16_23_CPC_tensed_RefModel_128x64_to_omex_SBML_units
+OUTPUT=/Users/smgroves/Box/CPC_Model_Project/VCell_Rivanna_Exports/MaybeFixedResults_from_Logan_03_15_24_TEST_CPC_tensed/
+python hdf5_converter_Rivanna.py ${OUTPUT} ${MODEL_NAME} "reports.h5"
+SIM_NAME=/Users/smgroves/Box/CPC_Model_Project/VCell_Rivanna_Exports/MaybeFixedResults_from_Logan_03_15_24_TEST_CPC_tensed/_10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv/
+DATA=${SIM_NAME}
+PLOTS=${SIM_NAME}plots
+Rscript vcell_run_v3_CL.R $SIM_NAME $DATA $PLOTS -k "Tensed" -t 100
+
