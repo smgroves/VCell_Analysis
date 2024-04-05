@@ -7,6 +7,7 @@ import pathlib
 import re
 #for some species, make a line plot of the horizontal and vertical axes of the heatmap
 # so that we can directly compare across simulations without having to define an IC region
+# This should allow us to see if any perturbations make the CPC accumulation wider or longer, for example
 
 in_dir = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports"
 
@@ -78,9 +79,25 @@ def line_scan_plot(species, sim, in_dir, out_dir, name, tSpan = 500, desired_int
             plt.show()
 
 
-
 outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/figures"
-sim = {"SimID_270423544_0__exported":"04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan0", "SimID_270423544_1__exported":"04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan1",
-       "SimID_270423544_2__exported":"04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan2"}
+# sim = {"SimID_270423544_0__exported":"04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan0",
+#        "SimID_270423544_1__exported":"04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan1",
+#        "SimID_270423544_2__exported":"04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan2"}
+# species = 'CPC'
+# line_scan_plot(species, sim, in_dir, out_dir=outdir, name = "Bub1a-his-kd-0.001_Knl1_scan")
+
+# sim = {"SimID_270510934_0__exported":"04_02_24_tensed_RefModel",
+#        "SimID_270418727_0__exported":"03_25_24_relaxed_RefModel"}
+# species = 'CPC'
+# line_scan_plot(species, sim, in_dir, out_dir=outdir, name = "RefModel_base_sim_relaxed_v_tensed")
+
+indir = "/Volumes/GoogleDrive/My Drive/UVA Postdoc/Simulations_for_line_scan_plots/Simulations csv"
+sim = {"SimID_270413068_0__exported":"03_21_24_relaxed_RefModel_Haspin50_inh",
+"SimID_270413071_0__exported":"03_21_24_relaxed_RefModel_Plk150_inh",
+"SimID_270413074_0__exported":"03_21_24_relaxed_RefModel_CPC50_inh",
+"SimID_270413077_0__exported":"03_21_24_relaxed_RefModel_Sgo1_50P_Haspin50_inh",
+"SimID_270413080_0__exported":"03_21_24_relaxed_RefModel_Sgo1_50P_Plk150_inh",
+"SimID_270413083_0__exported":"03_21_24_relaxed_RefModel_Sgo1_50P_CPC50_inh"
+       }
 species = 'CPC'
-line_scan_plot(species, sim, in_dir, out_dir=outdir, name = "Bub1a-his-kd-0.001_Knl1_scan")
+line_scan_plot(species, sim, indir, out_dir=outdir, name = "Synergy_simulations")

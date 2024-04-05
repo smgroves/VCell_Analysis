@@ -140,11 +140,11 @@ kt_width = c(
               # "Tensed",
               # "Tensed",
               # "Tensed",
-              # "Tensed",
-              # "Tensed",
-              # "Tensed",
-              # "Tensed",
-              # "Tensed",
+              "Tensed",
+              "Tensed",
+              "Tensed",
+              "Tensed",
+              "Tensed",
               "Tensed"
               # "Relaxed",
               # "Relaxed",
@@ -313,7 +313,15 @@ sims <- c(
   # "SimID_270423544_7__exported",
   # "SimID_270423544_8__exported",
   # "SimID_270423544_9__exported"
-  "SimID_270510934_0__exported"
+  # "SimID_270510934_0__exported"
+  
+  "SimID_270510936_0__exported",
+  "SimID_270510936_1__exported",
+  "SimID_270510936_2__exported",
+  "SimID_270510936_3__exported",
+  "SimID_270510936_4__exported",
+  "SimID_270510936_5__exported"
+  
 )
 
 # Folder naming corresponding to specific simulation ID
@@ -460,7 +468,14 @@ var <- c(
   # "04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan9"
   
   # "MaybeFixedResults_from_Logan_03_15_24_TEST_CPC_tensed_20Pac_transactiv"
-  "04_02_24_tensed_RefModel"
+  # "04_02_24_tensed_RefModel"
+  "04_01_24_tensed_RefModel_Bub1_his_scan0",
+  "04_01_24_tensed_RefModel_Bub1_his_scan1",
+  "04_01_24_tensed_RefModel_Bub1_his_scan2",
+  "04_01_24_tensed_RefModel_Bub1_his_scan3",
+  "04_01_24_tensed_RefModel_Bub1_his_scan4",
+  "04_01_24_tensed_RefModel_Bub1_his_scan5"
+  
   )
 
 #########################################################

@@ -158,4 +158,7 @@ PLOTS=${SIM_NAME}plots
 Rscript vcell_run_v3_CL.R $SIM_NAME $DATA $PLOTS -k "Tensed" -t 100 #not working
 
 python hdf5_converter.py "SimID_270510934_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "03_25_24_CPC_tensed_RefModel_128x64" "04_02_24_tensed_RefModel"
+python hdf5_converter.py "SimID_270510936_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "03_25_24_CPC_tensed_RefModel_128x64" "04_01_24_tensed_RefModel_Bub1_his_scan"
+
+python hdf5_converter.py "SimID_270418727_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "03_25_24_CPC_relaxed_RefModel_128x64" "03_25_24_relaxed_RefModel"
 
