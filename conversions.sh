@@ -155,5 +155,7 @@ python hdf5_converter_Rivanna.py ${OUTPUT} ${MODEL_NAME} "reports.h5"
 SIM_NAME=/Users/smgroves/Box/CPC_Model_Project/VCell_Rivanna_Exports/MaybeFixedResults_from_Logan_03_15_24_TEST_CPC_tensed/_10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv/
 DATA=${SIM_NAME}
 PLOTS=${SIM_NAME}plots
-Rscript vcell_run_v3_CL.R $SIM_NAME $DATA $PLOTS -k "Tensed" -t 100
+Rscript vcell_run_v3_CL.R $SIM_NAME $DATA $PLOTS -k "Tensed" -t 100 #not working
+
+python hdf5_converter.py "SimID_270510934_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "03_25_24_CPC_tensed_RefModel_128x64" "04_02_24_tensed_RefModel"
 

@@ -133,6 +133,14 @@ def lineplot(species, in_dir, sim_prefix, name_scan, num_scans, xmax = None, xmi
 #          suffix = '_all',
 #          highlight = "04_01_24_relaxed_RefModel_Bub1_his_scan2")
 
+sim_prefix = "04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan"
+in_dir_ = "/Users/smgroves/Box/CPC_Model_Project/vcell_plots/"
+name_scan = 'Knl1 IC'
+num_scans = 10
+xmax = 12*15
+lineplot('CPC', in_dir_, sim_prefix, name_scan, num_scans, xmax, location = 'kt', suffix = '_Bub1_his_kd_0.001')
+lineplot('CPC', in_dir_, sim_prefix, name_scan, num_scans, xmax, location = 'ic', suffix = '_Bub1_his_kd_0.001')
+
 ##### Comparing old and new geometry
 ##### Comparing extra reactions
 def plot_across_models(species, plot_list, in_dir, location = 'ic',column = "Sum_Active", active = 'active',
@@ -194,27 +202,27 @@ def plot_across_models(species, plot_list, in_dir, location = 'ic',column = "Sum
 #              '03_21_24_relaxed_RefModel_Sgo1_50P_Haspin50P','03_21_24_relaxed_RefModel_Sgo1_50P_Plk150P']
 # plot_across_models('CPC', plot_list, in_dir_, location='ic',name_plot="Sgo1_plots_all_active",active= 'active')
 # plot_across_models('CPC', plot_list, in_dir_, location='kt',name_plot="Sgo1_plots_all_active",active= 'active')
-
-in_dir_ = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/From_Catalina/Sgo1_plots/Sgo1_CPC"
-plot_list = ["03_21_24_relaxed_RefModel_64rxns",'03_21_24_relaxed_RefModel_CPC50_inh',
-             '03_21_24_relaxed_RefModel_Sgo1_50P', '03_21_24_relaxed_RefModel_Sgo1_50P_CPC50_inh']
-plot_across_models('CPC', plot_list, in_dir_, location='ic',name_plot="2Sgo1_CPC_plots_all",active= 'all')
-plot_across_models('CPC', plot_list, in_dir_, location='kt',name_plot="2Sgo1_CPC_plots_all",active= 'all')
-
-in_dir_ = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/From_Catalina/Sgo1_plots/Sgo1_haspin"
-plot_list = ["03_21_24_relaxed_RefModel_64rxns",'03_21_24_relaxed_RefModel_Haspin50_inh',
-             '03_21_24_relaxed_RefModel_Sgo1_50P', '03_21_24_relaxed_RefModel_Sgo1_50P_Haspin50_inh']
-plot_across_models('CPC', plot_list, in_dir_, location='ic',name_plot="2Sgo1_haspin_plots_all",active= 'all')
-plot_across_models('CPC', plot_list, in_dir_, location='kt',name_plot="2Sgo1_haspin_plots_all",active= 'all')
-
-in_dir = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/From_Catalina/Sgo1_plots/Sgo1_Plk1"
-plot_list = ["03_21_24_relaxed_RefModel_64rxns",'03_21_24_relaxed_RefModel_Plk150_inh',
-             '03_21_24_relaxed_RefModel_Sgo1_50P', '03_21_24_relaxed_RefModel_Sgo1_50P_Plk150_inh']
+#
+# in_dir_ = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/From_Catalina/Sgo1_plots/Sgo1_CPC"
+# plot_list = ["03_21_24_relaxed_RefModel_64rxns",'03_21_24_relaxed_RefModel_CPC50_inh',
+#              '03_21_24_relaxed_RefModel_Sgo1_50P', '03_21_24_relaxed_RefModel_Sgo1_50P_CPC50_inh']
+# plot_across_models('CPC', plot_list, in_dir_, location='ic',name_plot="2Sgo1_CPC_plots_all",active= 'all')
+# plot_across_models('CPC', plot_list, in_dir_, location='kt',name_plot="2Sgo1_CPC_plots_all",active= 'all')
+#
+# in_dir_ = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/From_Catalina/Sgo1_plots/Sgo1_haspin"
+# plot_list = ["03_21_24_relaxed_RefModel_64rxns",'03_21_24_relaxed_RefModel_Haspin50_inh',
+#              '03_21_24_relaxed_RefModel_Sgo1_50P', '03_21_24_relaxed_RefModel_Sgo1_50P_Haspin50_inh']
+# plot_across_models('CPC', plot_list, in_dir_, location='ic',name_plot="2Sgo1_haspin_plots_all",active= 'all')
+# plot_across_models('CPC', plot_list, in_dir_, location='kt',name_plot="2Sgo1_haspin_plots_all",active= 'all')
+#
+# in_dir = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/From_Catalina/Sgo1_plots/Sgo1_Plk1"
+# plot_list = ["03_21_24_relaxed_RefModel_64rxns",'03_21_24_relaxed_RefModel_Plk150_inh',
+#              '03_21_24_relaxed_RefModel_Sgo1_50P', '03_21_24_relaxed_RefModel_Sgo1_50P_Plk150_inh']
 # plot_across_models('CPC', plot_list, in_dir_, location='ic',name_plot="Sgo1_Plk1_plots_active",active= 'active')
 # plot_across_models('CPC', plot_list, in_dir_, location='kt',name_plot="Sgo1_Plk1_plots_active",active= 'active')
 
-plot_across_models('CPC', plot_list, in_dir, location='ic',name_plot="2Sgo1_Plk1_plots_all",active= 'all')
-plot_across_models('CPC', plot_list, in_dir, location='kt',name_plot="2Sgo1_Plk1_plots_all",active= 'all')
+# plot_across_models('CPC', plot_list, in_dir, location='ic',name_plot="2Sgo1_Plk1_plots_all",active= 'all')
+# plot_across_models('CPC', plot_list, in_dir, location='kt',name_plot="2Sgo1_Plk1_plots_all",active= 'all')
 
 # in_dir = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/From_Catalina/Haspin_width"
 # plot_list = ["03_21_24_relaxed_RefModel_64rxns",'03_25_24_relaxed_RefModel_haswidth_0.1',

@@ -7,8 +7,7 @@ tic("total")
 
 # CHANGE
 funcPath<-"/Users/smgroves/Documents/Github/VCell_Analysis/functions"
-# importPath<-"/Users/smgroves/Box/CPC_Model_Project/VCell_Exports"
-importPath <- "/Users/smgroves/Box/CPC_Model_Project/VCell_Rivanna_Exports/MaybeFixedResults_from_Logan_03_15_24_TEST_CPC_tensed/_10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv/"
+importPath<-"/Users/smgroves/Box/CPC_Model_Project/VCell_Exports"
 exportPath<-"/Users/smgroves/Box/CPC_Model_Project/vcell_plots"
 # desktop<-"/Users/sam/Desktop"
 
@@ -314,7 +313,7 @@ sims <- c(
   # "SimID_270423544_7__exported",
   # "SimID_270423544_8__exported",
   # "SimID_270423544_9__exported"
-  "data"
+  "SimID_270510934_0__exported"
 )
 
 # Folder naming corresponding to specific simulation ID
@@ -460,7 +459,8 @@ var <- c(
   # "04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan8",
   # "04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan9"
   
-  "MaybeFixedResults_from_Logan_03_15_24_TEST_CPC_tensed_20Pac_transactiv"
+  # "MaybeFixedResults_from_Logan_03_15_24_TEST_CPC_tensed_20Pac_transactiv"
+  "04_02_24_tensed_RefModel"
   )
 
 #########################################################
@@ -487,8 +487,8 @@ for(i in 1:length(sims)){
                all_species,
                species_info_list,
                tInit=0,
-               tSpan=100, #400 for relaxed to tense
-               desiredInterval=20,
+               tSpan=500, #400 for relaxed to tense
+               desiredInterval=100,
                cutoff=10, #for heatmap color bar
                funcPath,
                importPath,
