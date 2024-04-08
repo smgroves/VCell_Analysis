@@ -13,7 +13,7 @@ in_dir = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports"
 
 def line_scan_plot(species, sim, in_dir, out_dir, name, tSpan = 500, desired_interval = 100,
                    tInterval = 10,x_dim = 64, y_dim = 128,x_um = 1.6, y_um = 3.2,
-                   ymax = 10, save = True):
+                   ymax = 10, save = True, savetype = 'png'):
     #Set up timepoints
     timepoints = np.linspace(0,tSpan, int(tSpan/desired_interval)+1, endpoint = True)
     t_list = []
@@ -52,7 +52,7 @@ def line_scan_plot(species, sim, in_dir, out_dir, name, tSpan = 500, desired_int
             if os.path.isdir(f"{out_dir}/line_scans/{name}/horiz"): pass
             else:
                 os.makedirs(f"{out_dir}/line_scans/{name}/horiz")
-            plt.savefig(f"{out_dir}/line_scans/{name}/horiz/{species}_t{timepoints[i]}_horiz.pdf")
+            plt.savefig(f"{out_dir}/line_scans/{name}/horiz/{species}_t{timepoints[i]}_horiz.{savetype}")
             plt.close()
         else:
             plt.show()
@@ -73,7 +73,7 @@ def line_scan_plot(species, sim, in_dir, out_dir, name, tSpan = 500, desired_int
             if os.path.isdir(f"{out_dir}/line_scans/{name}/vert"): pass
             else:
                 os.mkdir(f"{out_dir}/line_scans/{name}/vert")
-            plt.savefig(f"{out_dir}/line_scans/{name}/vert/{species}_t{timepoints[i]}_vert.pdf")
+            plt.savefig(f"{out_dir}/line_scans/{name}/vert/{species}_t{timepoints[i]}_vert.{savetype}")
             plt.close()
         else:
             plt.show()
