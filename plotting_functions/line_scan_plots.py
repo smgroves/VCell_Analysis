@@ -25,7 +25,8 @@ def line_scan_plot(species, sim, in_dir, out_dir, name, tSpan = 500, desired_int
     # Iterate over timepoints for each plot
     horiz_dic = {sim[i]:[0]*x_dim for i in sim.keys()}
     vert_dic = {sim[i]:[0]*y_dim for i in sim.keys()}
-
+    if show_auc:
+        all_aucs = {sim[i]:[] for i in sim.keys()}
     for i,timepoint in enumerate(t_list):
         # for each simulation
         for s in sim.keys():
@@ -64,6 +65,8 @@ def line_scan_plot(species, sim, in_dir, out_dir, name, tSpan = 500, desired_int
                 # aucs[hue] = auc(tmp['x'], tmp["value"])
                 tmp = tmp.loc[(tmp['x']>.425) & (tmp['x']<1.175)]
                 aucs[f"{hue}"] = auc(tmp['x'], tmp["value"])
+                all_aucs[f"{hue}"].append(auc(tmp['x'], tmp["value"]))
+
             # create tuples of positions
             positions = [(.94-.05*x) for x in range(2)]
             # add text
@@ -93,28 +96,41 @@ def line_scan_plot(species, sim, in_dir, out_dir, name, tSpan = 500, desired_int
             plt.show()
 
 
-        #
-        # fig_width, fig_height = plt.gcf().get_size_inches()
-        #
-        # vert_df = pd.DataFrame(vert_dic)
-        # vert_df['y'] = np.linspace(start = 0, stop = y_um, num = y_dim)
-        # long_vert_df = pd.melt(vert_df, id_vars='y', var_name = "Simulation")
-        # #vertical axis
-        # plt.figure(figsize = (fig_width-2,fig_width+4))
-        # sns.lineplot(data = long_vert_df, y = 'y', x = "value", hue = "Simulation", orient = 'y')
-        # plt.xlabel(f"Total {species} across vertical axis \n at Time {timepoints[i]}s (uM)")
-        # plt.ylabel("Y dimension (um)")
-        # plt.title(f"Line Scan across Vertical Midpoint Axis \n at Time {timepoints[i]}s")
-        # plt.xlim(0,ymax)
-        # plt.tight_layout()
-        # if save:
-        #     if os.path.isdir(f"{out_dir}/line_scans/{name}/vert"): pass
-        #     else:
-        #         os.mkdir(f"{out_dir}/line_scans/{name}/vert")
-        #     plt.savefig(f"{out_dir}/line_scans/{name}/vert/{species}_t{timepoints[i]}_vert.{savetype}")
-        #     plt.close()
-        # else:
-        #     plt.show()
+
+        fig_width, fig_height = plt.gcf().get_size_inches()
+
+        vert_df = pd.DataFrame(vert_dic)
+        vert_df['y'] = np.linspace(start = 0, stop = y_um, num = y_dim)
+        long_vert_df = pd.melt(vert_df, id_vars='y', var_name = "Simulation")
+        #vertical axis
+        plt.figure(figsize = (fig_width-2,fig_width+4))
+        sns.lineplot(data = long_vert_df, y = 'y', x = "value", hue = "Simulation", orient = 'y')
+        plt.xlabel(f"Total {species} across vertical axis \n at Time {timepoints[i]}s (uM)")
+        plt.ylabel("Y dimension (um)")
+        plt.title(f"Line Scan across Vertical Midpoint Axis \n at Time {timepoints[i]}s")
+        plt.xlim(0,ymax)
+        plt.tight_layout()
+        if save:
+            if os.path.isdir(f"{out_dir}/line_scans/{name}/vert"): pass
+            else:
+                os.mkdir(f"{out_dir}/line_scans/{name}/vert")
+            plt.savefig(f"{out_dir}/line_scans/{name}/vert/{species}_t{timepoints[i]}_vert.{savetype}")
+            plt.close()
+        else:
+            plt.show()
+
+    if show_auc:
+        all_aucs_df = pd.DataFrame(all_aucs, index = timepoints)
+        all_aucs_df['Timepoint'] = all_aucs_df.index
+        long_auc_df = pd.melt(all_aucs_df, id_vars = 'Timepoint', var_name="Simulation")
+        sns.lineplot(data = long_auc_df, x = "Timepoint", y ='value', hue = "Simulation")
+        plt.ylabel("AUC")
+        plt.title("Area under curve of horizontal line scan \n between relaxed KTs across simulations")
+        if save:
+            plt.savefig(f"{out_dir}/line_scans/{name}/horiz/AUC_{species}_horiz.{savetype}")
+            plt.close()
+        else:
+            plt.show()
 
 outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/figures"
 # sim = {"SimID_270423544_0__exported":"04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan0",
@@ -126,7 +142,7 @@ outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/fig
 sim = {"SimID_270510934_0__exported":"04_02_24_tensed_RefModel",
        "SimID_270418727_0__exported":"03_25_24_relaxed_RefModel"}
 species = 'CPC'
-line_scan_plot(species, sim, in_dir, out_dir=outdir, name = "RefModel_base_sim_relaxed_v_tensed_AUC",ymax = 6, save = True,
+line_scan_plot(species, sim, in_dir, out_dir=outdir, name = "RefModel_base_sim_relaxed_v_tensed_AUC",ymax = 6, save = False,
                show_auc=True)
 
 # indir = "/Volumes/GoogleDrive/My Drive/UVA Postdoc/Simulations_for_line_scan_plots/Simulations csv"
