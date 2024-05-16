@@ -109,9 +109,9 @@ vcell_heatmap <- function(
         return("ERROR: This function does not have the capability to read data in different folders yet.")
       }else{
         if(clamped==FALSE){
-          print(dataPoint)
+          # print(dataPoint)
           for(i in 1:length(species)){
-            print(species[i])
+            # print(species[i])
             pattern<-paste("[A-Za-z0-9_]*_Slice_XY_\\d",
                            species[i],
                            dataPoint,
@@ -151,7 +151,7 @@ vcell_heatmap <- function(
         
         # transform M to format it for the heatmap function geomtile()
         M_transform<-as.vector(t(M))
-        print(paste("Max (uM):",max(M_transform)))
+        # print(paste("Max (uM):",max(M_transform)))
         Clist[[count]]<-M_transform
         
         count<-count+1
@@ -183,7 +183,7 @@ vcell_heatmap <- function(
   ID_lev<-levels(factor(as.numeric(ID_short)))
   t_lev<-levels(factor(as.numeric(t_short)))
   # t_labs<-paste(t_equal_str,t_short,t_unit_str)
-  print(t_labs)
+  # print(t_labs)
   
   #define our own maxcolor
   maxColor<-cutoff_color

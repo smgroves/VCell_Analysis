@@ -105,6 +105,7 @@ all_plot <- function(
 
         message("Missing species")
         message(all_species[specie])
+        print(paste(importPath,dataFolder,grep(pattern, list.files(dataFolder), value = TRUE),sep="/"))
         print(e)
       },
       finally = {
@@ -474,7 +475,11 @@ all_plot <- function(
       highlight_active_ic <- filtered_active_ic %>% select(all_of(active_ic))
     }else{
       highlight_active_ic <- filtered_active_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      highlight_active_ic <- filtered_active_ic %>% select(all_of(order(highlight_active_ic, decreasing = TRUE))[1:n_highlight])
+      # highlight_active_ic <- filtered_active_ic %>% select(all_of(order(highlight_active_ic, decreasing = TRUE))[1:n_highlight])
+
+      sorted.df = highlight_active_ic[, order(as.matrix(highlight_active_ic)[1,], decreasing = TRUE)]
+      highlight_active_ic <- filtered_active_ic %>% select(all_of(colnames(sorted.df))[1:n_highlight])
+
     }
     
     # Add in Time and Sum
@@ -533,7 +538,9 @@ all_plot <- function(
       highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(active_ic))
     }else{
       highlight_inactive_ic <- filtered_inactive_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(order(highlight_inactive_ic, decreasing = TRUE))[1:n_highlight])
+      # highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(order(highlight_inactive_ic, decreasing = TRUE))[1:n_highlight])
+      sorted.df = highlight_inactive_ic[, order(as.matrix(highlight_inactive_ic)[1,], decreasing = TRUE)]
+      highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(colnames(sorted.df))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -591,7 +598,9 @@ all_plot <- function(
       highlight_active_kt <- filtered_active_kt %>% select(all_of(active_kt))
     }else{
       highlight_active_kt <- filtered_active_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      highlight_active_kt <- filtered_active_kt %>% select(all_of(order(highlight_active_kt, decreasing = TRUE))[1:n_highlight])
+      # highlight_active_kt <- filtered_active_kt %>% select(all_of(order(highlight_active_kt, decreasing = TRUE))[1:n_highlight])
+      sorted.df = highlight_active_kt[, order(as.matrix(highlight_active_kt)[1,], decreasing = TRUE)]
+      highlight_active_kt <- filtered_active_kt %>% select(all_of(colnames(sorted.df))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -650,7 +659,9 @@ all_plot <- function(
       highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(active_kt))
     }else{
       highlight_inactive_kt <- filtered_inactive_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(order(highlight_inactive_kt, decreasing = TRUE))[1:n_highlight])
+      # highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(order(highlight_inactive_kt, decreasing = TRUE))[1:n_highlight])
+      sorted.df = highlight_inactive_kt[, order(as.matrix(highlight_inactive_kt)[1,], decreasing = TRUE)]
+      highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(colnames(sorted.df))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -703,7 +714,9 @@ all_plot <- function(
       highlight_ic <- filtered_ic %>% select(all_of(ic))
     }else{
       highlight_ic <- filtered_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      highlight_ic <- filtered_ic %>% select(all_of(order(highlight_ic, decreasing = TRUE))[1:n_highlight])
+      # highlight_ic <- filtered_ic %>% select(all_of(order(highlight_ic, decreasing = TRUE))[1:n_highlight])
+      sorted.df = highlight_ic[, order(as.matrix(highlight_ic)[1,], decreasing = TRUE)]
+      highlight_ic <- filtered_ic %>% select(all_of(colnames(sorted.df))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -762,7 +775,9 @@ all_plot <- function(
       highlight_kt <- filtered_kt %>% select(all_of(kt))
     }else{
       highlight_kt <- filtered_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      highlight_kt <- filtered_kt %>% select(all_of(order(highlight_kt, decreasing = TRUE))[1:n_highlight])
+      # highlight_kt <- filtered_kt %>% select(all_of(order(highlight_kt, decreasing = TRUE))[1:n_highlight])
+      sorted.df = highlight_kt[, order(as.matrix(highlight_kt)[1,], decreasing = TRUE)]
+      highlight_kt <- filtered_kt %>% select(all_of(colnames(sorted.df))[1:n_highlight])
     }
     
     # Add in Time and Sum

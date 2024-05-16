@@ -1,0 +1,210 @@
+duration: 5117
+exception: null
+output: Processing TEST_10_16_23_CPC_tensed_RefModel_128x64_to_omex_SBML_units.sedml.  Done
+sedDocuments:
+- duration: null
+  exception: null
+  location: TEST_10_16_23_CPC_tensed_RefModel_128x64_to_omex_SBML_units.sedml
+  output: Initializing SED-ML document... done. Successful translation of SED-ML file.
+    Building solvers and starting simulation of all tasks... Generating outputs...
+    Generating HDF5 file...
+  outputs:
+  - dataSets:
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivtime_tsk_0_0
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Haspini
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Haspina
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Plk1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_H3
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pH3
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pKnl1
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pKnl1_Bub1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Bub1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_H2A
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pH2A
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Bub1a_his
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Sgo1
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pH2A_Sgo1
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_CPCi
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pH3_CPCi
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pH2A_Sgo1_CPCi
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pH2A_Sgo1_pH3_CPCi
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_CPCa
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pH3_CPCa
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pH2A_Sgo1_CPCa
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pH2A_Sgo1_pH3_CPCa
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Plk1i
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Mps1i
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pMps1i
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Mps1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pMps1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Ndc80
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pNdc80
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Ndc80_Mps1i
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Ndc80_pMps1i
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pNdc80_Mps1i
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pNdc80_pMps1i
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Ndc80_Mps1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Ndc80_pMps1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pNdc80_Mps1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pNdc80_pMps1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_Knl1
+      status: SUCCEEDED
+    - id: __data_set__plot3d__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactivdataGen_tsk_0_0_pPlk1i
+      status: SUCCEEDED
+    duration: null
+    exception: null
+    id: report__10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv
+    output: null
+    skipReason: null
+    status: SUCCEEDED
+  - dataSets:
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scantime_repTsk_0_1_0
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Haspini
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Haspina
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Plk1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_H3
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pH3
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pKnl1
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pKnl1_Bub1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Bub1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_H2A
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pH2A
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Bub1a_his
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Sgo1
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pH2A_Sgo1
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_CPCi
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pH3_CPCi
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pH2A_Sgo1_CPCi
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pH2A_Sgo1_pH3_CPCi
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_CPCa
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pH3_CPCa
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pH2A_Sgo1_CPCa
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pH2A_Sgo1_pH3_CPCa
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Plk1i
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Mps1i
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pMps1i
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Mps1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pMps1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Ndc80
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pNdc80
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Ndc80_Mps1i
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Ndc80_pMps1i
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pNdc80_Mps1i
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pNdc80_pMps1i
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Ndc80_Mps1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Ndc80_pMps1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pNdc80_Mps1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pNdc80_pMps1a
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_Knl1
+      status: SUCCEEDED
+    - id: __data_set__plot3d__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scandataGen_repTsk_0_1_0_pPlk1i
+      status: SUCCEEDED
+    duration: null
+    exception: null
+    id: report__11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan
+    output: null
+    skipReason: null
+    status: SUCCEEDED
+  skipReason: null
+  status: SUCCEEDED
+  tasks:
+  - algorithm: KISAO_0000615
+    duration: 1131
+    exception: null
+    id: tsk_0_0
+    output: Initializing simulation job 0 ... done. Starting simulation... done.
+    simulatorDetails: null
+    skipReason: null
+    status: SUCCEEDED
+  - algorithm: KISAO_0000615
+    duration: 3216
+    exception: null
+    id: tsk_0_1
+    output: null
+    simulatorDetails: null
+    skipReason: null
+    status: SUCCEEDED
+  - algorithm: KISAO_0000615
+    duration: 3216
+    exception: null
+    id: repTsk_0_1_0
+    output: Initializing simulation job 2 ... done. Starting simulation... done.
+    simulatorDetails: null
+    skipReason: null
+    status: SUCCEEDED
+skipReason: null
+status: SUCCEEDED

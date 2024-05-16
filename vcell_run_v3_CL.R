@@ -10,13 +10,15 @@
 #########################################################
 # Install all needed packages
 # install.packages('argparser', repos = "http://cran.us.r-project.org")
-packages <- c("ggplot2","gridExtra","purrr","latex2exp","stringr","lemon","utils","tictoc","tidyverse","tibble","scales", "xlsx", "pdftools", "rhdf5", "rgoogleslides", "googleCloudStorageR", "png", 'argparser')
+packages <- c("ggplot2","gridExtra","purrr","latex2exp","stringr","lemon","utils","tictoc","tidyverse","tibble","scales", "xlsx", "pdftools", "rhdf5",  "png", 'argparser') #"rgoogleslides", "googleCloudStorageR",
 lapply(packages, require, character.only = TRUE, quietly=TRUE)
 tic("total")
 
 
 # CHANGE Paths for rivanna version
-funcPath<-"/Users/smgroves/Documents/Github/VCell_Analysis/functions_CLI"
+# funcPath<-"/Users/smgroves/Documents/Github/VCell_Analysis/functions_CLI"
+funcPath<-"/Users/smgroves/Documents/GitHub/VCell_Analysis/functions_CLI"
+
 # importPath<-"/Users/smgroves/Box/CPC_Model_Project/VCell_Exports"
 # importPath<- "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/_06_23_23_model1/base_model_KdpNdc80pMps1___kpp___0_1_scan1/"
 # exportPath<-"/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/_06_23_23_model1"
@@ -41,6 +43,7 @@ p <- add_argument(p, "exportPath", help="Export Path to Model Level Folder") #$P
 p <- add_argument(p, "--kt_width", help="Tensed or Relaxed", default = "Relaxed")
 # p <- add_argument(p, "--dataDim", help="Dimensions of data", default=c(128,64))
 p <- add_argument(p, "--tSpan", help="Total time of simulation", default=500)
+p <- add_argument(p, "--Interval", help="Interval for plotting heatmaps", default=100)
 
 
 # Parse the command line arguments
@@ -60,6 +63,9 @@ importPath <-argv$importPath
 exportPath <-argv$exportPath
 
 kt_width<- argv$kt_width #"Relaxed"
+tSpan <- argv$tSpan
+desiredInterval <- argv$Interval
+
 # var <- "base_model_KdpNdc80pMps1___kpp___0_1_scan1"
 
 # ---------------- LISTS OF SPECIES ---------------
@@ -130,40 +136,22 @@ print(importPath)
 print(exportPath)
 # if(file.exists(importPath) == TRUE){
   
-  print(var)
-  
-  save_plots(sim,
-              paste(kt_width, "Model"),
-              heatmap_species,
-              heatmap_info_list,
-              all_data,
-              all_species,
-              species_info_list,
-              tInit=0,
-              tSpan=500, #400 for relaxed to tense
-              desiredInterval=100,
-              cutoff=5, #for heatmap color bar
-              funcPath,
-              importPath,
-              exportPath,
-              kt_width
-             )
+print(var)
 
-  # vcell_table(sims[i],
-              # var[i],
-              # tPoints=c(200, 400),
-              # all_species=CPC_species,
-              # name='CPC',
-              # chromWidth=1.6,
-              # chromHeight=3.5,
-              # dataDim=c(149,68),
-              # row_1=1,
-              # row_2=dataDim[1],
-              # col_1=1,
-              # col_2=dataDim[2],
-              # importPath,
-              # exportPath_new)
-              # 
-  
-# }
+save_plots(sim,
+            paste(kt_width, "Model"),
+            heatmap_species,
+            heatmap_info_list,
+            all_data,
+            all_species,
+            species_info_list,
+            tInit=0,
+            tSpan=tSpan, #400 for relaxed to tense
+            desiredInterval=desiredInterval,
+            cutoff=5, #for heatmap color bar
+            funcPath,
+            importPath,
+            exportPath,
+            kt_width
+            )
 

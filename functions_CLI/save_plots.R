@@ -28,6 +28,8 @@ save_plots <- function(
   
   
   for(hm in 1:length(heatmap_info_list)){
+
+    print(heatmap_species[[hm]])
     
     heatmap<-vcell_heatmap(
       SimID=sim,

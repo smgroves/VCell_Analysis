@@ -1,0 +1,974 @@
+<SimulationTask xmlns="http://sourceforge.net/projects/vcell/vcml" TaskId="0" JobIndex="2" isPowerUser="false">
+  <MathDescription Name="Spatial_generated">
+    <Constant Name="_F_">96485.3321</Constant>
+    <Constant Name="_F_nmol_">9.64853321E-5</Constant>
+    <Constant Name="_K_GHK_">1.0E-9</Constant>
+    <Constant Name="_N_pmol_">6.02214179E11</Constant>
+    <Constant Name="_PI_">3.141592653589793</Constant>
+    <Constant Name="_R_">8314.46261815</Constant>
+    <Constant Name="_T_">300.0</Constant>
+    <Constant Name="Bub1_ic">0.02018</Constant>
+    <Constant Name="Bub1a_boundaryXm">0.0</Constant>
+    <Constant Name="Bub1a_boundaryXp">0.0</Constant>
+    <Constant Name="Bub1a_boundaryYm">0.0</Constant>
+    <Constant Name="Bub1a_boundaryYp">0.0</Constant>
+    <Constant Name="Bub1a_his_boundaryXm">0.0</Constant>
+    <Constant Name="Bub1a_his_boundaryXp">0.0</Constant>
+    <Constant Name="Bub1a_his_boundaryYm">0.0</Constant>
+    <Constant Name="Bub1a_his_boundaryYp">0.0</Constant>
+    <Constant Name="Bub1a_his_init_umol_l_1">0.0</Constant>
+    <Constant Name="chrH">3.2</Constant>
+    <Constant Name="chrW">1.6</Constant>
+    <Constant Name="CPCa_boundaryXm">0.0</Constant>
+    <Constant Name="CPCa_boundaryXp">0.0</Constant>
+    <Constant Name="CPCa_boundaryYm">0.0</Constant>
+    <Constant Name="CPCa_boundaryYp">0.0</Constant>
+    <Constant Name="CPCa_init_umol_l_1">0.0</Constant>
+    <Constant Name="CPCi_boundaryXm">0.0</Constant>
+    <Constant Name="CPCi_boundaryXp">0.0</Constant>
+    <Constant Name="CPCi_boundaryYm">0.0</Constant>
+    <Constant Name="CPCi_boundaryYp">0.0</Constant>
+    <Constant Name="CPCi_ic">0.07838</Constant>
+    <Constant Name="Dcyt">10.0</Constant>
+    <Constant Name="Dimmob">0.0</Constant>
+    <Constant Name="Dslow">0.001</Constant>
+    <Constant Name="H2A_boundaryXm">0.0</Constant>
+    <Constant Name="H2A_boundaryXp">0.0</Constant>
+    <Constant Name="H2A_boundaryYm">0.0</Constant>
+    <Constant Name="H2A_boundaryYp">0.0</Constant>
+    <Constant Name="H3_boundaryXm">0.0</Constant>
+    <Constant Name="H3_boundaryXp">0.0</Constant>
+    <Constant Name="H3_boundaryYm">0.0</Constant>
+    <Constant Name="H3_boundaryYp">0.0</Constant>
+    <Constant Name="HasH">3.2</Constant>
+    <Constant Name="Haspina_boundaryXm">0.0</Constant>
+    <Constant Name="Haspina_boundaryXp">0.0</Constant>
+    <Constant Name="Haspina_boundaryYm">0.0</Constant>
+    <Constant Name="Haspina_boundaryYp">0.0</Constant>
+    <Constant Name="Haspina_init_umol_l_1">0.0</Constant>
+    <Constant Name="Haspini_boundaryXm">0.0</Constant>
+    <Constant Name="Haspini_boundaryXp">0.0</Constant>
+    <Constant Name="Haspini_boundaryYm">0.0</Constant>
+    <Constant Name="Haspini_boundaryYp">0.0</Constant>
+    <Constant Name="Haspini_ic">0.55071118</Constant>
+    <Constant Name="HasW">0.2</Constant>
+    <Constant Name="Histone_ic">340.0</Constant>
+    <Constant Name="input">1.0</Constant>
+    <Constant Name="K_millivolts_per_volt">1000.0</Constant>
+    <Constant Name="kbind">0.1</Constant>
+    <Constant Name="kcat_H2A_phos_Bub1a_Bub1a_his_pKnl1_Bub1a">1.71</Constant>
+    <Constant Name="kcat_H3_phos_Haspina">0.467</Constant>
+    <Constant Name="kcat_Haspin_activation_Plk1a">12.0</Constant>
+    <Constant Name="kcat_Mps1a_phos_Plk1a">12.0</Constant>
+    <Constant Name="kcat_Mps1i_phos_Plk1a">12.0</Constant>
+    <Constant Name="kcatCPC">1.04</Constant>
+    <Constant Name="kcatMps1">1.5833333333333333</Constant>
+    <Constant Name="kcisCPC">7.29E-6</Constant>
+    <Constant Name="kcisMps1">5.0E-5</Constant>
+    <Constant Name="Kd">0.0</Constant>
+    <Constant Name="Kd_Bub1a_his_release">1.0</Constant>
+    <Constant Name="Kd_pH2A_Sgo1_binding">0.15</Constant>
+    <Constant Name="Kd_pKnl1_Bub1a_unbinding">34.8</Constant>
+    <Constant Name="KdpH3">0.1028</Constant>
+    <Constant Name="KdpNdc80Mps1">8.7</Constant>
+    <Constant Name="KdpNdc80pMps1">0.2</Constant>
+    <Constant Name="KdSgo1">0.0528</Constant>
+    <Constant Name="kinH">0.3</Constant>
+    <Constant Name="kinW">0.075</Constant>
+    <Constant Name="KK_disRef">0.6</Constant>
+    <Constant Name="KK_disSim">1.2</Constant>
+    <Constant Name="Km_H2A_phos_Bub1a_Bub1a_his_pKnl1_Bub1a">10.4</Constant>
+    <Constant Name="Km_H3_phos_Haspina">4.728</Constant>
+    <Constant Name="Km_Haspin_activation_Plk1a">79.0</Constant>
+    <Constant Name="Km_Mps1a_phos_Plk1a">79.0</Constant>
+    <Constant Name="Km_Mps1i_phos_Plk1a">79.0</Constant>
+    <Constant Name="KmCPC">8.39</Constant>
+    <Constant Name="KmMps1">54.0</Constant>
+    <Constant Name="KMOLE">0.001660538783162726</Constant>
+    <Constant Name="Knl1_boundaryXm">0.0</Constant>
+    <Constant Name="Knl1_boundaryXp">0.0</Constant>
+    <Constant Name="Knl1_boundaryYm">0.0</Constant>
+    <Constant Name="Knl1_boundaryYp">0.0</Constant>
+    <Constant Name="Knl1_ic">11.15</Constant>
+    <Constant Name="kpp">0.1</Constant>
+    <Constant Name="kppKT">0.3</Constant>
+    <Constant Name="Kr_Bub1a_his_release">0.0</Constant>
+    <Constant Name="Kr_Haspin_deactivation">0.0</Constant>
+    <Constant Name="Kr_Knl1_dephosp">0.0</Constant>
+    <Constant Name="Kr_pH2A_dephos">0.0</Constant>
+    <Constant Name="Kr_pH3_dephos">0.0</Constant>
+    <Constant Name="Kr_pKnl1_Bub1a_binding">0.0</Constant>
+    <Constant Name="Kr_pKnl1_Bub1a_unbinding">0.0</Constant>
+    <Constant Name="Kr_Plk1_deactivation">0.0</Constant>
+    <Constant Name="Kr_pMps1a_dephos">0.0</Constant>
+    <Constant Name="Kr_pMps1i_dephos">0.0</Constant>
+    <Constant Name="Kr_pNdc80_dephos">0.0</Constant>
+    <Constant Name="MELT">12.0</Constant>
+    <Constant Name="Mps1_ic">0.09369</Constant>
+    <Constant Name="Mps1a_boundaryXm">0.0</Constant>
+    <Constant Name="Mps1a_boundaryXp">0.0</Constant>
+    <Constant Name="Mps1a_boundaryYm">0.0</Constant>
+    <Constant Name="Mps1a_boundaryYp">0.0</Constant>
+    <Constant Name="Mps1a_frac">0.1</Constant>
+    <Constant Name="Mps1i_boundaryXm">0.0</Constant>
+    <Constant Name="Mps1i_boundaryXp">0.0</Constant>
+    <Constant Name="Mps1i_boundaryYm">0.0</Constant>
+    <Constant Name="Mps1i_boundaryYp">0.0</Constant>
+    <Constant Name="Ndc80_boundaryXm">0.0</Constant>
+    <Constant Name="Ndc80_boundaryXp">0.0</Constant>
+    <Constant Name="Ndc80_boundaryYm">0.0</Constant>
+    <Constant Name="Ndc80_boundaryYp">0.0</Constant>
+    <Constant Name="Ndc80_frac">1.0</Constant>
+    <Constant Name="Ndc80_Mps1a_boundaryXm">0.0</Constant>
+    <Constant Name="Ndc80_Mps1a_boundaryXp">0.0</Constant>
+    <Constant Name="Ndc80_Mps1a_boundaryYm">0.0</Constant>
+    <Constant Name="Ndc80_Mps1a_boundaryYp">0.0</Constant>
+    <Constant Name="Ndc80_Mps1a_init_umol_l_1">0.0</Constant>
+    <Constant Name="Ndc80_Mps1i_boundaryXm">0.0</Constant>
+    <Constant Name="Ndc80_Mps1i_boundaryXp">0.0</Constant>
+    <Constant Name="Ndc80_Mps1i_boundaryYm">0.0</Constant>
+    <Constant Name="Ndc80_Mps1i_boundaryYp">0.0</Constant>
+    <Constant Name="Ndc80_Mps1i_init_umol_l_1">0.0</Constant>
+    <Constant Name="Ndc80_pMps1a_boundaryXm">0.0</Constant>
+    <Constant Name="Ndc80_pMps1a_boundaryXp">0.0</Constant>
+    <Constant Name="Ndc80_pMps1a_boundaryYm">0.0</Constant>
+    <Constant Name="Ndc80_pMps1a_boundaryYp">0.0</Constant>
+    <Constant Name="Ndc80_pMps1a_init_umol_l_1">0.0</Constant>
+    <Constant Name="Ndc80_pMps1i_boundaryXm">0.0</Constant>
+    <Constant Name="Ndc80_pMps1i_boundaryXp">0.0</Constant>
+    <Constant Name="Ndc80_pMps1i_boundaryYm">0.0</Constant>
+    <Constant Name="Ndc80_pMps1i_boundaryYp">0.0</Constant>
+    <Constant Name="Ndc80_pMps1i_init_umol_l_1">0.0</Constant>
+    <Constant Name="output">1.0</Constant>
+    <Constant Name="pH2A_boundaryXm">0.0</Constant>
+    <Constant Name="pH2A_boundaryXp">0.0</Constant>
+    <Constant Name="pH2A_boundaryYm">0.0</Constant>
+    <Constant Name="pH2A_boundaryYp">0.0</Constant>
+    <Constant Name="pH2A_init_umol_l_1">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_boundaryXm">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_boundaryXp">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_boundaryYm">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_boundaryYp">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_CPCa_boundaryXm">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_CPCa_boundaryXp">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_CPCa_boundaryYm">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_CPCa_boundaryYp">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_CPCa_init_umol_l_1">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_CPCi_boundaryXm">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_CPCi_boundaryXp">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_CPCi_boundaryYm">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_CPCi_boundaryYp">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_CPCi_init_umol_l_1">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_init_umol_l_1">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_pH3_CPCa_boundaryXm">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_pH3_CPCa_boundaryXp">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_pH3_CPCa_boundaryYm">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_pH3_CPCa_boundaryYp">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_pH3_CPCa_init_umol_l_1">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_pH3_CPCi_boundaryXm">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_pH3_CPCi_boundaryXp">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_pH3_CPCi_boundaryYm">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_pH3_CPCi_boundaryYp">0.0</Constant>
+    <Constant Name="pH2A_Sgo1_pH3_CPCi_init_umol_l_1">0.0</Constant>
+    <Constant Name="pH3_boundaryXm">0.0</Constant>
+    <Constant Name="pH3_boundaryXp">0.0</Constant>
+    <Constant Name="pH3_boundaryYm">0.0</Constant>
+    <Constant Name="pH3_boundaryYp">0.0</Constant>
+    <Constant Name="pH3_CPCa_boundaryXm">0.0</Constant>
+    <Constant Name="pH3_CPCa_boundaryXp">0.0</Constant>
+    <Constant Name="pH3_CPCa_boundaryYm">0.0</Constant>
+    <Constant Name="pH3_CPCa_boundaryYp">0.0</Constant>
+    <Constant Name="pH3_CPCa_init_umol_l_1">0.0</Constant>
+    <Constant Name="pH3_CPCi_boundaryXm">0.0</Constant>
+    <Constant Name="pH3_CPCi_boundaryXp">0.0</Constant>
+    <Constant Name="pH3_CPCi_boundaryYm">0.0</Constant>
+    <Constant Name="pH3_CPCi_boundaryYp">0.0</Constant>
+    <Constant Name="pH3_CPCi_init_umol_l_1">0.0</Constant>
+    <Constant Name="pH3_init_umol_l_1">0.0</Constant>
+    <Constant Name="phiNdc80">10.0</Constant>
+    <Constant Name="pKnl1_boundaryXm">0.0</Constant>
+    <Constant Name="pKnl1_boundaryXp">0.0</Constant>
+    <Constant Name="pKnl1_boundaryYm">0.0</Constant>
+    <Constant Name="pKnl1_boundaryYp">0.0</Constant>
+    <Constant Name="pKnl1_Bub1a_boundaryXm">0.0</Constant>
+    <Constant Name="pKnl1_Bub1a_boundaryXp">0.0</Constant>
+    <Constant Name="pKnl1_Bub1a_boundaryYm">0.0</Constant>
+    <Constant Name="pKnl1_Bub1a_boundaryYp">0.0</Constant>
+    <Constant Name="pKnl1_Bub1a_init_umol_l_1">0.0</Constant>
+    <Constant Name="pKnl1_init_umol_l_1">0.0</Constant>
+    <Constant Name="Plk1_ic">0.23394</Constant>
+    <Constant Name="Plk1a_boundaryXm">0.0</Constant>
+    <Constant Name="Plk1a_boundaryXp">0.0</Constant>
+    <Constant Name="Plk1a_boundaryYm">0.0</Constant>
+    <Constant Name="Plk1a_boundaryYp">0.0</Constant>
+    <Constant Name="Plk1a_frac">0.025</Constant>
+    <Constant Name="Plk1i_boundaryXm">0.0</Constant>
+    <Constant Name="Plk1i_boundaryXp">0.0</Constant>
+    <Constant Name="Plk1i_boundaryYm">0.0</Constant>
+    <Constant Name="Plk1i_boundaryYp">0.0</Constant>
+    <Constant Name="pMps1a_boundaryXm">0.0</Constant>
+    <Constant Name="pMps1a_boundaryXp">0.0</Constant>
+    <Constant Name="pMps1a_boundaryYm">0.0</Constant>
+    <Constant Name="pMps1a_boundaryYp">0.0</Constant>
+    <Constant Name="pMps1a_init_umol_l_1">0.0</Constant>
+    <Constant Name="pMps1i_boundaryXm">0.0</Constant>
+    <Constant Name="pMps1i_boundaryXp">0.0</Constant>
+    <Constant Name="pMps1i_boundaryYm">0.0</Constant>
+    <Constant Name="pMps1i_boundaryYp">0.0</Constant>
+    <Constant Name="pMps1i_init_umol_l_1">0.0</Constant>
+    <Constant Name="pNdc80_boundaryXm">0.0</Constant>
+    <Constant Name="pNdc80_boundaryXp">0.0</Constant>
+    <Constant Name="pNdc80_boundaryYm">0.0</Constant>
+    <Constant Name="pNdc80_boundaryYp">0.0</Constant>
+    <Constant Name="pNdc80_init_umol_l_1">0.0</Constant>
+    <Constant Name="pNdc80_Mps1a_boundaryXm">0.0</Constant>
+    <Constant Name="pNdc80_Mps1a_boundaryXp">0.0</Constant>
+    <Constant Name="pNdc80_Mps1a_boundaryYm">0.0</Constant>
+    <Constant Name="pNdc80_Mps1a_boundaryYp">0.0</Constant>
+    <Constant Name="pNdc80_Mps1a_init_umol_l_1">0.0</Constant>
+    <Constant Name="pNdc80_Mps1i_boundaryXm">0.0</Constant>
+    <Constant Name="pNdc80_Mps1i_boundaryXp">0.0</Constant>
+    <Constant Name="pNdc80_Mps1i_boundaryYm">0.0</Constant>
+    <Constant Name="pNdc80_Mps1i_boundaryYp">0.0</Constant>
+    <Constant Name="pNdc80_Mps1i_init_umol_l_1">0.0</Constant>
+    <Constant Name="pNdc80_pMps1a_boundaryXm">0.0</Constant>
+    <Constant Name="pNdc80_pMps1a_boundaryXp">0.0</Constant>
+    <Constant Name="pNdc80_pMps1a_boundaryYm">0.0</Constant>
+    <Constant Name="pNdc80_pMps1a_boundaryYp">0.0</Constant>
+    <Constant Name="pNdc80_pMps1a_init_umol_l_1">0.0</Constant>
+    <Constant Name="pNdc80_pMps1i_boundaryXm">0.0</Constant>
+    <Constant Name="pNdc80_pMps1i_boundaryXp">0.0</Constant>
+    <Constant Name="pNdc80_pMps1i_boundaryYm">0.0</Constant>
+    <Constant Name="pNdc80_pMps1i_boundaryYp">0.0</Constant>
+    <Constant Name="pNdc80_pMps1i_init_umol_l_1">0.0</Constant>
+    <Constant Name="pPlk1i_boundaryXm">0.0</Constant>
+    <Constant Name="pPlk1i_boundaryXp">0.0</Constant>
+    <Constant Name="pPlk1i_boundaryYm">0.0</Constant>
+    <Constant Name="pPlk1i_boundaryYp">0.0</Constant>
+    <Constant Name="pPlk1i_diffusionRate">1.0E-9</Constant>
+    <Constant Name="pPlk1i_init_umol_l_1">0.0</Constant>
+    <Constant Name="Sgo1_boundaryXm">0.0</Constant>
+    <Constant Name="Sgo1_boundaryXp">0.0</Constant>
+    <Constant Name="Sgo1_boundaryYm">0.0</Constant>
+    <Constant Name="Sgo1_boundaryYp">0.0</Constant>
+    <Constant Name="Sgo1_ic">0.02583</Constant>
+    <Constant Name="vol_ratio">13.586957</Constant>
+    <Constant Name="VolumePerUnitVolume_chr">1.0</Constant>
+    <Constant Name="VolumePerUnitVolume_void">1.0</Constant>
+    <VolumeVariable Name="Bub1a" Domain="chromosome" />
+    <VolumeVariable Name="Bub1a_his" Domain="chromosome" />
+    <VolumeVariable Name="CPCa" Domain="chromosome" />
+    <VolumeVariable Name="CPCi" Domain="chromosome" />
+    <VolumeVariable Name="H2A" Domain="chromosome" />
+    <VolumeVariable Name="H3" Domain="chromosome" />
+    <VolumeVariable Name="Haspina" Domain="chromosome" />
+    <VolumeVariable Name="Haspini" Domain="chromosome" />
+    <VolumeVariable Name="Knl1" Domain="chromosome" />
+    <VolumeVariable Name="Mps1a" Domain="chromosome" />
+    <VolumeVariable Name="Mps1i" Domain="chromosome" />
+    <VolumeVariable Name="Ndc80" Domain="chromosome" />
+    <VolumeVariable Name="Ndc80_Mps1a" Domain="chromosome" />
+    <VolumeVariable Name="Ndc80_Mps1i" Domain="chromosome" />
+    <VolumeVariable Name="Ndc80_pMps1a" Domain="chromosome" />
+    <VolumeVariable Name="Ndc80_pMps1i" Domain="chromosome" />
+    <VolumeVariable Name="pH2A" Domain="chromosome" />
+    <VolumeVariable Name="pH2A_Sgo1" Domain="chromosome" />
+    <VolumeVariable Name="pH2A_Sgo1_CPCa" Domain="chromosome" />
+    <VolumeVariable Name="pH2A_Sgo1_CPCi" Domain="chromosome" />
+    <VolumeVariable Name="pH2A_Sgo1_pH3_CPCa" Domain="chromosome" />
+    <VolumeVariable Name="pH2A_Sgo1_pH3_CPCi" Domain="chromosome" />
+    <VolumeVariable Name="pH3" Domain="chromosome" />
+    <VolumeVariable Name="pH3_CPCa" Domain="chromosome" />
+    <VolumeVariable Name="pH3_CPCi" Domain="chromosome" />
+    <VolumeVariable Name="pKnl1" Domain="chromosome" />
+    <VolumeVariable Name="pKnl1_Bub1a" Domain="chromosome" />
+    <VolumeVariable Name="Plk1a" Domain="chromosome" />
+    <VolumeVariable Name="Plk1i" Domain="chromosome" />
+    <VolumeVariable Name="pMps1a" Domain="chromosome" />
+    <VolumeVariable Name="pMps1i" Domain="chromosome" />
+    <VolumeVariable Name="pNdc80" Domain="chromosome" />
+    <VolumeVariable Name="pNdc80_Mps1a" Domain="chromosome" />
+    <VolumeVariable Name="pNdc80_Mps1i" Domain="chromosome" />
+    <VolumeVariable Name="pNdc80_pMps1a" Domain="chromosome" />
+    <VolumeVariable Name="pNdc80_pMps1i" Domain="chromosome" />
+    <VolumeVariable Name="pPlk1i" Domain="chromosome" />
+    <VolumeVariable Name="Sgo1" Domain="chromosome" />
+    <Function Name="Bub1a_diffusionRate" Domain="chromosome">(Dcyt * (1.0 / 1.0E10))</Function>
+    <Function Name="Bub1a_his_diffusionRate" Domain="chromosome">(1.0E-10 * ((Dslow * (((100000.0 * y) &gt;= kin_y1) &amp;&amp; ((100000.0 * y) &lt;= kin_y2))) + (Dimmob * (((100000.0 * y) &lt; kin_y1) &amp;&amp; ((100000.0 * y) &gt; kin_y2)))))</Function>
+    <Function Name="Bub1a_init_umol_l_1" Domain="chromosome">(Bub1_ic * vol_ratio)</Function>
+    <Function Name="CPCa_diffusionRate" Domain="chromosome">(Dcyt * (1.0 / 1.0E10))</Function>
+    <Function Name="CPCi_diffusionRate" Domain="chromosome">(Dcyt * (1.0 / 1.0E10))</Function>
+    <Function Name="CPCi_init_umol_l_1" Domain="chromosome">(CPCi_ic * vol_ratio)</Function>
+    <Function Name="H2A_diffusionRate" Domain="chromosome">(Dslow * (1.0 / 1.0E10))</Function>
+    <Function Name="H2A_init_umol_l_1" Domain="chromosome">((Histone_ic * Histone_densadj) * (((100000.0 * y) &gt;= kin_y1) &amp;&amp; ((100000.0 * y) &lt;= kin_y2)))</Function>
+    <Function Name="H3_diffusionRate" Domain="chromosome">(Dslow * (1.0 / 1.0E10))</Function>
+    <Function Name="H3_init_umol_l_1" Domain="chromosome">(Histone_densadj * Histone_ic)</Function>
+    <Function Name="Haspina_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="Haspini_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="Haspini_init_umol_l_1" Domain="chromosome">(Haspini_ic * (((x_mid - (0.5 * HasW)) &lt; (100000.0 * x)) &amp;&amp; ((100000.0 * x) &lt; (x_mid + (0.5 * HasW)))))</Function>
+    <Function Name="Histone_densadj">(KK_disRef * (1.0 / KK_disSim))</Function>
+    <Function Name="J_Bub1a_his_release" Domain="chromosome">((Kf_Bub1a_his_release * Bub1a_his) - (Kr_Bub1a_his_release * Bub1a))</Function>
+    <Function Name="J_CPC_cis_activation" Domain="chromosome">((Kf_CPC_cis_activation * CPCi) - (Kr_CPC_cis_activation * CPCa))</Function>
+    <Function Name="J_CPC_trans_activation_panCPCa" Domain="chromosome">((Vmax_CPC_trans_activation_panCPCa * CPCi) * (1.0 / (Km_CPC_trans_activation_panCPCa + CPCi)))</Function>
+    <Function Name="J_H2A_phos_Bub1a_Bub1a_his_pKnl1_Bub1a" Domain="chromosome">((Vmax_H2A_phos_Bub1a_Bub1a_his_pKnl1_Bub1a * H2A) * (1.0 / (Km_H2A_phos_Bub1a_Bub1a_his_pKnl1_Bub1a + H2A)))</Function>
+    <Function Name="J_H3_phos_Haspina" Domain="chromosome">((Vmax_H3_phos_Haspina * H3) * (1.0 / (Km_H3_phos_Haspina + H3)))</Function>
+    <Function Name="J_Haspin_activation_Plk1a" Domain="chromosome">((Vmax_Haspin_activation_Plk1a * Haspini) * (1.0 / (Km_Haspin_activation_Plk1a + Haspini)))</Function>
+    <Function Name="J_Haspin_deactivation" Domain="chromosome">((Kf_Haspin_deactivation * Haspina) - (Kr_Haspin_deactivation * Haspini))</Function>
+    <Function Name="J_Knl1_dephosp" Domain="chromosome">((Kf_Knl1_dephosp * pKnl1) - (Kr_Knl1_dephosp * Knl1))</Function>
+    <Function Name="J_Knl1_phos_panMps1a" Domain="chromosome">((Vmax_Knl1_phos_panMps1a * Knl1) * (1.0 / (Km_Knl1_phos_panMps1a + Knl1)))</Function>
+    <Function Name="J_Mps1a_input" Domain="chromosome">(Mps1a_frac * Mps1_ic * input * kpp * vol_ratio)</Function>
+    <Function Name="J_Mps1a_phos_panCPCa" Domain="chromosome">((Vmax_Mps1a_phos_panCPCa * Mps1a) * (1.0 / (Km_Mps1a_phos_panCPCa + Mps1a)))</Function>
+    <Function Name="J_Mps1a_phos_Plk1a" Domain="chromosome">((Vmax_Mps1a_phos_Plk1a * Mps1a) * (1.0 / (Km_Mps1a_phos_Plk1a + Mps1a)))</Function>
+    <Function Name="J_Mps1i_cis_activation" Domain="chromosome">((Kf_Mps1i_cis_activation * Mps1i) - (Kr_Mps1i_cis_activation * Mps1a))</Function>
+    <Function Name="J_Mps1i_output" Domain="chromosome">(Mps1a_frac * Mps1_ic * kpp * output * vol_ratio)</Function>
+    <Function Name="J_Mps1i_phos_panCPCa" Domain="chromosome">((Vmax_Mps1i_phos_panCPCa * Mps1i) * (1.0 / (Km_Mps1i_phos_panCPCa + Mps1i)))</Function>
+    <Function Name="J_Mps1i_phos_Plk1a" Domain="chromosome">((Vmax_Mps1i_phos_Plk1a * Mps1i) * (1.0 / (Km_Mps1i_phos_Plk1a + Mps1i)))</Function>
+    <Function Name="J_Mps1i_trans_activation" Domain="chromosome">((Vmax_Mps1i_trans_activation * Mps1i) * (1.0 / (Km_Mps1i_trans_activation + Mps1i)))</Function>
+    <Function Name="J_Ndc80_Mps1_cis_activation" Domain="chromosome">((Kf_Ndc80_Mps1_cis_activation * Ndc80_Mps1i) - (Kr_Ndc80_Mps1_cis_activation * Ndc80_Mps1a))</Function>
+    <Function Name="J_Ndc80_Mps1_trans_activation" Domain="chromosome">((Vmax_Ndc80_Mps1_trans_activation * Ndc80_Mps1i) * (1.0 / (Km_Ndc80_Mps1_trans_activation + Ndc80_Mps1i)))</Function>
+    <Function Name="J_Ndc80_Mps1a_binding" Domain="chromosome">(((Kf_Ndc80_Mps1a_binding * Ndc80) * Mps1a) - (Kr_Ndc80_Mps1a_binding * Ndc80_Mps1a))</Function>
+    <Function Name="J_Ndc80_Mps1i_binding" Domain="chromosome">(((Kf_Ndc80_Mps1i_binding * Ndc80) * Mps1i) - (Kr_Ndc80_Mps1i_binding * Ndc80_Mps1i))</Function>
+    <Function Name="J_Ndc80_phos_panCPCa" Domain="chromosome">((Vmax_Ndc80_phos_panCPCa * Ndc80) * (1.0 / (Km_Ndc80_phos_panCPCa + Ndc80)))</Function>
+    <Function Name="J_Ndc80_pMps1_cis_activation" Domain="chromosome">((Kf_Ndc80_pMps1_cis_activation * pNdc80_pMps1i) - (Kr_Ndc80_pMps1_cis_activation * pNdc80_pMps1a))</Function>
+    <Function Name="J_Ndc80_pMps1_trans_activation" Domain="chromosome">((Vmax_Ndc80_pMps1_trans_activation * Ndc80_pMps1i) * (1.0 / (Km_Ndc80_pMps1_trans_activation + Ndc80_pMps1i)))</Function>
+    <Function Name="J_Ndc80_pMps1a_binding" Domain="chromosome">(((Kf_Ndc80_pMps1a_binding * Ndc80) * pMps1a) - (Kr_Ndc80_pMps1a_binding * Ndc80_pMps1a))</Function>
+    <Function Name="J_Ndc80_pMps1i_binding" Domain="chromosome">(((Kf_Ndc80_pMps1i_binding * Ndc80) * pMps1i) - (Kr_Ndc80_pMps1i_binding * Ndc80_pMps1i))</Function>
+    <Function Name="J_pH2A_dephos" Domain="chromosome">((Kf_pH2A_dephos * pH2A) - (Kr_pH2A_dephos * H2A))</Function>
+    <Function Name="J_pH2A_Sgo1_binding" Domain="chromosome">(((Kf_pH2A_Sgo1_binding * pH2A) * Sgo1) - (Kr_pH2A_Sgo1_binding * pH2A_Sgo1))</Function>
+    <Function Name="J_pH2A_Sgo1_CPC_cis_activation" Domain="chromosome">((Kf_pH2A_Sgo1_CPC_cis_activation * pH2A_Sgo1_CPCi) - (Kr_pH2A_Sgo1_CPC_cis_activation * pH2A_Sgo1_CPCa))</Function>
+    <Function Name="J_pH2A_Sgo1_CPC_trans_activation_panCPCa" Domain="chromosome">((Vmax_pH2A_Sgo1_CPC_trans_activation_panCPCa * pH2A_Sgo1_CPCi) * (1.0 / (Km_pH2A_Sgo1_CPC_trans_activation_panCPCa + pH2A_Sgo1_CPCi)))</Function>
+    <Function Name="J_pH2A_Sgo1_CPCa_binding" Domain="chromosome">(((Kf_pH2A_Sgo1_CPCa_binding * pH2A_Sgo1) * CPCa) - (Kr_pH2A_Sgo1_CPCa_binding * pH2A_Sgo1_CPCa))</Function>
+    <Function Name="J_pH2A_Sgo1_CPCi_binding" Domain="chromosome">(((Kf_pH2A_Sgo1_CPCi_binding * pH2A_Sgo1) * CPCi) - (Kr_pH2A_Sgo1_CPCi_binding * pH2A_Sgo1_CPCi))</Function>
+    <Function Name="J_pH2A_Sgo1_pH3_CPC_cis_activation" Domain="chromosome">((Kf_pH2A_Sgo1_pH3_CPC_cis_activation * pH2A_Sgo1_pH3_CPCi) - (Kr_pH2A_Sgo1_pH3_CPC_cis_activation * pH2A_Sgo1_pH3_CPCa))</Function>
+    <Function Name="J_pH2A_Sgo1_pH3_CPC_trans_activation_panCPCa" Domain="chromosome">((Vmax_pH2A_Sgo1_pH3_CPC_trans_activation_panCPCa * pH2A_Sgo1_pH3_CPCi) * (1.0 / (Km_pH2A_Sgo1_pH3_CPC_trans_activation_panCPCa + pH2A_Sgo1_pH3_CPCi)))</Function>
+    <Function Name="J_pH2A_Sgo1_pH3_CPCa_binding" Domain="chromosome">(((Kf_pH2A_Sgo1_pH3_CPCa_binding * pH2A_Sgo1) * pH3_CPCa) - (Kr_pH2A_Sgo1_pH3_CPCa_binding * pH2A_Sgo1_pH3_CPCa))</Function>
+    <Function Name="J_pH2A_Sgo1_pH3_CPCi_binding" Domain="chromosome">(((Kf_pH2A_Sgo1_pH3_CPCi_binding * pH2A_Sgo1) * pH3_CPCi) - (Kr_pH2A_Sgo1_pH3_CPCi_binding * pH2A_Sgo1_pH3_CPCi))</Function>
+    <Function Name="J_pH3_CPC_cis_activation" Domain="chromosome">((Kf_pH3_CPC_cis_activation * pH3_CPCi) - (Kr_pH3_CPC_cis_activation * pH3_CPCa))</Function>
+    <Function Name="J_pH3_CPC_trans_activation_panCPCa" Domain="chromosome">((Vmax_pH3_CPC_trans_activation_panCPCa * pH3_CPCi) * (1.0 / (Km_pH3_CPC_trans_activation_panCPCa + pH3_CPCi)))</Function>
+    <Function Name="J_pH3_CPCa_binding" Domain="chromosome">(((Kf_pH3_CPCa_binding * pH3) * CPCa) - (Kr_pH3_CPCa_binding * pH3_CPCa))</Function>
+    <Function Name="J_pH3_CPCi_binding" Domain="chromosome">(((Kf_pH3_CPCi_binding * pH3) * CPCi) - (Kr_pH3_CPCi_binding * pH3_CPCi))</Function>
+    <Function Name="J_pH3_dephos" Domain="chromosome">((Kf_pH3_dephos * pH3) - (Kr_pH3_dephos * H3))</Function>
+    <Function Name="J_pH3_pH2A_Sgo1_CPCa_binding" Domain="chromosome">(((Kf_pH3_pH2A_Sgo1_CPCa_binding * pH3) * pH2A_Sgo1_CPCa) - (Kr_pH3_pH2A_Sgo1_CPCa_binding * pH2A_Sgo1_pH3_CPCa))</Function>
+    <Function Name="J_pH3_pH2A_Sgo1_CPCi_binding" Domain="chromosome">(((Kf_pH3_pH2A_Sgo1_CPCi_binding * pH2A_Sgo1_CPCi) * pH3) - (Kr_pH3_pH2A_Sgo1_CPCi_binding * pH2A_Sgo1_pH3_CPCi))</Function>
+    <Function Name="J_pKnl1_Bub1a_binding" Domain="chromosome">(((Kf_pKnl1_Bub1a_binding * pKnl1) * Bub1a) - (Kr_pKnl1_Bub1a_binding * pKnl1_Bub1a))</Function>
+    <Function Name="J_pKnl1_Bub1a_unbinding" Domain="chromosome">((Kf_pKnl1_Bub1a_unbinding * pKnl1_Bub1a) - ((Kr_pKnl1_Bub1a_unbinding * pKnl1) * Bub1a_his))</Function>
+    <Function Name="J_Plk1_activation_panCPCa" Domain="chromosome">((Vmax_Plk1_activation_panCPCa * Plk1i) * (1.0 / (Km_Plk1_activation_panCPCa + Plk1i)))</Function>
+    <Function Name="J_Plk1_deactivation" Domain="chromosome">((Kf_Plk1_deactivation * Plk1a) - (Kr_Plk1_deactivation * Plk1i))</Function>
+    <Function Name="J_Plk1a_input" Domain="chromosome">(Plk1a_frac * Plk1_ic * input * kpp * vol_ratio)</Function>
+    <Function Name="J_Plk1i_output" Domain="chromosome">(Plk1a_frac * Plk1_ic * kpp * output * vol_ratio)</Function>
+    <Function Name="J_pMps1_cis_activation" Domain="chromosome">((Kf_pMps1_cis_activation * pMps1i) - (Kr_pMps1_cis_activation * pMps1a))</Function>
+    <Function Name="J_pMps1a_dephos" Domain="chromosome">((Kf_pMps1a_dephos * pMps1a) - (Kr_pMps1a_dephos * Mps1a))</Function>
+    <Function Name="J_pMps1i_dephos" Domain="chromosome">((Kf_pMps1i_dephos * pMps1i) - (Kr_pMps1i_dephos * Mps1i))</Function>
+    <Function Name="J_pMps1i_trans_activation" Domain="chromosome">((Vmax_pMps1i_trans_activation * pMps1i) * (1.0 / (Km_pMps1i_trans_activation + pMps1i)))</Function>
+    <Function Name="J_pNdc80_dephos" Domain="chromosome">((Kf_pNdc80_dephos * pNdc80) - (Kr_pNdc80_dephos * Ndc80))</Function>
+    <Function Name="J_pNdc80_Mps1_cis_activation" Domain="chromosome">((Kf_pNdc80_Mps1_cis_activation * pNdc80_Mps1i) - (Kr_pNdc80_Mps1_cis_activation * pNdc80_Mps1a))</Function>
+    <Function Name="J_pNdc80_Mps1_trans_activation" Domain="chromosome">((Vmax_pNdc80_Mps1_trans_activation * pNdc80_Mps1i) * (1.0 / (Km_pNdc80_Mps1_trans_activation + pNdc80_Mps1i)))</Function>
+    <Function Name="J_pNdc80_Mps1a_binding" Domain="chromosome">(((Kf_pNdc80_Mps1a_binding * pNdc80) * Mps1a) - (Kr_pNdc80_Mps1a_binding * pNdc80_Mps1a))</Function>
+    <Function Name="J_pNdc80_Mps1i_binding" Domain="chromosome">(((Kf_pNdc80_Mps1i_binding * pNdc80) * Mps1i) - (Kr_pNdc80_Mps1i_binding * pNdc80_Mps1i))</Function>
+    <Function Name="J_pNdc80_pMps1_cis_activation" Domain="chromosome">((Kf_pNdc80_pMps1_cis_activation * pNdc80_pMps1i) - (Kr_pNdc80_pMps1_cis_activation * pNdc80_pMps1a))</Function>
+    <Function Name="J_pNdc80_pMps1_trans_activation" Domain="chromosome">((Vmax_pNdc80_pMps1_trans_activation * pNdc80_pMps1i) * (1.0 / (Km_pNdc80_pMps1_trans_activation + pNdc80_pMps1i)))</Function>
+    <Function Name="J_pNdc80_pMps1a_binding" Domain="chromosome">(((Kf_pNdc80_pMps1a_binding * pNdc80) * pMps1a) - (Kr_pNdc80_pMps1a_binding * pNdc80_pMps1a))</Function>
+    <Function Name="J_pNdc80_pMps1i_binding" Domain="chromosome">(((Kf_pNdc80_pMps1i_binding * pNdc80) * pMps1i) - (Kr_pNdc80_pMps1i_binding * pNdc80_pMps1i))</Function>
+    <Function Name="Kf_Bub1a_his_release">(Kd_Bub1a_his_release * kbind)</Function>
+    <Function Name="Kf_CPC_cis_activation">kcisCPC</Function>
+    <Function Name="Kf_Haspin_deactivation">kpp</Function>
+    <Function Name="Kf_Knl1_dephosp">kppKT</Function>
+    <Function Name="Kf_Mps1i_cis_activation">kcisMps1</Function>
+    <Function Name="Kf_Ndc80_Mps1_cis_activation">kcisMps1</Function>
+    <Function Name="Kf_Ndc80_Mps1a_binding">kbind</Function>
+    <Function Name="Kf_Ndc80_Mps1i_binding">kbind</Function>
+    <Function Name="Kf_Ndc80_pMps1_cis_activation">kcisMps1</Function>
+    <Function Name="Kf_Ndc80_pMps1a_binding">kbind</Function>
+    <Function Name="Kf_Ndc80_pMps1i_binding">kbind</Function>
+    <Function Name="Kf_pH2A_dephos">kpp</Function>
+    <Function Name="Kf_pH2A_Sgo1_binding">kbind</Function>
+    <Function Name="Kf_pH2A_Sgo1_CPC_cis_activation">kcisCPC</Function>
+    <Function Name="Kf_pH2A_Sgo1_CPCa_binding">kbind</Function>
+    <Function Name="Kf_pH2A_Sgo1_CPCi_binding">kbind</Function>
+    <Function Name="Kf_pH2A_Sgo1_pH3_CPC_cis_activation">kcisCPC</Function>
+    <Function Name="Kf_pH2A_Sgo1_pH3_CPCa_binding">kbind</Function>
+    <Function Name="Kf_pH2A_Sgo1_pH3_CPCi_binding">kbind</Function>
+    <Function Name="Kf_pH3_CPC_cis_activation">kcisCPC</Function>
+    <Function Name="Kf_pH3_CPCa_binding">kbind</Function>
+    <Function Name="Kf_pH3_CPCi_binding">kbind</Function>
+    <Function Name="Kf_pH3_dephos">kpp</Function>
+    <Function Name="Kf_pH3_pH2A_Sgo1_CPCa_binding">kbind</Function>
+    <Function Name="Kf_pH3_pH2A_Sgo1_CPCi_binding">kbind</Function>
+    <Function Name="Kf_pKnl1_Bub1a_binding">kbind</Function>
+    <Function Name="Kf_pKnl1_Bub1a_unbinding">(Kd_pKnl1_Bub1a_unbinding * kbind)</Function>
+    <Function Name="Kf_Plk1_deactivation">kpp</Function>
+    <Function Name="Kf_pMps1_cis_activation">kcisMps1</Function>
+    <Function Name="Kf_pMps1a_dephos">kpp</Function>
+    <Function Name="Kf_pMps1i_dephos">kpp</Function>
+    <Function Name="Kf_pNdc80_dephos">kppKT</Function>
+    <Function Name="Kf_pNdc80_Mps1_cis_activation">kcisMps1</Function>
+    <Function Name="Kf_pNdc80_Mps1a_binding">kbind</Function>
+    <Function Name="Kf_pNdc80_Mps1i_binding">kbind</Function>
+    <Function Name="Kf_pNdc80_pMps1_cis_activation">kcisMps1</Function>
+    <Function Name="Kf_pNdc80_pMps1a_binding">kbind</Function>
+    <Function Name="Kf_pNdc80_pMps1i_binding">kbind</Function>
+    <Function Name="kin_y1">(0.5 * (chrH - (1.0 * kinH)))</Function>
+    <Function Name="kin_y2">(0.5 * (chrH + kinH))</Function>
+    <Function Name="Km_CPC_trans_activation_panCPCa">KmCPC</Function>
+    <Function Name="Km_Knl1_phos_panMps1a">KmMps1</Function>
+    <Function Name="Km_Mps1a_phos_panCPCa">KmCPC</Function>
+    <Function Name="Km_Mps1i_phos_panCPCa">KmCPC</Function>
+    <Function Name="Km_Mps1i_trans_activation">KmMps1</Function>
+    <Function Name="Km_Ndc80_Mps1_trans_activation">KmMps1</Function>
+    <Function Name="Km_Ndc80_phos_panCPCa">KmCPC</Function>
+    <Function Name="Km_Ndc80_pMps1_trans_activation">KmMps1</Function>
+    <Function Name="Km_pH2A_Sgo1_CPC_trans_activation_panCPCa">KmCPC</Function>
+    <Function Name="Km_pH2A_Sgo1_pH3_CPC_trans_activation_panCPCa">KmCPC</Function>
+    <Function Name="Km_pH3_CPC_trans_activation_panCPCa">KmCPC</Function>
+    <Function Name="Km_Plk1_activation_panCPCa">KmCPC</Function>
+    <Function Name="Km_pMps1i_trans_activation">KmMps1</Function>
+    <Function Name="Km_pNdc80_Mps1_trans_activation">KmMps1</Function>
+    <Function Name="Km_pNdc80_pMps1_trans_activation">KmMps1</Function>
+    <Function Name="Knl1_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="Knl1_init_umol_l_1" Domain="chromosome">((MELT * Knl1_ic) * ((((100000.0 * x) &gt;= R_kin_x1) &amp;&amp; ((100000.0 * x) &lt;= R_kin_x2) &amp;&amp; ((100000.0 * y) &gt;= kin_y1) &amp;&amp; ((100000.0 * y) &lt;= kin_y2)) || (((100000.0 * x) &gt;= L_kin_x1) &amp;&amp; ((100000.0 * x) &lt;= L_kin_x2) &amp;&amp; ((100000.0 * y) &gt;= kin_y1) &amp;&amp; ((100000.0 * y) &lt;= kin_y2))))</Function>
+    <Function Name="Kr_CPC_cis_activation">kpp</Function>
+    <Function Name="Kr_Mps1i_cis_activation">kpp</Function>
+    <Function Name="Kr_Ndc80_Mps1_cis_activation">kppKT</Function>
+    <Function Name="Kr_Ndc80_Mps1a_binding">(KdpNdc80Mps1 * Kf_Ndc80_Mps1a_binding * phiNdc80)</Function>
+    <Function Name="Kr_Ndc80_Mps1i_binding">(KdpNdc80Mps1 * Kf_Ndc80_Mps1i_binding * phiNdc80)</Function>
+    <Function Name="Kr_Ndc80_pMps1_cis_activation">kppKT</Function>
+    <Function Name="Kr_Ndc80_pMps1a_binding">(KdpNdc80pMps1 * Kf_Ndc80_pMps1a_binding * phiNdc80)</Function>
+    <Function Name="Kr_Ndc80_pMps1i_binding">(KdpNdc80pMps1 * Kf_Ndc80_pMps1i_binding * phiNdc80)</Function>
+    <Function Name="Kr_pH2A_Sgo1_binding">(Kd_pH2A_Sgo1_binding * Kf_pH2A_Sgo1_binding)</Function>
+    <Function Name="Kr_pH2A_Sgo1_CPC_cis_activation">kpp</Function>
+    <Function Name="Kr_pH2A_Sgo1_CPCa_binding">(KdSgo1 * Kf_pH2A_Sgo1_CPCa_binding)</Function>
+    <Function Name="Kr_pH2A_Sgo1_CPCi_binding">(KdSgo1 * Kf_pH2A_Sgo1_CPCi_binding)</Function>
+    <Function Name="Kr_pH2A_Sgo1_pH3_CPC_cis_activation">kpp</Function>
+    <Function Name="Kr_pH2A_Sgo1_pH3_CPCa_binding">(KdSgo1 * Kf_pH2A_Sgo1_pH3_CPCa_binding)</Function>
+    <Function Name="Kr_pH2A_Sgo1_pH3_CPCi_binding">(KdSgo1 * Kf_pH2A_Sgo1_pH3_CPCi_binding)</Function>
+    <Function Name="Kr_pH3_CPC_cis_activation">kpp</Function>
+    <Function Name="Kr_pH3_CPCa_binding">(KdpH3 * Kf_pH3_CPCa_binding)</Function>
+    <Function Name="Kr_pH3_CPCi_binding">(KdpH3 * Kf_pH3_CPCi_binding)</Function>
+    <Function Name="Kr_pH3_pH2A_Sgo1_CPCa_binding">(KdpH3 * Kf_pH3_pH2A_Sgo1_CPCa_binding)</Function>
+    <Function Name="Kr_pH3_pH2A_Sgo1_CPCi_binding">(KdpH3 * Kf_pH3_pH2A_Sgo1_CPCi_binding)</Function>
+    <Function Name="Kr_pMps1_cis_activation">kpp</Function>
+    <Function Name="Kr_pNdc80_Mps1_cis_activation">kppKT</Function>
+    <Function Name="Kr_pNdc80_Mps1a_binding">(KdpNdc80Mps1 * Kf_pNdc80_Mps1a_binding)</Function>
+    <Function Name="Kr_pNdc80_Mps1i_binding">(KdpNdc80Mps1 * Kf_pNdc80_Mps1i_binding)</Function>
+    <Function Name="Kr_pNdc80_pMps1_cis_activation">kppKT</Function>
+    <Function Name="Kr_pNdc80_pMps1a_binding">(KdpNdc80pMps1 * Kf_pNdc80_pMps1a_binding)</Function>
+    <Function Name="Kr_pNdc80_pMps1i_binding">(KdpNdc80pMps1 * Kf_pNdc80_pMps1i_binding)</Function>
+    <Function Name="L_kin_x1">( - 1.0 * (KK_disSim + (2.0 * kinW) - (2.0 * x_mid)) * (1.0 / 2.0))</Function>
+    <Function Name="L_kin_x2">( - 1.0 * (KK_disSim - (2.0 * x_mid)) * (1.0 / 2.0))</Function>
+    <Function Name="Mps1a_diffusionRate" Domain="chromosome">(Dcyt * (1.0 / 1.0E10))</Function>
+    <Function Name="Mps1a_init_umol_l_1" Domain="chromosome">(Mps1a_frac * Mps1_ic * vol_ratio)</Function>
+    <Function Name="Mps1i_diffusionRate" Domain="chromosome">(Dcyt * (1.0 / 1.0E10))</Function>
+    <Function Name="Mps1i_frac">(1.0 - Mps1a_frac)</Function>
+    <Function Name="Mps1i_init_umol_l_1" Domain="chromosome">(Mps1i_frac * Mps1_ic * vol_ratio)</Function>
+    <Function Name="Ndc80_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="Ndc80_ic">((244.0 * 1000000.0) * (1.0 / (1.0E-15 * 6.02E23 * kinH * kinW)))</Function>
+    <Function Name="Ndc80_init_umol_l_1" Domain="chromosome">((Ndc80_frac * Ndc80_ic) * ((((100000.0 * x) &gt;= R_kin_x1) &amp;&amp; ((100000.0 * x) &lt;= R_kin_x2) &amp;&amp; ((100000.0 * y) &gt;= kin_y1) &amp;&amp; ((100000.0 * y) &lt;= kin_y2)) || (((100000.0 * x) &gt;= L_kin_x1) &amp;&amp; ((100000.0 * x) &lt;= L_kin_x2) &amp;&amp; ((100000.0 * y) &gt;= kin_y1) &amp;&amp; ((100000.0 * y) &lt;= kin_y2))))</Function>
+    <Function Name="Ndc80_Mps1a_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="Ndc80_Mps1i_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="Ndc80_pMps1a_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="Ndc80_pMps1i_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="pH2A_diffusionRate" Domain="chromosome">(Dslow * (1.0 / 1.0E10))</Function>
+    <Function Name="pH2A_Sgo1_CPCa_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="pH2A_Sgo1_CPCi_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="pH2A_Sgo1_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="pH2A_Sgo1_pH3_CPCa_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="pH2A_Sgo1_pH3_CPCi_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="pH3_CPCa_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="pH3_CPCi_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="pH3_diffusionRate" Domain="chromosome">(Dslow * (1.0 / 1.0E10))</Function>
+    <Function Name="pKnl1_Bub1a_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="pKnl1_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="Plk1a_diffusionRate" Domain="chromosome">(Dcyt * (1.0 / 1.0E10))</Function>
+    <Function Name="Plk1a_init_umol_l_1" Domain="chromosome">(Plk1a_frac * Plk1_ic * vol_ratio)</Function>
+    <Function Name="Plk1i_diffusionRate" Domain="chromosome">(Dcyt * (1.0 / 1.0E10))</Function>
+    <Function Name="Plk1i_frac">(1.0 - Plk1a_frac)</Function>
+    <Function Name="Plk1i_init_umol_l_1" Domain="chromosome">(Plk1i_frac * Plk1_ic * vol_ratio)</Function>
+    <Function Name="pMps1a_diffusionRate" Domain="chromosome">(Dcyt * (1.0 / 1.0E10))</Function>
+    <Function Name="pMps1i_diffusionRate" Domain="chromosome">(Dcyt * (1.0 / 1.0E10))</Function>
+    <Function Name="pNdc80_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="pNdc80_Mps1a_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="pNdc80_Mps1i_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="pNdc80_pMps1a_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="pNdc80_pMps1i_diffusionRate" Domain="chromosome">(Dimmob * (1.0 / 1.0E10))</Function>
+    <Function Name="R_kin_x1">((KK_disSim + (2.0 * x_mid)) * (1.0 / 2.0))</Function>
+    <Function Name="R_kin_x2">((KK_disSim + (2.0 * kinW) + (2.0 * x_mid)) * (1.0 / 2.0))</Function>
+    <Function Name="Sgo1_diffusionRate" Domain="chromosome">(Dcyt * (1.0 / 1.0E10))</Function>
+    <Function Name="Sgo1_init_umol_l_1" Domain="chromosome">(Sgo1_ic * vol_ratio)</Function>
+    <Function Name="Size_chr" Domain="chromosome">(VolumePerUnitVolume_chr * vcRegionVolume('chromosome'))</Function>
+    <Function Name="Size_void" Domain="void">(VolumePerUnitVolume_void * vcRegionVolume('void'))</Function>
+    <Function Name="sobj_void1_chromosome0_size" Domain="chromosome_void_membrane">vcRegionArea('chromosome_void_membrane')</Function>
+    <Function Name="sobj_void2_chromosome0_size" Domain="chromosome_void_membrane">vcRegionArea('chromosome_void_membrane')</Function>
+    <Function Name="Vmax_CPC_trans_activation_panCPCa" Domain="chromosome">(kcatCPC * (CPCa + pH2A_Sgo1_CPCa + pH2A_Sgo1_pH3_CPCa + pH3_CPCa))</Function>
+    <Function Name="Vmax_H2A_phos_Bub1a_Bub1a_his_pKnl1_Bub1a" Domain="chromosome">(kcat_H2A_phos_Bub1a_Bub1a_his_pKnl1_Bub1a * (Bub1a + Bub1a_his + pKnl1_Bub1a))</Function>
+    <Function Name="Vmax_H3_phos_Haspina" Domain="chromosome">(Haspina * kcat_H3_phos_Haspina)</Function>
+    <Function Name="Vmax_Haspin_activation_Plk1a" Domain="chromosome">(Plk1a * kcat_Haspin_activation_Plk1a)</Function>
+    <Function Name="Vmax_Knl1_phos_panMps1a" Domain="chromosome">(kcatMps1 * (Mps1a + Ndc80_Mps1a + Ndc80_pMps1a + pMps1a + pNdc80_Mps1a + pNdc80_pMps1a))</Function>
+    <Function Name="Vmax_Mps1a_phos_panCPCa" Domain="chromosome">(kcatCPC * (CPCa + pH2A_Sgo1_CPCa + pH2A_Sgo1_pH3_CPCa + pH3_CPCa))</Function>
+    <Function Name="Vmax_Mps1a_phos_Plk1a" Domain="chromosome">(Plk1a * kcat_Mps1a_phos_Plk1a)</Function>
+    <Function Name="Vmax_Mps1i_phos_panCPCa" Domain="chromosome">(kcatCPC * (CPCa + pH2A_Sgo1_CPCa + pH2A_Sgo1_pH3_CPCa + pH3_CPCa))</Function>
+    <Function Name="Vmax_Mps1i_phos_Plk1a" Domain="chromosome">(Plk1a * kcat_Mps1i_phos_Plk1a)</Function>
+    <Function Name="Vmax_Mps1i_trans_activation" Domain="chromosome">(kcatMps1 * (Mps1a + Ndc80_Mps1a + Ndc80_pMps1a + pMps1a + pNdc80_Mps1a + pNdc80_pMps1a))</Function>
+    <Function Name="Vmax_Ndc80_Mps1_trans_activation" Domain="chromosome">(kcatMps1 * (Mps1a + Ndc80_Mps1a + Ndc80_pMps1a + pMps1a + pNdc80_Mps1a + pNdc80_pMps1a))</Function>
+    <Function Name="Vmax_Ndc80_phos_panCPCa" Domain="chromosome">(kcatCPC * (CPCa + pH2A_Sgo1_CPCa + pH2A_Sgo1_pH3_CPCa + pH3_CPCa))</Function>
+    <Function Name="Vmax_Ndc80_pMps1_trans_activation" Domain="chromosome">(kcatMps1 * (Mps1a + Ndc80_Mps1a + Ndc80_pMps1a + pMps1a + pNdc80_Mps1a + pNdc80_pMps1a))</Function>
+    <Function Name="Vmax_pH2A_Sgo1_CPC_trans_activation_panCPCa" Domain="chromosome">(kcatCPC * (CPCa + pH2A_Sgo1_CPCa + pH2A_Sgo1_pH3_CPCa + pH3_CPCa))</Function>
+    <Function Name="Vmax_pH2A_Sgo1_pH3_CPC_trans_activation_panCPCa" Domain="chromosome">(kcatCPC * (CPCa + pH2A_Sgo1_CPCa + pH2A_Sgo1_pH3_CPCa + pH3_CPCa))</Function>
+    <Function Name="Vmax_pH3_CPC_trans_activation_panCPCa" Domain="chromosome">(kcatCPC * (CPCa + pH2A_Sgo1_CPCa + pH2A_Sgo1_pH3_CPCa + pH3_CPCa))</Function>
+    <Function Name="Vmax_Plk1_activation_panCPCa" Domain="chromosome">(kcatCPC * (CPCa + pH2A_Sgo1_CPCa + pH2A_Sgo1_pH3_CPCa + pH3_CPCa))</Function>
+    <Function Name="Vmax_pMps1i_trans_activation" Domain="chromosome">(kcatMps1 * (Mps1a + Ndc80_Mps1a + Ndc80_pMps1a + pMps1a + pNdc80_Mps1a + pNdc80_pMps1a))</Function>
+    <Function Name="Vmax_pNdc80_Mps1_trans_activation" Domain="chromosome">(kcatMps1 * (Mps1a + Ndc80_Mps1a + Ndc80_pMps1a + pMps1a + pNdc80_Mps1a + pNdc80_pMps1a))</Function>
+    <Function Name="Vmax_pNdc80_pMps1_trans_activation" Domain="chromosome">(kcatMps1 * (Mps1a + Ndc80_Mps1a + Ndc80_pMps1a + pMps1a + pNdc80_Mps1a + pNdc80_pMps1a))</Function>
+    <Function Name="vobj_chromosome0_size" Domain="chromosome">vcRegionVolume('chromosome')</Function>
+    <Function Name="vobj_void1_size" Domain="void">vcRegionVolume('void')</Function>
+    <Function Name="vobj_void2_size" Domain="void">vcRegionVolume('void')</Function>
+    <Function Name="x_mid">(chrW * (1.0 / 2.0))</Function>
+    <CompartmentSubDomain Name="void">
+      <BoundaryType Boundary="Xm" Type="Flux" />
+      <BoundaryType Boundary="Xp" Type="Flux" />
+      <BoundaryType Boundary="Ym" Type="Flux" />
+      <BoundaryType Boundary="Yp" Type="Flux" />
+      <BoundaryType Boundary="Zm" Type="Value" />
+      <BoundaryType Boundary="Zp" Type="Value" />
+    </CompartmentSubDomain>
+    <CompartmentSubDomain Name="chromosome">
+      <BoundaryType Boundary="Xm" Type="Flux" />
+      <BoundaryType Boundary="Xp" Type="Flux" />
+      <BoundaryType Boundary="Ym" Type="Flux" />
+      <BoundaryType Boundary="Yp" Type="Flux" />
+      <BoundaryType Boundary="Zm" Type="Value" />
+      <BoundaryType Boundary="Zp" Type="Value" />
+      <PdeEquation Name="Haspini" SolutionType="Unknown">
+        <Boundaries Xm="Haspini_boundaryXm" Xp="Haspini_boundaryXp" Ym="Haspini_boundaryYm" Yp="Haspini_boundaryYp" />
+        <Rate>( - J_Haspin_activation_Plk1a + J_Haspin_deactivation)</Rate>
+        <Diffusion>Haspini_diffusionRate</Diffusion>
+        <Initial>Haspini_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="Haspina" SolutionType="Unknown">
+        <Boundaries Xm="Haspina_boundaryXm" Xp="Haspina_boundaryXp" Ym="Haspina_boundaryYm" Yp="Haspina_boundaryYp" />
+        <Rate>(J_Haspin_activation_Plk1a - J_Haspin_deactivation)</Rate>
+        <Diffusion>Haspina_diffusionRate</Diffusion>
+        <Initial>Haspina_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="Plk1a" SolutionType="Unknown">
+        <Boundaries Xm="Plk1a_boundaryXm" Xp="Plk1a_boundaryXp" Ym="Plk1a_boundaryYm" Yp="Plk1a_boundaryYp" />
+        <Rate>(J_Plk1_activation_panCPCa - J_Plk1_deactivation + J_Plk1a_input)</Rate>
+        <Diffusion>Plk1a_diffusionRate</Diffusion>
+        <Initial>Plk1a_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="H3" SolutionType="Unknown">
+        <Boundaries Xm="H3_boundaryXm" Xp="H3_boundaryXp" Ym="H3_boundaryYm" Yp="H3_boundaryYp" />
+        <Rate>( - J_H3_phos_Haspina + J_pH3_dephos)</Rate>
+        <Diffusion>H3_diffusionRate</Diffusion>
+        <Initial>H3_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pH3" SolutionType="Unknown">
+        <Boundaries Xm="pH3_boundaryXm" Xp="pH3_boundaryXp" Ym="pH3_boundaryYm" Yp="pH3_boundaryYp" />
+        <Rate>(J_H3_phos_Haspina - J_pH3_dephos - J_pH3_CPCi_binding - J_pH3_pH2A_Sgo1_CPCi_binding - J_pH3_CPCa_binding - J_pH3_pH2A_Sgo1_CPCa_binding)</Rate>
+        <Diffusion>pH3_diffusionRate</Diffusion>
+        <Initial>pH3_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pKnl1" SolutionType="Unknown">
+        <Boundaries Xm="pKnl1_boundaryXm" Xp="pKnl1_boundaryXp" Ym="pKnl1_boundaryYm" Yp="pKnl1_boundaryYp" />
+        <Rate>( - J_pKnl1_Bub1a_binding + J_pKnl1_Bub1a_unbinding + J_Knl1_phos_panMps1a - J_Knl1_dephosp)</Rate>
+        <Diffusion>pKnl1_diffusionRate</Diffusion>
+        <Initial>pKnl1_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pKnl1_Bub1a" SolutionType="Unknown">
+        <Boundaries Xm="pKnl1_Bub1a_boundaryXm" Xp="pKnl1_Bub1a_boundaryXp" Ym="pKnl1_Bub1a_boundaryYm" Yp="pKnl1_Bub1a_boundaryYp" />
+        <Rate>(J_pKnl1_Bub1a_binding - J_pKnl1_Bub1a_unbinding)</Rate>
+        <Diffusion>pKnl1_Bub1a_diffusionRate</Diffusion>
+        <Initial>pKnl1_Bub1a_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="Bub1a" SolutionType="Unknown">
+        <Boundaries Xm="Bub1a_boundaryXm" Xp="Bub1a_boundaryXp" Ym="Bub1a_boundaryYm" Yp="Bub1a_boundaryYp" />
+        <Rate>( - J_pKnl1_Bub1a_binding + J_Bub1a_his_release)</Rate>
+        <Diffusion>Bub1a_diffusionRate</Diffusion>
+        <Initial>Bub1a_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="H2A" SolutionType="Unknown">
+        <Boundaries Xm="H2A_boundaryXm" Xp="H2A_boundaryXp" Ym="H2A_boundaryYm" Yp="H2A_boundaryYp" />
+        <Rate>( - J_H2A_phos_Bub1a_Bub1a_his_pKnl1_Bub1a + J_pH2A_dephos)</Rate>
+        <Diffusion>H2A_diffusionRate</Diffusion>
+        <Initial>H2A_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pH2A" SolutionType="Unknown">
+        <Boundaries Xm="pH2A_boundaryXm" Xp="pH2A_boundaryXp" Ym="pH2A_boundaryYm" Yp="pH2A_boundaryYp" />
+        <Rate>(J_H2A_phos_Bub1a_Bub1a_his_pKnl1_Bub1a - J_pH2A_dephos - J_pH2A_Sgo1_binding)</Rate>
+        <Diffusion>pH2A_diffusionRate</Diffusion>
+        <Initial>pH2A_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="Bub1a_his" SolutionType="Unknown">
+        <Boundaries Xm="Bub1a_his_boundaryXm" Xp="Bub1a_his_boundaryXp" Ym="Bub1a_his_boundaryYm" Yp="Bub1a_his_boundaryYp" />
+        <Rate>(J_pKnl1_Bub1a_unbinding - J_Bub1a_his_release)</Rate>
+        <Diffusion>Bub1a_his_diffusionRate</Diffusion>
+        <Initial>Bub1a_his_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="Sgo1" SolutionType="Unknown">
+        <Boundaries Xm="Sgo1_boundaryXm" Xp="Sgo1_boundaryXp" Ym="Sgo1_boundaryYm" Yp="Sgo1_boundaryYp" />
+        <Rate>- J_pH2A_Sgo1_binding</Rate>
+        <Diffusion>Sgo1_diffusionRate</Diffusion>
+        <Initial>Sgo1_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pH2A_Sgo1" SolutionType="Unknown">
+        <Boundaries Xm="pH2A_Sgo1_boundaryXm" Xp="pH2A_Sgo1_boundaryXp" Ym="pH2A_Sgo1_boundaryYm" Yp="pH2A_Sgo1_boundaryYp" />
+        <Rate>(J_pH2A_Sgo1_binding - J_pH2A_Sgo1_CPCi_binding - J_pH2A_Sgo1_pH3_CPCi_binding - J_pH2A_Sgo1_pH3_CPCa_binding - J_pH2A_Sgo1_CPCa_binding)</Rate>
+        <Diffusion>pH2A_Sgo1_diffusionRate</Diffusion>
+        <Initial>pH2A_Sgo1_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="CPCi" SolutionType="Unknown">
+        <Boundaries Xm="CPCi_boundaryXm" Xp="CPCi_boundaryXp" Ym="CPCi_boundaryYm" Yp="CPCi_boundaryYp" />
+        <Rate>( - J_pH3_CPCi_binding - J_pH2A_Sgo1_CPCi_binding - J_CPC_cis_activation - J_CPC_trans_activation_panCPCa)</Rate>
+        <Diffusion>CPCi_diffusionRate</Diffusion>
+        <Initial>CPCi_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pH3_CPCi" SolutionType="Unknown">
+        <Boundaries Xm="pH3_CPCi_boundaryXm" Xp="pH3_CPCi_boundaryXp" Ym="pH3_CPCi_boundaryYm" Yp="pH3_CPCi_boundaryYp" />
+        <Rate>(J_pH3_CPCi_binding - J_pH2A_Sgo1_pH3_CPCi_binding - J_pH3_CPC_cis_activation - J_pH3_CPC_trans_activation_panCPCa)</Rate>
+        <Diffusion>pH3_CPCi_diffusionRate</Diffusion>
+        <Initial>pH3_CPCi_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pH2A_Sgo1_CPCi" SolutionType="Unknown">
+        <Boundaries Xm="pH2A_Sgo1_CPCi_boundaryXm" Xp="pH2A_Sgo1_CPCi_boundaryXp" Ym="pH2A_Sgo1_CPCi_boundaryYm" Yp="pH2A_Sgo1_CPCi_boundaryYp" />
+        <Rate>(J_pH2A_Sgo1_CPCi_binding - J_pH3_pH2A_Sgo1_CPCi_binding - J_pH2A_Sgo1_CPC_cis_activation - J_pH2A_Sgo1_CPC_trans_activation_panCPCa)</Rate>
+        <Diffusion>pH2A_Sgo1_CPCi_diffusionRate</Diffusion>
+        <Initial>pH2A_Sgo1_CPCi_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pH2A_Sgo1_pH3_CPCi" SolutionType="Unknown">
+        <Boundaries Xm="pH2A_Sgo1_pH3_CPCi_boundaryXm" Xp="pH2A_Sgo1_pH3_CPCi_boundaryXp" Ym="pH2A_Sgo1_pH3_CPCi_boundaryYm" Yp="pH2A_Sgo1_pH3_CPCi_boundaryYp" />
+        <Rate>(J_pH3_pH2A_Sgo1_CPCi_binding + J_pH2A_Sgo1_pH3_CPCi_binding - J_pH2A_Sgo1_pH3_CPC_cis_activation - J_pH2A_Sgo1_pH3_CPC_trans_activation_panCPCa)</Rate>
+        <Diffusion>pH2A_Sgo1_pH3_CPCi_diffusionRate</Diffusion>
+        <Initial>pH2A_Sgo1_pH3_CPCi_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="CPCa" SolutionType="Unknown">
+        <Boundaries Xm="CPCa_boundaryXm" Xp="CPCa_boundaryXp" Ym="CPCa_boundaryYm" Yp="CPCa_boundaryYp" />
+        <Rate>(J_CPC_cis_activation + J_CPC_trans_activation_panCPCa - J_pH3_CPCa_binding - J_pH2A_Sgo1_CPCa_binding)</Rate>
+        <Diffusion>CPCa_diffusionRate</Diffusion>
+        <Initial>CPCa_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pH3_CPCa" SolutionType="Unknown">
+        <Boundaries Xm="pH3_CPCa_boundaryXm" Xp="pH3_CPCa_boundaryXp" Ym="pH3_CPCa_boundaryYm" Yp="pH3_CPCa_boundaryYp" />
+        <Rate>(J_pH3_CPC_cis_activation + J_pH3_CPC_trans_activation_panCPCa + J_pH3_CPCa_binding - J_pH2A_Sgo1_pH3_CPCa_binding)</Rate>
+        <Diffusion>pH3_CPCa_diffusionRate</Diffusion>
+        <Initial>pH3_CPCa_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pH2A_Sgo1_CPCa" SolutionType="Unknown">
+        <Boundaries Xm="pH2A_Sgo1_CPCa_boundaryXm" Xp="pH2A_Sgo1_CPCa_boundaryXp" Ym="pH2A_Sgo1_CPCa_boundaryYm" Yp="pH2A_Sgo1_CPCa_boundaryYp" />
+        <Rate>(J_pH2A_Sgo1_CPC_cis_activation + J_pH2A_Sgo1_CPC_trans_activation_panCPCa - J_pH3_pH2A_Sgo1_CPCa_binding + J_pH2A_Sgo1_CPCa_binding)</Rate>
+        <Diffusion>pH2A_Sgo1_CPCa_diffusionRate</Diffusion>
+        <Initial>pH2A_Sgo1_CPCa_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pH2A_Sgo1_pH3_CPCa" SolutionType="Unknown">
+        <Boundaries Xm="pH2A_Sgo1_pH3_CPCa_boundaryXm" Xp="pH2A_Sgo1_pH3_CPCa_boundaryXp" Ym="pH2A_Sgo1_pH3_CPCa_boundaryYm" Yp="pH2A_Sgo1_pH3_CPCa_boundaryYp" />
+        <Rate>(J_pH2A_Sgo1_pH3_CPC_cis_activation + J_pH2A_Sgo1_pH3_CPC_trans_activation_panCPCa + J_pH3_pH2A_Sgo1_CPCa_binding + J_pH2A_Sgo1_pH3_CPCa_binding)</Rate>
+        <Diffusion>pH2A_Sgo1_pH3_CPCa_diffusionRate</Diffusion>
+        <Initial>pH2A_Sgo1_pH3_CPCa_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="Plk1i" SolutionType="Unknown">
+        <Boundaries Xm="Plk1i_boundaryXm" Xp="Plk1i_boundaryXp" Ym="Plk1i_boundaryYm" Yp="Plk1i_boundaryYp" />
+        <Rate>( - J_Plk1_activation_panCPCa + J_Plk1_deactivation - J_Plk1i_output)</Rate>
+        <Diffusion>Plk1i_diffusionRate</Diffusion>
+        <Initial>Plk1i_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="Mps1i" SolutionType="Unknown">
+        <Boundaries Xm="Mps1i_boundaryXm" Xp="Mps1i_boundaryXp" Ym="Mps1i_boundaryYm" Yp="Mps1i_boundaryYp" />
+        <Rate>( - J_Mps1i_phos_panCPCa + J_pMps1i_dephos - J_Ndc80_Mps1i_binding - J_pNdc80_Mps1i_binding - J_Mps1i_cis_activation - J_Mps1i_output - J_Mps1i_phos_Plk1a - J_Mps1i_trans_activation)</Rate>
+        <Diffusion>Mps1i_diffusionRate</Diffusion>
+        <Initial>Mps1i_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pMps1i" SolutionType="Unknown">
+        <Boundaries Xm="pMps1i_boundaryXm" Xp="pMps1i_boundaryXp" Ym="pMps1i_boundaryYm" Yp="pMps1i_boundaryYp" />
+        <Rate>(J_Mps1i_phos_panCPCa - J_pMps1i_dephos - J_Ndc80_pMps1i_binding - J_pNdc80_pMps1i_binding - J_pMps1_cis_activation + J_Mps1i_phos_Plk1a - J_pMps1i_trans_activation)</Rate>
+        <Diffusion>pMps1i_diffusionRate</Diffusion>
+        <Initial>pMps1i_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="Mps1a" SolutionType="Unknown">
+        <Boundaries Xm="Mps1a_boundaryXm" Xp="Mps1a_boundaryXp" Ym="Mps1a_boundaryYm" Yp="Mps1a_boundaryYp" />
+        <Rate>( - J_Mps1a_phos_panCPCa + J_pMps1a_dephos - J_Ndc80_Mps1a_binding - J_pNdc80_Mps1a_binding + J_Mps1a_input + J_Mps1i_cis_activation - J_Mps1a_phos_Plk1a + J_Mps1i_trans_activation)</Rate>
+        <Diffusion>Mps1a_diffusionRate</Diffusion>
+        <Initial>Mps1a_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pMps1a" SolutionType="Unknown">
+        <Boundaries Xm="pMps1a_boundaryXm" Xp="pMps1a_boundaryXp" Ym="pMps1a_boundaryYm" Yp="pMps1a_boundaryYp" />
+        <Rate>(J_Mps1a_phos_panCPCa - J_pMps1a_dephos - J_Ndc80_pMps1a_binding - J_pNdc80_pMps1a_binding + J_pMps1_cis_activation + J_Mps1a_phos_Plk1a + J_pMps1i_trans_activation)</Rate>
+        <Diffusion>pMps1a_diffusionRate</Diffusion>
+        <Initial>pMps1a_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="Ndc80" SolutionType="Unknown">
+        <Boundaries Xm="Ndc80_boundaryXm" Xp="Ndc80_boundaryXp" Ym="Ndc80_boundaryYm" Yp="Ndc80_boundaryYp" />
+        <Rate>( - J_Ndc80_phos_panCPCa + J_pNdc80_dephos - J_Ndc80_Mps1i_binding - J_Ndc80_pMps1i_binding - J_Ndc80_Mps1a_binding - J_Ndc80_pMps1a_binding)</Rate>
+        <Diffusion>Ndc80_diffusionRate</Diffusion>
+        <Initial>Ndc80_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pNdc80" SolutionType="Unknown">
+        <Boundaries Xm="pNdc80_boundaryXm" Xp="pNdc80_boundaryXp" Ym="pNdc80_boundaryYm" Yp="pNdc80_boundaryYp" />
+        <Rate>(J_Ndc80_phos_panCPCa - J_pNdc80_dephos - J_pNdc80_Mps1i_binding - J_pNdc80_pMps1i_binding - J_pNdc80_Mps1a_binding - J_pNdc80_pMps1a_binding)</Rate>
+        <Diffusion>pNdc80_diffusionRate</Diffusion>
+        <Initial>pNdc80_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="Ndc80_Mps1i" SolutionType="Unknown">
+        <Boundaries Xm="Ndc80_Mps1i_boundaryXm" Xp="Ndc80_Mps1i_boundaryXp" Ym="Ndc80_Mps1i_boundaryYm" Yp="Ndc80_Mps1i_boundaryYp" />
+        <Rate>(J_Ndc80_Mps1i_binding - J_Ndc80_Mps1_cis_activation - J_Ndc80_Mps1_trans_activation)</Rate>
+        <Diffusion>Ndc80_Mps1i_diffusionRate</Diffusion>
+        <Initial>Ndc80_Mps1i_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="Ndc80_pMps1i" SolutionType="Unknown">
+        <Boundaries Xm="Ndc80_pMps1i_boundaryXm" Xp="Ndc80_pMps1i_boundaryXp" Ym="Ndc80_pMps1i_boundaryYm" Yp="Ndc80_pMps1i_boundaryYp" />
+        <Rate>(J_Ndc80_pMps1i_binding - J_Ndc80_pMps1_trans_activation)</Rate>
+        <Diffusion>Ndc80_pMps1i_diffusionRate</Diffusion>
+        <Initial>Ndc80_pMps1i_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pNdc80_Mps1i" SolutionType="Unknown">
+        <Boundaries Xm="pNdc80_Mps1i_boundaryXm" Xp="pNdc80_Mps1i_boundaryXp" Ym="pNdc80_Mps1i_boundaryYm" Yp="pNdc80_Mps1i_boundaryYp" />
+        <Rate>(J_pNdc80_Mps1i_binding - J_pNdc80_Mps1_cis_activation - J_pNdc80_Mps1_trans_activation)</Rate>
+        <Diffusion>pNdc80_Mps1i_diffusionRate</Diffusion>
+        <Initial>pNdc80_Mps1i_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pNdc80_pMps1i" SolutionType="Unknown">
+        <Boundaries Xm="pNdc80_pMps1i_boundaryXm" Xp="pNdc80_pMps1i_boundaryXp" Ym="pNdc80_pMps1i_boundaryYm" Yp="pNdc80_pMps1i_boundaryYp" />
+        <Rate>(J_pNdc80_pMps1i_binding - J_Ndc80_pMps1_cis_activation - J_pNdc80_pMps1_cis_activation - J_pNdc80_pMps1_trans_activation)</Rate>
+        <Diffusion>pNdc80_pMps1i_diffusionRate</Diffusion>
+        <Initial>pNdc80_pMps1i_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="Ndc80_Mps1a" SolutionType="Unknown">
+        <Boundaries Xm="Ndc80_Mps1a_boundaryXm" Xp="Ndc80_Mps1a_boundaryXp" Ym="Ndc80_Mps1a_boundaryYm" Yp="Ndc80_Mps1a_boundaryYp" />
+        <Rate>(J_Ndc80_Mps1a_binding + J_Ndc80_Mps1_cis_activation + J_Ndc80_Mps1_trans_activation)</Rate>
+        <Diffusion>Ndc80_Mps1a_diffusionRate</Diffusion>
+        <Initial>Ndc80_Mps1a_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="Ndc80_pMps1a" SolutionType="Unknown">
+        <Boundaries Xm="Ndc80_pMps1a_boundaryXm" Xp="Ndc80_pMps1a_boundaryXp" Ym="Ndc80_pMps1a_boundaryYm" Yp="Ndc80_pMps1a_boundaryYp" />
+        <Rate>(J_Ndc80_pMps1a_binding + J_Ndc80_pMps1_trans_activation)</Rate>
+        <Diffusion>Ndc80_pMps1a_diffusionRate</Diffusion>
+        <Initial>Ndc80_pMps1a_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pNdc80_Mps1a" SolutionType="Unknown">
+        <Boundaries Xm="pNdc80_Mps1a_boundaryXm" Xp="pNdc80_Mps1a_boundaryXp" Ym="pNdc80_Mps1a_boundaryYm" Yp="pNdc80_Mps1a_boundaryYp" />
+        <Rate>(J_pNdc80_Mps1a_binding + J_pNdc80_Mps1_cis_activation + J_pNdc80_Mps1_trans_activation)</Rate>
+        <Diffusion>pNdc80_Mps1a_diffusionRate</Diffusion>
+        <Initial>pNdc80_Mps1a_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pNdc80_pMps1a" SolutionType="Unknown">
+        <Boundaries Xm="pNdc80_pMps1a_boundaryXm" Xp="pNdc80_pMps1a_boundaryXp" Ym="pNdc80_pMps1a_boundaryYm" Yp="pNdc80_pMps1a_boundaryYp" />
+        <Rate>(J_pNdc80_pMps1a_binding + J_Ndc80_pMps1_cis_activation + J_pNdc80_pMps1_cis_activation + J_pNdc80_pMps1_trans_activation)</Rate>
+        <Diffusion>pNdc80_pMps1a_diffusionRate</Diffusion>
+        <Initial>pNdc80_pMps1a_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="Knl1" SolutionType="Unknown">
+        <Boundaries Xm="Knl1_boundaryXm" Xp="Knl1_boundaryXp" Ym="Knl1_boundaryYm" Yp="Knl1_boundaryYp" />
+        <Rate>( - J_Knl1_phos_panMps1a + J_Knl1_dephosp)</Rate>
+        <Diffusion>Knl1_diffusionRate</Diffusion>
+        <Initial>Knl1_init_umol_l_1</Initial>
+      </PdeEquation>
+      <PdeEquation Name="pPlk1i" SolutionType="Unknown">
+        <Boundaries Xm="pPlk1i_boundaryXm" Xp="pPlk1i_boundaryXp" Ym="pPlk1i_boundaryYm" Yp="pPlk1i_boundaryYp" />
+        <Rate>0.0</Rate>
+        <Diffusion>pPlk1i_diffusionRate</Diffusion>
+        <Initial>pPlk1i_init_umol_l_1</Initial>
+      </PdeEquation>
+    </CompartmentSubDomain>
+    <MembraneSubDomain Name="chromosome_void_membrane" InsideCompartment="chromosome" OutsideCompartment="void">
+      <BoundaryType Boundary="Xm" Type="Value" />
+      <BoundaryType Boundary="Xp" Type="Value" />
+      <BoundaryType Boundary="Ym" Type="Value" />
+      <BoundaryType Boundary="Yp" Type="Value" />
+      <BoundaryType Boundary="Zm" Type="Value" />
+      <BoundaryType Boundary="Zp" Type="Value" />
+      <JumpCondition Name="Haspini">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="Haspina">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="Plk1a">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="H3">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pH3">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pKnl1">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pKnl1_Bub1a">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="Bub1a">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="H2A">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pH2A">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="Bub1a_his">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="Sgo1">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pH2A_Sgo1">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="CPCi">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pH3_CPCi">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pH2A_Sgo1_CPCi">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pH2A_Sgo1_pH3_CPCi">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="CPCa">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pH3_CPCa">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pH2A_Sgo1_CPCa">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pH2A_Sgo1_pH3_CPCa">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="Plk1i">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="Mps1i">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pMps1i">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="Mps1a">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pMps1a">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="Ndc80">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pNdc80">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="Ndc80_Mps1i">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="Ndc80_pMps1i">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pNdc80_Mps1i">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pNdc80_pMps1i">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="Ndc80_Mps1a">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="Ndc80_pMps1a">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pNdc80_Mps1a">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pNdc80_pMps1a">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="Knl1">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+      <JumpCondition Name="pPlk1i">
+        <InFlux>0.0</InFlux>
+        <OutFlux>0.0</OutFlux>
+      </JumpCondition>
+    </MembraneSubDomain>
+  </MathDescription>
+  <Simulation Name="11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan" ImportedTaskId="repTsk_0_1_0">
+    <Annotation>11_27_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv_CPCi_scan</Annotation>
+    <SolverTaskDescription TaskType="Unsteady" UseSymbolicJacobian="false" Solver="Sundials Stiff PDE Solver (Variable Time Step)">
+      <TimeBound StartTime="0.0" EndTime="100.0" />
+      <TimeStep DefaultTime="0.1" MinTime="1.0E-8" MaxTime="10.0" />
+      <ErrorTolerance Absolut="1.0E-9" Relative="1.0E-7" />
+      <OutputOptions OutputTimeStep="10.0" />
+      <SundialsSolverOptions>
+        <maxOrderAdvection>2</maxOrderAdvection>
+      </SundialsSolverOptions>
+      <NumberProcessors>1</NumberProcessors>
+    </SolverTaskDescription>
+    <MathOverrides>
+      <Constant Name="Ndc80_frac">0.1</Constant>
+      <Constant Name="CPCi_ic" ConstantArraySpec="1001">0.0 to 0.07838, 3 values</Constant>
+      <Constant Name="Plk1a_frac">0.2</Constant>
+      <Constant Name="Mps1a_frac">0.2</Constant>
+    </MathOverrides>
+    <MeshSpecification>
+      <Size X="64" Y="128" Z="1" />
+    </MeshSpecification>
+    <Version Name="temp simulation" KeyValue="529102732" BranchId="1" Archived="1" Date="02-Apr-2024 12:33:00" FromVersionable="false">
+      <Owner Name="temp" Identifier="123" />
+      <GroupAccess Type="1" />
+    </Version>
+  </Simulation>
+  <Geometry Name="spatialGeom" Dimension="2">
+    <Extent X="1.6E-5" Y="3.22E-5" Z="1.0" />
+    <Origin X="0.0" Y="0.0" Z="0.0" />
+    <SubVolume Name="void" Handle="2" Type="Analytical">
+      <AnalyticExpression>(((x &gt;= 0.0) &amp;&amp; (x &lt;= 1.25E-6) &amp;&amp; (y &gt;= 1.45E-5) &amp;&amp; (y &lt;= 1.75E-5)) || ((x &gt;= 1.475E-5) &amp;&amp; (x &lt;= 1.6E-5) &amp;&amp; (y &gt;= 1.45E-5) &amp;&amp; (y &lt;= 1.75E-5)))</AnalyticExpression>
+    </SubVolume>
+    <SubVolume Name="chromosome" Handle="0" Type="Analytical">
+      <AnalyticExpression>1.0</AnalyticExpression>
+    </SubVolume>
+    <SurfaceClass Name="chromosome_void_membrane" SubVolume1Ref="chromosome" SubVolume2Ref="void" />
+    <SurfaceDescription NumSamplesX="101" NumSamplesY="101" NumSamplesZ="1" CutoffFrequency="0.3">
+      <VolumeRegion Name="chromosome0" RegionID="0" SubVolume="chromosome" Size="5.082448E-10" Unit="um2" />
+      <VolumeRegion Name="void1" RegionID="1" SubVolume="void" Size="3.4776E-12" Unit="um2" />
+      <VolumeRegion Name="void2" RegionID="2" SubVolume="void" Size="3.4776E-12" Unit="um2" />
+      <MembraneRegion Name="membrane_chromosome0_void2" VolumeRegion1="void1" VolumeRegion2="chromosome0" Size="4.890106494619207E-6" Unit="um" />
+      <MembraneRegion Name="membrane_chromosome0_void2" VolumeRegion1="void2" VolumeRegion2="chromosome0" Size="4.890106494619204E-6" Unit="um" />
+    </SurfaceDescription>
+  </Geometry>
+</SimulationTask>
