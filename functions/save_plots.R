@@ -61,10 +61,10 @@ finally = {
 }
 
 )
-  
+
 tryCatch(
   expr = {
-    
+
     all_plot(
         SimID=sims,
         names=names,
@@ -75,7 +75,7 @@ tryCatch(
         tSpan=tSpan,
         chromWidth=1.6, #um
         chromHeight=3.2, #um updated
-        dataDim=c(128,64), #updated 
+        dataDim=c(128,64), #updated
         row_1=1,
         row_2=dataDim[1],
         col_1=1,
@@ -90,11 +90,10 @@ error = function(e){
   print(e)
 },
 finally = {
-  
+
 }
-  
+
 )
   
   toc()
-
 }

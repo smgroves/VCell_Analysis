@@ -128,16 +128,16 @@ def lineplot(species, in_dir, sim_prefix, name_scan, num_scans, xmax = None, xmi
 # xmax = 1.065
 # lineplot('CPC', in_dir, sim_prefix, name_scan, num_scans, xmax, location='ic')
 
-sim_prefix = "04_01_24_relaxed_RefModel_Bub1_his_scan"
-name_scan = 'Bub1a_his_KD'
-num_scans = 6
-xmin = 0.001
-xmax = 100
-lineplot('CPC', in_dir, sim_prefix, name_scan, num_scans, xmax = xmax, xmin = xmin,
-         location='ic', log = True, active = 'all',
-         suffix = '_all',
-         highlight = "04_01_24_relaxed_RefModel_Bub1_his_scan3",
-         name_folder="Bub1-his-scan-relaxed_rainbow")
+# sim_prefix = "04_01_24_relaxed_RefModel_Bub1_his_scan"
+# name_scan = 'Bub1a_his_KD'
+# num_scans = 6
+# xmin = 0.001
+# xmax = 100
+# lineplot('CPC', in_dir, sim_prefix, name_scan, num_scans, xmax = xmax, xmin = xmin,
+#          location='ic', log = True, active = 'all',
+#          suffix = '_all',
+#          highlight = "04_01_24_relaxed_RefModel_Bub1_his_scan3",
+#          name_folder="Bub1-his-scan-relaxed_rainbow")
 
 # sim_prefix = "04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan"
 # in_dir_ = "/Users/smgroves/Box/CPC_Model_Project/vcell_plots/"
@@ -147,32 +147,36 @@ lineplot('CPC', in_dir, sim_prefix, name_scan, num_scans, xmax = xmax, xmin = xm
 # lineplot('CPC', in_dir_, sim_prefix, name_scan, num_scans, xmax, location = 'kt', suffix = '_Bub1_his_kd_0.001')
 # lineplot('CPC', in_dir_, sim_prefix, name_scan, num_scans, xmax, location = 'ic', suffix = '_Bub1_his_kd_0.001')
 #
-sim_prefix = "04_01_24_tensed_RefModel_Bub1_his_scan"
-name_scan = 'Bub1a_his_KD'
-num_scans = 6
-xmin = 0.001
-xmax = 100
-lineplot('CPC', in_dir, sim_prefix, name_scan, num_scans, xmax = xmax, xmin = xmin,
-         location='kt', log = True, active = 'all',
-         suffix = '_all',
-         highlight = "04_01_24_tensed_RefModel_Bub1_his_scan3",
-         name_folder="Bub1-his-scan-tensed_rainbow")
+# sim_prefix = "04_01_24_tensed_RefModel_Bub1_his_scan"
+# name_scan = 'Bub1a_his_KD'
+# num_scans = 6
+# xmin = 0.001
+# xmax = 100
+# lineplot('CPC', in_dir, sim_prefix, name_scan, num_scans, xmax = xmax, xmin = xmin,
+#          location='kt', log = True, active = 'all',
+#          suffix = '_all',
+#          highlight = "04_01_24_tensed_RefModel_Bub1_his_scan3",
+#          name_folder="Bub1-his-scan-tensed_rainbow")
 
 ##### Comparing old and new geometry
 ##### Comparing extra reactions
-def plot_across_models(species, plot_list, in_dir, location = 'ic',column = "Sum_Active", active = 'active',
+def plot_across_models(species, plot_list, in_dir,  name_list = [], location = 'ic',column = "Sum_Active", active = 'active',
                        name = None, name_plot="", name_folder =""):
-    if os.path.isdir(f"./figures/lineplot_across_sims/{name_folder}"):
+    print("Plotting across models")
+    if os.path.isdir(f"/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/figures/lineplot_across_sims/{name_folder}"):
         pass
     else:
-        os.makedirs(f"./figures/lineplot_across_sims/{name_folder}")
-    plot_list = sorted(plot_list)
+        os.makedirs(f"/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/figures/lineplot_across_sims/{name_folder}")
+        print(f"Made folder {name_folder}")
+    # plot_list = sorted(plot_list)
     plot_data = pd.DataFrame()
+    if len(name_list) == 0:
+        name_list = plot_list
     if active == 'all':
-        for p in plot_list:
+        for n, p in zip(name_list,plot_list):
             tmp = pd.read_csv(f"{in_dir}/{p}/data/data_{location}_{species}.csv", header = 0, index_col = None)
             tmp['Time'] = 10*tmp['Time']
-            tmp['parameter'] = p
+            tmp['parameter'] = n
             tmp['all'] = tmp[list(set(tmp.columns).difference({"Time",'parameter'}))].sum(axis = 1)
             plot_data = pd.concat([plot_data,tmp[['parameter','all', 'Time']]], ignore_index=True)
             column = 'all'
@@ -186,8 +190,10 @@ def plot_across_models(species, plot_list, in_dir, location = 'ic',column = "Sum
             tmp['Time'] = 10*tmp['Time']
             tmp['parameter'] = p
             plot_data = pd.concat([plot_data,tmp[['parameter',column, 'Time']]], ignore_index=True)
+    # fig = plt.figure(figsize = (4,3))
     ax = sns.lineplot(x = plot_data['Time'].to_numpy(), y= plot_data[column].to_numpy(), hue = plot_data['parameter'].to_numpy())
-
+    ax.set_xlim(0,400)
+    ax.set_ylim(0,6)
 
     plt.xlabel("Time (s)")
     if name is not None:
@@ -203,8 +209,8 @@ def plot_across_models(species, plot_list, in_dir, location = 'ic',column = "Sum
 
     # ax.legend(loc='center left', bbox_to_anchor=(1.25, 0.5), ncol=1)
     plt.tight_layout()
-
-    plt.savefig(f"./figures/lineplot_across_sims/{name_folder}/{name_plot}-{species}_loc-{location}.png")
+    print("saving fig")
+    plt.savefig(f"/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/figures/lineplot_across_sims/{name_folder}/{name_plot}-{species}_loc-{location}.pdf")
     # plt.show()
     plt.close()
 
@@ -225,10 +231,14 @@ def plot_across_models(species, plot_list, in_dir, location = 'ic',column = "Sum
 # plot_across_models('CPC', plot_list, in_dir_, location='kt',name_plot="Sgo1_plots_all_active",active= 'active')
 #
 # in_dir_ = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/From_Catalina/Sgo1_plots/Sgo1_CPC"
-# plot_list = ["03_21_24_relaxed_RefModel_64rxns",'03_21_24_relaxed_RefModel_CPC50_inh',
-#              '03_21_24_relaxed_RefModel_Sgo1_50P', '03_21_24_relaxed_RefModel_Sgo1_50P_CPC50_inh']
-# plot_across_models('CPC', plot_list, in_dir_, location='ic',name_plot="2Sgo1_CPC_plots_all",active= 'all')
-# plot_across_models('CPC', plot_list, in_dir_, location='kt',name_plot="2Sgo1_CPC_plots_all",active= 'all')
+# plot_list = ["03_21_24_relaxed_RefModel_64rxns", '03_21_24_relaxed_RefModel_Sgo1_50P']
+#             #  "03_21_24_relaxed_RefModel_CPC50_inh","03_21_24_relaxed_RefModel_Sgo1_50P_CPC50_inh"]
+# # name_list = ["Base Model",  "Sgo1+/-", "50% CPC Inh","50% CPC Inh + Sgo1+/-"]
+# name_list = ["Base Model",  "Sgo1+/-"]
+
+# print(plot_list)
+# plot_across_models('CPC', plot_list, in_dir_, name_list= name_list, location='ic',name_plot="Sgo1_plots",active= 'all', name_folder="Sgo1_CPC_05_20_24")
+# plot_across_models('CPC', plot_list, in_dir_, location='kt',name_plot="3Sgo1_CPC_plots_all",active= 'all')
 
 # in_dir_ = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/From_Catalina/Sgo1_plots/Sgo1_haspin"
 # plot_list = ["03_21_24_relaxed_RefModel_64rxns",'03_21_24_relaxed_RefModel_Haspin50_inh',
@@ -264,9 +274,9 @@ def plot_across_models(species, plot_list, in_dir, location = 'ic',column = "Sum
 #
 
 ## TO DO
-# name_folder = "RefModel_base_sim_relaxed_v_tensed"
-# in_dir = f"/Users/smgroves/Box/CPC_Model_Project/vcell_plots"
-# plot_list = ["04_02_24_tensed_RefModel","03_21_24_relaxed_RefModel_64rxns"]
-# plot_across_models('CPC', plot_list, in_dir, location='ic',name_plot="relaxed_v_tensed_all",active= 'all',name_folder=name_folder)
+name_folder = "RefModel_base_sim_relaxed_v_tensed"
+in_dir = f"/Users/smgroves/Box/CPC_Model_Project/vcell_plots"
+plot_list = ["04_02_24_tensed_RefModel","03_21_24_relaxed_RefModel_64rxns"]
+plot_across_models('CPC', plot_list, in_dir,name_list = ['Proper attachments','Improper attachments'], location='ic',name_plot="relaxed_v_tensed_all",active= 'all',name_folder=name_folder)
 # plot_across_models('CPC', plot_list, in_dir, location='kt',name_plot="relaxed_v_tensed_all",active= 'all', name_folder=name_folder )
-#
+

@@ -180,7 +180,6 @@ vcell_heatmap <- function(
         }
         
         speciesDesired <- speciesName
-        
         # sum matrices
         if(length(species)>1 && speciesDesired=="inactive CPC"){
           M <- reduce(L,`+`)+clampConc
@@ -191,7 +190,7 @@ vcell_heatmap <- function(
         }else if(clamped==FALSE){
           M<-L[[1]]+clampConc
         }
-        
+
         # Mass integration 
         # total CPC
         # View(M)
@@ -314,6 +313,6 @@ vcell_heatmap <- function(
     )
   
   print(p)
-  return(list(nlist,M))
+  return(list(L,M))
 }
 
