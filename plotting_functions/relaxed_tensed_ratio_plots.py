@@ -85,12 +85,12 @@ def relaxed_tensed_plots(species, relaxed_model, tensed_model, in_dir, location 
     # # plt.show()
     # plt.close()
 
-# species = "CPC"
-# relaxed_model = "03_21_24_relaxed_RefModel_64rxns"
-# tensed_model = "04_02_24_tensed_RefModel"
-# relaxed_tensed_plots(species, relaxed_model, tensed_model, in_dir, location = 'ic',
-#                      column = "Sum_Active", active = 'active',
-#                      name_folder ="Base_model")
+species = "CPC"
+relaxed_model = "03_21_24_relaxed_RefModel_64rxns"
+tensed_model = "04_02_24_tensed_RefModel"
+relaxed_tensed_plots(species, relaxed_model, tensed_model, in_dir, location = 'ic',
+                     column = "Sum_Active", active = 'active',
+                     name_folder ="Base_model")
 
 # species = "CPC"
 # relaxed_model = "04_01_24_relaxed_RefModel_Bub1_his_scan0"
@@ -232,15 +232,15 @@ def param_scan_relaxed_tensed_plots(species, relaxed_models, tensed_models, in_d
     # # plt.show()
     # plt.close()
 
-relaxed_models = []
-tensed_models = []
-for n in range(6):
-    relaxed_models.append(f"04_01_24_relaxed_RefModel_Bub1_his_scan{n}")
-    tensed_models.append(f"04_01_24_tensed_RefModel_Bub1_his_scan{n}")
-xmin = 0.001
-xmax = 100
-param_scan_relaxed_tensed_plots("CPC", relaxed_models, tensed_models, in_dir,
-                                name_scan="Bub1-his_KD",location = 'ic',
-                                active = 'all', log = True, xmin = xmin, xmax = xmax,
-                                name_folder ="Bub1-his-KD_scan", suffix = "_100")
+# relaxed_models = []
+# tensed_models = []
+# for n in range(6):
+#     relaxed_models.append(f"04_01_24_relaxed_RefModel_Bub1_his_scan{n}")
+#     tensed_models.append(f"04_01_24_tensed_RefModel_Bub1_his_scan{n}")
+# xmin = 0.001
+# xmax = 100
+# param_scan_relaxed_tensed_plots("CPC", relaxed_models, tensed_models, in_dir,
+#                                 name_scan="Bub1-his_KD",location = 'ic',
+#                                 active = 'all', log = True, xmin = xmin, xmax = xmax,
+#                                 name_folder ="Bub1-his-KD_scan", suffix = "_100")
 
