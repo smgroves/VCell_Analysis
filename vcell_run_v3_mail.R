@@ -42,21 +42,21 @@ Haspin_P_species <- c("Haspina", "Haspini", "Plk1a")
 
 # How many heat maps to return
 # Change
-H <- 1
+H <- 3
 
 heatmap_species <- vector("list", H)
 heatmap_info_list <- vector("list", H)
 
 # Change, IN ORDER
 heatmap_species[[1]] <- CPC_species
-# heatmap_species[[2]] <- pH2A_species
-# heatmap_species[[3]] <- pH3_species
+heatmap_species[[2]] <- pH2A_species
+heatmap_species[[3]] <- pH3_species
 
 
 # Change, name of plot in plot directory, also name in heatmap, IN ORDER
 heatmap_info_list[[1]] <- c("all CPC")
-# heatmap_info_list[[2]] <- c("all pH2A")
-# heatmap_info_list[[3]] <- c("all pH3")
+heatmap_info_list[[2]] <- c("all pH2A")
+heatmap_info_list[[3]] <- c("all pH3")
 
 
 # H <- 2
@@ -77,7 +77,7 @@ heatmap_info_list[[1]] <- c("all CPC")
 
 
 # ---------------- LINE PLOTS ---------------
-L <- 1
+L <- 7
 
 all_data <- vector("list", L)
 species_info_list <- vector("list", L)
@@ -87,22 +87,22 @@ all_species <- c(CPC_species)#, Mps1_species, Haspin_Plk1_species, pH3_species, 
 
 # Change, IN ORDER
 all_data[[1]] <- CPC_species
-# all_data[[2]] <- Mps1_species
-# all_data[[3]] <- Haspin_Plk1_species
-# all_data[[4]] <- pH3_species
-# all_data[[5]] <- pH2A_species
-# all_data[[6]] <- only_H3_H2A_species
-# all_data[[7]] <- Bub1a_pKnl1_species
+all_data[[2]] <- Mps1_species
+all_data[[3]] <- Haspin_Plk1_species
+all_data[[4]] <- pH3_species
+all_data[[5]] <- pH2A_species
+all_data[[6]] <- only_H3_H2A_species
+all_data[[7]] <- Bub1a_pKnl1_species
 
 
 # Change, IN ORDER
 species_info_list[[1]] <- c("CPC", "Inactive CPC", "Active CPC", "CPC Activation", TRUE, FALSE, FALSE, TRUE)
-# species_info_list[[2]] <- c("Mps1", "Inactive Mps1", "Active Mps1", "Mps1 Activation", TRUE, FALSE, FALSE, TRUE)
-# species_info_list[[3]] <- c("Haspin_Plk1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-# species_info_list[[4]] <- c("pH3_species", "Inactive pH3 Species", "Active pH3 Species", "All pH3 Species", FALSE, TRUE, TRUE, FALSE)
-# species_info_list[[5]] <- c("pH2A_species", "Inactive pH2A Species", "Active pH2A Species", "All pH2A Species", FALSE, TRUE, TRUE, FALSE)
-# species_info_list[[6]] <- c("H2A & H3", "Inactive H2A & H3", "Active H2A & H3", "H2A & H3", FALSE, FALSE, TRUE, FALSE)
-# species_info_list[[7]] <- c("Bub1a_pKnl1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+species_info_list[[2]] <- c("Mps1", "Inactive Mps1", "Active Mps1", "Mps1 Activation", TRUE, FALSE, FALSE, TRUE)
+species_info_list[[3]] <- c("Haspin_Plk1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+species_info_list[[4]] <- c("pH3_species", "Inactive pH3 Species", "Active pH3 Species", "All pH3 Species", FALSE, TRUE, TRUE, FALSE)
+species_info_list[[5]] <- c("pH2A_species", "Inactive pH2A Species", "Active pH2A Species", "All pH2A Species", FALSE, TRUE, TRUE, FALSE)
+species_info_list[[6]] <- c("H2A & H3", "Inactive H2A & H3", "Active H2A & H3", "H2A & H3", FALSE, FALSE, TRUE, FALSE)
+species_info_list[[7]] <- c("Bub1a_pKnl1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
 
 
 # 
@@ -156,7 +156,7 @@ kt_width = c(
               # "Relaxed",
               # "Relaxed",
               # "Relaxed",
-              "Relaxed"
+              "Tensed"
              )
 
 # All simulation IDs
@@ -321,7 +321,9 @@ sims <- c(
   # "SimID_270510936_3__exported",
   # "SimID_270510936_4__exported",
   # "SimID_270510936_5__exported"
-  "SimID_270418727_0__exported"
+  # "SimID_270418727_0__exported"
+  # "SimID_272623071_0__exported"
+  "SimID_272623234_0__exported"
 )
 
 # Folder naming corresponding to specific simulation ID
@@ -475,7 +477,9 @@ var <- c(
   # "04_01_24_tensed_RefModel_Bub1_his_scan3",
   # "04_01_24_tensed_RefModel_Bub1_his_scan4",
   # "04_01_24_tensed_RefModel_Bub1_his_scan5"
-  "03_25_24_relaxed_RefModel"
+  # "03_25_24_relaxed_RefModel"
+  # "07_14_24_500s_post_transition_base_20Pac"
+  "07_14_24_500s_post_transition_base"
   )
 
 #########################################################

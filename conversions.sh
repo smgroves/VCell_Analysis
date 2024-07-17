@@ -162,3 +162,7 @@ python hdf5_converter.py "SimID_270510936_0__exported.hdf5" '/Users/smgroves/Box
 
 python hdf5_converter.py "SimID_270418727_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "03_25_24_CPC_relaxed_RefModel_128x64" "03_25_24_relaxed_RefModel"
 
+
+python hdf5_converter.py "SimID_272623071_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_24_23_CPC_tensed_RefModel_128x64_post_transition" "07_14_24_500s_post_transition_base_20Pac"
+
+python hdf5_converter.py "SimID_272623234_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "10_24_23_CPC_tensed_RefModel_128x64_post_transition" "07_14_24_500s_post_transition_base"
