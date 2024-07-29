@@ -190,9 +190,10 @@ def plot_across_models(species, plot_list, in_dir,  name_list = [], location = '
             tmp['Time'] = 10*tmp['Time']
             tmp['parameter'] = p
             plot_data = pd.concat([plot_data,tmp[['parameter',column, 'Time']]], ignore_index=True)
-    # fig = plt.figure(figsize = (4,3))
+    fig = plt.figure(figsize = (4,3))
+    print(plot_data.loc[plot_data["Time"]==500][column])
     ax = sns.lineplot(x = plot_data['Time'].to_numpy(), y= plot_data[column].to_numpy(), hue = plot_data['parameter'].to_numpy())
-    ax.set_xlim(0,400)
+    ax.set_xlim(0,500)
     ax.set_ylim(0,6)
 
     plt.xlabel("Time (s)")
@@ -210,8 +211,8 @@ def plot_across_models(species, plot_list, in_dir,  name_list = [], location = '
     # ax.legend(loc='center left', bbox_to_anchor=(1.25, 0.5), ncol=1)
     plt.tight_layout()
     print("saving fig")
-    plt.savefig(f"/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/figures/lineplot_across_sims/{name_folder}/{name_plot}-{species}_loc-{location}.pdf")
-    # plt.show()
+    # plt.savefig(f"/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/figures/lineplot_across_sims/{name_folder}/{name_plot}-{species}_loc-{location}.pdf")
+    plt.show()
     plt.close()
 
 # in_dir_ = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/From_Catalina/CPC_plots"
