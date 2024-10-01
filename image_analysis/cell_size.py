@@ -89,4 +89,5 @@ def plot_hist_sizes(indir,
         else:
             plt.show()
 
-plot_hist_sizes(indir, celltype="MCF10A_Hygro", threshold = 12000, save = True, sort_experiment=False, filter_formfactor=True, suffix = "_allexperiments")
+plot_hist_sizes(indir, celltype="HCC1395", threshold = 8000, save = True, sort_experiment=False, filter_formfactor=True, suffix = "_allexperiments")
+# plot_hist_sizes(indir, celltype="MDA-MB-468", threshold = 12000, save = True, sort_experiment=False, filter_formfactor=True, suffix = "_allexperiments")

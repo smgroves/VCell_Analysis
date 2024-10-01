@@ -132,8 +132,11 @@ species_info_list[[7]] <- c("Bub1a_pKnl1_species", "Inactive Species", "Active S
 # Model type, goes on the left of the heatmap
 # Change
 kt_width = c(
-              # "Tensed"
+              # # "Tensed"
+              # "Relaxed",
+              # "Relaxed",
               "Relaxed"
+
              )
 
 # All simulation IDs
@@ -142,7 +145,11 @@ sims <- c(
  
   # "SimID_262253748_0__exported"
  
-  "SimID_261879026_0__exported"
+  # "SimID_275966243_0__exported",
+  # "SimID_275966243_1__exported",
+  # "SimID_275966243_2__exported"
+  "SimID_276685993_0__exported"
+  
   
 )
 
@@ -152,7 +159,10 @@ var <- c(
  
   # "10_25_23_400s_post_transition_base_20Pac"
   
-  "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_transactiv"
+  # "09_17_24_CPC_relaxed_RefModel_128x64_scan0",
+  # "09_17_24_CPC_relaxed_RefModel_128x64_scan1",
+  # "09_17_24_CPC_relaxed_RefModel_128x64_scan2"
+  "10_01_24_relaxed_RefModel_MonseData"
   )
 
 #########################################################
