@@ -169,3 +169,11 @@ python hdf5_converter.py "SimID_272623234_0__exported.hdf5" '/Users/smgroves/Box
 
 # 9/17/2024
 python hdf5_converter.py "SimID_275966243_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_Ndc80_values" "09_17_24_CPC_relaxed_RefModel_128x64"
+
+#11/8/24
+python hdf5_converter.py "SimID_278749536_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "Copy of 09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_values" "11_05_24_CPC_relaxed_RefModel_128x64"
+python hdf5_converter.py "SimID_278750739_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "Copy of 09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_Ndc80_values_low_Sgo1" "11_05_24_CPC_relaxed_RefModel_128x64"
+
+#11/10/24
+python hdf5_converter.py "SimID_278919747_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "Copy of 09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_values" "11_05_24_CPC_relaxed_RefModel_128x64"
+python hdf5_converter.py "SimID_278919749_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "Copy of 09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_Ndc80_values_low_Sgo1" "11_05_24_CPC_relaxed_RefModel_128x64"

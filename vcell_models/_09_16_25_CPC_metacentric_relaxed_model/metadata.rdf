@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns:collex="http://www.collex.org/schema#"
+	xmlns:sbo="http://biomodels.net/SBO/"
+	xmlns:bp3="http://www.biopax.org/release/biopax-level3.owl#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:uome-core="http://www.sbpax.org/uome/core.owl#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#"
+	xmlns:uome-list="http://www.sbpax.org/uome/list.owl#"
+	xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+	xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+	xmlns:ex="http://example.org/"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:dcterms="http://dublincore.org/specifications/dublin-core/dcmi-terms/"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:prism="http://prismstandard.org/namespaces/basic/2.0/"
+	xmlns:sbx3="http://vcell.org/sbpax3#"
+	xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://omex-library.org/_09_16_25_CPC_metacentric_relaxed_model.omex">
+	<dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Untitled</dcterms:title>
+
+	<collex:thumbnail rdf:resource="http://omex-library.org/_09_16_25_CPC_metacentric_relaxed_model.omex/diagram.png"/>
+
+	<!-- modified -->
+	<dc:modified>
+		<rdf:Description>
+			<dc:W3CDTF>2025-09-19</dc:W3CDTF>
+		</rdf:Description>
+	</dc:modified>
+
+</rdf:Description>
+
+</rdf:RDF>

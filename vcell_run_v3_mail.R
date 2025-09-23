@@ -82,7 +82,7 @@ all_data <- vector("list", L)
 species_info_list <- vector("list", L)
 
 # Change, IN ORDER
-all_species <- c(CPC_species)#, Mps1_species, Haspin_Plk1_species, pH3_species, pH2A_species, only_H3_H2A_species,Bub1a_pKnl1_species)
+all_species <- c(CPC_species, Mps1_species, Haspin_Plk1_species, pH3_species, pH2A_species, only_H3_H2A_species,Bub1a_pKnl1_species)
 
 # Change, IN ORDER
 all_data[[1]] <- CPC_species
@@ -135,6 +135,7 @@ kt_width = c(
               # # "Tensed"
               # "Relaxed",
               # "Relaxed",
+              "Relaxed",
               "Relaxed"
 
              )
@@ -148,7 +149,9 @@ sims <- c(
   # "SimID_275966243_0__exported",
   # "SimID_275966243_1__exported",
   # "SimID_275966243_2__exported"
-  "SimID_276685993_0__exported"
+  # "SimID_276685993_0__exported"
+  "SimID_278919747_0__exported",
+  "SimID_278919749_0__exported"
   
   
 )
@@ -162,7 +165,9 @@ var <- c(
   # "09_17_24_CPC_relaxed_RefModel_128x64_scan0",
   # "09_17_24_CPC_relaxed_RefModel_128x64_scan1",
   # "09_17_24_CPC_relaxed_RefModel_128x64_scan2"
-  "10_01_24_relaxed_RefModel_MonseData"
+  # "10_01_24_relaxed_RefModel_MonseData"
+  "Copy of 09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_values",
+  "Copy of 09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_Ndc80_values_low_Sgo1"
   )
 
 #########################################################
@@ -191,7 +196,7 @@ for(i in 1:length(sims)){
                tInit=0,
                tSpan=500, #400 for relaxed to tense
                desiredInterval=100,
-               cutoff=10, #for heatmap color bar
+               cutoff=5, #for heatmap color bar
                funcPath,
                importPath,
                exportPath_new,
