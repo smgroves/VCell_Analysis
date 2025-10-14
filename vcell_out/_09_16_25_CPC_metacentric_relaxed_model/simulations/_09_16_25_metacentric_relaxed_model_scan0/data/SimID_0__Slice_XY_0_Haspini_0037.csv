@@ -1,0 +1,11 @@
+Model: _09_16_25_CPC_metacentric_relaxed_model
+Simulation: _09_16_25_metacentric_relaxed_model
+(SimID_0 (PDE Simulation)) 
+Sim time range (0.0 500.0) (saved timepoints 51) 
+Number of variables 44 
+Variable names ['Haspini', 'Haspina', 'Plk1a', 'H3', 'pH3', 'pKnl1', 'pKnl1_Bub1a', 'Bub1a', 'H2A', 'pH2A', 'Bub1a_his', 'Sgo1', 'pH2A_Sgo1', 'CPCi', 'pH3_CPCi', 'pH2A_Sgo1_CPCi', 'CPCa', 'pH3_CPCa', 'pH2A_Sgo1_CPCa', 'Plk1i', 'Mps1i', 'pMps1i', 'Mps1a', 'pMps1a', 'Ndc80', 'pNdc80', 'Ndc80_Mps1i', 'Ndc80_pMps1i', 'pNdc80_Mps1i', 'pNdc80_pMps1i', 'Ndc80_Mps1a', 'Ndc80_pMps1a', 'pNdc80_Mps1a', 'pNdc80_pMps1a', 'Knl1', 'Sgo1_CPCi', 'Sgo1_CPCa', 'H3_CPCi', 'H3_CPCa', 'I', 'CPC_all', 'CPCi_total', 'CPCa_total', 'pH2_all'] 
+ 
+2D Slice for variable Haspini at time 370.0 in plane XY at Z = 0 
+ 
+X in rows, Y in columns 
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

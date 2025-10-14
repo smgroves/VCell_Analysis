@@ -8,23 +8,23 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # read in arguments from command line using sys.argv
-if True:
-    dir_path = sys.argv[1]
-    model_name = sys.argv[2]
-    file_name = sys.argv[3]
-    if len(sys.argv) > 3:
-        sedml_name = sys.argv[4]
-    else:
-        sedml_name = model_name
-    if len(sys.argv) > 4:
-        logan = sys.argv[5]
+# if True:
+#     dir_path = sys.argv[1]
+#     model_name = sys.argv[2]
+#     file_name = sys.argv[3]
+#     if len(sys.argv) > 3:
+#         sedml_name = sys.argv[4]
+#     else:
+#         sedml_name = model_name
+#     if len(sys.argv) > 4:
+#         logan = sys.argv[5]
 
 
-else:
-    # Use example data
-    model_name = "_06_23_23_model1"
-    dir_path = f"/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/{model_name}"
-    file_name = "reports.h5"
+# else:
+#     # Use example data
+#     model_name = "_06_23_23_model1"
+#     dir_path = f"/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/{model_name}"
+#     file_name = "reports.h5"
 
 
 def convert_h5_to_csvs(
@@ -381,14 +381,14 @@ def convert_h5_to_csvs_Logan_results(
                         continue
                 for k, key in enumerate(species):
                     if key in default_species:
-                        # print(key)
+                        print(key)
                         arr = h5[f"{sedml_name}.sedml"][f"report_{simulation_name}"][
-                            k, :, :, :
+                            k, :, 0, :, :
                         ]
                         # sns.heatmap(arr, vmin = 0, cmap = 'Blues', square = True, )
                         # plt.title(key)
                         # plt.show()
-                        for i in range(arr.shape[2]):
+                        for i in range(arr.shape[0]):
                             header_text = (
                                 f"Model: {model_name}\n"
                                 f"Simulation: {simulation_name}\n"
@@ -405,7 +405,7 @@ def convert_h5_to_csvs_Logan_results(
                             ) as f:
                                 f.write(header_text)
                                 f.close()
-                            df = pd.DataFrame(arr[:, :, i])
+                            df = pd.DataFrame(arr[i, :, :])
                             df.to_csv(
                                 f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_{i:04d}.csv",
                                 index=False,
@@ -413,14 +413,17 @@ def convert_h5_to_csvs_Logan_results(
                                 header=False,
                             )
 
-if __name__ == "__main__":
-    t1 = time.time()
-    # convert_hdf5_to_csv(file_name, dir_path, model_name, simulation_name)
-    if not os.path.exists(dir_path):
-        os.makedirs(dir_path)
-    if logan:
-        convert_h5_to_csvs_Logan_results(dir_path=dir_path, model_name=model_name, sedml_name = sedml_name)
-    else:
-        convert_h5_to_csvs(dir_path=dir_path, model_name=model_name, sedml_name = sedml_name)
-    t2 = time.time()
-    print("Processing took ", (t2 - t1), " seconds")
+
+# if __name__ == "__main__":
+#     t1 = time.time()
+#     # convert_hdf5_to_csv(file_name, dir_path, model_name, simulation_name)
+#     if not os.path.exists(dir_path):
+#         os.makedirs(dir_path)
+#     if logan:
+#         convert_h5_to_csvs_Logan_results(
+#             dir_path=dir_path, model_name=model_name, sedml_name=sedml_name)
+#     else:
+#         convert_h5_to_csvs(dir_path=dir_path,
+#                            model_name=model_name, sedml_name=sedml_name)
+#     t2 = time.time()
+#     print("Processing took ", (t2 - t1), " seconds")
