@@ -1,0 +1,58 @@
+Tue Sep 23 16:02:41 EDT 2025
+Loading modules...
+/home/xpz5km/cli_VCell/vcell_in/_09_16_25_CPC_metacentric_relaxed_model.omex
+/scratch/xpz5km/cli_VCell/vcell_out/_09_16_25_CPC_metacentric_relaxed_model
+mkdir: cannot create directory ‘/scratch/xpz5km/cli_VCell/vcell_out/_09_16_25_CPC_metacentric_relaxed_model’: File exists
+Run VCell model through CLI...
+docker: Command recieved::<-i /home/xpz5km/cli_VCell/vcell_in/_09_16_25_CPC_metacentric_relaxed_model.omex -o /scratch/xpz5km/cli_VCell/vcell_out/_09_16_25_CPC_metacentric_relaxed_model>
+<-i>
+Default case selected
+VCell shall execute <biosimulations -i /home/xpz5km/cli_VCell/vcell_in/_09_16_25_CPC_metacentric_relaxed_model.omex -o /scratch/xpz5km/cli_VCell/vcell_out/_09_16_25_CPC_metacentric_relaxed_model>
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+ INFO (CLIStandalone:40) - Starting Vcell... []{}
+ INFO (BiosimulationsCommand:99) - Beginning execution []{}
+ WARN (SEDMLReader:249) - Unexpected [Element: <notes [Namespace: http://sed-ml.org/sed-ml/level1/version2]/>] []{}
+ INFO (ExecutionJob:83) - Executing OMEX archive `_09_16_25_CPC_metacentric_relaxed_model.omex` []{}
+-----------------------------------------------------------------------------------------------------
+ INFO (SedmlJob:115) - Initializing and Pre-Processing SedML document: _09_16_25_CPC_metacentric_relaxed_model.sedml []{}
+ WARN (SEDMLReader:249) - Unexpected [Element: <notes [Namespace: http://sed-ml.org/sed-ml/level1/version2]/>] []{}
+ INFO (SedmlJob:172) - Successfully loaded and translated SED-ML file: _09_16_25_CPC_metacentric_relaxed_model.sedml.
+	> 1 model
+	> 1 simulation
+		> 1 Uniform Time Course simulation
+	> 1 task
+	> 1 output
+		> 1 Report
+	> Does not have Math Overrides
+	> Does not have Parameter Scans []{}
+ INFO (SedmlJob:214) - Building solvers and starting simulation of all tasks...  []{}
+-----------------------------------------------------------------------------------------------------
+ WARN (SEDMLReader:249) - Unexpected [Element: <notes [Namespace: http://sed-ml.org/sed-ml/level1/version2]/>] []{}
+ INFO (SBMLImporter:4099) - ignoring missing interior point for domain membrane_chromosome0_void1 with domainType chromosome_void_membrane []{}
+ INFO (SBMLImporter:4099) - ignoring missing interior point for domain membrane_chromosome0_void2 with domainType chromosome_void_membrane []{}
+ INFO (SBMLImporter:966) - adjustExpression(): replacing '___TIME_SYMBOL___' with 't' in (Dapp * alpha * pow((1.0 * (1.0 / (___TIME_SYMBOL___ + t_step))),(1.0 - (1.0 * alpha)))) []{}
+ INFO (SEDMLImporter:192) - Task (id='tsk_0_0') is compatible, solver match found in ontology: 'KISAO:0000615' matched to SundialsPDE []{}
+-  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  -
+ INFO (SolverHandler:363) - Initializing simulation job SimID_2087014122_0_0 (tsk_0_0)... []{}
+-  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  -
+ INFO (SolverHandler:395) - Beginning Simulation... []{}
+ WARN (SolverHandler:406) - Solver results will not be compatible with CSV format.  []{}
+ INFO (SolverHandler:455) - Successful execution (2872.544s): Model '_09_16_25_CPC_metacentric_relaxed_model__09_16_25_CPC_metacentric_relaxed_model.sedml_Spatial' Task ' 09_16_25_metacentric_relaxed_model' ( 09_16_25_metacentric_relaxed_model). []{}
+ INFO (SolverHandler:518) - Processing spatial results of execution... []{}
+-  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  -
+ INFO (SolverHandler:572) - Ran 1 simulation jobs for 1 biomodels. []{}
+-----------------------------------------------------------------------------------------------------
+ INFO (SedmlJob:230) - Summary of Task Results
+	>  09_16_25_metacentric_relaxed_model (tsk_0_0)::SUCCEEDED
+ []{}
+ INFO (SedmlJob:257) - Generating outputs...  []{}
+ INFO (SedmlJob:377) - Indexing HDF5 data...  []{}
+ INFO (SedmlJob:329) - SED-ML : _09_16_25_CPC_metacentric_relaxed_model.sedml successfully completed []{}
+ INFO (ExecutionJob:149) - Processing of SedML (_09_16_25_CPC_metacentric_relaxed_model.sedml) succeeded. []{}
+ INFO (BiosimulationsHdf5Writer:39) - Creating HDF5 file `reports.h5` in /tmp/VCell_CLI_199782bde371785051639257949886 []{}
+ WARN (WritableHdfFile:50) - Writing files is in alpha. Check files carefully! []{}
+ INFO (BiosimulationsHdf5Writer:122) - HDF5 file successfully written to. []{}
+ INFO (ExecutionJob:165) - Omex `_09_16_25_CPC_metacentric_relaxed_model.omex` processing completed (3529.243s) []{}

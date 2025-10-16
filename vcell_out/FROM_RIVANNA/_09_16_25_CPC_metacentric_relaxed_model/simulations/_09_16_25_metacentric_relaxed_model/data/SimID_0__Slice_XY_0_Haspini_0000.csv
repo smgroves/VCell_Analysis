@@ -1,0 +1,10 @@
+Model: _09_16_25_CPC_metacentric_relaxed_model
+Simulation: _09_16_25_metacentric_relaxed_model
+(SimID_0 (PDE Simulation)) 
+Sim time range (0.0 500.0) (saved timepoints 51) 
+Number of variables 1 
+Variable names ['Haspini'] 
+ 
+2D Slice for variable Haspini at time 0.0 in plane XY at Z = 0 
+ 
+X in rows, Y in columns 
