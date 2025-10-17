@@ -31,3 +31,5 @@ for i in range(N):
     result = all_results[i]
     print(f"r0.Kf={val}")
     result.plotter.plot_concentrations()
+
+# %%

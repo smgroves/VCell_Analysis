@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"julia.environmentPath": "/Users/smgroves/Documents/GitHub/VCell_Analysis",
+		"workbench.colorCustomizations": {
+			"titleBar.activeBackground": "#68aee8",
+			"titleBar.inactiveBackground": "#5a9bd5",
+			"titleBar.activeForeground": "#ffffff",
+			"titleBar.inactiveForeground": "#e0e0e0"
+		}
+	}
+}
