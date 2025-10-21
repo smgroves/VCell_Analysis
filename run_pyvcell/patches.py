@@ -82,7 +82,7 @@ class PatchedBiomodelVisitor(vc.vcml_reader.BiomodelVisitor):
         self.generic_visit(element, parameter)
 
 
-# keep original so you can restore if needed
+# # keep original so you can restore if needed
 _original_NamedFunction_init = getattr(sdm.NamedFunction, "__init__", None)
 
 
@@ -125,34 +125,30 @@ def _patched_NamedFunction_init(self, name: str, vcell_expression: str, variable
 # Apply the patch immediately on module import
 sdm.NamedFunction.__init__ = _patched_NamedFunction_init
 
-# convenience loader using PatchedBiomodelVisitor if you created one earlier:
+# # convenience loader using PatchedBiomodelVisitor if you created one earlier:
 
 
-def load_vcml_file_patched(vcml_path):
-    """
-    Simple wrapper that parses the VCML and returns a Biomodel using
-    the patched NamedFunction behavior. If you also created a PatchedBiomodelVisitor,
-    call that instead. This uses lxml to parse and the regular BiomodelVisitor logic,
-    so it behaves similarly to original load_vcml_file.
-    """
-    vcml_path = Path(vcml_path)
-    with open(vcml_path, "r", encoding="utf-8") as f:
-        vcml_str = f.read()
-    document = vc.VCMLDocument()
-    # Use the original VcmlReader's visitor machinery:
-    from pyvcell.vcml.vcml_reader import BiomodelVisitor  # still fine to use
-    root = etree.fromstring(vcml_str.encode("utf-8"))
-    visitor = BiomodelVisitor(document)
-    visitor.visit(root, document)
-    if visitor.document.biomodel is None:
-        raise ValueError("No biomodel found")
-    return visitor.document.biomodel
+# def load_vcml_file_patched(vcml_path):
+#     """
+#     Simple wrapper that parses the VCML and returns a Biomodel using
+#     the patched NamedFunction behavior. If you also created a PatchedBiomodelVisitor,
+#     call that instead. This uses lxml to parse and the regular BiomodelVisitor logic,
+#     so it behaves similarly to original load_vcml_file.
+#     """
+#     vcml_path = Path(vcml_path)
+#     with open(vcml_path, "r", encoding="utf-8") as f:
+#         vcml_str = f.read()
+#     document = vc.VCMLDocument()
+#     # Use the original VcmlReader's visitor machinery:
+#     from pyvcell.vcml.vcml_reader import BiomodelVisitor  # still fine to use
+#     root = etree.fromstring(vcml_str.encode("utf-8"))
+#     visitor = BiomodelVisitor(document)
+#     visitor.visit(root, document)
+#     if visitor.document.biomodel is None:
+#         raise ValueError("No biomodel found")
+#     return visitor.document.biomodel
 
 
 def verify_patch():
     """Return True if the patch is installed (i.e., NamedFunction.__init__ is patched)."""
     return getattr(sdm.NamedFunction, "__init__", None) is _patched_NamedFunction_init
-
-
-# print a tiny confirmation so importing patches is visible
-print("[patches] applied: NamedFunction.__init__ patched")

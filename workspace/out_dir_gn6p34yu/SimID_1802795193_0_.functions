@@ -1,0 +1,20 @@
+##---------------------------------------------
+##  /Users/smgroves/Documents/GitHub/VCell_Analysis/workspace/out_dir_gn6p34yu/SimID_1802795193_0_.functions
+##---------------------------------------------
+
+subdomain0::J_r0; (s0 - (0.5 * s1)); ; Volume_VariableType; false
+subdomain0_subdomain1_membrane::J_r1; (s0 - s2); ; Membrane_VariableType; false
+subdomain0_subdomain1_membrane::J_r2; (s2 - s3); ; Membrane_VariableType; false
+subdomain0_subdomain1_membrane::KFlux_m0_c0; 1.0; ; Membrane_Region_VariableType; false
+subdomain0_subdomain1_membrane::KFlux_m0_c1; 1.0; ; Membrane_Region_VariableType; false
+subdomain0::s0_init_uM; (3.0 + sin(x) + cos(y) + sin(z)); ; Volume_VariableType; false
+subdomain0::s1_init_uM; (3.0 + sin((x + y + z))); ; Volume_VariableType; false
+subdomain0_subdomain1_membrane::s2_init_molecules_um_2; (1.0 + cos(y)); ; Membrane_VariableType; false
+subdomain1::s3_init_uM; (1.0 + (sin(x) * cos(y))); ; Volume_VariableType; false
+subdomain0::Size_c0; vcRegionVolume('subdomain0'); ; Volume_Region_VariableType; false
+subdomain1::Size_c1; vcRegionVolume('subdomain1'); ; Volume_Region_VariableType; false
+subdomain0_subdomain1_membrane::Size_m0; vcRegionArea('subdomain0_subdomain1_membrane'); ; Membrane_Region_VariableType; false
+subdomain0_subdomain1_membrane::sobj_subdomain11_subdomain00_size; vcRegionArea('subdomain0_subdomain1_membrane'); ; Membrane_Region_VariableType; false
+subdomain0::vobj_subdomain00_size; vcRegionVolume('subdomain0'); ; Volume_Region_VariableType; false
+subdomain1::vobj_subdomain11_size; vcRegionVolume('subdomain1'); ; Volume_Region_VariableType; false
+

@@ -1,0 +1,60 @@
+# based on the tutorial https://github.com/virtualcell/pyvcell/blob/main/examples/scripts/fielddata_from_sim_workflow.py
+import os
+import shutil
+import tempfile
+from pathlib import Path
+
+import pyvcell.vcml as vc
+
+with tempfile.TemporaryDirectory() as temp_dir_name, Path(temp_dir_name) as temp_dir:
+    # ----- make a workspace
+    workspace_dir = temp_dir / "vcell_sim_workspace"
+    sim1_dir = workspace_dir / "sim1_dir"
+    if sim1_dir.exists():
+        shutil.rmtree(sim1_dir)
+    sim2_dir = workspace_dir / "sim2_dir"
+    if sim2_dir.exists():
+        shutil.rmtree(sim2_dir)
+
+    # ---- read in VCML file
+    model_fp = Path(os.getcwd()) / "vcell_models" / "vcml" / \
+        "SmallSpatialProject_3D.vcml"  # replace with relaxed version of model
+    bio_model1 = vc.load_vcml_file(model_fp)
+
+    # ---- get the application and the species mappings for species "s0" and "s1"
+    app = bio_model1.applications[0]
+    s1_mapping = next(
+        s for s in app.species_mappings if s.species_name == "s1")
+    s0_mapping = next(
+        s for s in app.species_mappings if s.species_name == "s0")
+
+    # ---- add a simulation to the first application in the biomodel (didn't already have a simulation in the VCML file)
+    sim = app.add_sim(name="new_sim", duration=10.0,
+                      output_time_step=0.1, mesh_size=(20, 20, 20))
+
+    # ---- set the initial concentration of species "s0" and "s1" in the first application
+    s0_mapping.init_conc = "3+sin(x)+cos(y)+sin(z)"
+    s1_mapping.init_conc = "3+sin(x+y+z)"
+
+    # ---- run simulation, store in sim1_dir, and plot results
+    # >>>>> This forms the data for the "Field Data" identified by 'sim1_dir' <<<<<<
+    sim1_result = vc.simulate(biomodel=bio_model1, simulation=sim.name)
+    print([c.label for c in sim1_result.channel_data])
+    print(sim1_result.time_points[::11])
+    sim1_result.plotter.plot_slice_3d(time_index=0, channel_id="s0")
+    sim1_result.plotter.plot_slice_3d(time_index=0, channel_id="s1")
+    sim1_result.plotter.plot_concentrations()
+    sim1_result_dirname = sim1_result.solver_output_dir.name
+
+    # ----- use field data from sim1_dir to set initial concentration of species "s0"
+    s0_mapping.init_conc = (
+        f"vcField('{sim1_result_dirname}','s0',0.0,'Volume') * vcField('{sim1_result_dirname}','s1',0.0,'Volume')"
+    )
+    s1_mapping.init_conc = "5.0"
+    # ---- re-run simulation and store in sim2_dir
+    # note that the solution of s0 draws from the data from sim1_dir
+    sim2_result = vc.simulate(biomodel=bio_model1, simulation=sim.name)
+    sim2_result.plotter.plot_slice_3d(time_index=0, channel_id="s0")
+    sim2_result.plotter.plot_slice_3d(time_index=0, channel_id="s1")
+    sim2_result.plotter.plot_concentrations()
+    sim2_result.cleanup()

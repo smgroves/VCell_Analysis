@@ -1,58 +1,66 @@
 # %%
+import sys
+import importlib
 import time
 import numpy as np
 import patches
 import pyvcell.vcml as vc
+
+patch_mod = importlib.import_module("pyvcell__internal_simdata_zarr_writer")
+new_fn = patch_mod.write_zarr
+
+repl = 0
+for module_name, module in list(sys.modules.items()):
+    if module is None:
+        continue
+    for attr in dir(module):
+        try:
+            if getattr(module, attr) is not new_fn and getattr(getattr(module, attr), "__name__", None) == "write_zarr":
+                setattr(module, attr, new_fn)
+                repl += 1
+                print("patched", module_name, attr)
+        except Exception:
+            pass
+
+print("replacements:", repl)
+
 
 # Record the start time
 start_time = time.perf_counter()
 
 # %% load model from vcml file
 ########################################
-
 vcml_file = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_models/vcml/_09_16_25_CPC_metacentric_tensed_model.vcml"
-bio_model = vc.load_vcml_file(vcml_file)
-
+bio_model = patches.load_vcml_file_patched(vcml_file)
+print(patches.verify_patch())
 
 model = bio_model.model
-print(bio_model)
-print(model.parameter_values)
-
+# print(bio_model)
+print(bio_model.__getattribute__("applications"))
 # %% run a single simulation
 ########################################
-# sim = bio_model.applications[0].simulations[0]
-# print(sim.mesh_size)
+sim = bio_model.applications[0].simulations[0]
+print(sim.mesh_size)
+bio_model.applications[0].simulations[0].duration = 10.0
 
 
 # sims = [sim for app in bio_model.applications for sim in app.simulations]
 
-# result = vc.simulate(biomodel=bio_model, simulation=sims[0].name)
+result = vc.simulate(biomodel=bio_model, simulation=sim.name)
 
-# print(result.solver_output_dir)
-# print([c.label for c in result.channel_data])
+print(result.solver_output_dir)
+print([c.label for c in result.channel_data])
 
-# result.plotter.plot_slice_3d(time_index=3, channel_id="s1")
-# result.plotter.plot_concentrations()
-# result.cleanup()
+result.plotter.plot_slice_2d(time_index=3, channel_id="CPCa")
+result.plotter.plot_concentrations()
+result.cleanup()
 
-# # %% run a loop of simulations
-# ########################################
+# Record the end time
+end_time = time.perf_counter()
 
-# # take N samples from normal distribution for CPC_ic
-# N = 1
-# CPCi_ic_values = np.random.normal(loc=4.52, scale=1.0, size=N)
+# Calculate the elapsed time
+elapsed_time = end_time - start_time
 
-# # run N simulations and store results
-# all_results = []
-# for val in CPCi_ic_values:
-#     model.set_parameter_value("CPCi_ic", val)
-#     print(f"running sim with CPCi_ic={val}")
-#     all_results.append(vc.simulate(bio_model, sim.name))
+print(f"Simulations executed in {elapsed_time:.6f} seconds")
 
-# # Record the end time
-# end_time = time.perf_counter()
-
-# # Calculate the elapsed time
-# elapsed_time = end_time - start_time
-
-# print(f"{N} simulation[s] executed in {elapsed_time:.6f} seconds")
+# %%
