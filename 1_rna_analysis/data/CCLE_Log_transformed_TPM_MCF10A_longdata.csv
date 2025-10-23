@@ -1,0 +1,181 @@
+,depmap_id,cell_line_display_name,lineage_1,lineage_2,lineage_3,lineage_6,lineage_4,H2AC1,Protein,rna_counts
+1,ACH-000699,HCC1395,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal B TNBC,NA,0,NDC80,5.8089873
+2,ACH-000699,HCC1395,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal B TNBC,NA,0,BIRC5,7.12733406
+3,ACH-000699,HCC1395,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal B TNBC,NA,0,TTK,5.6870915
+4,ACH-000699,HCC1395,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal B TNBC,NA,0,SGO1,4.51241654
+5,ACH-000699,HCC1395,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal B TNBC,NA,0,CDCA8,5.3655806
+6,ACH-000699,HCC1395,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal B TNBC,NA,0,KNL1,4.41701534
+7,ACH-000699,HCC1395,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal B TNBC,NA,0,INCENP,6.1232089
+8,ACH-000699,HCC1395,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal B TNBC,NA,0,PLK1,7.2873153
+9,ACH-000699,HCC1395,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal B TNBC,NA,0,BUB1,4.4361219
+10,ACH-000699,HCC1395,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal B TNBC,NA,0,KAT5,6.005445
+11,ACH-000699,HCC1395,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal B TNBC,NA,0,HASPIN,3.27649518
+12,ACH-000699,HCC1395,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal B TNBC,NA,0,AURKB,7.01129436
+13,ACH-000196,HCC1599,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,NDC80,5.8755368
+14,ACH-000196,HCC1599,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,BIRC5,6.32305476
+15,ACH-000196,HCC1599,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,TTK,5.2897091
+16,ACH-000196,HCC1599,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,SGO1,4.34125995
+17,ACH-000196,HCC1599,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,CDCA8,5.4510198
+18,ACH-000196,HCC1599,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,KNL1,4.000739192
+19,ACH-000196,HCC1599,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,INCENP,4.2024334
+20,ACH-000196,HCC1599,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,PLK1,5.7264171
+21,ACH-000196,HCC1599,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,BUB1,5.9703199
+22,ACH-000196,HCC1599,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,KAT5,4.793261
+23,ACH-000196,HCC1599,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,HASPIN,2.08085888
+24,ACH-000196,HCC1599,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,AURKB,6.1553222
+25,ACH-000624,HCC1806,Breast,Breast Ductal Carcinoma In Situ,Breast Ductal Carcinoma In Situ,Basal A TNBC,NA,0,NDC80,4.4718053
+26,ACH-000624,HCC1806,Breast,Breast Ductal Carcinoma In Situ,Breast Ductal Carcinoma In Situ,Basal A TNBC,NA,0,BIRC5,6.62645666
+27,ACH-000624,HCC1806,Breast,Breast Ductal Carcinoma In Situ,Breast Ductal Carcinoma In Situ,Basal A TNBC,NA,0,TTK,4.4545247
+28,ACH-000624,HCC1806,Breast,Breast Ductal Carcinoma In Situ,Breast Ductal Carcinoma In Situ,Basal A TNBC,NA,0,SGO1,3.26453943
+29,ACH-000624,HCC1806,Breast,Breast Ductal Carcinoma In Situ,Breast Ductal Carcinoma In Situ,Basal A TNBC,NA,0,CDCA8,4.9141435
+30,ACH-000624,HCC1806,Breast,Breast Ductal Carcinoma In Situ,Breast Ductal Carcinoma In Situ,Basal A TNBC,NA,0,KNL1,3.992369641
+31,ACH-000624,HCC1806,Breast,Breast Ductal Carcinoma In Situ,Breast Ductal Carcinoma In Situ,Basal A TNBC,NA,0,INCENP,3.6953814
+32,ACH-000624,HCC1806,Breast,Breast Ductal Carcinoma In Situ,Breast Ductal Carcinoma In Situ,Basal A TNBC,NA,0,PLK1,4.8531523
+33,ACH-000624,HCC1806,Breast,Breast Ductal Carcinoma In Situ,Breast Ductal Carcinoma In Situ,Basal A TNBC,NA,0,BUB1,4.9281239
+34,ACH-000624,HCC1806,Breast,Breast Ductal Carcinoma In Situ,Breast Ductal Carcinoma In Situ,Basal A TNBC,NA,0,KAT5,4.829804
+35,ACH-000624,HCC1806,Breast,Breast Ductal Carcinoma In Situ,Breast Ductal Carcinoma In Situ,Basal A TNBC,NA,0,HASPIN,2.18500701
+36,ACH-000624,HCC1806,Breast,Breast Ductal Carcinoma In Situ,Breast Ductal Carcinoma In Situ,Basal A TNBC,NA,0,AURKB,7.47634118
+37,ACH-000223,HCC1937,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,NDC80,6.1943077
+38,ACH-000223,HCC1937,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,BIRC5,6.49170561
+39,ACH-000223,HCC1937,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,TTK,5.4080902
+40,ACH-000223,HCC1937,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,SGO1,4.59635676
+41,ACH-000223,HCC1937,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,CDCA8,5.5521957
+42,ACH-000223,HCC1937,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,KNL1,4.272433836
+43,ACH-000223,HCC1937,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,INCENP,4.979248
+44,ACH-000223,HCC1937,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,PLK1,6.9474791
+45,ACH-000223,HCC1937,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,BUB1,6.0336234
+46,ACH-000223,HCC1937,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,KAT5,5.391778
+47,ACH-000223,HCC1937,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,HASPIN,3.12237454
+48,ACH-000223,HCC1937,Breast,Invasive Breast Carcinoma,Breast Invasive Ductal Carcinoma,Basal A TNBC,NA,0,AURKB,6.61257956
+49,ACH-001086,HELA,Cervix,Cervical Adenocarcinoma,Endocervical Adenocarcinoma,,NA,0,NDC80,5.1592134
+50,ACH-001086,HELA,Cervix,Cervical Adenocarcinoma,Endocervical Adenocarcinoma,,NA,0,BIRC5,6.77656463
+51,ACH-001086,HELA,Cervix,Cervical Adenocarcinoma,Endocervical Adenocarcinoma,,NA,0,TTK,4.6425918
+52,ACH-001086,HELA,Cervix,Cervical Adenocarcinoma,Endocervical Adenocarcinoma,,NA,0,SGO1,3.7132339
+53,ACH-001086,HELA,Cervix,Cervical Adenocarcinoma,Endocervical Adenocarcinoma,,NA,0,CDCA8,5.2745748
+54,ACH-001086,HELA,Cervix,Cervical Adenocarcinoma,Endocervical Adenocarcinoma,,NA,0,KNL1,4.3934162
+55,ACH-001086,HELA,Cervix,Cervical Adenocarcinoma,Endocervical Adenocarcinoma,,NA,0,INCENP,4.7918505
+56,ACH-001086,HELA,Cervix,Cervical Adenocarcinoma,Endocervical Adenocarcinoma,,NA,0,PLK1,7.0582082
+57,ACH-001086,HELA,Cervix,Cervical Adenocarcinoma,Endocervical Adenocarcinoma,,NA,0,BUB1,5.134147
+58,ACH-001086,HELA,Cervix,Cervical Adenocarcinoma,Endocervical Adenocarcinoma,,NA,0,KAT5,5.066679
+59,ACH-001086,HELA,Cervix,Cervical Adenocarcinoma,Endocervical Adenocarcinoma,,NA,0,HASPIN,3.24712698
+60,ACH-001086,HELA,Cervix,Cervical Adenocarcinoma,Endocervical Adenocarcinoma,,NA,0,AURKB,6.86643821
+61,ACH-000642,HMEL,Breast,Non-Cancerous,Immortalized Breast Cells,,NA,0,NDC80,4.0045553
+62,ACH-000642,HMEL,Breast,Non-Cancerous,Immortalized Breast Cells,,NA,0,BIRC5,4.01029647
+63,ACH-000642,HMEL,Breast,Non-Cancerous,Immortalized Breast Cells,,NA,0,TTK,3.5889604
+64,ACH-000642,HMEL,Breast,Non-Cancerous,Immortalized Breast Cells,,NA,0,SGO1,2.05650723
+65,ACH-000642,HMEL,Breast,Non-Cancerous,Immortalized Breast Cells,,NA,0,CDCA8,3.9974279
+66,ACH-000642,HMEL,Breast,Non-Cancerous,Immortalized Breast Cells,,NA,0,KNL1,2.995974681
+67,ACH-000642,HMEL,Breast,Non-Cancerous,Immortalized Breast Cells,,NA,0,INCENP,3.7953098
+68,ACH-000642,HMEL,Breast,Non-Cancerous,Immortalized Breast Cells,,NA,0,PLK1,4.9231682
+69,ACH-000642,HMEL,Breast,Non-Cancerous,Immortalized Breast Cells,,NA,0,BUB1,4.4361085
+70,ACH-000642,HMEL,Breast,Non-Cancerous,Immortalized Breast Cells,,NA,0,KAT5,4.807056
+71,ACH-000642,HMEL,Breast,Non-Cancerous,Immortalized Breast Cells,,NA,0,HASPIN,1.7687941
+72,ACH-000642,HMEL,Breast,Non-Cancerous,Immortalized Breast Cells,,NA,0,AURKB,5.51238809
+73,ACH-000849,MDAMB468,Breast,Invasive Breast Carcinoma,Invasive Breast Carcinoma,Basal A TNBC,NA,0,NDC80,6.7470785
+74,ACH-000849,MDAMB468,Breast,Invasive Breast Carcinoma,Invasive Breast Carcinoma,Basal A TNBC,NA,0,BIRC5,6.90773192
+75,ACH-000849,MDAMB468,Breast,Invasive Breast Carcinoma,Invasive Breast Carcinoma,Basal A TNBC,NA,0,TTK,5.8499042
+76,ACH-000849,MDAMB468,Breast,Invasive Breast Carcinoma,Invasive Breast Carcinoma,Basal A TNBC,NA,0,SGO1,3.36081514
+77,ACH-000849,MDAMB468,Breast,Invasive Breast Carcinoma,Invasive Breast Carcinoma,Basal A TNBC,NA,0,CDCA8,6.6452621
+78,ACH-000849,MDAMB468,Breast,Invasive Breast Carcinoma,Invasive Breast Carcinoma,Basal A TNBC,NA,0,KNL1,4.162032751
+79,ACH-000849,MDAMB468,Breast,Invasive Breast Carcinoma,Invasive Breast Carcinoma,Basal A TNBC,NA,0,INCENP,5.0699427
+80,ACH-000849,MDAMB468,Breast,Invasive Breast Carcinoma,Invasive Breast Carcinoma,Basal A TNBC,NA,0,PLK1,6.8461924
+81,ACH-000849,MDAMB468,Breast,Invasive Breast Carcinoma,Invasive Breast Carcinoma,Basal A TNBC,NA,0,BUB1,5.791637
+82,ACH-000849,MDAMB468,Breast,Invasive Breast Carcinoma,Invasive Breast Carcinoma,Basal A TNBC,NA,0,KAT5,5.882919
+83,ACH-000849,MDAMB468,Breast,Invasive Breast Carcinoma,Invasive Breast Carcinoma,Basal A TNBC,NA,0,HASPIN,2.91781553
+84,ACH-000849,MDAMB468,Breast,Invasive Breast Carcinoma,Invasive Breast Carcinoma,Basal A TNBC,NA,0,AURKB,6.18364729
+85,ACH-002466,RPE1SS111,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,NDC80,5.3293102
+86,ACH-002466,RPE1SS111,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,BIRC5,5.7171006
+87,ACH-002466,RPE1SS111,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,TTK,3.9708169
+88,ACH-002466,RPE1SS111,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,SGO1,2.94755021
+89,ACH-002466,RPE1SS111,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,CDCA8,4.5234616
+90,ACH-002466,RPE1SS111,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,KNL1,2.893317551
+91,ACH-002466,RPE1SS111,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,INCENP,3.4224389
+92,ACH-002466,RPE1SS111,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,PLK1,5.6141385
+93,ACH-002466,RPE1SS111,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,BUB1,4.6578743
+94,ACH-002466,RPE1SS111,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,KAT5,4.67424
+95,ACH-002466,RPE1SS111,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,HASPIN,2.38480965
+96,ACH-002466,RPE1SS111,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,AURKB,4.93132848
+97,ACH-002465,RPE1SS119,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,NDC80,5.1984667
+98,ACH-002465,RPE1SS119,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,BIRC5,6.0301948
+99,ACH-002465,RPE1SS119,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,TTK,4.2622678
+100,ACH-002465,RPE1SS119,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,SGO1,3.04760818
+101,ACH-002465,RPE1SS119,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,CDCA8,4.7173968
+102,ACH-002465,RPE1SS119,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,KNL1,3.181447675
+103,ACH-002465,RPE1SS119,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,INCENP,3.8373378
+104,ACH-002465,RPE1SS119,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,PLK1,5.3190181
+105,ACH-002465,RPE1SS119,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,BUB1,4.820516
+106,ACH-002465,RPE1SS119,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,KAT5,4.83373
+107,ACH-002465,RPE1SS119,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,HASPIN,2.42508327
+108,ACH-002465,RPE1SS119,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,AURKB,4.86319016
+109,ACH-002462,RPE1SS48,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,NDC80,5.6498626
+110,ACH-002462,RPE1SS48,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,BIRC5,6.61603122
+111,ACH-002462,RPE1SS48,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,TTK,4.7602848
+112,ACH-002462,RPE1SS48,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,SGO1,3.30963314
+113,ACH-002462,RPE1SS48,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,CDCA8,5.3312072
+114,ACH-002462,RPE1SS48,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,KNL1,3.751977807
+115,ACH-002462,RPE1SS48,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,INCENP,4.1159072
+116,ACH-002462,RPE1SS48,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,PLK1,6.0441493
+117,ACH-002462,RPE1SS48,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,BUB1,5.4246467
+118,ACH-002462,RPE1SS48,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,KAT5,4.923282
+119,ACH-002462,RPE1SS48,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,HASPIN,2.800055
+120,ACH-002462,RPE1SS48,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,AURKB,5.53702577
+121,ACH-002467,RPE1SS51,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,NDC80,5.581074
+122,ACH-002467,RPE1SS51,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,BIRC5,6.45914797
+123,ACH-002467,RPE1SS51,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,TTK,4.6925165
+124,ACH-002467,RPE1SS51,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,SGO1,3.5375073
+125,ACH-002467,RPE1SS51,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,CDCA8,5.0090605
+126,ACH-002467,RPE1SS51,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,KNL1,3.407182772
+127,ACH-002467,RPE1SS51,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,INCENP,4.026623
+128,ACH-002467,RPE1SS51,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,PLK1,5.8045028
+129,ACH-002467,RPE1SS51,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,BUB1,5.1280005
+130,ACH-002467,RPE1SS51,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,KAT5,4.676612
+131,ACH-002467,RPE1SS51,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,HASPIN,2.60263266
+132,ACH-002467,RPE1SS51,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,AURKB,5.39075709
+133,ACH-002464,RPE1SS6,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,NDC80,5.0805596
+134,ACH-002464,RPE1SS6,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,BIRC5,5.98917535
+135,ACH-002464,RPE1SS6,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,TTK,4.3148923
+136,ACH-002464,RPE1SS6,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,SGO1,3.0182674
+137,ACH-002464,RPE1SS6,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,CDCA8,4.8923084
+138,ACH-002464,RPE1SS6,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,KNL1,3.284000274
+139,ACH-002464,RPE1SS6,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,INCENP,3.8173572
+140,ACH-002464,RPE1SS6,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,PLK1,5.4283937
+141,ACH-002464,RPE1SS6,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,BUB1,4.9678142
+142,ACH-002464,RPE1SS6,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,KAT5,4.899949
+143,ACH-002464,RPE1SS6,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,HASPIN,2.54751152
+144,ACH-002464,RPE1SS6,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,AURKB,5.04982242
+145,ACH-002463,RPE1SS77,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,NDC80,4.2181767
+146,ACH-002463,RPE1SS77,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,BIRC5,4.87120789
+147,ACH-002463,RPE1SS77,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,TTK,3.5355553
+148,ACH-002463,RPE1SS77,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,SGO1,2.19013125
+149,ACH-002463,RPE1SS77,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,CDCA8,3.6906629
+150,ACH-002463,RPE1SS77,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,KNL1,1.900934414
+151,ACH-002463,RPE1SS77,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,INCENP,2.4691775
+152,ACH-002463,RPE1SS77,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,PLK1,4.4993612
+153,ACH-002463,RPE1SS77,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,BUB1,3.7922619
+154,ACH-002463,RPE1SS77,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,KAT5,4.644987
+155,ACH-002463,RPE1SS77,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,HASPIN,1.78232468
+156,ACH-002463,RPE1SS77,Eye,Non-Cancerous,"Immortalized Epithelial Cells, Retinal",,NA,0,AURKB,4.19979011
+157,ACH-000364,U2OS,Bone,Osteosarcoma,Osteosarcoma,,NA,0,NDC80,7.3015511
+158,ACH-000364,U2OS,Bone,Osteosarcoma,Osteosarcoma,,NA,0,BIRC5,7.64737208
+159,ACH-000364,U2OS,Bone,Osteosarcoma,Osteosarcoma,,NA,0,TTK,4.7336255
+160,ACH-000364,U2OS,Bone,Osteosarcoma,Osteosarcoma,,NA,0,SGO1,4.60778007
+161,ACH-000364,U2OS,Bone,Osteosarcoma,Osteosarcoma,,NA,0,CDCA8,5.9033661
+162,ACH-000364,U2OS,Bone,Osteosarcoma,Osteosarcoma,,NA,0,KNL1,5.015047014
+163,ACH-000364,U2OS,Bone,Osteosarcoma,Osteosarcoma,,NA,0,INCENP,5.4270731
+164,ACH-000364,U2OS,Bone,Osteosarcoma,Osteosarcoma,,NA,0,PLK1,6.5702747
+165,ACH-000364,U2OS,Bone,Osteosarcoma,Osteosarcoma,,NA,0,BUB1,6.5835793
+166,ACH-000364,U2OS,Bone,Osteosarcoma,Osteosarcoma,,NA,0,KAT5,5.698138
+167,ACH-000364,U2OS,Bone,Osteosarcoma,Osteosarcoma,,NA,0,HASPIN,2.98629442
+168,ACH-000364,U2OS,Bone,Osteosarcoma,Osteosarcoma,,NA,0,AURKB,6.79133222
+,,MCF10A-organoids,,,,,,,NDC80,2.599117912
+,,MCF10A-organoids,,,,,,,BIRC5,4.254223083
+,,MCF10A-organoids,,,,,,,TTK,2.306897975
+,,MCF10A-organoids,,,,,,,SGO1,1.31544475
+,,MCF10A-organoids,,,,,,,CDCA8,3.338259244
+,,MCF10A-organoids,,,,,,,KNL1,1.958501025
+,,MCF10A-organoids,,,,,,,INCENP,3.664677131
+,,MCF10A-organoids,,,,,,,PLK1,4.487102627
+,,MCF10A-organoids,,,,,,,BUB1,3.668057476
+,,MCF10A-organoids,,,,,,,KAT5,5.42838138
+,,MCF10A-organoids,,,,,,,HASPIN,1.534848873
+,,MCF10A-organoids,,,,,,,AURKB,3.812828723
