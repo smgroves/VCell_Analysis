@@ -124,25 +124,25 @@ all_plot <- function(
       y1 = ceiling(1.6 * dataDim[1] / chromHeight)
       y2 = ceiling(1.9 * dataDim[1] / chromHeight)
       }else if(all(dataDim==c(128,64))){
-      y1 = ceiling(1.45 * dataDim[1] / chromHeight)
+      y1 = ceiling(1.45 * dataDim[1] / chromHeight) + 1
       y2 = ceiling(1.75 * dataDim[1] / chromHeight)
       }
       
       #For relaxed state
       if(kt_width == 'Relaxed'){
-      x1 = ceiling(0.425 * dataDim[2] / chromWidth)
+      x1 = ceiling(0.425 * dataDim[2] / chromWidth) + 1
       x2 = ceiling(0.500 * dataDim[2] / chromWidth)
       x3 = ceiling(0.700 * dataDim[2] / chromWidth) + 1
-      x4 = ceiling(0.900 * dataDim[2] / chromWidth) - 1
-      x5 = ceiling(1.100 * dataDim[2] / chromWidth)
+      x4 = ceiling(0.900 * dataDim[2] / chromWidth) 
+      x5 = ceiling(1.100 * dataDim[2] / chromWidth) + 1
       x6 = ceiling(1.175 * dataDim[2] / chromWidth)
       }else if(kt_width == 'Tensed'){
       #For tensed state
-      x1 = ceiling(0.125 * dataDim[2] / chromWidth)
+      x1 = ceiling(0.125 * dataDim[2] / chromWidth) + 1
       x2 = ceiling(0.200 * dataDim[2] / chromWidth)
       x3 = ceiling(0.700 * dataDim[2] / chromWidth) + 1
-      x4 = ceiling(0.900 * dataDim[2] / chromWidth) - 1
-      x5 = ceiling(1.400 * dataDim[2] / chromWidth)
+      x4 = ceiling(0.900 * dataDim[2] / chromWidth) 
+      x5 = ceiling(1.400 * dataDim[2] / chromWidth) + 1
       x6 = ceiling(1.475 * dataDim[2] / chromWidth)
       }
       matrix <- L[[q]]
