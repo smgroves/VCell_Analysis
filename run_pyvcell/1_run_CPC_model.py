@@ -41,7 +41,8 @@ print(bio_model.__getattribute__("applications"))
 ########################################
 sim = bio_model.applications[0].simulations[0]
 print(sim.mesh_size)
-bio_model.applications[0].simulations[0].duration = 10.0
+bio_model.applications[0].simulations[0].duration = 20.0
+bio_model.applications[0].simulations[0].output_time_step = 10.0
 
 
 # sims = [sim for app in bio_model.applications for sim in app.simulations]
