@@ -117,8 +117,8 @@ plt.ylabel("PC2, explained variance: {:.2f}%".format(
     pca.explained_variance_ratio_[1]*100))
 plt.title("PCA of RNA-seq Data Colored by Source/Cell Line")
 plt.tight_layout()
-# plt.show()
-plt.savefig('./figures/rnaseq_pca_plot.png')
+plt.show()
+# plt.savefig('./figures/rnaseq_pca_plot.png')
 # %%
 # list most important genes for each component
 for c in pca.components_:
@@ -242,4 +242,60 @@ pc_model.biplot(
 plt.tight_layout()
 plt.savefig('./figures/rnaseq_pca_biplot.png')
 
+# %%
+# adding in zhao data
+zhao_normalized = pd.read_csv(
+    './data/zhao_logTPM_network_genes_zscore.csv', index_col=0)
+
+zhao_normalized['tissue_type'] = ["Zhao_" + i for i in zhao_normalized['race']]
+zhao_normalized = zhao_normalized.drop(columns=['race'])
+combined_with_zhao = pd.concat(
+    [normalized_data, zhao_normalized], axis=0, join='outer')
+
+# %%
+# use prior PCA to transform zhao data
+pca_zhao = pca.transform(zhao_normalized.drop(
+    columns=['tissue_type'])[normalized_data.columns[:-1]])
+pca_zhao_df = pd.DataFrame(pca_zhao,
+                           columns=['PC1', 'PC2'],
+                           index=zhao_normalized.index)
+pca_zhao_df['tissue_type'] = zhao_normalized['tissue_type']
+combined_pca_df = pd.concat([pca_df, pca_zhao_df], axis=0, join='outer')
+
+# Define partial color overrides
+custom_colors = {
+    "Zhao_WHITE": "white",  # custom color
+    "Zhao_BLACK OR AFRICAN AMERICAN": "black",  # custom color
+    # leave others to use the normal palette
+}
+
+# Get all hue levels
+hue_levels = combined_pca_df["tissue_type"].unique()
+
+# Get the default Seaborn palette for all levels
+default_palette = sns.color_palette(n_colors=len(hue_levels))
+default_mapping = dict(zip(hue_levels, default_palette))
+
+# Merge custom overrides
+palette = {**default_mapping, **custom_colors}
+
+
+plt.figure(figsize=(15, 8))
+sns.scatterplot(x='PC1',
+                y='PC2',
+                hue="tissue_type",
+                data=combined_pca_df,
+                palette=palette,
+                s=150,
+                edgecolor='k')
+# legend next to plot
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+# Adjust plot layout to prevent legend overlap
+plt.xlabel("PC1, explained variance: {:.2f}%".format(
+    pca.explained_variance_ratio_[0] * 100))
+plt.ylabel("PC2, explained variance: {:.2f}%".format(
+    pca.explained_variance_ratio_[1] * 100))
+plt.title("PCA of RNA-seq Data with Zhao Data Colored by Source/Cell Line")
+plt.tight_layout()
+plt.savefig("./figures/rnaseq_pca_with_zhao_plot.png")
 # %%
