@@ -295,7 +295,16 @@ plt.xlabel("PC1, explained variance: {:.2f}%".format(
     pca.explained_variance_ratio_[0] * 100))
 plt.ylabel("PC2, explained variance: {:.2f}%".format(
     pca.explained_variance_ratio_[1] * 100))
-plt.title("PCA of RNA-seq Data with Zhao Data Colored by Source/Cell Line")
+plt.title("PCA of All Data Colored by Source/Cell Line")
 plt.tight_layout()
-plt.savefig("./figures/rnaseq_pca_with_zhao_plot.png")
+plt.savefig("./figures/rnaseq_pca_alldata_fitbyprevious.png")
+# %%
+# reformat for Pinferna
+combined_with_zhao = np.exp(combined_with_zhao.drop(
+    "tissue_type", axis=1) - 1)  # reverse log1p
+combined_with_zhao = combined_with_zhao.transpose()
+combined_with_zhao.index.name = 'GeneSymbol'
+combined_with_zhao.to_csv(
+    './data/rnaseq_network_genes_alldata_for_pinferna.csv')
+
 # %%
