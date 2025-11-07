@@ -142,26 +142,26 @@ def rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name="", s
     #  timestep = 10, rescaling_factor = 10, suffix = "100s_10max_")
 
 
-# in_dir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/10_30_25_CPC_metacentric_transition_model"
-# folder_name = "SimID_298553153_0__exported"
-# model_name = "10_30_25 CPC_metacentric_transition_model"
-# simulation_name = "11_06_2025_transition_model_2ummin_KTmovement_NDC80avail_0.1_fixed_delT_18s"
+in_dir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/10_30_25_CPC_metacentric_transition_model"
+folder_name = "SimID_298553153_0__exported"
+model_name = "10_30_25 CPC_metacentric_transition_model"
+simulation_name = "11_06_2025_transition_model_2ummin_KTmovement_NDC80avail_0.1_fixed_delT_18s"
+outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/4_vcell_to_ch/IC"
+rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=18,
+                               timestep=1, min_mix=2, rescaling_factor=20, suffix="_20max")
+
+# in_dir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/09_16_25_CPC_metacentric_tensed_model_v2"
+# folder_name = "SimID_296945950_0__exported"
+# model_name = "09_16_25_CPC_metacentric_tensed_model_v2"
+# simulation_name = "09_16_25_metacentric_tensed_model"
 # outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/4_vcell_to_ch/IC"
-# rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=18,
-#                                timestep=1, min_mix=2, rescaling_factor=5, suffix="_5max")
+# rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=120,
+#                                timestep=10, min_mix=2, rescaling_factor=20, suffix="_20max")
 
-in_dir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/09_16_25_CPC_metacentric_tensed_model_v2"
-folder_name = "SimID_296945950_0__exported"
-model_name = "09_16_25_CPC_metacentric_tensed_model_v2"
-simulation_name = "09_16_25_metacentric_tensed_model"
-outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/4_vcell_to_ch/IC"
-rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=120,
-                               timestep=10, min_mix=2, rescaling_factor=5, suffix="_5max")
-
-in_dir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/_09_16_25_CPC_metacentric_relaxed_model"
-folder_name = "SimID_296945372_0__exported"
-model_name = "_09_16_25_CPC_metacentric_relaxed_model"
-simulation_name = "09_16_25_metacentric_relaxed_model"
-outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/4_vcell_to_ch/IC"
-rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=120,
-                               timestep=10, min_mix=2, rescaling_factor=5, suffix="_5max")
+# in_dir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/_09_16_25_CPC_metacentric_relaxed_model"
+# folder_name = "SimID_296945372_0__exported"
+# model_name = "_09_16_25_CPC_metacentric_relaxed_model"
+# simulation_name = "09_16_25_metacentric_relaxed_model"
+# outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/4_vcell_to_ch/IC"
+# rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=120,
+#                                timestep=10, min_mix=2, rescaling_factor=20, suffix="_20max")
