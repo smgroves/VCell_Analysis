@@ -7,8 +7,8 @@ all_plot <- function(
     tInit=0, # in s
     tSpan, # in s
     chromWidth=1.6, #um
-    chromHeight=3.5, #um
-    dataDim=c(149,68), # rows,columns in concentration matrix; depends on mesh size
+    chromHeight=3.2, #um
+    dataDim=c(128,64), # rows,columns in concentration matrix; depends on mesh size
     row_1=1,
     row_2=dataDim[1],
     col_1=1,
@@ -34,11 +34,11 @@ all_plot <- function(
   
   # initial concentrations (uM) -> Without vol_ratio or fractions multiplications
   # clamped
-  Haspini_ic_uM<- 0.55071118
-  Plk1_init_uM<-0.23394
-  CPCi_init_uM <- 0.07838
-  Bub1a_init_uM<-0.02018
-  Sgo1_init_uM<-0.02583
+  # Haspini_ic_uM<- 0.55071118
+  # Plk1_init_uM<-0.23394
+  # CPCi_init_uM <- 0.07838
+  # Bub1a_init_uM<-0.02018
+  # Sgo1_init_uM<-0.02583
   
 
   
@@ -122,25 +122,46 @@ all_plot <- function(
       y1 = ceiling(1.6 * dataDim[1] / chromHeight)
       y2 = ceiling(1.9 * dataDim[1] / chromHeight)
       }else if(all(dataDim==c(128,64))){
-      y1 = ceiling(1.45 * dataDim[1] / chromHeight)
+      y1 = ceiling(1.45 * dataDim[1] / chromHeight) + 1
       y2 = ceiling(1.75 * dataDim[1] / chromHeight)
       }
       
+      #new haspin width = 0.08 instead of 0.2, so IC region is .76 to .84 instead of .7 to .9
       #For relaxed state
       if(kt_width == 'Relaxed'){
-      x1 = ceiling(0.425 * dataDim[2] / chromWidth)
+      x1 = ceiling(0.425 * dataDim[2] / chromWidth) + 1
       x2 = ceiling(0.500 * dataDim[2] / chromWidth)
-      x3 = ceiling(0.700 * dataDim[2] / chromWidth) + 1
-      x4 = ceiling(0.900 * dataDim[2] / chromWidth) - 1
-      x5 = ceiling(1.100 * dataDim[2] / chromWidth)
+      x3 = ceiling(0.76 * dataDim[2] / chromWidth) + 1
+      x4 = ceiling(0.84 * dataDim[2] / chromWidth) 
+      x5 = ceiling(1.100 * dataDim[2] / chromWidth) + 1
       x6 = ceiling(1.175 * dataDim[2] / chromWidth)
       }else if(kt_width == 'Tensed'){
-      #For tensed state
-      x1 = ceiling(0.125 * dataDim[2] / chromWidth)
+            #For tensed state
+      x1 = ceiling(0.125 * dataDim[2] / chromWidth) + 1
       x2 = ceiling(0.200 * dataDim[2] / chromWidth)
-      x3 = ceiling(0.700 * dataDim[2] / chromWidth) + 1
-      x4 = ceiling(0.900 * dataDim[2] / chromWidth) - 1
-      x5 = ceiling(1.400 * dataDim[2] / chromWidth)
+      x3 = ceiling(0.760 * dataDim[2] / chromWidth) + 1
+      x4 = ceiling(0.840 * dataDim[2] / chromWidth) 
+      x5 = ceiling(1.400 * dataDim[2] / chromWidth) + 1
+      x6 = ceiling(1.475 * dataDim[2] / chromWidth)
+      }else if(kt_width == 'Telomeric_Relaxed'){
+      #For Telomeric chromosomes in a relaxed state
+      y1 = ceiling(0 * dataDim[1] / chromHeight)
+      y2 = ceiling(0.3 * dataDim[1] / chromHeight)
+      x1 = ceiling(0.425 * dataDim[2] / chromWidth) + 1
+      x2 = ceiling(0.500 * dataDim[2] / chromWidth)
+      x3 = ceiling(0.760 * dataDim[2] / chromWidth) + 1
+      x4 = ceiling(0.840 * dataDim[2] / chromWidth)
+      x5 = ceiling(1.100 * dataDim[2] / chromWidth) + 1
+      x6 = ceiling(1.175 * dataDim[2] / chromWidth)
+      }else if(kt_width == 'Telomeric_Tensed'){
+      #For Telomeric chromosomes in a tensed state
+      y1 = ceiling(0 * dataDim[1] / chromHeight)
+      y2 = ceiling(0.3 * dataDim[1] / chromHeight)
+      x1 = ceiling(0.125 * dataDim[2] / chromWidth) + 1
+      x2 = ceiling(0.200 * dataDim[2] / chromWidth)
+      x3 = ceiling(0.760 * dataDim[2] / chromWidth) + 1
+      x4 = ceiling(0.840 * dataDim[2] / chromWidth)
+      x5 = ceiling(1.400 * dataDim[2] / chromWidth) +1
       x6 = ceiling(1.475 * dataDim[2] / chromWidth)
       }
       matrix <- L[[q]]
@@ -474,10 +495,10 @@ all_plot <- function(
       highlight_active_ic <- filtered_active_ic %>% select(all_of(active_ic))
     }else{
       highlight_active_ic <- filtered_active_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      # highlight_active_ic <- filtered_active_ic %>% select(all_of(order(highlight_active_ic, decreasing = TRUE))[1:n_highlight])
+      highlight_active_ic <- filtered_active_ic %>% select(all_of(order(highlight_active_ic, decreasing = TRUE))[1:n_highlight])
 
-      sorted.df = highlight_active_ic[, order(as.matrix(highlight_active_ic)[1,], decreasing = TRUE)]
-      highlight_active_ic <- filtered_active_ic %>% select(all_of(colnames(sorted.df))[1:n_highlight])
+      # sorted.df = highlight_active_ic[, order(as.matrix(highlight_active_ic)[1,], decreasing = TRUE)]
+      # highlight_active_ic <- filtered_active_ic %>% select(all_of(colnames(sorted.df))[1:n_highlight])
 
     }
     
@@ -537,9 +558,9 @@ all_plot <- function(
       highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(active_ic))
     }else{
       highlight_inactive_ic <- filtered_inactive_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      # highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(order(highlight_inactive_ic, decreasing = TRUE))[1:n_highlight])
-      sorted.df = highlight_inactive_ic[, order(as.matrix(highlight_inactive_ic)[1,], decreasing = TRUE)]
-      highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(colnames(sorted.df))[1:n_highlight])
+      highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(order(highlight_inactive_ic, decreasing = TRUE))[1:n_highlight])
+      # sorted.df = highlight_inactive_ic[, order(as.matrix(highlight_inactive_ic)[1,], decreasing = TRUE)]
+      # highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(colnames(sorted.df))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -597,9 +618,9 @@ all_plot <- function(
       highlight_active_kt <- filtered_active_kt %>% select(all_of(active_kt))
     }else{
       highlight_active_kt <- filtered_active_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      # highlight_active_kt <- filtered_active_kt %>% select(all_of(order(highlight_active_kt, decreasing = TRUE))[1:n_highlight])
-      sorted.df = highlight_active_kt[, order(as.matrix(highlight_active_kt)[1,], decreasing = TRUE)]
-      highlight_active_kt <- filtered_active_kt %>% select(all_of(colnames(sorted.df))[1:n_highlight])
+      highlight_active_kt <- filtered_active_kt %>% select(all_of(order(highlight_active_kt, decreasing = TRUE))[1:n_highlight])
+      # sorted.df = highlight_active_kt[, order(as.matrix(highlight_active_kt)[1,], decreasing = TRUE)]
+      # highlight_active_kt <- filtered_active_kt %>% select(all_of(colnames(sorted.df))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -658,9 +679,9 @@ all_plot <- function(
       highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(active_kt))
     }else{
       highlight_inactive_kt <- filtered_inactive_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      # highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(order(highlight_inactive_kt, decreasing = TRUE))[1:n_highlight])
-      sorted.df = highlight_inactive_kt[, order(as.matrix(highlight_inactive_kt)[1,], decreasing = TRUE)]
-      highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(colnames(sorted.df))[1:n_highlight])
+      highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(order(highlight_inactive_kt, decreasing = TRUE))[1:n_highlight])
+      # sorted.df = highlight_inactive_kt[, order(as.matrix(highlight_inactive_kt)[1,], decreasing = TRUE)]
+      # highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(colnames(sorted.df))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -713,9 +734,9 @@ all_plot <- function(
       highlight_ic <- filtered_ic %>% select(all_of(ic))
     }else{
       highlight_ic <- filtered_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      # highlight_ic <- filtered_ic %>% select(all_of(order(highlight_ic, decreasing = TRUE))[1:n_highlight])
-      sorted.df = highlight_ic[, order(as.matrix(highlight_ic)[1,], decreasing = TRUE)]
-      highlight_ic <- filtered_ic %>% select(all_of(colnames(sorted.df))[1:n_highlight])
+      highlight_ic <- filtered_ic %>% select(all_of(order(highlight_ic, decreasing = TRUE))[1:n_highlight])
+      # sorted.df = highlight_ic[, order(as.matrix(highlight_ic)[1,], decreasing = TRUE)]
+      # highlight_ic <- filtered_ic %>% select(all_of(colnames(sorted.df))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -774,9 +795,9 @@ all_plot <- function(
       highlight_kt <- filtered_kt %>% select(all_of(kt))
     }else{
       highlight_kt <- filtered_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      # highlight_kt <- filtered_kt %>% select(all_of(order(highlight_kt, decreasing = TRUE))[1:n_highlight])
-      sorted.df = highlight_kt[, order(as.matrix(highlight_kt)[1,], decreasing = TRUE)]
-      highlight_kt <- filtered_kt %>% select(all_of(colnames(sorted.df))[1:n_highlight])
+      highlight_kt <- filtered_kt %>% select(all_of(order(highlight_kt, decreasing = TRUE))[1:n_highlight])
+      # sorted.df = highlight_kt[, order(as.matrix(highlight_kt)[1,], decreasing = TRUE)]
+      # highlight_kt <- filtered_kt %>% select(all_of(colnames(sorted.df))[1:n_highlight])
     }
     
     # Add in Time and Sum

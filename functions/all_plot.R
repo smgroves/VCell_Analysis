@@ -497,7 +497,7 @@ all_plot <- function(
       highlight_active_ic <- filtered_active_ic %>% select(all_of(order(highlight_active_ic, decreasing = TRUE))[1:n_highlight])
     }
     
-    # Add in Time and Suma
+    # Add in Time and Sum
     if(sums == TRUE){
       highlight_active_ic <- cbind(data_active_ic$Time, data_active_ic$Sum_Active, highlight_active_ic)
     }else{

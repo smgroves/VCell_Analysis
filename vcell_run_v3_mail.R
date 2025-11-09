@@ -1,12 +1,21 @@
 #########################################################
 # Install all needed packages
-packages <- c("ggplot2","gridExtra","purrr","latex2exp","stringr","lemon","utils","tictoc","tidyverse","tibble","scales", "xlsx", "pdftools", "rhdf5", "rgoogleslides", "googleCloudStorageR", "png")
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+# install.packages(c("gifski","transformr"))
+packages <- c("ggplot2","gganimate","gifski","av","transformr","png","gridExtra","purrr","latex2exp","stringr","lemon","utils","tictoc","tidyverse","tibble","scales", "xlsx", "pdftools", "png")
+installed <- rownames(installed.packages())
+for (pkg in packages) {
+  if (!(pkg %in% installed)) {
+    install.packages(pkg)
+  }
+}
 lapply(packages, require, character.only = TRUE)
+
 tic("total")
 
 
 # CHANGE
-funcPath<-"/Users/smgroves/Documents/Github/VCell_Analysis/functions"
+funcPath<-"/Users/smgroves/Documents/Github/VCell_Analysis/functions_SG"
 importPath<-"/Users/smgroves/Box/CPC_Model_Project/VCell_Exports"
 exportPath<-"/Users/smgroves/Box/CPC_Model_Project/vcell_plots"
 
@@ -25,11 +34,11 @@ dataDim=c(128,64) #edited
 
 # Species Lists, add any that are required to be on one plot
 
-CPC_species <-c("CPCa", "pH2A_Sgo1_CPCa", "pH3_CPCa", "pH2A_Sgo1_pH3_CPCa", "CPCi", "pH2A_Sgo1_CPCi", "pH3_CPCi", "pH2A_Sgo1_pH3_CPCi")
+CPC_species <-c("CPCa", "pH2A_Sgo1_CPCa", "pH3_CPCa", "CPCi", "pH2A_Sgo1_CPCi", "pH3_CPCi","H3_CPCi",'H3_CPCa')
 Mps1_species <-c("Mps1a", "pMps1a", "Ndc80_Mps1a", "Ndc80_pMps1a", "pNdc80_Mps1a", "pNdc80_pMps1a", "Mps1i", "pMps1i", "Ndc80_Mps1i", "Ndc80_pMps1i", "pNdc80_Mps1i", "pNdc80_pMps1i")
 Todd_species <-c("Plk1a", "Plk1i", "Haspina", "Haspini", "pH3", "pH3_CPCa", "pH3_CPCi", "pH2A_Sgo1_CPCi", "pH2A_Sgo1_CPCa")
-pH3_species <- c("pH3", "pH3_CPCa", "pH3_CPCi", "pH2A_Sgo1_pH3_CPCa", "pH2A_Sgo1_pH3_CPCi")
-pH2A_species <- c("pH2A", "pH2A_Sgo1", "pH2A_Sgo1_CPCa", "pH2A_Sgo1_CPCi", "pH2A_Sgo1_pH3_CPCi", "pH2A_Sgo1_pH3_CPCa")
+pH3_species <- c("pH3", "pH3_CPCa", "pH3_CPCi")
+pH2A_species <- c("pH2A", "pH2A_Sgo1", "pH2A_Sgo1_CPCa", "pH2A_Sgo1_CPCi")
 Haspin_Plk1_species <- c("Haspina", "Haspini", "Plk1a", "Plk1i")
 only_H3_H2A_species <- c("H3", "H2A")
 Bub1a <- c("Bub1a")
@@ -135,7 +144,7 @@ kt_width = c(
               # # "Tensed"
               # "Relaxed",
               # "Relaxed",
-              "Relaxed",
+              # "Relaxed",
               "Relaxed"
 
              )
@@ -150,8 +159,9 @@ sims <- c(
   # "SimID_275966243_1__exported",
   # "SimID_275966243_2__exported"
   # "SimID_276685993_0__exported"
-  "SimID_278919747_0__exported",
-  "SimID_278919749_0__exported"
+  # "SimID_278919747_0__exported",
+  # "SimID_278919749_0__exported"
+  "SimID_296945372_0__exported"
   
   
 )
@@ -166,8 +176,9 @@ var <- c(
   # "09_17_24_CPC_relaxed_RefModel_128x64_scan1",
   # "09_17_24_CPC_relaxed_RefModel_128x64_scan2"
   # "10_01_24_relaxed_RefModel_MonseData"
-  "Copy of 09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_values",
-  "Copy of 09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_Ndc80_values_low_Sgo1"
+  # "Copy of 09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_values",
+  # "Copy of 09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_Ndc80_values_low_Sgo1"
+  "_09_16_25_CPC_metacentric_relaxed_model"
   )
 
 #########################################################
@@ -196,7 +207,7 @@ for(i in 1:length(sims)){
                tInit=0,
                tSpan=500, #400 for relaxed to tense
                desiredInterval=100,
-               cutoff=5, #for heatmap color bar
+               cutoff=10, #for heatmap color bar
                funcPath,
                importPath,
                exportPath_new,

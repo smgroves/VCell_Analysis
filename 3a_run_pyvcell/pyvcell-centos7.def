@@ -1,0 +1,54 @@
+Bootstrap: docker
+From: centos:7
+
+%labels
+    Author YourName
+    Version 1.0
+
+%environment
+    # Make conda envs available at runtime
+    export CONDA_ROOT=/opt/conda
+    export PATH=$CONDA_ROOT/envs/pyvcell_env_rivanna/bin:$CONDA_ROOT/bin:$PATH
+    export PYTHONNOUSERSITE=1
+
+%post
+    # Run as root in build phase
+    yum -y update && yum -y install wget bzip2 ca-certificates \
+        make automake gcc gcc-c++ kernel-devel git libX11-devel libXext-devel libXt-devel \
+        libSM-devel libICE-devel libXrender libXrandr libffi-devel zlib-devel bzip2-devel openssl-devel \
+        which
+
+    # Install Miniconda into /opt/conda
+    MINICONDA_SH=/tmp/miniconda.sh
+    wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $MINICONDA_SH
+    bash $MINICONDA_SH -b -p /opt/conda
+    rm -f $MINICONDA_SH
+    /opt/conda/bin/conda init bash || true
+    /opt/conda/bin/conda config --set always_yes yes --set changeps1 no
+    /opt/conda/bin/conda update -q conda
+
+    # Create a conda env and install key packages (adjust python version if needed)
+    /opt/conda/bin/conda create -q -n pyvcell_env_rivanna python=3.8 pip
+    /opt/conda/bin/conda run -n pyvcell_env_rivanna pip install --upgrade pip setuptools wheel
+
+    # Install common pyvcell deps; add or remove packages as pyvcell requires
+    /opt/conda/bin/conda run -n pyvcell_env_rivanna pip install numpy scipy matplotlib lxml
+
+    # Clone pyvcell from GitHub and install from source. Replace URL and branch/commit as needed.
+    git clone https://github.com/yourusername/pyvcell.git /opt/pyvcell_src
+    cd /opt/pyvcell_src
+    # optionally checkout a specific tag/commit:
+    # git checkout <commit-or-tag>
+    /opt/conda/bin/conda run -n pyvcell_env_rivanna pip install -e .
+
+    # cleanup
+    /opt/conda/bin/conda clean -afy
+    yum -y clean all
+    rm -rf /var/cache/yum /tmp/* /root/.cache/pip
+
+%runscript
+    # default when executing container (passes arguments to python inside env)
+    exec /opt/conda/bin/conda run -n pyvcell_env_rivanna python "$@"
+
+%test
+    /opt/conda/bin/conda run -n pyvcell_env_rivanna python -c "import pyvcell; print('pyvcell import OK')"

@@ -305,6 +305,7 @@ combined_with_zhao = np.exp(combined_with_zhao.drop(
 combined_with_zhao = combined_with_zhao.transpose()
 combined_with_zhao.index.name = 'GeneSymbol'
 combined_with_zhao.to_csv(
-    './data/rnaseq_network_genes_alldata_for_pinferna.csv')
+    './data/rnaseq_network_genes_TCGA_MCF10A_CCLE_ZHAO'
+    '_for_pinferna.csv')
 
 # %%
