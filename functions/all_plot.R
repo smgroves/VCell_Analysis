@@ -6,9 +6,9 @@ all_plot <- function(
     species_info_list,
     tInit=0, # in s
     tSpan, # in s
-    chromWidth=1.6, #um
-    chromHeight=3.2, #um
-    dataDim=c(128,64), # rows,columns in concentration matrix; depends on mesh size
+    #chromWidth=1.6, #um
+    #chromHeight=5.2, #um
+    #dataDim=c(128,64), # rows,columns in concentration matrix; depends on mesh size
     row_1=1,
     row_2=dataDim[1],
     col_1=1,
@@ -124,44 +124,55 @@ all_plot <- function(
       }else if(all(dataDim==c(128,64))){
       y1 = ceiling(1.45 * dataDim[1] / chromHeight) + 1
       y2 = ceiling(1.75 * dataDim[1] / chromHeight)
+      }else if(all(dataDim==c(208,64))){
+      y1 = ceiling(2.45 * dataDim[1] / chromHeight) + 1
+      y2 = ceiling(2.75 * dataDim[1] / chromHeight)
       }
       
-      #For relaxed state
-      if(kt_width == 'Relaxed'){
+      #For Metacentric chromosomes in a relaxed state
+      if(kt_width == 'Metacentric_Relaxed'){
       x1 = ceiling(0.425 * dataDim[2] / chromWidth) + 1
       x2 = ceiling(0.500 * dataDim[2] / chromWidth)
-      x3 = ceiling(0.700 * dataDim[2] / chromWidth) + 1
-      x4 = ceiling(0.900 * dataDim[2] / chromWidth) 
-      x5 = ceiling(1.100 * dataDim[2] / chromWidth) + 1
+      x3 = ceiling(0.760 * dataDim[2] / chromWidth) 
+      x4 = ceiling(0.840 * dataDim[2] / chromWidth)
+      x5 = ceiling(1.100 * dataDim[2] / chromWidth) + 1 
       x6 = ceiling(1.175 * dataDim[2] / chromWidth)
-      }else if(kt_width == 'Tensed'){
-      #For tensed state
+      }else if(kt_width == 'Metacentric_Tensed'){
+      #For Metacentric chromosomes in a tensed state
       x1 = ceiling(0.125 * dataDim[2] / chromWidth) + 1
       x2 = ceiling(0.200 * dataDim[2] / chromWidth)
-      x3 = ceiling(0.700 * dataDim[2] / chromWidth) + 1
-      x4 = ceiling(0.900 * dataDim[2] / chromWidth) 
-      x5 = ceiling(1.400 * dataDim[2] / chromWidth) + 1
+      x3 = ceiling(0.760 * dataDim[2] / chromWidth) 
+      x4 = ceiling(0.840 * dataDim[2] / chromWidth)
+      x5 = ceiling(1.400 * dataDim[2] / chromWidth) + 1 
       x6 = ceiling(1.475 * dataDim[2] / chromWidth)
-      }else if(kt_width == 'Telomeric_Relaxed'){
-      #For Telomeric chromosomes in a relaxed state
-      y1 = ceiling(0 * dataDim[1] / chromHeight)
+      }else if(kt_width == 'Telocentric_Relaxed'){
+      #For Telocentric chromosomes in a relaxed state
+      y1 = ceiling(0 * dataDim[1] / chromHeight) + 1
       y2 = ceiling(0.3 * dataDim[1] / chromHeight)
-      x1 = ceiling(0.425 * dataDim[2] / chromWidth) + 1
+      x1 = ceiling(0.425 * dataDim[2] / chromWidth) + 1 
       x2 = ceiling(0.500 * dataDim[2] / chromWidth)
-      x3 = ceiling(0.700 * dataDim[2] / chromWidth) + 1
-      x4 = ceiling(0.900 * dataDim[2] / chromWidth)
-      x5 = ceiling(1.100 * dataDim[2] / chromWidth) + 1
+      x3 = ceiling(0.760 * dataDim[2] / chromWidth) 
+      x4 = ceiling(0.840 * dataDim[2] / chromWidth)
+      x5 = ceiling(1.100 * dataDim[2] / chromWidth) + 1 
       x6 = ceiling(1.175 * dataDim[2] / chromWidth)
-      }else if(kt_width == 'Telomeric_Tensed'){
+      }else if(kt_width == 'Telocentric_Tensed'){
       #For Telomeric chromosomes in a tensed state
-      y1 = ceiling(0 * dataDim[1] / chromHeight)
+      y1 = ceiling(0 * dataDim[1] / chromHeight) + 1
       y2 = ceiling(0.3 * dataDim[1] / chromHeight)
-      x1 = ceiling(0.125 * dataDim[2] / chromWidth) + 1
+      x1 = ceiling(0.125 * dataDim[2] / chromWidth) + 1  
       x2 = ceiling(0.200 * dataDim[2] / chromWidth)
-      x3 = ceiling(0.700 * dataDim[2] / chromWidth) + 1
-      x4 = ceiling(0.900 * dataDim[2] / chromWidth)
-      x5 = ceiling(1.400 * dataDim[2] / chromWidth) +1
+      x3 = ceiling(0.760 * dataDim[2] / chromWidth) 
+      x4 = ceiling(0.840 * dataDim[2] / chromWidth)
+      x5 = ceiling(1.400 * dataDim[2] / chromWidth) + 1 
       x6 = ceiling(1.475 * dataDim[2] / chromWidth)
+      }else if(kt_width == 'Prometaphase_Relaxed'){
+      #For prometaphase chromosomes in a relaxed state (5.2 um heigth)
+      x1 = ceiling(0.425 * dataDim[2] / chromWidth) + 1
+      x2 = ceiling(0.500 * dataDim[2] / chromWidth)
+      x3 = ceiling(0.760 * dataDim[2] / chromWidth) 
+      x4 = ceiling(0.840 * dataDim[2] / chromWidth)
+      x5 = ceiling(1.100 * dataDim[2] / chromWidth) + 1
+      x6 = ceiling(1.175 * dataDim[2] / chromWidth)
       }
       matrix <- L[[q]]
       

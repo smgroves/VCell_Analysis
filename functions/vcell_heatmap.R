@@ -8,9 +8,9 @@ vcell_heatmap <- function(
     tSpan, # in s
     tInterval, # in s, what set in VCell
     desiredInterval, # in s, what you want the data to be spaced by
-    chromWidth=1.6, #um
-    chromHeight=3.5, #um
-    dataDim=c(149,68), # rows,columns in concentration matrix; depends on mesh size
+    #chromWidth=1.6, #um
+    #chromHeight=5.2, #um
+    #dataDim=c(149,68), # rows,columns in concentration matrix; depends on mesh size
     row_1=1,
     row_2=dataDim[1],
     col_1=1,

@@ -37,13 +37,13 @@ save_plots <- function(
       tSpan=tSpan,
       tInterval=10,
       desiredInterval=desiredInterval,
-      dataDim=c(128,64), #updated
+      #dataDim=c(128,64), #updated
       row_1=1,
       row_2=dataDim[1],
       col_1=1,
       col_2=dataDim[2],
-      chromWidth=1.6, #um
-      chromHeight=3.2, #um #updated
+      #chromWidth=1.6, #um
+      #chromHeight=5.2, #um #updated
       importPath=importPath,
       exportPath=exportPath)
     
@@ -74,9 +74,9 @@ tryCatch(
         species_info_list,
         tInit=0,
         tSpan=tSpan,
-        chromWidth=1.6, #um
-        chromHeight=3.2, #um updated
-        dataDim=c(128,64), #updated 
+        #chromWidth=1.6, #um
+        #chromHeight=5.2, #um updated
+        #dataDim=c(128,64), #updated 
         row_1=1,
         row_2=dataDim[1],
         col_1=1,
