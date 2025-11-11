@@ -9,8 +9,6 @@ heatmap_movie <- function(
     tInterval,
     frame_interval = 1,          # NEW: take every nth frame (default 1)
     movie_format = c("gif","mp4"), # choose output format, gif by default
-    # chromWidth = 1.6,
-    # chromHeight = 3.5,
     # dataDim = c(149,68),
     row_1 = 1,
     row_2 = dataDim[1],

@@ -15,10 +15,11 @@ tic("total")
 
 
 # CHANGE
-funcPath<-"/Users/smgroves/Documents/Github/VCell_Analysis/functions_SG"
+funcPath<-"/Users/smgroves/Documents/Github/VCell_Analysis/functions"
 importPath<-"/Users/smgroves/Box/CPC_Model_Project/VCell_Exports"
 exportPath<-"/Users/smgroves/Box/CPC_Model_Project/vcell_plots"
-
+chromWidth <- 3.2
+chromHeight <- 1.6
 
 # Functions
 functions<-list.files(funcPath,recursive=TRUE)
@@ -145,7 +146,8 @@ kt_width = c(
               # "Relaxed",
               # "Relaxed",
               # "Relaxed",
-              "Relaxed"
+              "Relaxed",
+              "Tensed"
 
              )
 
@@ -161,7 +163,8 @@ sims <- c(
   # "SimID_276685993_0__exported"
   # "SimID_278919747_0__exported",
   # "SimID_278919749_0__exported"
-  "SimID_296945372_0__exported"
+  "SimID_298848254_0__exported",
+  "SimID_298847711_0__exported"
   
   
 )
@@ -178,7 +181,9 @@ var <- c(
   # "10_01_24_relaxed_RefModel_MonseData"
   # "Copy of 09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_values",
   # "Copy of 09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_Ndc80_values_low_Sgo1"
-  "_09_16_25_CPC_metacentric_relaxed_model"
+  # "_09_16_25_CPC_metacentric_relaxed_model"
+  "11_07_25_metacentric_relaxed_MCF10A",
+  "11_07_25_metacentric_tensed_MCF10A"
   )
 
 #########################################################
