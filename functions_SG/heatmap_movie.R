@@ -18,6 +18,7 @@ heatmap_movie <- function(
     col_2 = dataDim[2],
     xdiv = 3,
     ydiv = 3,
+    fps_chosen = 5, #default frames per second
     importPath = "/Users/catalinaalvarez/Google Drive/My Drive/UVA/Research/JanesLab/CPC_project/Manuscript/Paper_simulations/vcell_data",
     exportPath = "/Users/catalinaalvarez/Desktop/"
 ) {
@@ -138,7 +139,7 @@ heatmap_movie <- function(
 
   # select frames according to frame_interval
   # unique times in order
-  unique_times <- sort(unique(dataMat$t))
+  unique_times <- (unique(dataMat$t))
   chosen_times <- unique_times[seq(1, length(unique_times), by = frame_interval)]
   dataMat_sub <- dataMat[dataMat$t %in% chosen_times, ]
 
@@ -200,11 +201,11 @@ heatmap_movie <- function(
   if (movie_format == "gif") {
     out_file <- file.path(exportPath, paste0(exportFilename_base, ".gif"))
     # use gifski renderer
-    animate(anim, renderer = gifski_renderer(out_file), nframes = length(chosen_times), fps = max(1, 1 / max(1, frame_interval)), width = 800, height = 800)
+    animate(anim, renderer = gifski_renderer(out_file), nframes = length(chosen_times), fps = max(fps_chosen, 1 / max(1, frame_interval)), width = 800, height = 800)
   } else {
     out_file <- file.path(exportPath, paste0(exportFilename_base, ".mp4"))
     # use av renderer
-    animate(anim, renderer = av_renderer(out_file), nframes = length(chosen_times), fps = max(1, 1 / max(1, frame_interval)), width = 800, height = 800)
+    animate(anim, renderer = av_renderer(out_file), nframes = length(chosen_times), fps = max(fps_chosen, 1 / max(1, frame_interval)), width = 800, height = 800)
   }
 
   message("Saved animation to: ", out_file)
