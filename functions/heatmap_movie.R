@@ -88,7 +88,7 @@ heatmap_movie <- function(
             L[[i]] <- data.matrix(read.csv(paste(importPath, dataFolder, file_match, sep="/"),
                                            header = FALSE, skip = 10))[row_1:row_2, col_1:col_2]
           }
-          # replace negatives with zero (you referenced matrixZero earlier)
+          # replace negatives with zero 
           # If matrixZero() exists in your environment, keep it. Otherwise do simple clamp:
           if (exists("matrixZero")) {
             L <- matrixZero(matrixList = L)
