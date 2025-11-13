@@ -48,12 +48,16 @@ Bub1a <- c("Bub1a")
 pKnl1_Bub1a <- c("pKnl1_Bub1a")
 Bub1a_pKnl1_species <- c("Bub1a", "pKnl1", "pKnl1_Bub1a")
 Haspin_P_species <- c("Haspina", "Haspini", "Plk1a")
+CPC_active_species <-c("pH2A_Sgo1_CPCa", "pH3_CPCa","CPCa",'H3_CPCa')
+CPC_inactive_species <-c("CPCi", "pH2A_Sgo1_CPCi", "pH3_CPCi","H3_CPCi")
+CPC_pH2A_species <-c( "pH2A_Sgo1_CPCa", "pH2A_Sgo1_CPCi")
+CPC_pH3_species <-c( "pH3_CPCa", "pH3_CPCi","H3_CPCa","H3_CPCi")
 
 # ---------------- HEAT MAPS ---------------
 
 # How many heat maps to return
 # Change
-H <- 3
+H <- 7
 
 heatmap_species <- vector("list", H)
 heatmap_info_list <- vector("list", H)
@@ -62,29 +66,21 @@ heatmap_info_list <- vector("list", H)
 heatmap_species[[1]] <- CPC_species
 heatmap_species[[2]] <- pH2A_species
 heatmap_species[[3]] <- pH3_species
+heatmap_species[[4]] <- CPC_active_species
+heatmap_species[[5]] <- CPC_inactive_species
+heatmap_species[[6]] <- CPC_pH2A_species
+heatmap_species[[7]] <- CPC_pH3_species
+
 
 
 # Change, name of plot in plot directory, also name in heatmap, IN ORDER
 heatmap_info_list[[1]] <- c("all CPC")
 heatmap_info_list[[2]] <- c("all pH2A")
 heatmap_info_list[[3]] <- c("all pH3")
-
-
-# H <- 2
-# 
-# heatmap_species <- vector("list", H)
-# heatmap_info_list <- vector("list", H)
-# 
-# # Change, IN ORDER
-# heatmap_species[[1]] <- Bub1a
-# heatmap_species[[2]] <- pKnl1_Bub1a
-# 
-# 
-# 
-# # Change, name of plot in plot directory, also name in heatmap, IN ORDER
-# heatmap_info_list[[1]] <- c("Bub1a")
-# heatmap_info_list[[2]] <- c("pKnl1_Bub1a")
-
+heatmap_info_list[[4]] <- c("All Active CPC")
+heatmap_info_list[[5]] <- c("All Inactive CPC")
+heatmap_info_list[[6]] <- c("All CPC bound to pH2A")
+heatmap_info_list[[7]] <- c("All CPC bound to pH3")
 
 
 # ---------------- LINE PLOTS ---------------
