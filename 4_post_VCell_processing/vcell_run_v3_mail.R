@@ -2,7 +2,8 @@
 # Install all needed packages
 options(repos = c(CRAN = "https://cloud.r-project.org"))
 # install.packages(c("gifski","transformr"))
-packages <- c("ggplot2","gganimate","gifski","av","transformr","png","gridExtra","purrr","latex2exp","stringr","lemon","utils","tictoc","tidyverse","tibble","scales", "xlsx", "pdftools", "png")
+if (!requireNamespace("ggrastr", quietly = TRUE)) install.packages("ggrastr")
+packages <- c("ggplot2","ggrastr","gganimate","gifski","av","transformr","png","gridExtra","purrr","latex2exp","stringr","lemon","utils","tictoc","tidyverse","tibble","scales", "xlsx", "pdftools", "png")
 installed <- rownames(installed.packages())
 for (pkg in packages) {
   if (!(pkg %in% installed)) {
