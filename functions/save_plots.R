@@ -13,7 +13,9 @@ save_plots <- function(
     funcPath,
     importPath,
     exportPath,
-    kt_width
+    kt_width,
+    movie = TRUE,
+    lineplots = TRUE
     )
   
 {
@@ -32,7 +34,7 @@ save_plots <- function(
       names=names,
       species=heatmap_species[[hm]],
       speciesName=heatmap_info_list[[hm]],
-      cutoff_color=cutoff,
+      # cutoff_color=cutoff,
       tInit=tInit,
       tSpan=tSpan,
       tInterval=10,
@@ -62,7 +64,7 @@ finally = {
 }
 
 )
-  
+  if (lineplots == TRUE){
 tryCatch(
   expr = {
     
@@ -92,10 +94,11 @@ error = function(e){
 },
 finally = {
   
+
 }
-  
 )
-  
+  }
+  if (movie == TRUE){
   tryCatch(
     expr = {
   
@@ -107,7 +110,7 @@ finally = {
       names=names,
       species=heatmap_species[[hm]],
       speciesName=heatmap_info_list[[hm]],
-      cutoff_color=cutoff,
+      # cutoff_color=cutoff,
       tInit=tInit,
       tSpan=tSpan,
       tInterval=10,
@@ -123,7 +126,7 @@ finally = {
       exportPath=exportPath)
     
   }
-      
+
 
   
 },
@@ -136,6 +139,8 @@ finally = {
 }
 
 )
+  }
   toc()
+  
 
 }

@@ -22,59 +22,6 @@ vcell_heatmap <- function(
   
   #####################################################################################
 
-  # SimID= "SimID_259155041_0__exported"
-  # names <- c("Relaxed Model")
-  # 
-  # # All simulation IDs
-  # # Change
-  # sims <- c(
-  #   "SimID_258548403_0__exported"
-  #   
-  # )
-  # 
-  # # Folder naming corresponding to specific simulation ID
-  # # Change
-  # var <- c(
-  #   "diffAhis - kpp=0.1 kppKT=0.3"
-  # )
-  # names <- c("Relaxed Model")
-  # xdiv <- 3
-  # ydiv <- 3
-  # cutoff_color=10
-  # tInit=0
-  # tSpan=500
-  # tInterval=10
-  # desiredInterval=100
-  # dataDim=c(149,68)
-  # row_1=1
-  # row_2=dataDim[1]
-  # col_1=1
-  # col_2=dataDim[2]
-  # chromWidth=1.6 #um
-  # chromHeight=3.5 #um
-  # importPath="/Users/sam/Research/JanesLab/vcell_data"
-  # exportPath="/Users/sam/Research/JanesLab/vcell_plots"
-  # 
-  # SimID=sims
-  # names=names
-  # hm = 1
-  # species=heatmap_species[[hm]]
-  # speciesName=heatmap_info_list[[hm]]
-  # cutoff_color=10
-  # tInit=tInit
-  # tSpan=tSpan
-  # tInterval=10
-  # desiredInterval=desiredInterval
-  # dataDim=c(149,68)
-  # row_1=1
-  # row_2=dataDim[1]
-  # col_1=1
-  # col_2=dataDim[2]
-  # chromWidth=1.6 #um
-  # chromHeight=3.5
-
-  
-  #####################################################################################
   
   # misc
   folderVar <- 0
@@ -97,8 +44,6 @@ vcell_heatmap <- function(
   
   clamped = FALSE
   clampConc<-0
-  
-  speciesName <- speciesName
   
   criticalConc=0
   phase=1 # 1 (pre-coac) or 2 (post-coac)
@@ -241,7 +186,13 @@ vcell_heatmap <- function(
   print(t_labs)
   
   #define our own maxcolor
-  maxColor<-cutoff_color
+  if (is.null(cutoff_color)){
+    if(max(C)>=10){
+      maxColor=10*ceiling(max(C)/10)
+    }else{
+    maxColor=ceiling(max(C))}
+  }else{
+  maxColor<-cutoff_color}
   
   xbreaks<-seq(0, chromWidth, chromWidth/(xdiv-1))
   xlabs<-c(as.character(round(0)),as.character(round(xbreaks[2:length(xbreaks)],digits=1)))
@@ -249,15 +200,17 @@ vcell_heatmap <- function(
   ybreaks<-seq(0,chromHeight, chromHeight/(ydiv-1))
   ylabs<-c(as.character(round(0)),as.character(round(ybreaks[2:length(ybreaks)],digits=2)))
   
-  legend_name<-paste("\\[",speciesName,"\\] ($\\mu$M)",sep="")
-  legend_name<-TeX(legend_name)
+  # speciesName_collapsed <- paste(speciesName, collapse = ", ")  # if you want to combine many
+  # legend_name<-paste("\\[",speciesName,"\\] ($\\mu$M)",sep="")
+  # legend_name<-TeX(legend_name)
+  legend_name <- bquote("[" * .(speciesName) * "] (" * mu * "M)")
   
-  labelString<-c("0",as.character(maxColor/2),as.character(maxColor))
+  labelString<-c("0",as.character(maxColor/4),as.character(maxColor/2),as.character(3*maxColor/4),as.character(maxColor))
   
   font_size_scaling_factor<-0.5
   
-  axis_font_size<-10-0.6*n_SimID
-  axis_title_font_size<-14-font_size_scaling_factor*n_SimID
+  axis_font_size<-7-0.6*n_SimID
+  axis_title_font_size<-10-font_size_scaling_factor*n_SimID
   legend_font_size<-10-font_size_scaling_factor*n_SimID
   legend_title_font_size<-12-font_size_scaling_factor*n_SimID
   stripx_font_size<-7-0.25*n_SimID
@@ -268,7 +221,8 @@ vcell_heatmap <- function(
   p<-ggplot(data=dataMat2,aes(x=X, y=Y, fill=C))+geom_tile()+
     facet_grid(factor(ID_long,levels=ID_lev,labels=ID_labs) ~ factor(t_long,levels=t_lev,labels=t_labs), switch="y",labeller = label_wrap_gen(width = 10, multi_line = TRUE))+
     coord_fixed(ratio = 1, xlim = NULL, ylim = NULL, expand = TRUE, clip = "on")+
-    scale_fill_gradientn(name=legend_name,limits=c(0,maxColor),breaks=c(0,round(maxColor/2,digits=0),maxColor),labels=labelString,colors=c("black","blueviolet","blue","cyan","green","yellow","orange","red"),na.value="grey100")+
+    # scale_fill_gradientn(name=legend_name,limits=c(0,maxColor),breaks=c(0,round(maxColor/2,digits=0),maxColor),labels=labelString,colors=c("black","blueviolet","blue","cyan","green","yellow","orange","red"),na.value="grey100")+
+    scale_fill_viridis_c(name = legend_name,limits = c(0, maxColor), breaks = c(0, round(maxColor/4, digits=2),round(maxColor/2, digits=2), round(3*maxColor/4, digits=2),maxColor),labels = labelString,na.value = "grey100")+
     scale_x_continuous(breaks=xbreaks,labels=xlabs)+
     scale_y_continuous(breaks=ybreaks,labels=ylabs,position="right")+
     theme_void()+
@@ -297,21 +251,33 @@ vcell_heatmap <- function(
   # create string for export filename
   
   exportFilename<-paste(speciesName, "heatmap", sep="_")
-  exportFilename <- paste(exportFilename,"png",sep=".")
-  
+
   # save graph to png file
   ggsave(
-    exportFilename,
+    paste(exportFilename,"png",sep="."),
     plot = p,
     device = "png",
     path = exportPath,
     scale = 1,
-    width = 5,
+    width = 10,
     height = 5,
     units = "in",
     dpi = 300
     # limitsize = TRUE
     )
+  
+  ggsave(
+    paste(exportFilename,"pdf",sep="."),
+    plot = p,
+    device = "pdf",
+    path = exportPath,
+    scale = 1,
+    width = 10,
+    height = 5,
+    units = "in",
+    dpi = 300
+    # limitsize = TRUE
+  )
   
   print(p)
   return(list(nlist,M))

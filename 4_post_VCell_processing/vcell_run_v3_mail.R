@@ -52,6 +52,7 @@ CPC_active_species <-c("pH2A_Sgo1_CPCa", "pH3_CPCa","CPCa",'H3_CPCa')
 CPC_inactive_species <-c("CPCi", "pH2A_Sgo1_CPCi", "pH3_CPCi","H3_CPCi")
 CPC_pH2A_species <-c( "pH2A_Sgo1_CPCa", "pH2A_Sgo1_CPCi")
 CPC_pH3_species <-c( "pH3_CPCa", "pH3_CPCi","H3_CPCa","H3_CPCi")
+Ndc80_species <-c("Ndc80", "pNdc80")
 
 # ---------------- HEAT MAPS ---------------
 
@@ -84,13 +85,13 @@ heatmap_info_list[[7]] <- c("All CPC bound to pH3")
 
 
 # ---------------- LINE PLOTS ---------------
-L <- 7
+L <- 8
 
 all_data <- vector("list", L)
 species_info_list <- vector("list", L)
 
 # Change, IN ORDER
-all_species <- c(CPC_species, Mps1_species, Haspin_Plk1_species, pH3_species, pH2A_species, only_H3_H2A_species,Bub1a_pKnl1_species)
+all_species <- c(CPC_species, Mps1_species, Haspin_Plk1_species, pH3_species, pH2A_species, only_H3_H2A_species,Bub1a_pKnl1_species, Ndc80_species)
 
 # Change, IN ORDER
 all_data[[1]] <- CPC_species
@@ -100,6 +101,7 @@ all_data[[4]] <- pH3_species
 all_data[[5]] <- pH2A_species
 all_data[[6]] <- only_H3_H2A_species
 all_data[[7]] <- Bub1a_pKnl1_species
+all_data[[8]] <- Ndc80_species
 
 
 # Change, IN ORDER
@@ -110,29 +112,8 @@ species_info_list[[4]] <- c("pH3_species", "Inactive pH3 Species", "Active pH3 S
 species_info_list[[5]] <- c("pH2A_species", "Inactive pH2A Species", "Active pH2A Species", "All pH2A Species", FALSE, TRUE, TRUE, FALSE)
 species_info_list[[6]] <- c("H2A & H3", "Inactive H2A & H3", "Active H2A & H3", "H2A & H3", FALSE, FALSE, TRUE, FALSE)
 species_info_list[[7]] <- c("Bub1a_pKnl1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+species_info_list[[8]] <- c("Ndc80", "Inactive Ndc80", "Active Ndc80", "All Species", FALSE, FALSE, TRUE, FALSE)
 
-
-# 
-# # How many line plots to return
-# # Change
-# L <- 2
-# 
-# all_data <- vector("list", L)
-# species_info_list <- vector("list", L)
-# 
-# # Change, IN ORDER
-# all_species <- c(Bub1a_pKnl1_species, Haspin_P_species)
-# 
-# # Change, IN ORDER
-# all_data[[1]] <- Bub1a_pKnl1_species
-# all_data[[2]] <- Haspin_P_species
-# 
-# 
-# # Change, IN ORDER
-# 
-# species_info_list[[1]] <- c("Bub1a_pKnl1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-# species_info_list[[2]] <- c("Haspin_Plk1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-# 
 
 
 # ---------------- SIMULATION SPECIFICS ---------------
@@ -144,8 +125,8 @@ kt_width = c(
               # "Relaxed",
               # "Relaxed",
               # "Relaxed",
-              "Relaxed",
-              "Tensed"
+              "Metacentric_Relaxed",
+              "Metacentric_Tensed"
 
              )
 
@@ -210,151 +191,15 @@ for(i in 1:length(sims)){
                tInit=0,
                tSpan=500, #400 for relaxed to tense
                desiredInterval=100,
-               cutoff=10, #for heatmap color bar
+               cutoff=5, #for heatmap color bar
                funcPath,
                importPath,
                exportPath_new,
-               kt_width[i])
-
-    # vcell_table(sims[i],
-    # var[i],
-    # tPoints=c(0, 100, 200,300,400, 500),
-    # all_species=CPC_species,
-    # name='CPC',
-    # chromWidth=1.2,
-    # chromHeight=3.6,
-    # dataDim=c(128,64),
-    # row_1=1,
-    # row_2=dataDim[1],
-    # col_1=1,
-    # col_2=dataDim[2],
-    # importPath,
-    # exportPath_new,
-    # kt_width = kt_width[i])
+               kt_width[i],
+               movie = FALSE,
+               lineplots=FALSE)
 
     
   }
 }
-
-# vcell_table(sims,
-#             var,
-#             tPoints=c(0, 100, 200,300,400, 500),
-#             all_species=CPC_species,
-#             name='CPC',
-#             chromWidth=1.2,
-#             chromHeight=3.6,
-#             dataDim=c(128,64),
-#             row_1=1,
-#             row_2=dataDim[1],
-#             col_1=1,
-#             col_2=dataDim[2],
-#             importPath,
-#             exportPath_new,
-#             kt_width = "Relaxed")
-
-################################# GOOGLE SLIDES #####################################
-
-# Change
-# sims <- c(
-#   "SimID_259214167_0__exported",
-#   "SimID_259214167_1__exported",
-#   "SimID_259214167_2__exported",
-#   "SimID_259214167_3__exported",
-#   "SimID_259214167_4__exported",
-#   "SimID_259214167_5__exported",
-#   "SimID_259214165_0__exported",
-#   "SimID_259214169_0__exported",
-#   "SimID_259214169_1__exported"
-
-# 
-# )
-# 
-# # Change 
-# var <- c(
-#   "Module1 Plk1a_fracs III - Plk1a_frac 0.05p",
-#   "Module1 Plk1a_fracs III - Plk1a_frac 0.1p",
-#   "Module1 Plk1a_fracs III - Plk1a_frac 0.2p",
-#   "Module1 Plk1a_fracs III - Plk1a_frac 0.5p",
-#   "Module1 Plk1a_fracs III - Plk1a_frac 0.8p",
-#   "Module1 Plk1a_fracs III - Plk1a_frac 1.0p",
-#   "Module Plk1a_frac 2.5p",
-#   "Module1 Plk1a_fracs II - Plk1a_frac 0.3p",
-#   "Module1 Plk1a_fracs II - Plk1a_frac 0.4p"
-# )
-
-
-
-# --------------- Authorizing -------------------
-# 
-# # Change
-# Sys.setenv("GCS_DEFAULT_BUCKET" = "vcell_bucket")
-# # Change
-# Sys.setenv("GCS_AUTH_FILE"="C:/Users/sam/Downloads/disco-basis-393613-adc3747a6a2d.json")
-# # Change
-# gcs_global_bucket("vcell_bucket")
-# 
-# # Change
-# authorize("648818067522-j37u914d2bao6372o6jgorq7glnc25eg.apps.googleusercontent.com",
-#           "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")
-# 
-# # Change
-# gcs_auth("C:/Users/sam/Downloads/disco-basis-393613-adc3747a6a2d.json")
-# 
-# # Change
-# slide_plots <- c("all CPC_heatmap",
-#                  # "all Mps1a_heatmap",
-#                  # "all Mps1i_heatmap",
-#                  "all pH2A_heatmap",
-#                  "all pH3_heatmap",
-#                  "CPC_plot_1",
-#                  # "Mps1_plot_1",
-#                  # "Haspin_Plk1_species",
-#                  "pH2A_species_plot_1",
-#                  "pH3_species_plot_1",
-#                  "H2A & H3_plot_1"
-#                  # "CPC_table"
-# )
-# 
-# slide_plots <- c("Bub1a_heatmap",
-#                  "pKnl1_Bub1a_heatmap",
-#                  "Bub1a_pKnl1_species_plot_1",
-#                  "Haspin_Plk1_species_plot_1")
-# 
-# 
-# # Simulations 7/31/2023 FOR EXISTING SLIDES
-# slide_id <- "1EoyU_1Zwd4oMmmsyoXnGonG5AgTn1hdI2VHr5m6EO4c"
-# 
-# 
-# # Change ONLY IF YOU WANT NEW SLIDES
-# title <- "Module 1 Simulations 8/7/2023"
-# # MAKE A NEW SLIDE_ID FOR A NEW PRESENTATION
-# slide_id <- rgoogleslides::create_slides(title)
-# 
-# 
-# for(i in 1:length(sims)){
-#   if(file.exists("/Users/sam/Research/JanesLab/vcell_data") == TRUE){
-#     
-#     # what to name the output graph file, as a string "name" 
-#     # sweep_name<-paste("Relaxed_Base model", var[i])
-#     sweep_name<-var[i]
-#     
-#     dir.create(file.path(exportPath, sweep_name))
-#     exportPath_n <- paste(exportPath, sweep_name, sep="/")
-#     
-#     populate_slides(
-#                     exportPath_n,
-#                     slide_id,
-#                     var[i],
-#                     slide_plots
-#                     )
-#     
-#     
-#   }
-# }
-# 
-# 
-
-
-
-
 

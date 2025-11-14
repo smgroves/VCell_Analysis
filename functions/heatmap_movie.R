@@ -142,35 +142,41 @@ heatmap_movie <- function(
   dataMat_sub <- dataMat[dataMat$t %in% chosen_times, ]
 
   # plotting constants
-  maxColor <- cutoff_color
-  if (is.null(maxColor)) {
-    maxColor <- max(dataMat_sub$C, na.rm = TRUE)
-  }
+  #define our own maxcolor
+  if (is.null(cutoff_color)){
+    if(max(C)>=10){
+      maxColor=10*ceiling(max(C)/10)
+    }else{
+      maxColor=ceiling(max(C))}
+  }else{
+    maxColor<-cutoff_color}
+  
   xbreaks <- seq(0, chromWidth, chromWidth / (xdiv - 1))
   xlabs <- c(as.character(round(0)), as.character(round(xbreaks[2:length(xbreaks)], digits = 1)))
   ybreaks <- seq(0, chromHeight, chromHeight / (ydiv - 1))
   ylabs <- c(as.character(round(0)), as.character(round(ybreaks[2:length(ybreaks)], digits = 2)))
 
   legend_name <- paste("[", speciesName, "] (µM)", sep = "")
-  labelString <- c("0", as.character(round(maxColor / 2, digits = 0)), as.character(maxColor))
-
-  axis_font_size <- 10 - 0.6 * n_SimID
-  axis_title_font_size <- 14 - 0.5 * n_SimID
-  legend_font_size <- 10 - 0.5 * n_SimID
-  legend_title_font_size <- 12 - 0.5 * n_SimID
-  stripx_font_size <- 7 - 0.25 * n_SimID
-  stripy_font_size <- 7 - 0.25 * n_SimID
+  labelString<-c("0",as.character(maxColor/4),as.character(maxColor/2),as.character(3*maxColor/4),as.character(maxColor))
+  
+  axis_font_size <- 12 
+  axis_title_font_size <- 14 
+  legend_font_size <- 12 
+  legend_title_font_size <- 12
+  stripx_font_size <- 12 
+  stripy_font_size <- 12 
 
   # ggplot: SimIDs as columns, time will be animated
   p <- ggplot(data = dataMat_sub, aes(x = X, y = Y, fill = C)) +
     geom_tile() +
     facet_grid(. ~ factor(ID, levels = sort(unique(as.numeric(ID))), labels = ID_labs), switch = "y") +
     coord_fixed(ratio = 1) +
-    scale_fill_gradientn(name = legend_name, limits = c(0, maxColor),
-                         breaks = c(0, round(maxColor / 2, digits = 0), maxColor),
-                         labels = labelString,
-                         colors = c("black","blueviolet","blue","cyan","green","yellow","orange","red"),
-                         na.value = "grey100") +
+    # scale_fill_gradientn(name = legend_name, limits = c(0, maxColor),
+    #                      breaks = c(0, round(maxColor / 2, digits = 0), maxColor),
+    #                      labels = labelString,
+    #                      colors = c("black","blueviolet","blue","cyan","green","yellow","orange","red"),
+    #                      na.value = "grey100") +
+    scale_fill_viridis_c(name = legend_name,limits = c(0, maxColor), breaks = c(0, round(maxColor/4, digits=2),round(maxColor/2, digits=2), round(3*maxColor/4, digits=2),maxColor),labels = labelString,na.value = "grey100")+
     scale_x_continuous(breaks = xbreaks, labels = xlabs) +
     scale_y_continuous(breaks = ybreaks, labels = ylabs, position = "right") +
     xlab("X (µm)") + ylab("Y (µm)") +

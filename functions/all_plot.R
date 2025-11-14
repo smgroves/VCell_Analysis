@@ -16,7 +16,7 @@ all_plot <- function(
     importPath="/Users/sam/Research/JanesLab/vcell_data",
     exportPath="/Users/sam/Research/JanesLab/vcell_plots",
     linewidth=0.7,
-    kt_width = 'Relaxed' #can be 'Relaxed', 'Tensed' or 'Telomeric_Relaxed'
+    kt_width = 'Metacentric_Relaxed' #can be 'Relaxed', 'Tensed' or 'Telomeric_Relaxed'
     ){
   
   # misc
