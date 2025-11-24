@@ -127,15 +127,18 @@ all_plot <- function(
       }else if(all(dataDim==c(208,64))){
       y1 = ceiling(2.45 * dataDim[1] / chromHeight) + 1
       y2 = ceiling(2.75 * dataDim[1] / chromHeight)
+      }else if(all(dataDim==c(180,52))){
+        y1 = ceiling(2.1 * dataDim[1] / chromHeight) + 1
+        y2 = ceiling(2.4 * dataDim[1] / chromHeight)
       }
       
       #For Metacentric chromosomes in a relaxed state
       if(kt_width == 'Metacentric_Relaxed'){
       x1 = ceiling(0.425 * dataDim[2] / chromWidth) + 1
       x2 = ceiling(0.500 * dataDim[2] / chromWidth)
-      x3 = ceiling(0.760 * dataDim[2] / chromWidth) 
+      x3 = ceiling(0.760 * dataDim[2] / chromWidth)
       x4 = ceiling(0.840 * dataDim[2] / chromWidth)
-      x5 = ceiling(1.100 * dataDim[2] / chromWidth) + 1 
+      x5 = ceiling(1.100 * dataDim[2] / chromWidth) + 1
       x6 = ceiling(1.175 * dataDim[2] / chromWidth)
       }else if(kt_width == 'Metacentric_Tensed'){
       #For Metacentric chromosomes in a tensed state
