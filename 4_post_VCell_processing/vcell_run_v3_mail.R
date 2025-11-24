@@ -20,9 +20,10 @@ funcPath<-"/Users/smgroves/Documents/Github/VCell_Analysis/functions"
 importPath<-"/Users/smgroves/Box/CPC_Model_Project/VCell_Exports"
 exportPath<-"/Users/smgroves/Box/CPC_Model_Project/vcell_plots"
 # # #For metaphase chromosomes
-dataDim=c(128,64)#edited
-chromWidth=1.6 #um
-chromHeight=3.2 #um
+chromWidth=1.4 #um
+chromHeight=4.5 #um
+dataDim<-c(180,56)
+
 
 # Functions
 functions<-list.files(funcPath,recursive=TRUE)
@@ -32,7 +33,7 @@ for(i in functions){
   source(i)
 }
 
-dataDim=c(128,64) #edited
+# dataDim=c(128,64) #edited
 
 # ---------------- LISTS OF SPECIES ---------------
 
