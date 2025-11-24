@@ -162,21 +162,21 @@ line_plot <- function(
         # 0.3 um tall, centered vertically in the matrix
         half_px <- (KT_height / 2) * pixels_per_um
         center_px <- dataDim[1] / 2
-        y1_new <- ceiling(center_px - half_px)
-        y2_new <- floor(center_px + half_px) - 1
+        y1_new <- ceiling(center_px - half_px) + 1
+        y2_new <- floor(center_px + half_px) 
         
         # clamp to valid indices
-        y1 <- max(1, y1_new)
-        y2 <- min(dataDim[1], y2_new)
+        y1 <- max(1, y1_new) # 85
+        y2 <- min(dataDim[1], y2_new) # 96
         
       } else if (grepl("telocentric", kt_width, ignore.case = TRUE)) {
         # from 0 um (top) to 0.3 um
         y1_new <- 1  # top pixel (0 um)
-        y2_new <- ceiling(KT_height * pixels_per_um) - 1
+        y2_new <- ceiling(KT_height * pixels_per_um) 
         
         # clamp
-        y1 <- max(1, y1_new) # 84
-        y2 <- min(dataDim[1], max(1, y2_new)) # 96
+        y1 <- max(1, y1_new) 
+        y2 <- min(dataDim[1], max(1, y2_new)) 
         
       }
       
