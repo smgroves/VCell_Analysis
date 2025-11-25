@@ -1,4 +1,4 @@
-all_plot <- function(
+line_plot <- function(
     SimID, # vector of strings of SimIDs in the form c("SimID_209081149_0__exported","SimID_209081149_0__exported")
     names,
     all_data,
@@ -6,9 +6,6 @@ all_plot <- function(
     species_info_list,
     tInit=0, # in s
     tSpan, # in s
-    #chromWidth=1.6, #um
-    #chromHeight=5.2, #um
-    #dataDim=c(128,64), # rows,columns in concentration matrix; depends on mesh size
     row_1=1,
     row_2=dataDim[1],
     col_1=1,
@@ -16,8 +13,86 @@ all_plot <- function(
     importPath="/Users/sam/Research/JanesLab/vcell_data",
     exportPath="/Users/sam/Research/JanesLab/vcell_plots",
     linewidth=0.7,
-    kt_width = 'Metacentric_Relaxed' #can be 'Relaxed', 'Tensed' or 'Telomeric_Relaxed'
+    kt_width = 'Metacentric_Relaxed', #can be 'Metacentric_Relaxed' or 'Telomeric_Relaxed',etc
+    KK_dist_relaxed = 0.575,
+    KK_dist_tensed = 1.15,
+    KT_width= 0.075,
+    KT_height = 0.3,
+    cohesin_width = 0.08
     ){
+  
+  
+  ## DEFINE REGIONS
+  # pixels per µm in x and center column (pixel coordinates)
+  # dataDim = 180, 52; 4.5 x 1.3
+  pixels_per_um_x <- dataDim[2] / chromWidth # 40
+  center_x <- dataDim[2] / 2 # 26
+  
+  
+  # choose relaxed vs tensed by substring "tensed" presence; default to relaxed
+  if (grepl("tensed", kt_width, ignore.case = TRUE)) {
+    left_near_um <- KK_dist_tensed/2 
+    left_far_um  <- KK_dist_tensed/2 + KT_width 
+    right_near_um <- KK_dist_tensed/2 
+    right_far_um  <- KK_dist_tensed/2 + KT_width 
+  } else {
+    # relaxed (default)
+    left_far_um   <- KK_dist_relaxed/2 + KT_width 
+    left_near_um  <- KK_dist_relaxed/2 
+    right_near_um <- KK_dist_relaxed/2 
+    right_far_um  <- KK_dist_relaxed/2 + KT_width 
+  }
+  center_half_um <- cohesin_width/2   # 0.04
+  
+  # compute pixel indices (use ceiling/floor to get integer pixel indices)
+  x1_calc <- ceiling(center_x - left_far_um   * pixels_per_um_x) + 1  #11, 1
+  x2_calc <- ceiling(center_x - left_near_um  * pixels_per_um_x) #14, 3
+  x3_calc <- ceiling(center_x - center_half_um * pixels_per_um_x) #25, 25
+  x4_calc <- ceiling  (center_x + center_half_um * pixels_per_um_x) #27, 27
+  x5_calc <- ceiling(center_x + right_near_um * pixels_per_um_x)  #39, 50
+  x6_calc <- floor(center_x + right_far_um  * pixels_per_um_x)  #42, 52
+  
+  # clamp to valid pixel indices
+  x1 <- max(1, min(dataDim[2], x1_calc))
+  x2 <- max(1, min(dataDim[2], x2_calc))
+  x3 <- max(1, min(dataDim[2], x3_calc))
+  x4 <- max(1, min(dataDim[2], x4_calc))
+  x5 <- max(1, min(dataDim[2], x5_calc))
+  x6 <- max(1, min(dataDim[2], x6_calc))
+  
+  # ensure ordering (if clamping collapsed ranges, force minimal sensible ranges)
+  if (x1 >= x2) x2 <- min(dataDim[2], x1 + kt_width*pixels_per_um_x)
+  if (x3 > x4)  { # ensure at least one column in center
+    x3 <- max(1, x4 - 1)
+    x4 <- min(dataDim[2], x3 + 1)
+  }
+  if (x5 >= x6) x5 <- min(dataDim[2], x6 - kt_width*pixels_per_um_x)
+  
+  pixels_per_um <- dataDim[1] / chromHeight
+  
+  if (grepl("metacentric", kt_width, ignore.case = TRUE)) {
+    # 0.3 um tall, centered vertically in the matrix
+    half_px <- (KT_height / 2) * pixels_per_um
+    center_px <- dataDim[1] / 2
+    y1_new <- ceiling(center_px - half_px) 
+    y2_new <- floor(center_px + half_px) 
+    
+    # clamp to valid indices
+    y1 <- max(1, y1_new) # 85
+    y2 <- min(dataDim[1], y2_new) # 96
+    
+  } else if (grepl("telocentric", kt_width, ignore.case = TRUE)) {
+    # from 0 um (top) to 0.3 um
+    y1_new <- 1  # top pixel (0 um)
+    y2_new <- ceiling(KT_height * pixels_per_um) 
+    
+    # clamp
+    y1 <- max(1, y1_new) 
+    y2 <- min(dataDim[1], max(1, y2_new)) 
+    
+  }
+
+
   
   # misc
   folderVar <- 0
@@ -32,15 +107,10 @@ all_plot <- function(
   print(SimID)
 
   
-  # initial concentrations (uM) -> Without vol_ratio or fractions multiplications
-  # clamped
-  Haspini_ic_uM<- 0.55071118
-  Plk1_init_uM<-0.23394
-  CPCi_init_uM <- 0.07838
-  Bub1a_init_uM<-0.02018
-  Sgo1_init_uM<-0.02583
-  
-
+  region_check <- check_regions(x1,x2, x3,x4, x5,x6, y1,y2, "HASPINi", "NDC80",
+                                simid = SimID, indir = paste(importPath,SimID,sep="/"), verbose = TRUE)
+  # show plot
+  print(region_check$plot)
   
   kt_species <- vector("list", length(all_species))
   ic_species <- vector("list", length(all_species))
@@ -117,77 +187,13 @@ all_plot <- function(
     L<-matrixZero(matrixList=L)
     
     for(q in 1:length(all_species)){
+
       
-      if(all(dataDim==c(149,68))){
-      y1 = ceiling(1.6 * dataDim[1] / chromHeight)
-      y2 = ceiling(1.9 * dataDim[1] / chromHeight)
-      }else if(all(dataDim==c(128,64))){
-      y1 = ceiling(1.45 * dataDim[1] / chromHeight) + 1
-      y2 = ceiling(1.75 * dataDim[1] / chromHeight)
-      }else if(all(dataDim==c(208,64))){
-      y1 = ceiling(2.45 * dataDim[1] / chromHeight) + 1
-      y2 = ceiling(2.75 * dataDim[1] / chromHeight)
-      }else if(all(dataDim==c(180,52))){
-        y1 = ceiling(2.1 * dataDim[1] / chromHeight) + 1
-        y2 = ceiling(2.4 * dataDim[1] / chromHeight)
-      }
-      
-      #For Metacentric chromosomes in a relaxed state
-      if(kt_width == 'Metacentric_Relaxed'){
-      x1 = ceiling(0.425 * dataDim[2] / chromWidth) + 1
-      x2 = ceiling(0.500 * dataDim[2] / chromWidth)
-      x3 = ceiling(0.760 * dataDim[2] / chromWidth)
-      x4 = ceiling(0.840 * dataDim[2] / chromWidth)
-      x5 = ceiling(1.100 * dataDim[2] / chromWidth) + 1
-      x6 = ceiling(1.175 * dataDim[2] / chromWidth)
-      }else if(kt_width == 'Metacentric_Tensed'){
-      #For Metacentric chromosomes in a tensed state
-      x1 = ceiling(0.125 * dataDim[2] / chromWidth) + 1
-      x2 = ceiling(0.200 * dataDim[2] / chromWidth)
-      x3 = ceiling(0.760 * dataDim[2] / chromWidth) 
-      x4 = ceiling(0.840 * dataDim[2] / chromWidth)
-      x5 = ceiling(1.400 * dataDim[2] / chromWidth) + 1 
-      x6 = ceiling(1.475 * dataDim[2] / chromWidth)
-      }else if(kt_width == 'Telocentric_Relaxed'){
-      #For Telocentric chromosomes in a relaxed state
-      y1 = ceiling(0 * dataDim[1] / chromHeight) + 1
-      y2 = ceiling(0.3 * dataDim[1] / chromHeight)
-      x1 = ceiling(0.425 * dataDim[2] / chromWidth) + 1 
-      x2 = ceiling(0.500 * dataDim[2] / chromWidth)
-      x3 = ceiling(0.760 * dataDim[2] / chromWidth) 
-      x4 = ceiling(0.840 * dataDim[2] / chromWidth)
-      x5 = ceiling(1.100 * dataDim[2] / chromWidth) + 1 
-      x6 = ceiling(1.175 * dataDim[2] / chromWidth)
-      }else if(kt_width == 'Telocentric_Tensed'){
-      #For Telomeric chromosomes in a tensed state
-      y1 = ceiling(0 * dataDim[1] / chromHeight) + 1
-      y2 = ceiling(0.3 * dataDim[1] / chromHeight)
-      x1 = ceiling(0.125 * dataDim[2] / chromWidth) + 1  
-      x2 = ceiling(0.200 * dataDim[2] / chromWidth)
-      x3 = ceiling(0.760 * dataDim[2] / chromWidth) 
-      x4 = ceiling(0.840 * dataDim[2] / chromWidth)
-      x5 = ceiling(1.400 * dataDim[2] / chromWidth) + 1 
-      x6 = ceiling(1.475 * dataDim[2] / chromWidth)
-      }else if(kt_width == 'Prometaphase_Relaxed'){
-      #For prometaphase chromosomes in a relaxed state (5.2 um heigth)
-      x1 = ceiling(0.425 * dataDim[2] / chromWidth) + 1
-      x2 = ceiling(0.500 * dataDim[2] / chromWidth)
-      x3 = ceiling(0.760 * dataDim[2] / chromWidth) 
-      x4 = ceiling(0.840 * dataDim[2] / chromWidth)
-      x5 = ceiling(1.100 * dataDim[2] / chromWidth) + 1
-      x6 = ceiling(1.175 * dataDim[2] / chromWidth)
-      }
       matrix <- L[[q]]
       
-      x_indices_LK <- x1:x2
-      x_indices_RK <- x5:x6
-      x_indices_IC <- x3:x4
-      y_indices <- y1:y2
-      
-      
-      left_kinetochore <-matrix[y_indices, x_indices_LK]
-      right_kinetochore <-matrix[y_indices, x_indices_RK]
-      inner_centromere <-matrix[y_indices, x_indices_IC]
+      left_kinetochore <-matrix[y1:y2, x1:x2]
+      right_kinetochore <-matrix[y1:y2, x5:x6]
+      inner_centromere <-matrix[y1:y2, x3:x4]
       
       
       lk <- mean(left_kinetochore)

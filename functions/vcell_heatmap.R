@@ -8,13 +8,6 @@ vcell_heatmap <- function(
     tSpan, # in s
     tInterval, # in s, what set in VCell
     desiredInterval, # in s, what you want the data to be spaced by
-    #chromWidth=1.6, #um
-    #chromHeight=5.2, #um
-    #dataDim=c(149,68), # rows,columns in concentration matrix; depends on mesh size
-    row_1=1,
-    row_2=dataDim[1],
-    col_1=1,
-    col_2=dataDim[2],
     xdiv=3, # number of divisions desired on x axis of output plot
     ydiv=3, # number of divisions desired on y axis of output plot
     importPath="/Users/catalinaalvarez/Google\ Drive/My\ Drive/UVA/Research/JanesLab/CPC_project/Manuscript/Paper_simulations/vcell_data",
@@ -33,14 +26,6 @@ vcell_heatmap <- function(
   print(SimID)
   SimID<-ifelse(cond,SimID,paste(SimID,"exported",sep="_"))
   print(SimID)
-  
-  # initial concentrations (uM) -> Without vol_ratio or fractions multiplications
-  # clamped
-  Haspini_ic_uM<- 0.55071118
-  Plk1_init_uM<-0.23394
-  CPCi_init_uM <- 0.07838
-  Bub1a_init_uM<-0.02018
-  Sgo1_init_uM<-0.02583
   
   clamped = FALSE
   clampConc<-0
@@ -75,8 +60,10 @@ vcell_heatmap <- function(
     
     dim_data<-dataFolder
     
-    # dataDim<-c(row_diff,col_diff)
-    # dataDim<-c(149,68)
+    row_1=1
+    row_2=dataDim[1]
+    col_1=1
+    col_2=dataDim[2]
     row_diff<-row_2
     col_diff<-col_2
     

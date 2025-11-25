@@ -13,13 +13,15 @@ if True:
     dir_path = sys.argv[2]
     model_name = sys.argv[3]
     simulation_name = sys.argv[4]
+    width = int(sys.argv[5])
 
-    if len(sys.argv)>5:
+    if len(sys.argv) > 6:
         parser = argparse.ArgumentParser()
         parser.add_argument('file_name', metavar='N')
         parser.add_argument('dir_path', metavar='N')
         parser.add_argument('model_name', metavar='N')
         parser.add_argument('simulation_name', metavar='N')
+        parser.add_argument('width', metavar='N', type=int)
         parser.add_argument(
             "--species",  # name on the CLI - drop the `--` for positional/required parameters
             nargs="*",  # 0 or more values expected => creates a list
@@ -28,10 +30,11 @@ if True:
         )
         # parse the command line
         args = parser.parse_args()
-        file_name=args.file_name
+        file_name = args.file_name
         dir_path = args.dir_path
         model_name = args.model_name
         simulation_name = args.simulation_name
+        width = args.width
         species_list = args.species
         print(species_list)
     else:
@@ -41,75 +44,80 @@ else:
     # Use example data
     file_name = "SimID_259656558_0__exported.hdf5"
     dir_path = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/"
-    model_name = "08_21_23_CPC_relaxed_RefModel_Mps1_phos_Plk1a transactiv_sarah"
+    model_name = "08_21_23_CPC_relaxed_RefModel_TTK_phos_PLK1a transactiv_sarah"
     simulation_name = (
-        "08_21_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_KmMps1_5.4"
+        "08_21_23_relaxed_RefModel_TTK_phos_PLK1a_20Pac transactiv_KmTTK_5.4"
     )
 
 
-
-
 def convert_hdf5_to_csv(
-    file_name, dir_path="", model_name="", simulation_name="", species_list=[]
+    file_name, dir_path="", model_name="", simulation_name="", species_list=[], width=64
 ):
     if len(species_list) == 0:
         default_species = [
-            "Bub1a",
-            "Bub1a_his",
+            "BUB1a",
+            "BUB1a_his",
+            "BUB1a_pKNL1",
             "CPCa",
             "CPCi",
             "H2A",
             "H3",
-            "Haspina",
-            "Haspini",
-            "Knl1",
-            "Mps1a",
-            "Mps1i",
-            "Ndc80",
-            "Ndc80_Mps1a",
-            "Ndc80_Mps1i",
-            "Ndc80_pMps1a",
-            "Ndc80_pMps1i",
+            "H3_CPCa",
+            "H3_CPCi",
+            "HASPINa",
+            "HASPINi",
+            "I",
+            "KNL1",
+            "NDC80",
+            "NDC80_TTKa",
+            "NDC80_TTKi",
+            "NDC80_pTTKa",
+            "NDC80_pTTKi",
             "pH2A",
-            "pH2A_Sgo1",
-            "pH2A_Sgo1_CPCa",
-            "pH2A_Sgo1_CPCi",
-            "pH2A_Sgo1_pH3_CPCa",
-            "pH2A_Sgo1_pH3_CPCi",
+            "pH2A_SGO1",
+            "pH2A_SGO1_CPCa",
+            "pH2A_SGO1_CPCi",
             "pH3",
             "pH3_CPCa",
             "pH3_CPCi",
-            "pKnl1",
-            "pKnl1_Bub1a",
-            "Plk1a",
-            "Plk1i",
-            "pMps1a",
-            "pMps1i",
-            "pNdc80",
-            "pNdc80_Mps1a",
-            "pNdc80_Mps1i",
-            "pNdc80_pMps1a",
-            "pNdc80_pMps1i",
-            "Sgo1",
-	    "Sgo1_CPCi",
-            "Sgo1_CPCa",
-	    "Sgo1_CPCi_pH3",
-	    "Sgo1_CPCa_pH3",
-            "H3_CPCa",
-            "H3_CPCi", 
-            "CPC_all",
-            "boundCPC",
-            "unboundCPC",
+            "pKNL1",
+            "PLK1a",
+            "PLK1i",
+            "pTTKa",
+            "pTTKi",
+            "pNDC80",
+            "pNDC80_TTKa",
+            "pNDC80_TTKi",
+            "pNDC80_pTTKa",
+            "pNDC80_pTTKi",
+            "SGO1",
+            "SGO1_CPCi",
+            "SGO1_CPCa",
+            "SGO1_CPCi_pH3",
+            "SGO1_CPCa_pH3",
+            "TTKa",
+            "TTKi",
         ]
+        default_functions = [
+            "CPC_all",
+            "CPCi_total",
+            "CPCa_total",
+            "pH2_all",
+            "bound_CPC",
+            "bound_active_CPC",
+            "boundactive_CPC_pNDC80"
+        ]
+        default_species = default_species + default_functions
+
         print(f"Using default species list of length {len(default_species)}")
     else:
-
         default_species = species_list
         print(f"Using species list of length {len(default_species)}")
     with h5py.File(f"{dir_path}/{file_name}", "r") as h5:
         print(len(h5.keys()), "simulation(s) found")
         for sim_key in h5.keys():
-            sim_key_name = "_".join(sim_key.split("[")[1].split("]")[0].split(",")[0:2])
+            sim_key_name = "_".join(sim_key.split(
+                "[")[1].split("]")[0].split(",")[0:2])
             print(sim_key_name)
             output_folder = f"{dir_path}/SimID_{sim_key_name}__exported"
             # make directory if it doesn't exist
@@ -139,19 +147,28 @@ def convert_hdf5_to_csv(
                             ) as f:
                                 f.write(header_text)
                                 f.close()
-                            df = pd.DataFrame(arr[:, 0:64, i]) #changed for cytoplasmic simulations
-                            df.to_csv(
-                                f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_{i:04d}.csv",
-                                index=False,
-                                mode="a",
-                                header=False,
-                            )
+                            df = pd.DataFrame(arr[:, 0:width, i])
+                            if key in default_functions:
+                                df.to_csv(
+                                    f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_FUNCTION_{i:04d}.csv",
+                                    index=False,
+                                    mode="a",
+                                    header=False,
+                                )
+                            else:
+                                df.to_csv(
+                                    f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_{i:04d}.csv",
+                                    index=False,
+                                    mode="a",
+                                    header=False,
+                                )
                     except ValueError:
                         pass
 
 
 if __name__ == "__main__":
     t1 = time.time()
-    convert_hdf5_to_csv(file_name, dir_path, model_name, simulation_name, species_list)
+    convert_hdf5_to_csv(file_name, dir_path, model_name,
+                        simulation_name, species_list, width)
     t2 = time.time()
     print("Processing took ", (t2 - t1), " seconds")
