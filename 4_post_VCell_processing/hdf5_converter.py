@@ -142,8 +142,12 @@ def convert_hdf5_to_csv(
                                 f"2D Slice for variable {key} at time {timesteps[i]} in plane XY at Z = 0 \n \n"
                                 "X in rows, Y in columns \n"
                             )
+                            if key in default_functions:
+                                filename = f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_FUNCTION_{i:04d}.csv"
+                            else:
+                                filename = f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_{i:04d}.csv"
                             with open(
-                                f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_{i:04d}.csv",
+                                filename,
                                 "w",
                             ) as f:
                                 f.write(header_text)
@@ -151,14 +155,14 @@ def convert_hdf5_to_csv(
                             df = pd.DataFrame(arr[:, :, i])
                             if key in default_functions:
                                 df.to_csv(
-                                    f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_FUNCTION_{i:04d}.csv",
+                                    filename,
                                     index=False,
                                     mode="a",
                                     header=False,
                                 )
                             else:
                                 df.to_csv(
-                                    f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_{i:04d}.csv",
+                                    filename,
                                     index=False,
                                     mode="a",
                                     header=False,

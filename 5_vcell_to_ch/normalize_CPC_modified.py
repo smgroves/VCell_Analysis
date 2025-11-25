@@ -82,17 +82,19 @@ def rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name="", s
         timeslice_id = "00" + str(int(timepoint/timestep))
 
     print(timeslice_id)
+    # name = "CPC_all"
     # CPC_species = ["CPCi",'CPCa','pH2A_Sgo1_CPCa', 'pH2A_Sgo1_CPCi', 'pH2A_Sgo1_pH3_CPCa', 'pH2A_Sgo1_pH3_CPCi','pH3_CPCa', 'pH3_CPCi']
     for file in os.listdir(os.path.join(in_dir, folder_name)):
-        if "CPC" in file:
+        if "CPC_all" in file:
             if timeslice_id in file:
                 name = file.split("0_")[-1].split(f"_{timeslice_id}.csv")[0]
                 print(name)
                 data[name] = pd.read_csv(os.path.join(in_dir, folder_name, file), sep=",",
                                          skiprows=10, header=None)
 
+    name = data.keys().__iter__().__next__()
     sum_data = pd.DataFrame(
-        0, columns=data["CPCi"].columns, index=data["CPCi"].index)
+        0, columns=data[name].columns, index=data[name].index)
     for key in data.keys():
         sum_data = sum_data.add(data[key])
 
@@ -113,10 +115,10 @@ def rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name="", s
     print(sum_data_array.min())
 
     # pad the sides of the array with zeros so it is square
-    width = sum_data_array.shape[0]-sum_data_array.shape[1]
+    # width = sum_data_array.shape[0]-sum_data_array.shape[1]
+    # sum_data_array = (np.pad(
+    #     sum_data_array, ((0, 0), (int(width/2), int(width/2))), pad_with, padder=0))
 
-    sum_data_array = (np.pad(
-        sum_data_array, ((0, 0), (int(width/2), int(width/2))), pad_with, padder=0))
     nrows = sum_data_array.shape[0]
     ncols = sum_data_array.shape[1]
     sum_data_array = (2*sum_data_array) - 1
@@ -124,7 +126,7 @@ def rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name="", s
     print(sum_data_array.min())
 
     np.savetxt(os.path.join(
-        outdir, f"{model_name}_{simulation_name}_{timepoint}_{nrows}x{ncols}_{suffix}.csv"), sum_data_array, delimiter=",")
+        outdir, f"{simulation_name}_{timepoint}_{nrows}x{ncols}_{suffix}.csv"), sum_data_array, delimiter=",")
 
     # arr_2fold = prolong(sum_data_array, nrows, ncols)
     # print(arr_2fold.shape)
@@ -167,16 +169,31 @@ def rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name="", s
 #                                timestep=10, min_mix=2, rescaling_factor=20, suffix="_20max")
 
 
-in_dir = '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/'
-folder_name = "SimID_298848254_0__exported"
-model_name = "11_07_25 CPC_metacentric_relaxed_MCF10A"
-simulation_name = "11_07_25_metacentric_relaxed_MCF10A"
-outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/4_vcell_to_ch/IC/11_07_2025"
-rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=18,
-                               timestep=1, min_mix=1.5, rescaling_factor=8.4, suffix="_8.4max_1.5min")
+# in_dir = '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/'
+# folder_name = "SimID_298848254_0__exported"
+# model_name = "11_07_25 CPC_metacentric_relaxed_MCF10A"
+# simulation_name = "11_07_25_metacentric_relaxed_MCF10A"
+# outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/4_vcell_to_ch/IC/11_07_2025"
+# rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=18,
+#                                timestep=1, min_mix=1.5, rescaling_factor=8.4, suffix="_8.4max_1.5min")
 
-folder_name = "SimID_298847711_0__exported"
-model_name = "11_07_25 CPC_metacentric_tensed_model"
-simulation_name = "11_07_25_metacentric_tensed_MCF10A"
-rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=18,
-                               timestep=1, min_mix=1.5, rescaling_factor=8.4, suffix="_8.4max_1.5min")
+# folder_name = "SimID_298847711_0__exported"
+# model_name = "11_07_25 CPC_metacentric_tensed_model"
+# simulation_name = "11_07_25_metacentric_tensed_MCF10A"
+# rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=18,
+#                                timestep=1, min_mix=1.5, rescaling_factor=8.4, suffix="_8.4max_1.5min")
+
+in_dir = '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/'
+outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/11_25_2025"
+
+folder_name = "SimID_299564396_0__exported"
+model_name = "11_23_25 CPC_metacentric_relaxed_MCF10A"
+simulation_name = "11_24_25_metacentric_relaxed_MCF10A"
+rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
+                               timestep=10, min_mix=3, rescaling_factor=8.4, suffix="_8.4max_3min_NO_PADDING")
+
+folder_name = "SimID_299580911_0__exported"
+model_name = "11_23_25 CPC_metacentric_tensed_MCF10A"
+simulation_name = "11_24_25_metacentric_tensed_MCF10A"
+rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
+                               timestep=10, min_mix=3, rescaling_factor=8.4, suffix="_8.4max_3min_NO_PADDING")

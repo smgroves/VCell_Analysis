@@ -1,5 +1,5 @@
-indir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/4_vcell_to_ch/IC/11_07_2025";
-outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/4_vcell_to_ch/output/11_07_2025";
+indir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/11_25_2025";
+outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/11_25_2025";
 
 n_relax = 4;
 %h = 1/GridSize;
@@ -13,9 +13,10 @@ dt = 2.5e-5;
 max_it = 2000;
 boundary = 'neumann';
 myFiles = dir(fullfile(indir,'*.csv')); %gets all csv files in struct
+% print("Found %d files to process\n", length(myFiles));
 for k = 1:length(myFiles)
     baseFileName = myFiles(k).name;
-    outputName = [baseFileName(1:end-4), 'phi.csv']; 
+    outputName = [baseFileName(1:end-4), 'movie.mp4']; 
     outputPath = fullfile(outdir, outputName);
 
     % Check if output file already exists
@@ -27,7 +28,8 @@ for k = 1:length(myFiles)
     phi0 = readmatrix(init_file);
     print_phi = true;
     dt_out = 10;
-    ny = 128;
+    ny = size(phi0,2);
+    fprintf("%f",ny)
     % % #################################################
     % % RUN SAV SOLVER 
     % % #################################################
