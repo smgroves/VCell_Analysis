@@ -1,6 +1,6 @@
 #########################################################
 # Install all needed packages
-packages <- c("ggplot2","gridExtra","purrr","latex2exp","stringr","lemon","utils","tictoc","tidyverse","tibble","scales", "xlsx", "pdftools", "rhdf5", "png")
+packages <- c("ggplot2","ggrastr","png","gridExtra","purrr","latex2exp","stringr","lemon","utils","tictoc","tidyverse","tibble","scales", "xlsx", "pdftools", "rhdf5", "png")
 lapply(packages, require, character.only = TRUE)
 tic("total")
 
@@ -167,11 +167,19 @@ for(i in 1:length(sims)){
                tInit=0,
                tSpan=500, #400 for relaxed to tensed
                desiredInterval=100,
-               cutoff=3, #for heatmap color bar
+                cutoff=list("CPC"=4), #for heatmap color bar
+              #  cutoff=3, #for heatmap color bar
                funcPath,
                importPath,
                exportPath_new,
-               kt_width[i])
+               kt_width[i],
+              movie = FALSE,
+               lineplots=TRUE,
+               KK_dist_relaxed = 0.575,
+               KK_dist_tensed = 1.15,
+               KT_width= 0.075,
+               KT_height = 0.3,
+               cohesin_width = 0.1)
 
   }
 }

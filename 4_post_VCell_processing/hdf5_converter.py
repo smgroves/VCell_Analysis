@@ -50,6 +50,7 @@ else:
     )
 
 
+# TODO Add code to notify if something in the list isn't showing up in the H5 file
 def convert_hdf5_to_csv(
     file_name, dir_path="", model_name="", simulation_name="", species_list=[], width=64
 ):
@@ -147,7 +148,7 @@ def convert_hdf5_to_csv(
                             ) as f:
                                 f.write(header_text)
                                 f.close()
-                            df = pd.DataFrame(arr[:, 0:width, i])
+                            df = pd.DataFrame(arr[:, :, i])
                             if key in default_functions:
                                 df.to_csv(
                                     f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_FUNCTION_{i:04d}.csv",

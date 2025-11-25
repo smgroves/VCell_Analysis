@@ -113,6 +113,23 @@ vcell_heatmap <- function(
         
         speciesDesired <- speciesName
         
+        #define our own maxcolor
+        maxColor = NULL
+        if (is.null(cutoff_color)){
+          if(max(C)>=10){
+            maxColor=10*ceiling(max(C)/10)
+          }else{
+            maxColor=ceiling(max(C))}
+        }else{
+          for (c in names(cutoff_color)){
+            if(grepl(c, speciesName, ignore.case = TRUE) ){
+              if (cutoff_color[c] < maxColor){
+                maxColor = as.numeric(cutoff_color[c])
+              }
+            }
+          }
+          }
+        print(c("MaxColor: ", maxColor))
         # sum matrices
         if(length(species)>1 && speciesDesired=="inactive CPC"){
           M <- reduce(L,`+`)+clampConc
@@ -172,14 +189,6 @@ vcell_heatmap <- function(
   # t_labs<-paste(t_equal_str,t_short,t_unit_str)
   print(t_labs)
   
-  #define our own maxcolor
-  if (is.null(cutoff_color)){
-    if(max(C)>=10){
-      maxColor=10*ceiling(max(C)/10)
-    }else{
-    maxColor=ceiling(max(C))}
-  }else{
-  maxColor<-cutoff_color}
   
   xbreaks<-seq(0, chromWidth, chromWidth/(xdiv-1))
   xlabs<-c(as.character(round(0)),as.character(round(xbreaks[2:length(xbreaks)],digits=1)))
@@ -206,12 +215,13 @@ vcell_heatmap <- function(
   ##heatmap
   
   p<-ggplot(data=dataMat2,aes(x=X, y=Y, fill=C))+
-    ggrastr::rasterise(geom_tile(), dpi = 450) +
+    ggrastr::rasterise(geom_tile(), dpi = 600) +
     # geom_tile()+
     facet_grid(factor(ID_long,levels=ID_lev,labels=ID_labs) ~ factor(t_long,levels=t_lev,labels=t_labs), switch="y",labeller = label_wrap_gen(width = 10, multi_line = TRUE))+
     coord_fixed(ratio = 1, xlim = NULL, ylim = NULL, expand = TRUE, clip = "on")+
     # scale_fill_gradientn(name=legend_name,limits=c(0,maxColor),breaks=c(0,round(maxColor/2,digits=0),maxColor),labels=labelString,colors=c("black","blueviolet","blue","cyan","green","yellow","orange","red"),na.value="grey100")+
-    scale_fill_viridis_c(name = legend_name,limits = c(0, maxColor), breaks = c(0, round(maxColor/4, digits=2),round(maxColor/2, digits=2), round(3*maxColor/4, digits=2),maxColor),labels = labelString,na.value = "grey100")+
+    # scale_fill_viridis_c(name = legend_name,limits = c(0, maxColor), breaks = c(0, round(maxColor/4, digits=2),round(maxColor/2, digits=2), round(3*maxColor/4, digits=2),maxColor),labels = labelString,na.value = "grey100")+
+    scale_fill_gradientn(colours = cet_pal(5, name = "r1"), limits = c(0, maxColor), breaks = c(0, round(maxColor/4, digits=2),round(maxColor/2, digits=2), round(3*maxColor/4, digits=2),maxColor),labels = labelString,na.value = "grey100")+
     scale_x_continuous(breaks=xbreaks,labels=xlabs)+
     scale_y_continuous(breaks=ybreaks,labels=ylabs,position="right")+
     theme_void()+
@@ -264,7 +274,7 @@ vcell_heatmap <- function(
     width = 10,
     height = 5,
     units = "in",
-    dpi = 450
+    dpi = 600
     # limitsize = TRUE
   )
   

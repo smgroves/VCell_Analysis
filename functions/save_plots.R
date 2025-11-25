@@ -9,11 +9,11 @@ save_plots <- function(
     tInit,
     tSpan,
     desiredInterval,
-    cutoff,
     funcPath,
     importPath,
     exportPath,
     kt_width,
+    cutoff = NULL,
     movie = TRUE,
     lineplots = TRUE,
     KK_dist_relaxed = 0.575,
@@ -31,26 +31,26 @@ save_plots <- function(
   # tryCatch(
     # expr = {
   
-  # 
-  # for(hm in 1:length(heatmap_info_list)){
-  #   
-  #   heatmap<-vcell_heatmap(
-  #     SimID=sims,
-  #     names=names,
-  #     species=heatmap_species[[hm]],
-  #     speciesName=heatmap_info_list[[hm]],
-  #     cutoff_color=cutoff,
-  #     tInit=tInit,
-  #     tSpan=tSpan,
-  #     tInterval=10,
-  #     desiredInterval=desiredInterval,
-  #     importPath=importPath,
-  #     exportPath=exportPath)
-  #   
-  # }
-  #     
 
-  
+  for(hm in 1:length(heatmap_info_list)){
+
+    heatmap<-vcell_heatmap(
+      SimID=sims,
+      names=names,
+      species=heatmap_species[[hm]],
+      speciesName=heatmap_info_list[[hm]],
+      cutoff_color=cutoff,
+      tInit=tInit,
+      tSpan=tSpan,
+      tInterval=10,
+      desiredInterval=desiredInterval,
+      importPath=importPath,
+      exportPath=exportPath)
+
+  }
+
+
+
 # },
 
 # error = function(e){
@@ -63,8 +63,8 @@ save_plots <- function(
 
 # )
   if (lineplots == TRUE){
-tryCatch(
-  expr = {
+# tryCatch(
+#   expr = {
     
     line_plot(
         SimID=sims,
@@ -87,20 +87,20 @@ tryCatch(
         KT_height = KT_height,
         cohesin_width = cohesin_width
     )
-},
-error = function(e){
-  message("Can't get line plots!")
-  print(e)
-},
-finally = {
-  
-
-}
-)
+# },
+# error = function(e){
+#   message("Can't get line plots!")
+#   print(e)
+# },
+# finally = {
+#   
+# 
+# }
+# )
   }
   if (movie == TRUE){
-  tryCatch(
-    expr = {
+  # tryCatch(
+  #   expr = {
   
   
   for(hm in 1:length(heatmap_info_list)){
@@ -125,17 +125,17 @@ finally = {
   }
 
 
-  
-},
-error = function(e){
-  message("Can't get heatmap movie!")
-  print(e)
-},
-finally = {
-  
-}
+#   
+# },
+# error = function(e){
+#   message("Can't get heatmap movie!")
+#   print(e)
+# },
+# finally = {
+#   
+# }
 
-)
+# )
   }
   toc()
   

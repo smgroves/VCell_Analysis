@@ -13,7 +13,7 @@ line_plot <- function(
     importPath="/Users/sam/Research/JanesLab/vcell_data",
     exportPath="/Users/sam/Research/JanesLab/vcell_plots",
     linewidth=0.7,
-    kt_width = 'Metacentric_Relaxed', #can be 'Metacentric_Relaxed' or 'Telomeric_Relaxed',etc
+    kt_width = 'Metacentric_relaxed', #can be 'Metacentric_Relaxed' or 'Telomeric_Relaxed',etc "relaxed_metacentric"
     KK_dist_relaxed = 0.575,
     KK_dist_tensed = 1.15,
     KT_width= 0.075,

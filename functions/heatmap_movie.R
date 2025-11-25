@@ -176,7 +176,8 @@ heatmap_movie <- function(
     #                      labels = labelString,
     #                      colors = c("black","blueviolet","blue","cyan","green","yellow","orange","red"),
     #                      na.value = "grey100") +
-    scale_fill_viridis_c(name = legend_name,limits = c(0, maxColor), breaks = c(0, round(maxColor/4, digits=2),round(maxColor/2, digits=2), round(3*maxColor/4, digits=2),maxColor),labels = labelString,na.value = "grey100")+
+    scale_fill_gradientn(colours = cet_pal(5, name = "r3"))+
+    # scale_fill_viridis_c(name = legend_name,limits = c(0, maxColor), breaks = c(0, round(maxColor/4, digits=2),round(maxColor/2, digits=2), round(3*maxColor/4, digits=2),maxColor),labels = labelString,na.value = "grey100")+
     scale_x_continuous(breaks = xbreaks, labels = xlabs) +
     scale_y_continuous(breaks = ybreaks, labels = ylabs, position = "right") +
     xlab("X (µm)") + ylab("Y (µm)") +
