@@ -113,22 +113,6 @@ vcell_heatmap <- function(
         
         speciesDesired <- speciesName
         
-        #define our own maxcolor
-        maxColor = NULL
-          for (c in names(cutoff_color)){
-            if(grepl(c, speciesName, ignore.case = TRUE) ){
-              maxColor = 500
-              if (cutoff_color[c] < maxColor){
-                maxColor = as.numeric(cutoff_color[c])
-              }
-            }else{
-                if(max(C)>=10){
-                  maxColor=10*ceiling(max(C)/10)
-                }else{
-                  maxColor=ceiling(max(C))}
-          }
-          }
-        print(c("MaxColor: ", maxColor))
         # sum matrices
         if(length(species)>1 && speciesDesired=="inactive CPC"){
           M <- reduce(L,`+`)+clampConc
@@ -188,6 +172,23 @@ vcell_heatmap <- function(
   # t_labs<-paste(t_equal_str,t_short,t_unit_str)
   print(t_labs)
   
+  
+  #define our own maxcolor
+  maxColor = NULL
+  for (c in names(cutoff_color)){
+    if(grepl(c, speciesName, ignore.case = TRUE) ){
+      maxColor = 500
+      if (cutoff_color[c] < maxColor){
+        maxColor = as.numeric(cutoff_color[c])
+      }
+    }else{
+      if(max(C)>=10){
+        maxColor=10*ceiling(max(C)/10)
+      }else{
+        maxColor=ceiling(max(C))}
+    }
+  }
+  print(c("MaxColor: ", maxColor))
   
   xbreaks<-seq(0, chromWidth, chromWidth/(xdiv-1))
   xlabs<-c(as.character(round(0)),as.character(round(xbreaks[2:length(xbreaks)],digits=1)))
