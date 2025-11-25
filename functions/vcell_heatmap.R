@@ -221,8 +221,8 @@ vcell_heatmap <- function(
     facet_grid(factor(ID_long,levels=ID_lev,labels=ID_labs) ~ factor(t_long,levels=t_lev,labels=t_labs), switch="y",labeller = label_wrap_gen(width = 10, multi_line = TRUE))+
     coord_fixed(ratio = 1, xlim = NULL, ylim = NULL, expand = TRUE, clip = "on")+
     # scale_fill_gradientn(name=legend_name,limits=c(0,maxColor),breaks=c(0,round(maxColor/2,digits=0),maxColor),labels=labelString,colors=c("black","blueviolet","blue","cyan","green","yellow","orange","red"),na.value="grey100")+
-    # scale_fill_viridis_c(name = legend_name,limits = c(0, maxColor), breaks = c(0, round(maxColor/4, digits=2),round(maxColor/2, digits=2), round(3*maxColor/4, digits=2),maxColor),labels = labelString,na.value = "grey100")+
-    scale_fill_gradientn(colours = cet_pal(5, name = "r1"), limits = c(0, maxColor), breaks = c(0, round(maxColor/4, digits=2),round(maxColor/2, digits=2), round(3*maxColor/4, digits=2),maxColor),labels = labelString,na.value = "grey100")+
+    scale_fill_viridis_c(name = legend_name,limits = c(0, maxColor), breaks = c(0, round(maxColor/4, digits=2),round(maxColor/2, digits=2), round(3*maxColor/4, digits=2),maxColor),labels = labelString,na.value = "grey100")+
+    # scale_fill_gradientn(colours = cet_pal(5, name = "r1"), limits = c(0, maxColor), breaks = c(0, round(maxColor/4, digits=2),round(maxColor/2, digits=2), round(3*maxColor/4, digits=2),maxColor),labels = labelString,na.value = "grey100")+
     scale_x_continuous(breaks=xbreaks,labels=xlabs)+
     scale_y_continuous(breaks=ybreaks,labels=ylabs,position="right")+
     theme_void()+
