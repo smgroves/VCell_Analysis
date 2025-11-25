@@ -21,6 +21,79 @@ line_plot <- function(
     cohesin_width = 0.08
     ){
   
+  
+  ## DEFINE REGIONS
+  # pixels per µm in x and center column (pixel coordinates)
+  # dataDim = 180, 52; 4.5 x 1.3
+  pixels_per_um_x <- dataDim[2] / chromWidth # 40
+  center_x <- dataDim[2] / 2 # 26
+  
+  
+  # choose relaxed vs tensed by substring "tensed" presence; default to relaxed
+  if (grepl("tensed", kt_width, ignore.case = TRUE)) {
+    left_near_um <- KK_dist_tensed/2 
+    left_far_um  <- KK_dist_tensed/2 + KT_width 
+    right_near_um <- KK_dist_tensed/2 
+    right_far_um  <- KK_dist_tensed/2 + KT_width 
+  } else {
+    # relaxed (default)
+    left_far_um   <- KK_dist_relaxed/2 + KT_width 
+    left_near_um  <- KK_dist_relaxed/2 
+    right_near_um <- KK_dist_relaxed/2 
+    right_far_um  <- KK_dist_relaxed/2 + KT_width 
+  }
+  center_half_um <- cohesin_width/2   # 0.04
+  
+  # compute pixel indices (use ceiling/floor to get integer pixel indices)
+  x1_calc <- ceiling(center_x - left_far_um   * pixels_per_um_x) + 1  #11, 1
+  x2_calc <- ceiling(center_x - left_near_um  * pixels_per_um_x) #14, 3
+  x3_calc <- ceiling(center_x - center_half_um * pixels_per_um_x) #25, 25
+  x4_calc <- ceiling  (center_x + center_half_um * pixels_per_um_x) #27, 27
+  x5_calc <- ceiling(center_x + right_near_um * pixels_per_um_x)  #39, 50
+  x6_calc <- floor(center_x + right_far_um  * pixels_per_um_x)  #42, 52
+  
+  # clamp to valid pixel indices
+  x1 <- max(1, min(dataDim[2], x1_calc))
+  x2 <- max(1, min(dataDim[2], x2_calc))
+  x3 <- max(1, min(dataDim[2], x3_calc))
+  x4 <- max(1, min(dataDim[2], x4_calc))
+  x5 <- max(1, min(dataDim[2], x5_calc))
+  x6 <- max(1, min(dataDim[2], x6_calc))
+  
+  # ensure ordering (if clamping collapsed ranges, force minimal sensible ranges)
+  if (x1 >= x2) x2 <- min(dataDim[2], x1 + kt_width*pixels_per_um_x)
+  if (x3 > x4)  { # ensure at least one column in center
+    x3 <- max(1, x4 - 1)
+    x4 <- min(dataDim[2], x3 + 1)
+  }
+  if (x5 >= x6) x5 <- min(dataDim[2], x6 - kt_width*pixels_per_um_x)
+  
+  pixels_per_um <- dataDim[1] / chromHeight
+  
+  if (grepl("metacentric", kt_width, ignore.case = TRUE)) {
+    # 0.3 um tall, centered vertically in the matrix
+    half_px <- (KT_height / 2) * pixels_per_um
+    center_px <- dataDim[1] / 2
+    y1_new <- ceiling(center_px - half_px) 
+    y2_new <- floor(center_px + half_px) 
+    
+    # clamp to valid indices
+    y1 <- max(1, y1_new) # 85
+    y2 <- min(dataDim[1], y2_new) # 96
+    
+  } else if (grepl("telocentric", kt_width, ignore.case = TRUE)) {
+    # from 0 um (top) to 0.3 um
+    y1_new <- 1  # top pixel (0 um)
+    y2_new <- ceiling(KT_height * pixels_per_um) 
+    
+    # clamp
+    y1 <- max(1, y1_new) 
+    y2 <- min(dataDim[1], max(1, y2_new)) 
+    
+  }
+
+
+  
   # misc
   folderVar <- 0
   leader <- 10
@@ -33,6 +106,11 @@ line_plot <- function(
   SimID<-ifelse(cond,SimID,paste(SimID,"exported",sep="_"))
   print(SimID)
 
+  
+  region_check <- check_regions(x1,x2, x3,x4, x5,x6, y1,y2, "HASPINi", "NDC80",
+                                simid = SimID, indir = paste(importPath,SimID,sep="/"), verbose = TRUE)
+  # show plot
+  print(region_check$plot)
   
   kt_species <- vector("list", length(all_species))
   ic_species <- vector("list", length(all_species))
@@ -109,76 +187,7 @@ line_plot <- function(
     L<-matrixZero(matrixList=L)
     
     for(q in 1:length(all_species)){
-      
-      ## --- X setup: unified rules ---
-      # pixels per µm in x and center column (pixel coordinates)
-      # dataDim = 180, 52; 4.5 x 1.3
-      pixels_per_um_x <- dataDim[2] / chromWidth # 40
-      center_x <- dataDim[2] / 2 # 26
 
-      
-      # choose relaxed vs tensed by substring "tensed" presence; default to relaxed
-      if (grepl("tensed", kt_width, ignore.case = TRUE)) {
-        left_near_um <- KK_dist_tensed/2 
-        left_far_um  <- KK_dist_tensed/2 + KT_width 
-        right_near_um <- KK_dist_tensed/2 
-        right_far_um  <- KK_dist_tensed/2 + KT_width 
-      } else {
-        # relaxed (default)
-        left_far_um   <- KK_dist_relaxed/2 + KT_width 
-        left_near_um  <- KK_dist_relaxed/2 
-        right_near_um <- KK_dist_relaxed/2 
-        right_far_um  <- KK_dist_relaxed/2 + KT_width 
-      }
-      center_half_um <- cohesin_width/2   # 0.04
-      
-      # compute pixel indices (use ceiling/floor to get integer pixel indices)
-      x1_calc <- ceiling(center_x - left_far_um   * pixels_per_um_x) + 1  #11, 1
-      x2_calc <- ceiling(center_x - left_near_um  * pixels_per_um_x) #14, 3
-      x3_calc <- ceiling(center_x - center_half_um * pixels_per_um_x) #25, 25
-      x4_calc <- ceiling  (center_x + center_half_um * pixels_per_um_x) #27, 27
-      x5_calc <- ceiling(center_x + right_near_um * pixels_per_um_x)  #39, 50
-      x6_calc <- floor(center_x + right_far_um  * pixels_per_um_x)  #42, 52
-      
-      # clamp to valid pixel indices
-      x1 <- max(1, min(dataDim[2], x1_calc))
-      x2 <- max(1, min(dataDim[2], x2_calc))
-      x3 <- max(1, min(dataDim[2], x3_calc))
-      x4 <- max(1, min(dataDim[2], x4_calc))
-      x5 <- max(1, min(dataDim[2], x5_calc))
-      x6 <- max(1, min(dataDim[2], x6_calc))
-      
-      # ensure ordering (if clamping collapsed ranges, force minimal sensible ranges)
-      if (x1 >= x2) x2 <- min(dataDim[2], x1 + kt_width*pixels_per_um_x)
-      if (x3 > x4)  { # ensure at least one column in center
-        x3 <- max(1, x4 - 1)
-        x4 <- min(dataDim[2], x3 + 1)
-      }
-      if (x5 >= x6) x5 <- min(dataDim[2], x6 - kt_width*pixels_per_um_x)
-      
-      pixels_per_um <- dataDim[1] / chromHeight
-      
-      if (grepl("metacentric", kt_width, ignore.case = TRUE)) {
-        # 0.3 um tall, centered vertically in the matrix
-        half_px <- (KT_height / 2) * pixels_per_um
-        center_px <- dataDim[1] / 2
-        y1_new <- ceiling(center_px - half_px) + 1
-        y2_new <- floor(center_px + half_px) 
-        
-        # clamp to valid indices
-        y1 <- max(1, y1_new) # 85
-        y2 <- min(dataDim[1], y2_new) # 96
-        
-      } else if (grepl("telocentric", kt_width, ignore.case = TRUE)) {
-        # from 0 um (top) to 0.3 um
-        y1_new <- 1  # top pixel (0 um)
-        y2_new <- ceiling(KT_height * pixels_per_um) 
-        
-        # clamp
-        y1 <- max(1, y1_new) 
-        y2 <- min(dataDim[1], max(1, y2_new)) 
-        
-      }
       
       matrix <- L[[q]]
       

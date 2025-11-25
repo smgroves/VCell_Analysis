@@ -15,7 +15,12 @@ save_plots <- function(
     exportPath,
     kt_width,
     movie = TRUE,
-    lineplots = TRUE
+    lineplots = TRUE,
+    KK_dist_relaxed = 0.575,
+    KK_dist_tensed = 1.15,
+    KT_width= 0.075,
+    KT_height = 0.3,
+    cohesin_width = 0.08
     )
   
 {
@@ -23,44 +28,40 @@ save_plots <- function(
   tic()
   
   
-  tryCatch(
-    expr = {
+  # tryCatch(
+    # expr = {
   
-  
-  for(hm in 1:length(heatmap_info_list)){
-    
-    heatmap<-vcell_heatmap(
-      SimID=sims,
-      names=names,
-      species=heatmap_species[[hm]],
-      speciesName=heatmap_info_list[[hm]],
-      cutoff_color=cutoff,
-      tInit=tInit,
-      tSpan=tSpan,
-      tInterval=10,
-      desiredInterval=desiredInterval,
-      row_1=1,
-      row_2=dataDim[1],
-      col_1=1,
-      col_2=dataDim[2],
-      importPath=importPath,
-      exportPath=exportPath)
-    
-  }
-      
+  # 
+  # for(hm in 1:length(heatmap_info_list)){
+  #   
+  #   heatmap<-vcell_heatmap(
+  #     SimID=sims,
+  #     names=names,
+  #     species=heatmap_species[[hm]],
+  #     speciesName=heatmap_info_list[[hm]],
+  #     cutoff_color=cutoff,
+  #     tInit=tInit,
+  #     tSpan=tSpan,
+  #     tInterval=10,
+  #     desiredInterval=desiredInterval,
+  #     importPath=importPath,
+  #     exportPath=exportPath)
+  #   
+  # }
+  #     
 
   
-},
+# },
 
-error = function(e){
-  message("Can't get heatmaps!")
-  print(e)
-},
-finally = {
-  
-}
+# error = function(e){
+#   message("Can't get heatmaps!")
+#   print(e)
+# },
+# finally = {
+#   
+# }
 
-)
+# )
   if (lineplots == TRUE){
 tryCatch(
   expr = {
@@ -79,7 +80,12 @@ tryCatch(
         col_2=dataDim[2],
         importPath=importPath,
         exportPath=exportPath,
-        kt_width = kt_width
+        kt_width = kt_width,
+        KK_dist_relaxed = KK_dist_relaxed,
+        KK_dist_tensed = KK_dist_tensed,
+        KT_width= KT_width,
+        KT_height = KT_height,
+        cohesin_width = cohesin_width
     )
 },
 error = function(e){

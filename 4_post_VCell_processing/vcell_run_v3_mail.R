@@ -20,9 +20,9 @@ funcPath<-"/Users/smgroves/Documents/Github/VCell_Analysis/functions"
 importPath<-"/Users/smgroves/Box/CPC_Model_Project/VCell_Exports"
 exportPath<-"/Users/smgroves/Box/CPC_Model_Project/vcell_plots"
 # # #For metaphase chromosomes
-chromWidth=1.4 #um
+chromWidth=1.3 #um
 chromHeight=4.5 #um
-dataDim<-c(180,56)
+dataDim<-c(180,52)
 
 
 # Functions
@@ -39,22 +39,22 @@ for(i in functions){
 
 # Species Lists, add any that are required to be on one plot
 
-CPC_species <-c("CPCa", "pH2A_Sgo1_CPCa", "pH3_CPCa", "CPCi", "pH2A_Sgo1_CPCi", "pH3_CPCi","H3_CPCi",'H3_CPCa')
-Mps1_species <-c("Mps1a", "pMps1a", "Ndc80_Mps1a", "Ndc80_pMps1a", "pNdc80_Mps1a", "pNdc80_pMps1a", "Mps1i", "pMps1i", "Ndc80_Mps1i", "Ndc80_pMps1i", "pNdc80_Mps1i", "pNdc80_pMps1i")
-Todd_species <-c("Plk1a", "Plk1i", "Haspina", "Haspini", "pH3", "pH3_CPCa", "pH3_CPCi", "pH2A_Sgo1_CPCi", "pH2A_Sgo1_CPCa")
+CPC_species <-c("CPCa", "pH2A_SGO1_CPCa", "pH3_CPCa", "CPCi", "pH2A_SGO1_CPCi", "pH3_CPCi","H3_CPCi",'H3_CPCa')
+TTK_species <-c("TTKa", "pTTKa", "NDC80_TTKa", "NDC80_pTTKa", "pNDC80_TTKa", "pNDC80_pTTKa", "TTKi", "pTTKi", "NDC80_TTKi", "NDC80_pTTKi", "pNDC80_TTKi", "pNDC80_pTTKi")
+Todd_species <-c("PLK1a", "PLK1i", "HASPINa", "HASPINi", "pH3", "pH3_CPCa", "pH3_CPCi", "pH2A_SGO1_CPCi", "pH2A_SGO1_CPCa")
 pH3_species <- c("pH3", "pH3_CPCa", "pH3_CPCi")
-pH2A_species <- c("pH2A", "pH2A_Sgo1", "pH2A_Sgo1_CPCa", "pH2A_Sgo1_CPCi")
-Haspin_Plk1_species <- c("Haspina", "Haspini", "Plk1a", "Plk1i")
+pH2A_species <- c("pH2A", "pH2A_SGO1", "pH2A_SGO1_CPCa", "pH2A_SGO1_CPCi")
+HASPIN_PLK1_species <- c("HASPINa", "HASPINi", "PLK1a", "PLK1i")
 only_H3_H2A_species <- c("H3", "H2A")
-Bub1a <- c("Bub1a")
-pKnl1_Bub1a <- c("pKnl1_Bub1a")
-Bub1a_pKnl1_species <- c("Bub1a", "pKnl1", "pKnl1_Bub1a")
-Haspin_P_species <- c("Haspina", "Haspini", "Plk1a")
-CPC_active_species <-c("pH2A_Sgo1_CPCa", "pH3_CPCa","CPCa",'H3_CPCa')
-CPC_inactive_species <-c("CPCi", "pH2A_Sgo1_CPCi", "pH3_CPCi","H3_CPCi")
-CPC_pH2A_species <-c( "pH2A_Sgo1_CPCa", "pH2A_Sgo1_CPCi")
+BUB1a <- c("BUB1a")
+pKNL1_BUB1a <- c("pKNL1_BUB1a")
+BUB1a_pKNL1_species <- c("BUB1a", "pKNL1", "pKNL1_BUB1a")
+HASPIN_P_species <- c("HASPINa", "HASPINi", "PLK1a")
+CPC_active_species <-c("pH2A_SGO1_CPCa", "pH3_CPCa","CPCa",'H3_CPCa')
+CPC_inactive_species <-c("CPCi", "pH2A_SGO1_CPCi", "pH3_CPCi","H3_CPCi")
+CPC_pH2A_species <-c( "pH2A_SGO1_CPCa", "pH2A_SGO1_CPCi")
 CPC_pH3_species <-c( "pH3_CPCa", "pH3_CPCi","H3_CPCa","H3_CPCi")
-Ndc80_species <-c("Ndc80", "pNdc80")
+NDC80_species <-c("NDC80", "pNDC80")
 
 # ---------------- HEAT MAPS ---------------
 
@@ -93,88 +93,46 @@ all_data <- vector("list", L)
 species_info_list <- vector("list", L)
 
 # Change, IN ORDER
-all_species <- c(CPC_species, Mps1_species, Haspin_Plk1_species, pH3_species, pH2A_species, only_H3_H2A_species,Bub1a_pKnl1_species, Ndc80_species)
+all_species <- c(CPC_species, TTK_species, HASPIN_PLK1_species, pH3_species, pH2A_species, only_H3_H2A_species,BUB1a_pKNL1_species, NDC80_species)
 
 # Change, IN ORDER
 all_data[[1]] <- CPC_species
-all_data[[2]] <- Mps1_species
-all_data[[3]] <- Haspin_Plk1_species
+all_data[[2]] <- TTK_species
+all_data[[3]] <- HASPIN_PLK1_species
 all_data[[4]] <- pH3_species
 all_data[[5]] <- pH2A_species
 all_data[[6]] <- only_H3_H2A_species
-all_data[[7]] <- Bub1a_pKnl1_species
-all_data[[8]] <- Ndc80_species
+all_data[[7]] <- BUB1a_pKNL1_species
+all_data[[8]] <- NDC80_species
 
 
 # Change, IN ORDER
 species_info_list[[1]] <- c("CPC", "Inactive CPC", "Active CPC", "CPC Activation", TRUE, FALSE, FALSE, TRUE)
-species_info_list[[2]] <- c("Mps1", "Inactive Mps1", "Active Mps1", "Mps1 Activation", TRUE, FALSE, FALSE, TRUE)
-species_info_list[[3]] <- c("Haspin_Plk1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+species_info_list[[2]] <- c("TTK", "Inactive TTK", "Active TTK", "TTK Activation", TRUE, FALSE, FALSE, TRUE)
+species_info_list[[3]] <- c("HASPIN_PLK1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
 species_info_list[[4]] <- c("pH3_species", "Inactive pH3 Species", "Active pH3 Species", "All pH3 Species", FALSE, TRUE, TRUE, FALSE)
 species_info_list[[5]] <- c("pH2A_species", "Inactive pH2A Species", "Active pH2A Species", "All pH2A Species", FALSE, TRUE, TRUE, FALSE)
 species_info_list[[6]] <- c("H2A & H3", "Inactive H2A & H3", "Active H2A & H3", "H2A & H3", FALSE, FALSE, TRUE, FALSE)
-species_info_list[[7]] <- c("Bub1a_pKnl1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-species_info_list[[8]] <- c("Ndc80", "Inactive Ndc80", "Active Ndc80", "All Species", FALSE, FALSE, TRUE, FALSE)
+species_info_list[[7]] <- c("BUB1a_pKNL1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+species_info_list[[8]] <- c("NDC80", "Inactive NDC80", "Active NDC80", "All Species", FALSE, FALSE, TRUE, FALSE)
 
 
-
-# ---------------- SIMULATION SPECIFICS ---------------
-
-# Model type, goes on the left of the heatmap
-# Change
-kt_width = c(
-              # # "Tensed"
-              # "Relaxed",
-              # "Relaxed",
-              # "Relaxed",
-              "Metacentric_Relaxed",
-              "Metacentric_Tensed"
-
-             )
+kt_width = c("Metacentric_Relaxed" )
 
 # All simulation IDs
-# Change
-sims <- c(
- 
-  # "SimID_262253748_0__exported"
- 
-  # "SimID_275966243_0__exported",
-  # "SimID_275966243_1__exported",
-  # "SimID_275966243_2__exported"
-  # "SimID_276685993_0__exported"
-  # "SimID_278919747_0__exported",
-  # "SimID_278919749_0__exported"
-  "SimID_298848254_0__exported",
-  "SimID_298847711_0__exported"
-  
-  
-)
+sims <- c( "SimID_299564396_0__exported")
 
-# Folder naming corresponding to specific simulation ID
-# Change
-var <- c(
- 
-  # "10_25_23_400s_post_transition_base_20Pac"
-  
-  # "09_17_24_CPC_relaxed_RefModel_128x64_scan0",
-  # "09_17_24_CPC_relaxed_RefModel_128x64_scan1",
-  # "09_17_24_CPC_relaxed_RefModel_128x64_scan2"
-  # "10_01_24_relaxed_RefModel_MonseData"
-  # "Copy of 09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_values",
-  # "Copy of 09_17_24_relaxed_RefModel_MCF10A_Bub1_CPC_Ndc80_values_low_Sgo1"
-  # "_09_16_25_CPC_metacentric_relaxed_model"
-  "11_07_25_metacentric_relaxed_MCF10A",
-  "11_07_25_metacentric_tensed_MCF10A"
-  )
+# Simulation name i.e. folder
+sim_names <- c( "11_24_25_metacentric_relaxed_MCF10A")
 
 #########################################################
 
 
 for(i in 1:length(sims)){
   if(file.exists(importPath) == TRUE){
+    print(importPath)
     
-    
-    sweep_name<-var[i]
+    sweep_name<-sim_names[i]
     
     print(sweep_name)
     
@@ -191,15 +149,20 @@ for(i in 1:length(sims)){
                all_species,
                species_info_list,
                tInit=0,
-               tSpan=500, #400 for relaxed to tense
+               tSpan=500, 
                desiredInterval=100,
                cutoff=5, #for heatmap color bar
                funcPath,
                importPath,
                exportPath_new,
                kt_width[i],
-               movie = FALSE,
-               lineplots=FALSE)
+               movie = TRUE,
+               lineplots=TRUE,
+               KK_dist_relaxed = 0.575,
+               KK_dist_tensed = 1.15,
+               KT_width= 0.075,
+               KT_height = 0.3,
+               cohesin_width = 0.08)
 
     
   }

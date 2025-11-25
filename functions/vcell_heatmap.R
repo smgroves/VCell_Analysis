@@ -27,14 +27,6 @@ vcell_heatmap <- function(
   SimID<-ifelse(cond,SimID,paste(SimID,"exported",sep="_"))
   print(SimID)
   
-  # initial concentrations (uM) -> Without vol_ratio or fractions multiplications
-  # clamped
-  Haspini_ic_uM<- 0.55071118
-  Plk1_init_uM<-0.23394
-  CPCi_init_uM <- 0.07838
-  Bub1a_init_uM<-0.02018
-  Sgo1_init_uM<-0.02583
-  
   clamped = FALSE
   clampConc<-0
   
