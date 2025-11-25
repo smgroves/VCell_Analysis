@@ -115,19 +115,17 @@ vcell_heatmap <- function(
         
         #define our own maxcolor
         maxColor = NULL
-        if (is.null(cutoff_color)){
-          if(max(C)>=10){
-            maxColor=10*ceiling(max(C)/10)
-          }else{
-            maxColor=ceiling(max(C))}
-        }else{
           for (c in names(cutoff_color)){
             if(grepl(c, speciesName, ignore.case = TRUE) ){
               maxColor = 500
               if (cutoff_color[c] < maxColor){
                 maxColor = as.numeric(cutoff_color[c])
               }
-            }
+            }else{
+                if(max(C)>=10){
+                  maxColor=10*ceiling(max(C)/10)
+                }else{
+                  maxColor=ceiling(max(C))}
           }
           }
         print(c("MaxColor: ", maxColor))
