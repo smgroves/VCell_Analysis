@@ -123,6 +123,7 @@ vcell_heatmap <- function(
         }else{
           for (c in names(cutoff_color)){
             if(grepl(c, speciesName, ignore.case = TRUE) ){
+              maxColor = 500
               if (cutoff_color[c] < maxColor){
                 maxColor = as.numeric(cutoff_color[c])
               }
