@@ -68,8 +68,8 @@ def rescale_vcell_output(folder_name, in_dir, model_name="", simulation_name="",
                f"{model_name}_{simulation_name}_{timepoint}_{arr_4fold.shape[0]}x{arr_4fold.shape[1]}.csv"), arr_4fold, delimiter=",")
 
 
-def rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name="", simulation_name="", timepoint=200,
-                                   timestep=10, min_mix=2, rescaling_factor=5, suffix=""):
+def rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name="", simulation_name="", timepoint=200,
+                                   timestep=10, min_mix=2, rescaling_factor=5, suffix="", species_name="CPC"):
 
     data = {}
     if timepoint == 0:
@@ -81,28 +81,46 @@ def rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name="", s
     else:
         timeslice_id = "00" + str(int(timepoint/timestep))
 
-    print(timeslice_id)
-    # name = "CPC_all"
-    # CPC_species = ["CPCi",'CPCa','pH2A_Sgo1_CPCa', 'pH2A_Sgo1_CPCi', 'pH2A_Sgo1_pH3_CPCa', 'pH2A_Sgo1_pH3_CPCi','pH3_CPCa', 'pH3_CPCi']
-    for file in os.listdir(os.path.join(in_dir, folder_name)):
-        if "CPC_all" in file:
-            if timeslice_id in file:
-                name = file.split("0_")[-1].split(f"_{timeslice_id}.csv")[0]
-                print(name)
-                data[name] = pd.read_csv(os.path.join(in_dir, folder_name, file), sep=",",
-                                         skiprows=10, header=None)
+    if len(folder_names) > 1:
+        print(folder_names)
+        for folder_name in folder_names:
+            for file in os.listdir(os.path.join(in_dir, folder_name)):
+                if species_name in file:
+                    if timeslice_id in file:
+                        name = file.split(
+                            "0_")[-1].split(f"_{timeslice_id}.csv")[0]
+                        print(name)
+                        data[f"{name}_{folder_name}"] = pd.read_csv(os.path.join(in_dir, folder_name, file), sep=",",
+                                                                    skiprows=10, header=None)
 
+    else:
+        folder_name = folder_names
+
+        print(timeslice_id)
+        # name = "CPC_all"
+        # CPC_species = ["CPCi",'CPCa','pH2A_Sgo1_CPCa', 'pH2A_Sgo1_CPCi', 'pH2A_Sgo1_pH3_CPCa', 'pH2A_Sgo1_pH3_CPCi','pH3_CPCa', 'pH3_CPCi']
+        for file in os.listdir(os.path.join(in_dir, folder_name)):
+            if species_name in file:
+                if timeslice_id in file:
+                    name = file.split(
+                        "0_")[-1].split(f"_{timeslice_id}.csv")[0]
+                    print(name)
+                    data[name] = pd.read_csv(os.path.join(in_dir, folder_name, file), sep=",",
+                                             skiprows=10, header=None)
     name = data.keys().__iter__().__next__()
+
     sum_data = pd.DataFrame(
         0, columns=data[name].columns, index=data[name].index)
     for key in data.keys():
         sum_data = sum_data.add(data[key])
 
     sum_data_array = np.array(sum_data)
+    sum_data_array = sum_data_array/len(folder_names)
     # sum_data_array = sum_data_array/rescaling_factor
     print(sum_data_array.max())
     print(sum_data_array.min())
-    sum_data_array = (sum_data_array - min_mix)/(rescaling_factor - min_mix)
+    sum_data_array = (sum_data_array - min_mix) / \
+        (rescaling_factor - min_mix)
     print(sum_data_array.max())
     print(sum_data_array.min())
 
@@ -126,7 +144,7 @@ def rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name="", s
     print(sum_data_array.min())
 
     np.savetxt(os.path.join(
-        outdir, f"{simulation_name}_{timepoint}_{nrows}x{ncols}_{suffix}.csv"), sum_data_array, delimiter=",")
+        outdir, f"{species_name}_{simulation_name}_{timepoint}_{nrows}x{ncols}_{suffix}.csv"), sum_data_array, delimiter=",")
 
     # arr_2fold = prolong(sum_data_array, nrows, ncols)
     # print(arr_2fold.shape)
@@ -185,15 +203,9 @@ def rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name="", s
 
 in_dir = '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/'
 outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/11_25_2025"
-min_mix = 1
-folder_name = "SimID_299564396_0__exported"
+min_mix = 2.5
+folder_names = ["SimID_299575713_1__exported", "SimID_299575713_3__exported"]
 model_name = "11_23_25 CPC_metacentric_relaxed_MCF10A"
-simulation_name = "11_24_25_metacentric_relaxed_MCF10A"
-rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
-                               timestep=10, min_mix=min_mix, rescaling_factor=8.4, suffix=f"_8.4max_{min_mix}min")
-
-folder_name = "SimID_299580911_0__exported"
-model_name = "11_23_25 CPC_metacentric_tensed_MCF10A"
-simulation_name = "11_24_25_metacentric_tensed_MCF10A"
-rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
-                               timestep=10, min_mix=min_mix, rescaling_factor=8.4, suffix=f"_8.4max_{min_mix}min")
+simulation_name = "11_24_25_metacentric_relaxed_MCF10A_condensation"
+rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
+                               timestep=10, min_mix=min_mix, rescaling_factor=8.4, suffix=f"_8.4max_{min_mix}min", species_name="CPC_all")

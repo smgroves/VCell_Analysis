@@ -52,7 +52,7 @@ else:
 
 # TODO Add code to notify if something in the list isn't showing up in the H5 file
 def convert_hdf5_to_csv(
-    file_name, dir_path="", model_name="", simulation_name="", species_list=[], width=64
+    file_name, dir_path="", model_name="", simulation_name="", species_list=[]
 ):
     if len(species_list) == 0:
         default_species = [
@@ -117,8 +117,10 @@ def convert_hdf5_to_csv(
     with h5py.File(f"{dir_path}/{file_name}", "r") as h5:
         print(len(h5.keys()), "simulation(s) found")
         for sim_key in h5.keys():
+            print(sim_key)
             sim_key_name = "_".join(sim_key.split(
                 "[")[1].split("]")[0].split(",")[0:2])
+            # sim_key_name = "_".join(file_name.split("_")[1:3])
             print(sim_key_name)
             output_folder = f"{dir_path}/SimID_{sim_key_name}__exported"
             # make directory if it doesn't exist
@@ -126,9 +128,9 @@ def convert_hdf5_to_csv(
                 os.makedirs(output_folder)
             timesteps = h5[sim_key]["TIMES"][:]
             for key in h5[sim_key].keys():
+                print(key)
                 if key in default_species:
                     try:
-                        print(key)
                         # convert 3D numpy array to multiple 2D numpy arrays
                         arr = h5[sim_key][key]["DataValues (XYT)"][:]
                         for i in range(arr.shape[2]):
@@ -167,10 +169,10 @@ def convert_hdf5_to_csv(
                                     mode="a",
                                     header=False,
                                 )
-                        default_species.pop(key)
+                        # remaining = default_species.remove(key)
                     except ValueError:
-                        pass
-    print("Species not found in H5: ", default_species)
+                        print("Error processing key: ", key)
+        # print("Species not found in H5: ", remaining)
 
 
 if __name__ == "__main__":
