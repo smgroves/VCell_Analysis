@@ -167,8 +167,10 @@ def convert_hdf5_to_csv(
                                     mode="a",
                                     header=False,
                                 )
+                        default_species.pop(key)
                     except ValueError:
                         pass
+    print("Species not found in H5: ", default_species)
 
 
 if __name__ == "__main__":

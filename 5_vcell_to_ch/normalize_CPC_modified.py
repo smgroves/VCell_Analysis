@@ -115,9 +115,9 @@ def rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name="", s
     print(sum_data_array.min())
 
     # pad the sides of the array with zeros so it is square
-    # width = sum_data_array.shape[0]-sum_data_array.shape[1]
-    # sum_data_array = (np.pad(
-    #     sum_data_array, ((0, 0), (int(width/2), int(width/2))), pad_with, padder=0))
+    width = sum_data_array.shape[0]-sum_data_array.shape[1]
+    sum_data_array = (np.pad(
+        sum_data_array, ((0, 0), (int(width/2), int(width/2))), pad_with, padder=0))
 
     nrows = sum_data_array.shape[0]
     ncols = sum_data_array.shape[1]
@@ -185,15 +185,15 @@ def rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name="", s
 
 in_dir = '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/'
 outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/11_25_2025"
-
+min_mix = 1
 folder_name = "SimID_299564396_0__exported"
 model_name = "11_23_25 CPC_metacentric_relaxed_MCF10A"
 simulation_name = "11_24_25_metacentric_relaxed_MCF10A"
 rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
-                               timestep=10, min_mix=3, rescaling_factor=8.4, suffix="_8.4max_3min_NO_PADDING")
+                               timestep=10, min_mix=min_mix, rescaling_factor=8.4, suffix=f"_8.4max_{min_mix}min")
 
 folder_name = "SimID_299580911_0__exported"
 model_name = "11_23_25 CPC_metacentric_tensed_MCF10A"
 simulation_name = "11_24_25_metacentric_tensed_MCF10A"
 rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
-                               timestep=10, min_mix=3, rescaling_factor=8.4, suffix="_8.4max_3min_NO_PADDING")
+                               timestep=10, min_mix=min_mix, rescaling_factor=8.4, suffix=f"_8.4max_{min_mix}min")
