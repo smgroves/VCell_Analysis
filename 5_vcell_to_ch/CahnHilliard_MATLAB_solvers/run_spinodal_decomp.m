@@ -33,8 +33,12 @@ for k = 1:length(myFiles)
     % % #################################################
     % % RUN SAV SOLVER 
     % % #################################################
-
-    pathname = sprintf("%s/%s", outdir, baseFileName(1:end-4));
+    folder_name = regexp(baseFileName, '^(.*?)(?=\d+x\d+)', 'tokens', 'once');
+    prefix = folder_name{1};
+    pathname = sprintf("%s/%s/%s", outdir, prefix, baseFileName(1:end-4));
+    if ~exist(sprintf("%s/%s", outdir, prefix), 'dir')
+        mkdir(sprintf("%s/%s", outdir, prefix));
+    end
     fprintf("Running SAV solver with parameters: %s\n", pathname);
     tStart_NMG = tic;
     [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0,...

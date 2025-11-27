@@ -210,30 +210,30 @@ outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/11_25
 # rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
 #                                timestep=10, min_mix=min_mix, rescaling_factor=8.4, suffix=f"_8.4max_{min_mix}min", species_name="CPC_all")
 
-min_mix = 5
-rescaling_factor = 20
-folder_names = ["SimID_299707888_0__exported"]
-model_name = "11_23_25 CPC_metacentric_relaxed_MCF10A"
-simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr9-11_metaphase"
-rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
-                               timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
-
-folder_names = ["SimID_299710798_0__exported"]
-model_name = "11_23_25 CPC_metacentric_tensed_MCF10A"
-simulation_name = "11_26_25 CPC_metacentric_tensed_MCF10A_chr9-11_metaphase"
-rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
-                               timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
-
-# min_mix = 6
-# rescaling_factor = 11
-# folder_names = ["SimID_299718689_0__exported"]
-# model_name = "11_23_25 CPC_metacentric_tensed_MCF10A"
-# simulation_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP1"
-# rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=200,
-#                                timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
-
-# folder_names = ["SimID_299716561_0__exported"]
+# min_mix = 5
+# rescaling_factor = 20
+# folder_names = ["SimID_299707888_0__exported"]
 # model_name = "11_23_25 CPC_metacentric_relaxed_MCF10A"
-# simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1"
-# rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=200,
+# simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr9-11_metaphase"
+# rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
 #                                timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+
+# folder_names = ["SimID_299710798_0__exported"]
+# model_name = "11_23_25 CPC_metacentric_tensed_MCF10A"
+# simulation_name = "11_26_25 CPC_metacentric_tensed_MCF10A_chr9-11_metaphase"
+# rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
+#                                timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+
+min_mix = 7
+rescaling_factor = 8.4
+folder_names = ["SimID_299718689_0__exported"]
+model_name = "11_23_25 CPC_metacentric_tensed_MCF10A"
+simulation_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP1"
+rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
+                               timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+
+folder_names = ["SimID_299716561_0__exported"]
+model_name = "11_23_25 CPC_metacentric_relaxed_MCF10A"
+simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1"
+rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
+                               timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
