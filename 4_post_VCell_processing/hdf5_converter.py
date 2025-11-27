@@ -13,15 +13,15 @@ if True:
     dir_path = sys.argv[2]
     model_name = sys.argv[3]
     simulation_name = sys.argv[4]
-    width = int(sys.argv[5])
+    # width = int(sys.argv[5])
 
-    if len(sys.argv) > 6:
+    if len(sys.argv) > 5:
         parser = argparse.ArgumentParser()
         parser.add_argument('file_name', metavar='N')
         parser.add_argument('dir_path', metavar='N')
         parser.add_argument('model_name', metavar='N')
         parser.add_argument('simulation_name', metavar='N')
-        parser.add_argument('width', metavar='N', type=int)
+        # parser.add_argument('width', metavar='N', type=int)
         parser.add_argument(
             "--species",  # name on the CLI - drop the `--` for positional/required parameters
             nargs="*",  # 0 or more values expected => creates a list
@@ -34,7 +34,7 @@ if True:
         dir_path = args.dir_path
         model_name = args.model_name
         simulation_name = args.simulation_name
-        width = args.width
+        # width = args.width
         species_list = args.species
         print(species_list)
     else:
@@ -178,6 +178,6 @@ def convert_hdf5_to_csv(
 if __name__ == "__main__":
     t1 = time.time()
     convert_hdf5_to_csv(file_name, dir_path, model_name,
-                        simulation_name, species_list, width)
+                        simulation_name, species_list)
     t2 = time.time()
     print("Processing took ", (t2 - t1), " seconds")

@@ -194,3 +194,10 @@ python hdf5_converter.py "SimID_299580911_0__exported.hdf5" '/Users/smgroves/Box
 
 #11/26/2025
 python hdf5_converter.py "SimID_299575713_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "11_23_25 CPC_metacentric_tensed_MCF10A" "11_24_25_metacentric_relaxed_MCF10A_condensation" 52
+
+
+python hdf5_converter.py "SimID_299707888_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "11_23_25 CPC_metacentric_relaxed_MCF10A" "11_26_25_metacentric_relaxed_MCF10A_chr9-11_metaphase" 
+python hdf5_converter.py "SimID_299710798_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "11_23_25 CPC_metacentric_tensed_MCF10A" "11_26_25 CPC_metacentric_tensed_MCF10A_chr9-11_metaphase" 
+
+python hdf5_converter.py "SimID_299718689_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "11_23_25 CPC_metacentric_tensed_MCF10A" "11_26_25_metacentric_tensed_MCF10A_chr19_PMP1" 
+python hdf5_converter.py "SimID_299716561_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "11_23_25 CPC_metacentric_relaxed_MCF10A" "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1" 
