@@ -16,30 +16,31 @@ myFiles = dir(fullfile(indir,'*.csv')); %gets all csv files in struct
 % print("Found %d files to process\n", length(myFiles));
 for k = 1:length(myFiles)
     baseFileName = myFiles(k).name;
-    outputName = [baseFileName(1:end-4), 'movie.mp4']; 
-    outputPath = fullfile(outdir, outputName);
-
+    folder_name = regexp(baseFileName, '^(.*?)(?=\d+x\d+)', 'tokens', 'once');
+    prefix = folder_name{1};
+    pathname = sprintf("%s/%s/%s", outdir, prefix, baseFileName(1:end-4));
+    output_movie_file = fullfile(sprintf("%smovie.mp4", pathname));
     % Check if output file already exists
-    if exist(outputPath, 'file')
+    if exist(output_movie_file, 'file')
         fprintf('Skipping %s (already processed)\n', baseFileName);
         continue;
     end
+
+    fprintf("Processing file %s (%d of %d)\n", baseFileName, k, length(myFiles));
+
     init_file = sprintf("%s/%s",indir,baseFileName);
     phi0 = readmatrix(init_file);
     print_phi = true;
     dt_out = 10;
     ny = size(phi0,2);
-    fprintf("%f",ny)
     % % #################################################
     % % RUN SAV SOLVER 
     % % #################################################
-    folder_name = regexp(baseFileName, '^(.*?)(?=\d+x\d+)', 'tokens', 'once');
-    prefix = folder_name{1};
-    pathname = sprintf("%s/%s/%s", outdir, prefix, baseFileName(1:end-4));
+
     if ~exist(sprintf("%s/%s", outdir, prefix), 'dir')
         mkdir(sprintf("%s/%s", outdir, prefix));
     end
-    fprintf("Running SAV solver with parameters: %s\n", pathname);
+    % fprintf("Running SAV solver with parameters: %s\n", pathname);
     tStart_NMG = tic;
     [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0,...
                                         t_iter = max_it,...
