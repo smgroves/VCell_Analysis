@@ -235,7 +235,7 @@ outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/11_25
 
 min_max_dict = {}
 
-min_mix = 5
+min_mix = 4
 rescaling_factor = 15
 # folder_names = ["SimID_299718689_0__exported"]
 # model_name = "11_23_25 CPC_metacentric_tensed_MCF10A"
