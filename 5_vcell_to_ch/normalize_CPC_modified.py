@@ -101,22 +101,24 @@ def rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name="", 
         # name = "CPC_all"
         # CPC_species = ["CPCi",'CPCa','pH2A_Sgo1_CPCa', 'pH2A_Sgo1_CPCi', 'pH2A_Sgo1_pH3_CPCa', 'pH2A_Sgo1_pH3_CPCi','pH3_CPCa', 'pH3_CPCi']
         for file in os.listdir(os.path.join(in_dir, folder_name)):
+
             if species_name in file:
                 if timeslice_id in file:
+
                     name = file.split(
                         "0_")[-1].split(f"_{timeslice_id}.csv")[0]
-                    print(name)
                     data[name] = pd.read_csv(os.path.join(in_dir, folder_name, file), sep=",",
                                              skiprows=10, header=None)
     name = data.keys().__iter__().__next__()
-
     sum_data = pd.DataFrame(
         0, columns=data[name].columns, index=data[name].index)
     for key in data.keys():
         sum_data = sum_data.add(data[key])
-
+    # drop any columns that are all na
+    sum_data = sum_data.dropna(axis=1, how='all')
     sum_data_array = np.array(sum_data)
     sum_data_array = sum_data_array/len(folder_names)
+
     # sum_data_array = sum_data_array/rescaling_factor
     print(sum_data_array.max())
     print(sum_data_array.min())
@@ -233,87 +235,104 @@ outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/11_25
 
 min_max_dict = {}
 
-min_mix = 10
-rescaling_factor = 20
-folder_names = ["SimID_299718689_0__exported"]
-model_name = "11_23_25 CPC_metacentric_tensed_MCF10A"
-simulation_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP1"
-ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
-                                        timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+min_mix = 5
+rescaling_factor = 15
+# folder_names = ["SimID_299718689_0__exported"]
+# model_name = "11_23_25 CPC_metacentric_tensed_MCF10A"
+# simulation_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP1"
+# ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=200,
+#                                         timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
 
-min_max_dict[simulation_name] = (ma, mi)
+# min_max_dict[simulation_name] = (ma, mi)
 
-folder_names = ["SimID_299716561_0__exported"]
-model_name = "11_23_25 CPC_metacentric_relaxed_MCF10A"
-simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1"
-ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
-                                        timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+# folder_names = ["SimID_299716561_0__exported"]
+# model_name = "11_23_25 CPC_metacentric_relaxed_MCF10A"
+# simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1"
+# ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=200,
+#                                         timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
 
-min_max_dict[simulation_name] = (ma, mi)
+# min_max_dict[simulation_name] = (ma, mi)
 
-folder_names = ["SimID_299731280_0__exported"]
-model_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP2"
-simulation_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP2"
-ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=200,
-                                        timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+# folder_names = ["SimID_299731280_0__exported"]
+# model_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP2"
+# simulation_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP2"
+# ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=200,
+#                                         timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
 
-min_max_dict[simulation_name] = (ma, mi)
+# min_max_dict[simulation_name] = (ma, mi)
 
-folder_names = ["SimID_299730628_0__exported"]
-model_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP2"
-simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP2"
-ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=200,
-                                        timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+# folder_names = ["SimID_299730628_0__exported"]
+# model_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP2"
+# simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP2"
+# ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=200,
+#                                         timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
 
-min_max_dict[simulation_name] = (ma, mi)
+# min_max_dict[simulation_name] = (ma, mi)
 
-folder_names = ["SimID_299732742_0__exported"]
-model_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP3"
-simulation_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP3"
-ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=200,
-                                        timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+# folder_names = ["SimID_299732742_0__exported"]
+# model_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP3"
+# simulation_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP3"
+# ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=200,
+#                                         timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
 
-min_max_dict[simulation_name] = (ma, mi)
+# min_max_dict[simulation_name] = (ma, mi)
 
-folder_names = ["SimID_299732060_0__exported"]
-model_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP3"
-simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP3"
-ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=200,
-                                        timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+# folder_names = ["SimID_299732060_0__exported"]
+# model_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP3"
+# simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP3"
+# ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=200,
+#                                         timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
 
-min_max_dict[simulation_name] = (ma, mi)
+# min_max_dict[simulation_name] = (ma, mi)
 
-folder_names = ["SimID_299733521_0__exported"]
-model_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP4"
-simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP4"
-ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=200,
-                                        timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+# folder_names = ["SimID_299733521_0__exported"]
+# model_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP4"
+# simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP4"
+# ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=50,
+#                                         timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
 
-min_max_dict[simulation_name] = (ma, mi)
+# # min_max_dict[simulation_name] = (ma, mi)
 
-folder_names = ["SimID_299734152_0__exported"]
-model_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP4"
-simulation_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP4"
-ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=200,
-                                        timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+# folder_names = ["SimID_299734152_0__exported"]
+# model_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP4"
+# simulation_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP4"
+# ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=50,
+#                                         timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
 
-min_max_dict[simulation_name] = (ma, mi)
+# min_max_dict[simulation_name] = (ma, mi)
 
-spinodal_point = ((3-np.sqrt(3))/6)*(rescaling_factor-min_mix)+min_mix
-# plot max and min for each on a double well distribution where the two wells are min_mix and rescaling factor
-# any sim with relaxed in the name should be shades of orange, and tensed should be shades of blue labeled by last 4 characters of sim name and relaxed or tensed
-fig, ax = plt.subplots()
-for sim_name in sorted(min_max_dict.keys()):
-    ma, mi = min_max_dict[sim_name]
-    if "relaxed" in sim_name:
-        ax.scatter(ma, mi, color='orange', label=f"{sim_name[-4:]} relaxed")
-    else:
-        ax.scatter(ma, mi, color='blue', label=f"{sim_name[-4:]} tensed")
-ax.set_xlabel("Max CPC concentration (orig units)")
-ax.set_ylabel("Min CPC concentration (orig units)")
-ax.set_title("Max and Min CPC concentrations across simulations")
-ax.axvline(x=spinodal_point, color='gray', linestyle='--',
-           label=f"Spinodal Point for max {rescaling_factor} and min {min_mix}")
-# ax.axhline(y=min_mix, color='gray', linestyle='--')
-ax.legend()
-plt.show()
+# spinodal_point = ((3-np.sqrt(3))/6)*(rescaling_factor-min_mix)+min_mix
+# # plot max and min for each on a double well distribution where the two wells are min_mix and rescaling factor
+# # any sim with relaxed in the name should be shades of orange, and tensed should be shades of blue labeled by last 4 characters of sim name and relaxed or tensed
+# fig, ax = plt.subplots()
+# for sim_name in sorted(min_max_dict.keys()):
+#     ma, mi = min_max_dict[sim_name]
+#     if "relaxed" in sim_name:
+#         ax.scatter(ma, mi, color='orange', label=f"{sim_name[-4:]} relaxed")
+#     else:
+#         ax.scatter(ma, mi, color='blue', label=f"{sim_name[-4:]} tensed")
+# ax.set_xlabel("Max CPC concentration (orig units)")
+# ax.set_ylabel("Min CPC concentration (orig units)")
+# ax.set_title("Max and Min CPC concentrations across simulations")
+# ax.axvline(x=spinodal_point, color='gray', linestyle='--',
+#            label=f"Spinodal Point for max {rescaling_factor} and min {min_mix}")
+# # ax.axhline(y=min_mix, color='gray', linestyle='--')
+# ax.legend()
+# plt.show()
+
+# post transition sims
+folder_names = ["SimID_299928075_0__exported"]
+model_name = "11_26_25 CPC_metacentric_transition_MCF10A_chr19_PMP4"
+simulation_name = "11_26_25_metacentric_transition_MCF10A_chr9_PMP4_transition_200s"
+ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=17,
+                                        timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+folder_names = ["SimID_299928086_0__exported"]
+model_name = "11_26_25 CPC_metacentric_transition_MCF10A_chr19_PMP4"
+simulation_name = "11_26_25_metacentric_transition_MCF10A_chr9_PMP4_transition_100s"
+ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=17,
+                                        timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+folder_names = ["SimID_299928089_0__exported"]
+model_name = "11_26_25 CPC_metacentric_transition_MCF10A_chr19_PMP4"
+simulation_name = "11_26_25_metacentric_transition_MCF10A_chr9_PMP4_transition_50s"
+ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=17,
+                                        timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
