@@ -13,7 +13,7 @@ epsilon2 = epsilon^2;
 dt = 2.5e-5;
 max_it = 2000;
 boundary = 'neumann';
-myFiles = dir(fullfile(indir,'*15max_*min.csv')); %gets all csv files in struct
+myFiles = dir(fullfile(indir,'*max_*min.csv')); %gets all csv files in struct
 % print("Found %d files to process\n", length(myFiles));
 for k = 1:length(myFiles)
     baseFileName = myFiles(k).name;

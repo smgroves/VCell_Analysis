@@ -336,8 +336,8 @@ min_max_dict = {}
 # ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=17,
 #                                         timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
 
-min_mix = 4
-rescaling_factor = 15
+min_mix = 0
+rescaling_factor = 8.4
 in_dir = '/Users/smgroves/Documents/Github/VCell_Analysis/vcell_out'
 outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/12_15_2025"
 folder_names = ["SimID_300540363_2__exported"]
