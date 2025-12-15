@@ -83,6 +83,7 @@ for i = 1:dtframes:size(t_out,2)
     phi_temp = readmatrix(phi_file, 'Range', [(i-1)*ny+1, 1, i*ny, ny]);
 % for i = 1:dtframes:size(phi_t,3)
     h = figure('visible','off');
+
     image(phi_temp,'CDataMapping','scaled');
     colorbar; 
     axis square;
@@ -100,7 +101,13 @@ for i = 1:dtframes:size(t_out,2)
     title(strcat('t = ',num2str(t_out(i))));
     colormap(interp1(1:100:1100,redbluecmap,1:1001)); %Expand redbluecmap to 1000 elements
     colorbar;
-    writeVideo(phi_movie,getframe(h));
+    phi_scaled = round( (phi_temp(:,:,k)+1)/2 * 999 ) + 1; 
+    rgbFrame = ind2rgb(phi_scaled, cmap);  % double 0..1
+    writeVideo(v,rgbFrame);
+
+    % exportgraphics(h,'temp.png','Resolution',600); % fixed for MATLAB 2025b
+    % img = imread('temp.png');
+    % writeVideo(phi_movie,img);
     if mod(i/(size(t_out,2)-1)*100,5) == 0
         fprintf('%3.0f percent complete\n',i/size(t_out,2)*100)
     end

@@ -1,0 +1,24 @@
+name: vcell_py310
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Required
+  - python=3.10
+  - pip
+  - openjdk=17     # Java 17, required by VCell/pyvcell
+
+  # Common deps used by VCell, pyvcell, and your usual stack
+  - numpy
+  - scipy
+  - h5py
+  - lxml
+  - libsbml
+  - vtk
+  - pandas
+
+  - pip:
+      - pyvcell           # main VCell python interface
+      - libvcell          # native library package
+      - numexpr
+      - matplotlib

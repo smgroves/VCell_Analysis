@@ -207,8 +207,8 @@ def rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name="", 
 # rescale_vcell_output_neg1_pos1(folder_name, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=18,
 #                                timestep=1, min_mix=1.5, rescaling_factor=8.4, suffix="_8.4max_1.5min")
 
-in_dir = '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/'
-outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/11_25_2025"
+# in_dir = '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/'
+
 # min_mix = 0.5
 # folder_names = ["SimID_299575713_1__exported", "SimID_299575713_3__exported"]
 # model_name = "11_23_25 CPC_metacentric_relaxed_MCF10A"
@@ -235,8 +235,7 @@ outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/11_25
 
 min_max_dict = {}
 
-min_mix = 4
-rescaling_factor = 15
+
 # folder_names = ["SimID_299718689_0__exported"]
 # model_name = "11_23_25 CPC_metacentric_tensed_MCF10A"
 # simulation_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP1"
@@ -321,18 +320,33 @@ rescaling_factor = 15
 # plt.show()
 
 # post transition sims
-folder_names = ["SimID_299928075_0__exported"]
-model_name = "11_26_25 CPC_metacentric_transition_MCF10A_chr19_PMP4"
-simulation_name = "11_26_25_metacentric_transition_MCF10A_chr9_PMP4_transition_200s"
+# folder_names = ["SimID_299928075_0__exported"]
+# model_name = "11_26_25 CPC_metacentric_transition_MCF10A_chr19_PMP4"
+# simulation_name = "11_26_25_metacentric_transition_MCF10A_chr9_PMP4_transition_200s"
+# ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=17,
+#                                         timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+# folder_names = ["SimID_299928086_0__exported"]
+# model_name = "11_26_25 CPC_metacentric_transition_MCF10A_chr19_PMP4"
+# simulation_name = "11_26_25_metacentric_transition_MCF10A_chr9_PMP4_transition_100s"
+# ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=17,
+#                                         timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+# folder_names = ["SimID_299928089_0__exported"]
+# model_name = "11_26_25 CPC_metacentric_transition_MCF10A_chr19_PMP4"
+# simulation_name = "11_26_25_metacentric_transition_MCF10A_chr9_PMP4_transition_50s"
+# ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=17,
+#                                         timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+
+min_mix = 4
+rescaling_factor = 15
+in_dir = '/Users/smgroves/Documents/Github/VCell_Analysis/vcell_out'
+outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/12_15_2025"
+folder_names = ["SimID_300540363_2__exported"]
+model_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1"
+simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_haspin_stripe_0.25"
 ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=17,
                                         timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
-folder_names = ["SimID_299928086_0__exported"]
-model_name = "11_26_25 CPC_metacentric_transition_MCF10A_chr19_PMP4"
-simulation_name = "11_26_25_metacentric_transition_MCF10A_chr9_PMP4_transition_100s"
-ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=17,
-                                        timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
-folder_names = ["SimID_299928089_0__exported"]
-model_name = "11_26_25 CPC_metacentric_transition_MCF10A_chr19_PMP4"
-simulation_name = "11_26_25_metacentric_transition_MCF10A_chr9_PMP4_transition_50s"
+folder_names = ["SimID_300540363_3__exported"]
+model_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1"
+simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_haspin_stripe_0.3"
 ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=17,
                                         timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")

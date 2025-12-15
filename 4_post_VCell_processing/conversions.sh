@@ -211,3 +211,7 @@ python hdf5_converter.py "SimID_299733521_0__exported.hdf5" '/Users/smgroves/Box
 
 
 python hdf5_converter.py "SimID_299734152_0__exported.hdf5" '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/' "11_26_25_metacentric_tensed_MCF10A_chr19_PMP4" "11_26_25_metacentric_tensed_MCF10A_chr19_PMP4" 
+
+
+# Dec 15, 2025
+python hdf5_converter.py "SimID_300540363_0__exported.hdf5" '/Users/smgroves/Documents/Github/VCell_Analysis/vcell_out' "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1" "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_haspin_stripe" 
