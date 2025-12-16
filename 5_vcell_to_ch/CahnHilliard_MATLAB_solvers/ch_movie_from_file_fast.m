@@ -63,7 +63,7 @@ title(ax, sprintf('t = %g', t_out(1)));
 
 %% Movie loop (FAST)
 for i = 1:dtframes:nt
-    frameData = phi(:,:,i);
+    frameData = transpose(phi(:,:,i));
 
     % Update image without recreating anything
     set(imgHandle, 'CData', frameData);
