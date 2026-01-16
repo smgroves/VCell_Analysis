@@ -250,11 +250,12 @@ outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/01_16
 min_mix = 4
 rescaling_factor = 15
 # folder_names = ["SimID_299716561_0__exported"]
-folder_names = ["SimID_302549931_0__exported"]
+# folder_names = ["SimID_302549931_0__exported"]
+folder_names = ['SimID_302551116_0__exported']
 # model_name = "11_23_25 CPC_metacentric_relaxed_MCF10A"
 # simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1"
 model_name = '01_14_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1_CPCactive_newKcat'
-simulation_name = "01_14_26_metacentric_relaxed_MCF10A_chr19_PMP1_active_kpp_CPCaIC"
+simulation_name = "01_14_26_metacentric_relaxed_MCF10A_chr19_PMP1_active_CPCaIC"
 ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=100,
                                         timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
 
