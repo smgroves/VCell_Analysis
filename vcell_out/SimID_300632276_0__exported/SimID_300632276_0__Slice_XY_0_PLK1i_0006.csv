@@ -1,5 +1,5 @@
-Model: 12_11_25_CPC_metacentric_transition_MCF10A_chr19_PMP3
-Simulation: 11_26_25_metacentric_tensed_MCF10A_chr9_PMP3
+Model: 01_14_26 CPC_metacentric_tensed_MCF10A_chr19_PMP1_CPCactive_newKcat
+Simulation: 01_14_26_metacentric_relaxed_MCF10A_chr19_PMP1_active_kpp_CPCaIC
 (SimID_300632276_0 (PDE Simulation)) 
 Sim time range (0.0 20.0) (saved timepoints 21) 
 Number of variables 44 

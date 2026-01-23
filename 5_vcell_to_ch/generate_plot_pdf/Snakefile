@@ -1,0 +1,82 @@
+import os
+from pathlib import Path
+
+# Configuration
+OUTDIR = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026"
+DT = 2.5e-5
+DT_OUT = 10
+
+# Find all directories containing movie.mp4 files
+def find_simulation_dirs(outdir):
+    """Find all directories containing movie.mp4 files"""
+    sim_dirs = []
+    for root, dirs, files in os.walk(outdir):
+        if "movie.mp4" in files:
+            sim_dirs.append(root)
+    return sim_dirs
+
+SIMULATION_DIRS = find_simulation_dirs(OUTDIR)
+
+# Extract simulation names (relative paths from OUTDIR)
+SIMULATIONS = [os.path.relpath(d, OUTDIR) for d in SIMULATION_DIRS]
+
+rule all:
+    input:
+        "all_simulations_analysis.pdf"
+
+rule matlab_level_set:
+    input:
+        phi = os.path.join(OUTDIR, "{simulation}", "phi.csv"),
+        movie = os.path.join(OUTDIR, "{simulation}", "movie.mp4")
+    output:
+        radius_data = os.path.join(OUTDIR, "{simulation}", "radius_data.csv")
+    params:
+        dt = DT,
+        dt_out = DT_OUT,
+        sim_path = lambda wildcards: os.path.join(OUTDIR, wildcards.simulation)
+    shell:
+        """
+        matlab -batch "addpath('{params.sim_path}'); \
+                       calculate_level_set_radius('{input.phi}', \
+                                                   {params.dt}, \
+                                                   {params.dt_out}, \
+                                                   '{output.radius_data}')"
+        """
+
+rule python_analysis:
+    input:
+        final_phi = os.path.join(OUTDIR, "{simulation}", "final_phi.csv"),
+        phi = os.path.join(OUTDIR, "{simulation}", "phi.csv"),
+        radius_data = os.path.join(OUTDIR, "{simulation}", "radius_data.csv"),
+        movie = os.path.join(OUTDIR, "{simulation}", "movie.mp4")
+    output:
+        plots = os.path.join(OUTDIR, "{simulation}", "analysis_plots.npz")
+    params:
+        dt = DT,
+        dt_out = DT_OUT
+    shell:
+        """
+        python analyze_single_simulation.py \
+            --final-phi {input.final_phi} \
+            --phi {input.phi} \
+            --radius-data {input.radius_data} \
+            --dt {params.dt} \
+            --dt-out {params.dt_out} \
+            --output {output.plots}
+        """
+
+rule combine_pdfs:
+    input:
+        expand(os.path.join(OUTDIR, "{simulation}", "analysis_plots.npz"), 
+               simulation=SIMULATIONS)
+    output:
+        "all_simulations_analysis.pdf"
+    params:
+        outdir = OUTDIR,
+        simulations = SIMULATIONS
+    shell:
+        """
+        python create_combined_pdf.py \
+            --outdir {params.outdir} \
+            --output {output}
+        """
