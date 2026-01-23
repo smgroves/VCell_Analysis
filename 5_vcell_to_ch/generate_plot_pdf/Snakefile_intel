@@ -6,13 +6,9 @@ import glob
 BASEDIR = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch"
 OUTDIR = os.path.join(BASEDIR, "output", "test_snakemake")
 SCRIPTDIR = os.path.join(BASEDIR, "generate_plot_pdf")
-MATLAB_BIN = "/Applications/MATLAB_R2023b.app/bin/maca64/MATLAB"  # maca64 for Apple Silicon
+MATLAB_BIN = "/Applications/MATLAB_R2023b.app/bin/matlab"
 DT = 2.5e-5
 DT_OUT = 10
-
-
-# Extract the folder name for use in output filename
-FOLDER_NAME = os.path.basename(OUTDIR)  # This will be "test_snakemake"
 
 # Find all simulation prefixes by looking for movie.mp4 files
 def find_simulation_prefixes(outdir):
@@ -36,7 +32,7 @@ if not SIMULATIONS:
 
 rule all:
     input:
-        os.path.join(SCRIPTDIR, f"{FOLDER_NAME}_analysis.pdf")
+        os.path.join(SCRIPTDIR, "all_simulations_analysis.pdf")
 
 rule matlab_level_set:
     input:
@@ -49,7 +45,7 @@ rule matlab_level_set:
         dt_out = DT_OUT
     shell:
         """
-        {MATLAB_BIN} -nodisplay -nosplash -nodesktop -r \
+        /Applications/MATLAB_R2023b.app/bin/matlab -nodisplay -nosplash -nodesktop -r \
         "try; cd('{SCRIPTDIR}'); calculate_level_set_radius('{input.phi}', {params.dt}, {params.dt_out}, '{output.radius_data}'); exit(0); catch e; disp(getReport(e)); exit(1); end"
         """
 
@@ -82,7 +78,7 @@ rule combine_pdfs:
         expand(os.path.join(OUTDIR, "{simulation}analysis_plots.npz"), 
                simulation=SIMULATIONS)
     output:
-        os.path.join(SCRIPTDIR, f"{FOLDER_NAME}_analysis.pdf")
+        os.path.join(SCRIPTDIR, "all_simulations_analysis.pdf")
     params:
         outdir = OUTDIR
     shell:
