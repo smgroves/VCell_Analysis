@@ -1,0 +1,670 @@
+Assuming unrestricted shared filesystem usage.
+host: Sarahs-iMac.local
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+combine_pdfs            1
+matlab_level_set       25
+python_analysis        25
+total                  52
+
+Select jobs to execute...
+Execute 2 jobs...
+[Sat Jan 24 14:36:24 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25minradius_data.csv
+    jobid: 51
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+[Sat Jan 24 14:36:24 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25minradius_data.csv
+    jobid: 39
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:36:42 2026]
+Finished jobid: 39 (Rule: matlab_level_set)
+1 of 52 steps (2%) done
+Execute 1 jobs...
+[Sat Jan 24 14:36:42 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0minradius_data.csv
+    jobid: 31
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:36:42 2026]
+Finished jobid: 51 (Rule: matlab_level_set)
+2 of 52 steps (4%) done
+Execute 1 jobs...
+[Sat Jan 24 14:36:42 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minradius_data.csv
+    jobid: 45
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:37:00 2026]
+Finished jobid: 31 (Rule: matlab_level_set)
+3 of 52 steps (6%) done
+Execute 1 jobs...
+[Sat Jan 24 14:37:00 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9minradius_data.csv
+    jobid: 27
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:37:00 2026]
+Finished jobid: 45 (Rule: matlab_level_set)
+4 of 52 steps (8%) done
+Execute 1 jobs...
+[Sat Jan 24 14:37:00 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9minradius_data.csv
+    jobid: 3
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:37:16 2026]
+Finished jobid: 27 (Rule: matlab_level_set)
+5 of 52 steps (10%) done
+Execute 1 jobs...
+[Sat Jan 24 14:37:16 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25minanalysis_plots.npz
+    jobid: 38
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:37:17 2026]
+Finished jobid: 3 (Rule: matlab_level_set)
+6 of 52 steps (12%) done
+Execute 1 jobs...
+[Sat Jan 24 14:37:17 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25minanalysis_plots.npz
+    jobid: 50
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:37:19 2026]
+Finished jobid: 38 (Rule: python_analysis)
+7 of 52 steps (13%) done
+Execute 1 jobs...
+[Sat Jan 24 14:37:19 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5minradius_data.csv
+    jobid: 47
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+[Sat Jan 24 14:37:19 2026]
+Finished jobid: 50 (Rule: python_analysis)
+8 of 52 steps (15%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Jan 24 14:37:19 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9minradius_data.csv
+    jobid: 33
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:37:36 2026]
+Finished jobid: 33 (Rule: matlab_level_set)
+9 of 52 steps (17%) done
+[Sat Jan 24 14:37:36 2026]
+Finished jobid: 47 (Rule: matlab_level_set)
+10 of 52 steps (19%) done
+Execute 2 jobs...
+[Sat Jan 24 14:37:37 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9minanalysis_plots.npz
+    jobid: 2
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+[Sat Jan 24 14:37:37 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9minradius_data.csv
+    jobid: 21
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:37:39 2026]
+Finished jobid: 2 (Rule: python_analysis)
+11 of 52 steps (21%) done
+Execute 1 jobs...
+[Sat Jan 24 14:37:39 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75minradius_data.csv
+    jobid: 15
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:37:54 2026]
+Finished jobid: 21 (Rule: matlab_level_set)
+12 of 52 steps (23%) done
+Execute 1 jobs...
+[Sat Jan 24 14:37:54 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9minanalysis_plots.npz
+    jobid: 20
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:37:56 2026]
+Finished jobid: 15 (Rule: matlab_level_set)
+13 of 52 steps (25%) done
+Execute 1 jobs...
+[Sat Jan 24 14:37:56 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5minradius_data.csv
+    jobid: 11
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:37:57 2026]
+Finished jobid: 20 (Rule: python_analysis)
+14 of 52 steps (27%) done
+Execute 1 jobs...
+[Sat Jan 24 14:37:57 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75minradius_data.csv
+    jobid: 5
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:38:16 2026]
+Finished jobid: 11 (Rule: matlab_level_set)
+15 of 52 steps (29%) done
+Execute 1 jobs...
+[Sat Jan 24 14:38:16 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9minanalysis_plots.npz
+    jobid: 26
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:38:16 2026]
+Finished jobid: 5 (Rule: matlab_level_set)
+16 of 52 steps (31%) done
+Execute 1 jobs...
+[Sat Jan 24 14:38:16 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5minradius_data.csv
+    jobid: 29
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:38:18 2026]
+Finished jobid: 26 (Rule: python_analysis)
+17 of 52 steps (33%) done
+Execute 1 jobs...
+[Sat Jan 24 14:38:18 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5minanalysis_plots.npz
+    jobid: 10
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:38:20 2026]
+Finished jobid: 10 (Rule: python_analysis)
+18 of 52 steps (35%) done
+Execute 1 jobs...
+[Sat Jan 24 14:38:20 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5minanalysis_plots.npz
+    jobid: 46
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:38:23 2026]
+Finished jobid: 46 (Rule: python_analysis)
+19 of 52 steps (37%) done
+Execute 1 jobs...
+[Sat Jan 24 14:38:23 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9minanalysis_plots.npz
+    jobid: 32
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:38:25 2026]
+Finished jobid: 32 (Rule: python_analysis)
+20 of 52 steps (38%) done
+Execute 1 jobs...
+[Sat Jan 24 14:38:25 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75minanalysis_plots.npz
+    jobid: 14
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:38:27 2026]
+Finished jobid: 14 (Rule: python_analysis)
+21 of 52 steps (40%) done
+Execute 1 jobs...
+[Sat Jan 24 14:38:27 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75minanalysis_plots.npz
+    jobid: 4
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:38:30 2026]
+Finished jobid: 4 (Rule: python_analysis)
+22 of 52 steps (42%) done
+Execute 1 jobs...
+[Sat Jan 24 14:38:30 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25minradius_data.csv
+    jobid: 37
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:38:33 2026]
+Finished jobid: 29 (Rule: matlab_level_set)
+23 of 52 steps (44%) done
+Execute 1 jobs...
+[Sat Jan 24 14:38:33 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5minanalysis_plots.npz
+    jobid: 28
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:38:35 2026]
+Finished jobid: 28 (Rule: python_analysis)
+24 of 52 steps (46%) done
+Execute 1 jobs...
+[Sat Jan 24 14:38:35 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minradius_data.csv
+    jobid: 19
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:38:46 2026]
+Finished jobid: 37 (Rule: matlab_level_set)
+25 of 52 steps (48%) done
+Execute 1 jobs...
+[Sat Jan 24 14:38:47 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25minanalysis_plots.npz
+    jobid: 36
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:38:49 2026]
+Finished jobid: 36 (Rule: python_analysis)
+26 of 52 steps (50%) done
+Execute 1 jobs...
+[Sat Jan 24 14:38:49 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9minradius_data.csv
+    jobid: 41
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:38:52 2026]
+Finished jobid: 19 (Rule: matlab_level_set)
+27 of 52 steps (52%) done
+Execute 1 jobs...
+[Sat Jan 24 14:38:52 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0minradius_data.csv
+    jobid: 13
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:39:05 2026]
+Finished jobid: 41 (Rule: matlab_level_set)
+28 of 52 steps (54%) done
+Execute 1 jobs...
+[Sat Jan 24 14:39:05 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9minanalysis_plots.npz
+    jobid: 40
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:39:07 2026]
+Finished jobid: 40 (Rule: python_analysis)
+29 of 52 steps (56%) done
+Execute 1 jobs...
+[Sat Jan 24 14:39:07 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5minradius_data.csv
+    jobid: 23
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:39:09 2026]
+Finished jobid: 13 (Rule: matlab_level_set)
+30 of 52 steps (58%) done
+Execute 1 jobs...
+[Sat Jan 24 14:39:09 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minanalysis_plots.npz
+    jobid: 44
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:39:11 2026]
+Finished jobid: 44 (Rule: python_analysis)
+31 of 52 steps (60%) done
+Execute 1 jobs...
+[Sat Jan 24 14:39:11 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75minradius_data.csv
+    jobid: 9
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:39:24 2026]
+Finished jobid: 23 (Rule: matlab_level_set)
+32 of 52 steps (62%) done
+Execute 1 jobs...
+[Sat Jan 24 14:39:25 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0minanalysis_plots.npz
+    jobid: 30
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:39:27 2026]
+Finished jobid: 30 (Rule: python_analysis)
+33 of 52 steps (63%) done
+Execute 1 jobs...
+[Sat Jan 24 14:39:27 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minanalysis_plots.npz
+    jobid: 18
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:39:27 2026]
+Finished jobid: 9 (Rule: matlab_level_set)
+34 of 52 steps (65%) done
+Execute 1 jobs...
+[Sat Jan 24 14:39:27 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75minanalysis_plots.npz
+    jobid: 8
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:39:29 2026]
+Finished jobid: 18 (Rule: python_analysis)
+35 of 52 steps (67%) done
+Execute 1 jobs...
+[Sat Jan 24 14:39:29 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5minanalysis_plots.npz
+    jobid: 22
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:39:29 2026]
+Finished jobid: 8 (Rule: python_analysis)
+36 of 52 steps (69%) done
+Execute 1 jobs...
+[Sat Jan 24 14:39:29 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25minradius_data.csv
+    jobid: 43
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:39:31 2026]
+Finished jobid: 22 (Rule: python_analysis)
+37 of 52 steps (71%) done
+Execute 1 jobs...
+[Sat Jan 24 14:39:31 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75minradius_data.csv
+    jobid: 7
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:39:47 2026]
+Finished jobid: 43 (Rule: matlab_level_set)
+38 of 52 steps (73%) done
+Execute 1 jobs...
+[Sat Jan 24 14:39:47 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25minanalysis_plots.npz
+    jobid: 42
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:39:48 2026]
+Finished jobid: 7 (Rule: matlab_level_set)
+39 of 52 steps (75%) done
+Execute 1 jobs...
+[Sat Jan 24 14:39:48 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0minradius_data.csv
+    jobid: 25
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:39:49 2026]
+Finished jobid: 42 (Rule: python_analysis)
+40 of 52 steps (77%) done
+Execute 1 jobs...
+[Sat Jan 24 14:39:49 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9minradius_data.csv
+    jobid: 17
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:40:06 2026]
+Finished jobid: 25 (Rule: matlab_level_set)
+41 of 52 steps (79%) done
+Execute 1 jobs...
+[Sat Jan 24 14:40:06 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0minanalysis_plots.npz
+    jobid: 24
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:40:07 2026]
+Finished jobid: 17 (Rule: matlab_level_set)
+42 of 52 steps (81%) done
+Execute 1 jobs...
+[Sat Jan 24 14:40:07 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75minanalysis_plots.npz
+    jobid: 6
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:40:09 2026]
+Finished jobid: 24 (Rule: python_analysis)
+43 of 52 steps (83%) done
+Execute 1 jobs...
+[Sat Jan 24 14:40:09 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9minradius_data.csv
+    jobid: 35
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:40:09 2026]
+Finished jobid: 6 (Rule: python_analysis)
+44 of 52 steps (85%) done
+Execute 1 jobs...
+[Sat Jan 24 14:40:09 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9minanalysis_plots.npz
+    jobid: 16
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:40:11 2026]
+Finished jobid: 16 (Rule: python_analysis)
+45 of 52 steps (87%) done
+Execute 1 jobs...
+[Sat Jan 24 14:40:12 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0minanalysis_plots.npz
+    jobid: 12
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Select jobs to execute...
+[Sat Jan 24 14:40:14 2026]
+Finished jobid: 12 (Rule: python_analysis)
+46 of 52 steps (88%) done
+Execute 1 jobs...
+[Sat Jan 24 14:40:14 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0minradius_data.csv
+    jobid: 49
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+[Sat Jan 24 14:40:27 2026]
+Finished jobid: 35 (Rule: matlab_level_set)
+47 of 52 steps (90%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Jan 24 14:40:27 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9minanalysis_plots.npz
+    jobid: 34
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+[Sat Jan 24 14:40:29 2026]
+Finished jobid: 34 (Rule: python_analysis)
+48 of 52 steps (92%) done
+[Sat Jan 24 14:40:31 2026]
+Finished jobid: 49 (Rule: matlab_level_set)
+49 of 52 steps (94%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Jan 24 14:40:31 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0minanalysis_plots.npz
+    jobid: 48
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0minanalysis_plots.npz; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0minradius_data.csv
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+[Sat Jan 24 14:40:33 2026]
+Finished jobid: 48 (Rule: python_analysis)
+50 of 52 steps (96%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Jan 24 14:40:33 2026]
+localrule combine_pdfs:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25minanalysis_plots.npz
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100__analysis.pdf
+    jobid: 1
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100__analysis.pdf; Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_5.0minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.5minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.25minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.75minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.5minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__15max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__11max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.75minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.25minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.5minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_5.0minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_5.0minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_5.0minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__10max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__13max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.75minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__14max_4.75minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.5minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__16max_4.25minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/int/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__12max_4.25minanalysis_plots.npz
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T

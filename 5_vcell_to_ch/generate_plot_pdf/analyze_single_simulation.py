@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 import pandas as pd
+import matplotlib.cm as cm
 
 def create_redblue_colormap():
     """Create red-white-blue colormap matching MATLAB's redbluecmap"""
@@ -23,7 +24,7 @@ def plot_phi_snapshot(phi_file, title):
     fig, ax = plt.subplots(figsize=(6, 5))
     cmap = create_redblue_colormap()
     
-    im = ax.imshow(phi, cmap=cmap, vmin=-1, vmax=1, origin='lower', 
+    im = ax.imshow(phi, cmap=cm.RdBu_r, vmin=-1, vmax=1, origin='lower', 
                    extent=[0, 1, 0, 1], aspect='equal')
     
     cbar = plt.colorbar(im, ax=ax)
