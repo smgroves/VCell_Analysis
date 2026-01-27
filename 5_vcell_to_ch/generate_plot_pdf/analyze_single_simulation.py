@@ -6,23 +6,12 @@ from matplotlib.colors import LinearSegmentedColormap
 import pandas as pd
 import matplotlib.cm as cm
 
-def create_redblue_colormap():
-    """Create red-white-blue colormap matching MATLAB's redbluecmap"""
-    colors = [
-        (0.0, 0.0, 1.0),   # Blue
-        (1.0, 1.0, 1.0),   # White
-        (1.0, 0.0, 0.0)    # Red
-    ]
-    n_bins = 1000
-    cmap = LinearSegmentedColormap.from_list('redblue', colors, N=n_bins)
-    return cmap
 
 def plot_phi_snapshot(phi_file, title):
     """Create phi snapshot with red-blue colormap"""
     phi = np.loadtxt(phi_file, delimiter=',')
     
     fig, ax = plt.subplots(figsize=(6, 5))
-    cmap = create_redblue_colormap()
     
     im = ax.imshow(phi, cmap=cm.RdBu_r, vmin=-1, vmax=1, origin='lower', 
                    extent=[0, 1, 0, 1], aspect='equal')
@@ -95,9 +84,11 @@ def main():
     np.savetxt(initial_phi_temp, phi_initial, delimiter=',')
     np.savetxt(final_phi_temp, phi_final, delimiter=',')
     
+    data = np.loadtxt(args.radius_data, delimiter=',')
+    total_time = data[-1, 0]
     # Create plots
-    fig1 = plot_phi_snapshot(initial_phi_temp, 'Initial State')
-    fig2 = plot_phi_snapshot(final_phi_temp, 'Final State')
+    fig1 = plot_phi_snapshot(initial_phi_temp, f'Initial State (t=0)')
+    fig2 = plot_phi_snapshot(final_phi_temp, f'Final State (t={total_time})')
     fig3 = plot_radius_evolution(args.radius_data, sim_name)
     
     # Save figures as temporary files

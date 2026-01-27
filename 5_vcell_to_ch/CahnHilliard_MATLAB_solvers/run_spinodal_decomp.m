@@ -1,6 +1,6 @@
 %% 
-indir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/01_16_2026";
-outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026/";
+indir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/01_26_2026";
+outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_26_2026/";
 
 n_relax = 4;
 %h = 1/GridSize;

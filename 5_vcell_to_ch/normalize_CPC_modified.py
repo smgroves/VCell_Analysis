@@ -233,7 +233,7 @@ def rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name="", 
 # in_dir = '/Users/smgroves/Documents/Github/VCell_Analysis/vcell_out'
 # in_dir = '/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/'
 in_dir = '/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/VCell_Exports/'
-outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/01_16_2026"
+outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/01_26_2026"
 
 # # min_max_dict = {}
 
@@ -247,13 +247,18 @@ outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/01_16
 
 # min_max_dict[simulation_name] = (ma, mi)
 
-min_mixes = [4.25, 4.5, 4.75, 5.0]
-rescaling_factors = [10,12,14,16]
-folder_names = ["SimID_299716561_0__exported"]
+min_mixes = [3.9, 4, 4.1, 4.2, 4.25, 4.5, 4.75, 4.9, 5.0]
+rescaling_factors = [6,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+# min_mixes = [3.9, 4, 4.1, 4.2, 4.25]
+# rescaling_factors = [7]
+# folder_names = ["SimID_299716561_0__exported"]
+folder_names = ['SimID_299718689_0__exported']
 # folder_names = ["SimID_302549931_0__exported"]
 # folder_names = ['SimID_302551116_0__exported']
-model_name = "11_23_25 CPC_metacentric_relaxed_MCF10A"
-simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1"
+# model_name = "11_23_25 CPC_metacentric_relaxed_MCF10A"
+# simulation_name = "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1"
+model_name = "11_23_25 CPC_metacentric_tensed_MCF10A"
+simulation_name = "11_26_25_metacentric_tensed_MCF10A_chr19_PMP1"
 # model_name = '01_14_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1_CPCactive_newKcat'
 # simulation_name = "01_14_26_metacentric_relaxed_MCF10A_chr19_PMP1_active_CPCaIC"
 for min_mix in min_mixes:

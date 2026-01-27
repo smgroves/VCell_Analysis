@@ -39,7 +39,9 @@ if not SIMULATIONS:
 
 rule all:
     input:
-        os.path.join(SCRIPTDIR, f"{FOLDER_NAME}_analysis.pdf")
+        os.path.join(SCRIPTDIR, f"{FOLDER_NAME}_analysis.pdf"),      
+        os.path.join(SCRIPTDIR, f"{FOLDER_NAME}_summary.csv")
+
 
 rule matlab_level_set:
     input:
@@ -92,5 +94,20 @@ rule combine_pdfs:
         """
         python {SCRIPTDIR}/create_combined_pdf.py \
             --outdir {params.intdir} \
+            --output {output}
+        """
+
+rule create_summary_table:
+    input:
+        expand(os.path.join(INTDIR, "{simulation}radius_data.csv"),
+               simulation=SIMULATIONS)
+    output:
+        os.path.join(SCRIPTDIR, f"{FOLDER_NAME}_summary.csv")
+    params:
+        intdir = INTDIR
+    shell:
+        """
+        python {SCRIPTDIR}/create_summary_table.py \
+            --intdir {params.intdir} \
             --output {output}
         """
