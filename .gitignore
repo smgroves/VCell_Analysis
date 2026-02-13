@@ -89,3 +89,12 @@ functions/.Rhistory
 .DS_Store
 .DS_Store
 .DS_Store
+*.lock
+*.log
+5_vcell_to_ch/generate_plot_pdf/.snakemake/*
+5_vcell_to_ch/output/*/*/*energy.csv
+5_vcell_to_ch/output/*/*/*mass_uncentered.csv
+5_vcell_to_ch/IC/01_28_2026/*
+5_vcell_to_ch/int/*
+5_vcell_to_ch/output/*
+
