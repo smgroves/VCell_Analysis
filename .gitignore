@@ -96,5 +96,6 @@ functions/.Rhistory
 5_vcell_to_ch/output/*/*/*mass_uncentered.csv
 5_vcell_to_ch/IC/01_28_2026/*
 5_vcell_to_ch/int/*
-5_vcell_to_ch/output/*
+5_vcell_to_ch/output/*/*/*phi.csv
 
+*.patch

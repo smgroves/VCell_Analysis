@@ -6,10 +6,14 @@ tic("total")
 
 
 # CHANGE
-funcPath<-"/Users/catalinaalvarez/Documents/GitHub/VCell_Analysis/functions"
-importPath<-"/Users/catalinaalvarez/Documents/CPC_data_2025"
-exportPath<-"/Users/catalinaalvarez/Documents/CPC_plots_2025"
-desktop<-"/Users/catalinaalvarez/Desktop"
+# funcPath<-"/Users/catalinaalvarez/Documents/GitHub/VCell_Analysis/functions"
+# importPath<-"/Users/catalinaalvarez/Documents/CPC_data_2025"
+# exportPath<-"/Users/catalinaalvarez/Documents/CPC_plots_2025"
+# desktop<-"/Users/catalinaalvarez/Desktop"
+
+funcPath<-"/Users/smgroves/Documents/Github/VCell_Analysis/functions"
+importPath<-"/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/VCell_Exports"
+exportPath<-"/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/vcell_plots"
 
 
 # Functions
@@ -182,5 +186,17 @@ for(i in 1:length(sims)){
                cohesin_width = 0.1)
 
   }
+
+  cpc_data <- get_cumulative_bound_CPC(
+  SimID         = sims[i],
+  tInit         = 0,
+  tSpan         = 500,
+  importPath    = importPath,
+  exportPath    = exportPath_new,
+  dataDim       = dataDim,
+  chromWidth    = chromWidth,
+  chromHeight   = chromHeight,
+  kt_width      = kt_width[i]
+)
 }
 
