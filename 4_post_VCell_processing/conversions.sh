@@ -222,3 +222,7 @@ python hdf5_converter.py "SimID_300632276_0__exported.hdf5" '/Users/smgroves/Doc
 python hdf5_converter.py "SimID_302779583_0__exported.hdf5" '/Users/smgroves/Documents/Github/VCell_Analysis/vcell_out' "01_14_26 CPC_metacentric_tensed_MCF10A_chr19_PMP1_CPCactive_newKcat" "01_14_26_metacentric_tensed_MCF10A_chr19_PMP1_active_CPCaIC"
 
 python hdf5_converter.py "SimID_302779581_0__exported.hdf5" '/Users/smgroves/Documents/Github/VCell_Analysis/vcell_out' "01_14_26 CPC_metacentric_tensed_MCF10A_chr19_PMP1_CPCactive_newKcat" "01_14_26_metacentric_relaxed_MCF10A_chr19_PMP1_active_kpp_CPCaIC" 
+
+# March 3 2026
+python hdf5_converter.py "SimID_305251587_0__exported.hdf5" '/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/VCell_Exports' "02_23_26 CPC_metacentric_relaxed_MCF10A_chr19_PMP1" "02_23_26_metacentric_relaxed_MCF10A_chr19_PMP1" 
+python hdf5_converter.py "SimID_305252999_0__exported.hdf5" '/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/VCell_Exports' "02_23_26 CPC_metacentric_tensed_MCF10A_chr19_PMP1" "02_23_26_metacentric_tensed_MCF10A_chr19_PMP1" 

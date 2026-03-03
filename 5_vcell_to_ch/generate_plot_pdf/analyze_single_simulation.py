@@ -4,16 +4,26 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 import pandas as pd
-import matplotlib.cm as cm
 
+def create_redblue_colormap():
+    """Create red-white-blue colormap matching MATLAB's redbluecmap"""
+    colors = [
+        (0.0, 0.0, 1.0),   # Blue
+        (1.0, 1.0, 1.0),   # White
+        (1.0, 0.0, 0.0)    # Red
+    ]
+    n_bins = 1000
+    cmap = LinearSegmentedColormap.from_list('redblue', colors, N=n_bins)
+    return cmap
 
 def plot_phi_snapshot(phi_file, title):
     """Create phi snapshot with red-blue colormap"""
     phi = np.loadtxt(phi_file, delimiter=',')
     
     fig, ax = plt.subplots(figsize=(6, 5))
+    cmap = create_redblue_colormap()
     
-    im = ax.imshow(phi, cmap=cm.RdBu_r, vmin=-1, vmax=1, origin='lower', 
+    im = ax.imshow(phi, cmap=cmap, vmin=-1, vmax=1, origin='lower', 
                    extent=[0, 1, 0, 1], aspect='equal')
     
     cbar = plt.colorbar(im, ax=ax)
@@ -40,18 +50,52 @@ def get_final_phi(phi_file, ny):
     return phi_final
 
 def plot_radius_evolution(radius_data_file, sim_name):
-    """Create radius vs time plot"""
-    data = np.loadtxt(radius_data_file, delimiter=',')
-    tt = data[:, 0]
-    rr = data[:, 1]
-    
-    fig, ax = plt.subplots(figsize=(6, 5))
-    
-    ax.plot(tt, rr, 'b-', linewidth=2)
-    ax.set_xlabel('Time (t)', fontsize=12)
-    ax.set_ylabel('Radius (R)', fontsize=12)
-    ax.set_title('Droplet Radius at Level 0', fontsize=14, fontweight='bold')
-    ax.grid(True, alpha=0.3)
+    """Create radius vs time plot for single or multiple droplets"""
+    # Try to read as CSV with header first
+    try:
+        data = pd.read_csv(radius_data_file)
+        
+        # Check if it's the new multi-droplet format
+        if 'droplet_id' in data.columns:
+            # Multiple droplets
+            fig, ax = plt.subplots(figsize=(6, 5))
+            
+            # Plot each droplet separately
+            for droplet_id in data['droplet_id'].unique():
+                droplet_data = data[data['droplet_id'] == droplet_id]
+                ax.plot(droplet_data['time'], droplet_data['radius'], 
+                       linewidth=2, label=f'Droplet {int(droplet_id)}')
+            
+            ax.set_xlabel('Time (t)', fontsize=12)
+            ax.set_ylabel('Radius (R)', fontsize=12)
+            ax.set_title('Droplet Radius at Level 0', fontsize=14, fontweight='bold')
+            ax.grid(True, alpha=0.3)
+            ax.legend()
+            
+        else:
+            # Single droplet (old format with header)
+            tt = data.iloc[:, 0].values
+            rr = data.iloc[:, 1].values
+            
+            fig, ax = plt.subplots(figsize=(6, 5))
+            ax.plot(tt, rr, 'b-', linewidth=2)
+            ax.set_xlabel('Time (t)', fontsize=12)
+            ax.set_ylabel('Radius (R)', fontsize=12)
+            ax.set_title('Droplet Radius at Level 0', fontsize=14, fontweight='bold')
+            ax.grid(True, alpha=0.3)
+            
+    except:
+        # Fall back to old format without header
+        data = np.loadtxt(radius_data_file, delimiter=',')
+        tt = data[:, 0]
+        rr = data[:, 1]
+        
+        fig, ax = plt.subplots(figsize=(6, 5))
+        ax.plot(tt, rr, 'b-', linewidth=2)
+        ax.set_xlabel('Time (t)', fontsize=12)
+        ax.set_ylabel('Radius (R)', fontsize=12)
+        ax.set_title('Droplet Radius at Level 0', fontsize=14, fontweight='bold')
+        ax.grid(True, alpha=0.3)
     
     return fig
 
@@ -84,11 +128,9 @@ def main():
     np.savetxt(initial_phi_temp, phi_initial, delimiter=',')
     np.savetxt(final_phi_temp, phi_final, delimiter=',')
     
-    data = np.loadtxt(args.radius_data, delimiter=',')
-    total_time = data[-1, 0]
     # Create plots
-    fig1 = plot_phi_snapshot(initial_phi_temp, f'Initial State (t=0)')
-    fig2 = plot_phi_snapshot(final_phi_temp, f'Final State (t={total_time})')
+    fig1 = plot_phi_snapshot(initial_phi_temp, 'Initial State')
+    fig2 = plot_phi_snapshot(final_phi_temp, 'Final State')
     fig3 = plot_radius_evolution(args.radius_data, sim_name)
     
     # Save figures as temporary files
