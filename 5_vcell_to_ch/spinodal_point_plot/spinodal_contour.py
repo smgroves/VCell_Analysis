@@ -24,7 +24,7 @@ plt.clabel(contour_Z49, fmt={4.9: 'Z = 4.9'}, inline=True, fontsize=10)
 # add points from simulations with color corresponding to whether droplet is increasing, decreasing, or dissolved
 for state, shape,size in zip(['relaxed','tensed'], ['o', 'X'],[200,70]):
     try:
-        sim = f"CPC_all_01_20_26_metacentric_{state}_MCF10A_chr19_PMP1_100_144x144"
+        sim = f"CPC_all_02_23_26_metacentric_{state}_MCF10A_chr19_PMP1_100_144x144"
 
         df = pd.read_csv(f'/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/summary_output/{sim}_summary.csv',header = 0, index_col=0)
         names = {'increasing':'increasing', 'decreasing':'decreasing','stable':'stable', np.nan:'dissolved'}

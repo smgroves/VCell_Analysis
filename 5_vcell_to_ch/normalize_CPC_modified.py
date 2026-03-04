@@ -403,8 +403,9 @@ rescaling_factor = 15.8
 in_dir = '/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/VCell_Exports/'
 outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/03_03_2026"
 
-min_mixes = [4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0, 5.5, 6, 6.5, 7]
-rescaling_factors = [ 10, 11, 12, 13, 14, 15, 16]
+min_mixes = [5.2, 5.5,5.7, 6, 6.2,6.5, 7]
+# rescaling_factors = [ 10, 11, 12, 13, 14, 15, 16]
+rescaling_factors = [8,8.4, 8.8, 9]
 # folder_names = [["SimID_302549931_0__exported"], ["SimID_302779581_0__exported"]]
 # model_name = ["01_14_26 CPC_metacentric_relaxed_MCF10A_chr19_PMP1_CPCactive_newKcat", "01_14_26 CPC_metacentric_tensed_MCF10A_chr19_PMP1_CPCactive_newKcat"]
 # simulation_name = ["01_14_26_metacentric_relaxed_MCF10A_chr19_PMP1_active_kpp_CPCaIC", "01_14_26_metacentric_tensed_MCF10A_chr19_PMP1_active_kpp_CPCaIC"]
