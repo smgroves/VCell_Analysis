@@ -3,7 +3,7 @@ from pathlib import Path
 import glob
 
 # Configuration
-FOLDER_NAME = "CPC_all_02_23_26_metacentric_tensed_MCF10A_chr19_PMP1_100_144x144"
+FOLDER_NAME = "CPC_all_02_23_26_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144"
 SIM_SET = "03_03_2026"
 BASEDIR = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch"
 ICDIR = os.path.join(BASEDIR, "IC", SIM_SET)
@@ -69,8 +69,8 @@ print(f"  - To be run: {len(ALL_SIMS) - len(SIMULATIONS)}")
 
 rule all:
     input:
-        os.path.join(SCRIPTDIR, f"{FOLDER_NAME}_analysis.pdf"),      
-        os.path.join(SCRIPTDIR, f"{FOLDER_NAME}_summary.csv")
+        os.path.join(SCRIPTDIR, f"summary_output/{FOLDER_NAME}_analysis.pdf"),      
+        os.path.join(SCRIPTDIR, f"summary_output/{FOLDER_NAME}_summary.csv")
 
 rule run_ch_simulation:
     input:
@@ -162,7 +162,7 @@ rule combine_pdfs:
         expand(os.path.join(INTDIR, "{simulation}analysis_plots.npz"), 
                simulation=ALL_SIMS)
     output:
-        os.path.join(SCRIPTDIR, f"{FOLDER_NAME}_analysis.pdf")
+        os.path.join(SCRIPTDIR, f"summary_output/{FOLDER_NAME}_analysis.pdf")
     params:
         intdir = INTDIR
     shell:
@@ -177,7 +177,7 @@ rule create_summary_table:
         expand(os.path.join(INTDIR, "{simulation}radius_data.csv"),
                simulation=ALL_SIMS)
     output:
-        os.path.join(SCRIPTDIR, f"{FOLDER_NAME}_summary.csv")
+        os.path.join(SCRIPTDIR, f"summary_output/{FOLDER_NAME}_summary.csv")
     params:
         intdir = INTDIR,
         actual_final_time = ACTUAL_FINAL_TIME
