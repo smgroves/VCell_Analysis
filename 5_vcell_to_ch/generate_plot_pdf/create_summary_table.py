@@ -31,54 +31,141 @@ def extract_simulation_info(prefix):
     
     return info
 
-def analyze_radius_trend(radius_data_file):
-    """Determine if radius is increasing or decreasing"""
+def analyze_radius_trend(radius_data_file, actual_final_time):
+    """Determine if radius is increasing or decreasing for multiple droplets"""
     try:
-        data = np.loadtxt(radius_data_file, delimiter=',')
-        if data.size == 0:
-            return np.nan, np.nan
+        data = pd.read_csv(radius_data_file)
         
-        tt = data[:, 0]
-        rr = data[:, 1]
-        
-        # Get final radius (even if NaN)
-        final_radius = rr[-1]
-        
-        # If final radius is NaN, trend is also NaN
-        if np.isnan(final_radius):
-            return final_radius, np.nan
-        
-        # For trend calculation, only use non-NaN values
-        valid_idx = ~np.isnan(rr)
-        if not np.any(valid_idx) or np.sum(valid_idx) < 2:
-            return final_radius, np.nan
-        
-        rr_valid = rr[valid_idx]
-        tt_valid = tt[valid_idx]
-        
-        # Determine trend using linear regression on valid points
-        if len(rr_valid) > 1:
-            # Fit linear trend
-            coeffs = np.polyfit(tt_valid, rr_valid, 1)
-            slope = coeffs[0]
+        # Check if it's the new multi-droplet format (has 'droplet_id' column)
+        if 'droplet_id' in data.columns:
+            # Group by droplet_id
+            droplet_groups = data.groupby('droplet_id')
             
-            # Classify trend based on slope
-            if abs(slope) < 1e-6:  # Essentially flat
-                trend = 'stable'
-            elif slope > 0:
-                trend = 'increasing'
+            # Analyze each droplet
+            droplet_results = []
+            for droplet_id, group in droplet_groups:
+                tt = group['time'].values[15:]  # Skip first 15 time points
+                rr = group['radius'].values[15:]  # Skip first 15 radius points
+                
+                if len(rr) == 0:
+                    continue
+
+                final_radius, trend, slope, last_time = analyze_single_droplet(tt, rr, actual_final_time)
+                droplet_results.append({
+                    'droplet_id': droplet_id,
+                    'final_radius': final_radius,
+                    'trend': trend,
+                    'slope': slope,
+                    'last_time': last_time
+                })
+            
+            # Return average final radius and most common trend
+            if droplet_results:
+                avg_final_radius = np.mean([d['final_radius'] for d in droplet_results 
+                                           if not np.isnan(d['final_radius'])])
+                # Count trends (excluding NaN)
+                trends = [d['trend'] for d in droplet_results if d['trend'] is not np.nan]
+                if trends:
+                    most_common_trend = max(set(trends), key=trends.count)
+                else:
+                    most_common_trend = np.nan
+                avg_slope = np.mean([d['slope'] for d in droplet_results 
+                                    if not np.isnan(d['slope'])])
+                # Get the maximum last_time (when the last droplet disappeared)
+                max_last_time = max([d['last_time'] for d in droplet_results 
+                                    if not np.isnan(d['last_time'])])
+                return avg_final_radius, most_common_trend, avg_slope, max_last_time
             else:
-                trend = 'decreasing'
+                return np.nan, np.nan, np.nan, np.nan
         else:
-            trend = np.nan
-        
-        return final_radius, trend
+            # Old format: single droplet (time, radius)
+            data_array = data.values
+            if data_array.size == 0:
+                return np.nan, np.nan, np.nan, np.nan
+            
+            tt = data_array[15:, 0]  # Skip first 15 time points
+            rr = data_array[15:, 1]  # Skip first 15 radius points
+            
+            return analyze_single_droplet(tt, rr, actual_final_time)
     
     except Exception as e:
         print(f"Error analyzing {radius_data_file}: {e}")
-        return np.nan, np.nan
+        return np.nan, np.nan, np.nan, np.nan
 
-def create_summary_table(intdir, output_csv):
+def analyze_single_droplet(tt, rr, actual_final_time):
+    """Analyze trend for a single droplet"""
+    # Get final radius (even if NaN)
+    if len(rr) == 0:
+        return np.nan, np.nan, np.nan, np.nan
+    
+    # Find the last time at which the droplet existed (non-NaN radius)
+    valid_idx = ~np.isnan(rr)
+    if np.any(valid_idx):
+        last_valid_idx = np.where(valid_idx)[0][-1]
+        last_time = tt[last_valid_idx]
+    else:
+        last_time = np.nan
+        return np.nan, np.nan, np.nan, last_time
+    
+    # Check if droplet survived to the end
+    # If last_time doesn't equal the simulation end time, everything should be NaN
+    time_tolerance = (tt[1] - tt[0]) * 0.5  # Half a timestep tolerance for floating point comparison
+    if abs(last_time - actual_final_time) > time_tolerance:
+        # Droplet disappeared before the end
+        return np.nan, np.nan, np.nan, last_time
+    
+    # Droplet survived to the end - now analyze it
+    final_radius = rr[-1]
+    
+    # For trend calculation, only use non-NaN values
+    if not np.any(valid_idx) or np.sum(valid_idx) < 2:
+        return final_radius, np.nan, np.nan, last_time
+    
+    # Get valid points
+    valid_tt = tt[valid_idx]
+    valid_rr = rr[valid_idx]
+    
+    if len(valid_rr) < 2:
+        return final_radius, np.nan, np.nan, last_time
+    
+    # Calculate trend on all valid points
+    coeffs_all = np.polyfit(valid_tt, valid_rr, 1)
+    slope_all = coeffs_all[0]
+    
+    # Classify initial trend
+    if abs(slope_all) < 1e-4:
+        trend = 'stable'
+        slope = slope_all
+    elif slope_all > 0:
+        trend = 'increasing'
+        slope = slope_all
+    else:  # slope_all < 0
+        # Negative trend detected - check last 10 points
+        if len(valid_rr) >= 10:
+            last_10_tt = valid_tt[-10:]
+            last_10_rr = valid_rr[-10:]
+            
+            # Calculate trend on last 10 points
+            coeffs_last10 = np.polyfit(last_10_tt, last_10_rr, 1)
+            slope_last10 = coeffs_last10[0]
+            
+            # If last 10 points are positive or stable, override the trend
+            if abs(slope_last10) < 1e-4:
+                trend = 'stable'
+                slope = slope_last10
+            elif slope_last10 > 0:
+                trend = 'increasing'
+                slope = slope_last10
+            else:
+                trend = 'decreasing'
+                slope = slope_all  # Use overall slope for decreasing
+        else:
+            trend = 'decreasing'
+            slope = slope_all
+    
+    return final_radius, trend, slope, last_time
+
+def create_summary_table(intdir, output_csv, actual_final_time=None):
     """Create summary table from all radius_data files"""
     
     # Find all radius_data.csv files recursively
@@ -93,6 +180,8 @@ def create_summary_table(intdir, output_csv):
         return
     
     print(f"Found {len(radius_files)} radius data files")
+    if actual_final_time:
+        print(f"Using actual final time: {actual_final_time}")
     
     # Initialize data structure
     data = []
@@ -106,11 +195,11 @@ def create_summary_table(intdir, output_csv):
         sim_info = extract_simulation_info(prefix)
         
         # Analyze radius data
-        final_radius, trend = analyze_radius_trend(radius_file)
+        final_radius, trend, slope, last_time = analyze_radius_trend(radius_file, actual_final_time)
         
-        # calculate spinodal point
+        # Calculate spinodal point
         spinodal_point = ((3-np.sqrt(3))/6)*(sim_info['max'] - sim_info['min']) + sim_info['min']
-
+        
         # Add to data
         data.append({
             'prefix': prefix,
@@ -119,6 +208,8 @@ def create_summary_table(intdir, output_csv):
             'min': sim_info['min'],
             'final_radius': final_radius,
             'trend': trend,
+            'slope': slope,
+            'last_time': last_time,
             'spinodal_point': spinodal_point
         })
         
@@ -144,10 +235,12 @@ def main():
     parser = argparse.ArgumentParser(description='Create summary table from simulation results')
     parser.add_argument('--intdir', required=True, help='Path to int directory')
     parser.add_argument('--output', required=True, help='Output CSV filename')
+    parser.add_argument('--actual-final-time', type=float, required=False, default=None,
+                       help='Actual final time of simulation')
     
     args = parser.parse_args()
     
-    create_summary_table(args.intdir, args.output)
+    create_summary_table(args.intdir, args.output, args.actual_final_time)
 
 if __name__ == '__main__':
     main()
