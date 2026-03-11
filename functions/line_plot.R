@@ -18,7 +18,7 @@ line_plot <- function(
     KK_dist_tensed = 1.15,
     KT_width= 0.075,
     KT_height = 0.3,
-    cohesin_width = 0.08
+    cohesin_width = 0.1
     ){
   
   
@@ -31,26 +31,27 @@ line_plot <- function(
   
   # choose relaxed vs tensed by substring "tensed" presence; default to relaxed
   if (grepl("tensed", kt_width, ignore.case = TRUE)) {
-    left_near_um <- KK_dist_tensed/2 
-    left_far_um  <- KK_dist_tensed/2 + KT_width 
-    right_near_um <- KK_dist_tensed/2 
-    right_far_um  <- KK_dist_tensed/2 + KT_width 
+    left_near_um <- KK_dist_tensed/2 #0.575
+    left_far_um  <- KK_dist_tensed/2 + KT_width #0.65
+    right_near_um <- KK_dist_tensed/2 + 0.025 #0.6
+    right_far_um  <- KK_dist_tensed/2 + KT_width #0.65
   } else {
     # relaxed (default)
-    left_far_um   <- KK_dist_relaxed/2 + KT_width 
-    left_near_um  <- KK_dist_relaxed/2 
-    right_near_um <- KK_dist_relaxed/2 
-    right_far_um  <- KK_dist_relaxed/2 + KT_width 
+    # left_far_um   <- KK_dist_relaxed/2 + KT_width #0.3625
+    left_far_um   <- KK_dist_relaxed/2 + 0.025 #0.3125
+    left_near_um  <- KK_dist_relaxed/2 #0.2875
+    right_near_um <- KK_dist_relaxed/2 #0.2875
+    right_far_um  <- KK_dist_relaxed/2 + KT_width #0.3625
   }
-  center_half_um <- cohesin_width/2   # 0.04
+  center_half_um <- cohesin_width/2   # 0.05
   
   # compute pixel indices (use ceiling/floor to get integer pixel indices)
-  x1_calc <- ceiling(center_x - left_far_um   * pixels_per_um_x) + 1  #11, 1
-  x2_calc <- ceiling(center_x - left_near_um  * pixels_per_um_x) #14, 3
-  x3_calc <- ceiling(center_x - center_half_um * pixels_per_um_x) #25, 25
-  x4_calc <- ceiling  (center_x + center_half_um * pixels_per_um_x) #27, 27
-  x5_calc <- ceiling(center_x + right_near_um * pixels_per_um_x)  #39, 50
-  x6_calc <- floor(center_x + right_far_um  * pixels_per_um_x)  #42, 52
+  x1_calc <- floor(center_x - left_far_um   * pixels_per_um_x) #0 - 13
+  x2_calc <- ceiling(center_x - left_near_um  * pixels_per_um_x) #3 - 15
+  x3_calc <- ceiling(center_x - center_half_um * pixels_per_um_x) + 1 #25
+  x4_calc <- ceiling  (center_x + center_half_um * pixels_per_um_x) #28
+  x5_calc <- ceiling(center_x + right_near_um * pixels_per_um_x) #50 - 38 
+  x6_calc <- floor(center_x + right_far_um  * pixels_per_um_x)  #52 - 40 
   
   # clamp to valid pixel indices
   x1 <- max(1, min(dataDim[2], x1_calc))
@@ -72,10 +73,10 @@ line_plot <- function(
   
   if (grepl("metacentric", kt_width, ignore.case = TRUE)) {
     # 0.3 um tall, centered vertically in the matrix
-    half_px <- (KT_height / 2) * pixels_per_um
-    center_px <- dataDim[1] / 2
-    y1_new <- ceiling(center_px - half_px) 
-    y2_new <- floor(center_px + half_px) 
+    half_px <- (KT_height / 2) * pixels_per_um #6
+    center_px <- dataDim[1] / 2 #72
+    y1_new <- ceiling(center_px - half_px) + 1 #66 --> 67
+    y2_new <- floor(center_px + half_px) #78
     
     # clamp to valid indices
     y1 <- max(1, y1_new) # 85

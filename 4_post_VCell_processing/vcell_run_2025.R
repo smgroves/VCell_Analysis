@@ -31,16 +31,16 @@ for(i in functions){
 # chromHeight=5.2 #um
 
 # #For metaphase chromosomes
-dataDim=c(180,52)#edited
+dataDim=c(144,52)#edited
 chromWidth=1.3 #um
-chromHeight=4.5 #um
+chromHeight=3.6 #um
 
 # ---------------- LISTS OF SPECIES ---------------
 
 # Species Lists, add any that are required to be on one plot
 
 CPC_species <-c("CPCa", "pH2A_SGO1_CPCa", "H3_CPCa", "pH3_CPCa", "SGO1_CPCa", "CPCi", "pH2A_SGO1_CPCi", "H3_CPCi", "pH3_CPCi", "SGO1_CPCi")
-pNDC80_species <-c("pNDC80_TTKa", "pNDC80_pTTKa", "pNDC80_TTKi", "pNDC80_pTTKi")
+pNDC80_species <-c("pNDC80", "pNDC80_TTKa", "pNDC80_pTTKa", "pNDC80_TTKi", "pNDC80_pTTKi")
 pH3_species <- c("pH3", "pH3_CPCa", "pH3_CPCi")
 pH2A_species <- c("pH2A", "pH2A_SGO1", "pH2A_SGO1_CPCa", "pH2A_SGO1_CPCi")
 HASPIN_PLK1_species <- c("HASPINa", "HASPINi", "PLK1a", "PLK1i")
@@ -82,38 +82,38 @@ heatmap_info_list[[8]] <- c("all bound active CPC and pNDC80")
 
 
 # ---------------- LINE PLOTS ---------------
-L <- 10
- 
-all_data <- vector("list", L)
-species_info_list <- vector("list", L)
-all_species <- c(CPC_species, pNDC80_species, pH3_species, pH2A_species, HASPIN_PLK1_species, BUB1a_pKNL1_species, SGO1_species, bound_CPC, bound_active_CPC, boundactive_CPC_pNDC80)
-
-
-# Change, IN ORDER
-all_data[[1]] <- CPC_species
-all_data[[2]] <- pNDC80_species
-all_data[[3]] <- pH3_species
-all_data[[4]] <- pH2A_species
-all_data[[5]] <- HASPIN_PLK1_species
-all_data[[6]] <- BUB1a_pKNL1_species
-all_data[[7]] <- SGO1_species
-all_data[[8]] <- bound_CPC
-all_data[[9]] <- bound_active_CPC
-all_data[[10]] <- boundactive_CPC_pNDC80
-
-
- 
-# Change, IN ORDER
-species_info_list[[1]] <- c("CPC", "Inactive CPC", "Active CPC", "CPC Activation", TRUE, FALSE, FALSE, TRUE)
-species_info_list[[2]] <- c("pNDC80_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-species_info_list[[3]] <- c("pH3_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-species_info_list[[4]] <- c("pH2A_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-species_info_list[[5]] <- c("HASPIN_PLK1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-species_info_list[[6]] <- c("Bub1a_pKnl1_spaecies", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-species_info_list[[7]] <- c("Sgo1", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-species_info_list[[8]] <- c("bound_CPC", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-species_info_list[[9]] <- c("bound_active_CPC", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
-species_info_list[[10]] <- c("boundactive_CPC_pNDC80", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+# L <- 10
+#  
+# all_data <- vector("list", L)
+# species_info_list <- vector("list", L)
+# all_species <- c(CPC_species, pNDC80_species, pH3_species, pH2A_species, HASPIN_PLK1_species, BUB1a_pKNL1_species, SGO1_species, bound_CPC, bound_active_CPC, boundactive_CPC_pNDC80)
+# 
+# 
+# # Change, IN ORDER
+# all_data[[1]] <- CPC_species
+# all_data[[2]] <- pNDC80_species
+# all_data[[3]] <- pH3_species
+# all_data[[4]] <- pH2A_species
+# all_data[[5]] <- HASPIN_PLK1_species
+# all_data[[6]] <- BUB1a_pKNL1_species
+# all_data[[7]] <- SGO1_species
+# all_data[[8]] <- bound_CPC
+# all_data[[9]] <- bound_active_CPC
+# all_data[[10]] <- boundactive_CPC_pNDC80
+# 
+# 
+#  
+# # Change, IN ORDER
+# species_info_list[[1]] <- c("CPC", "Inactive CPC", "Active CPC", "CPC Activation", TRUE, FALSE, FALSE, TRUE)
+# species_info_list[[2]] <- c("pNDC80_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+# species_info_list[[3]] <- c("pH3_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+# species_info_list[[4]] <- c("pH2A_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+# species_info_list[[5]] <- c("HASPIN_PLK1_species", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+# species_info_list[[6]] <- c("Bub1a_pKnl1_spaecies", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+# species_info_list[[7]] <- c("Sgo1", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+# species_info_list[[8]] <- c("bound_CPC", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+# species_info_list[[9]] <- c("bound_active_CPC", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
+# species_info_list[[10]] <- c("boundactive_CPC_pNDC80", "Inactive Species", "Active Species", "All Species", FALSE, FALSE, TRUE, FALSE)
 
 
 # ---------------- SIMULATION SPECIFICS ---------------
@@ -125,22 +125,30 @@ kt_width = c(
   # "Metacentric_Tensed",
   # "Telocentric_Relaxed"
   # "Telocentric_Tensed"
-  # "Prometaphase_Relaxed",
+  # "Prometaphase_Relaxed"
   "Metacentric_Relaxed"
-
+  # "Metacentric_Tensed"
+  
+  
 )
 
 # All simulation IDs
 # Change
 sims <- c(
-  "SimID_299564396_0__exported"
+  # "SimID_300540363_0__exported"
+  # "SimID_300540363_1__exported"
+  # "SimID_300540363_2__exported"
+  "SimID_302551116_0__exported"
 )
 
 # Folder naming corresponding to specific simulation ID
 # Change
 var <- c(
-  "test"
-)
+  # "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_haspin_stripe_0.15"
+  # "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_haspin_stripe_0.2"
+  # "11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_haspin_stripe_0.25"
+  "01_14_26_metacentric_relaxed_MCF10A_chr19_PMP1_active_kpp_CPCaIC_100s"
+  )
 #########################################################
 
 
@@ -165,15 +173,15 @@ for(i in 1:length(sims)){
                all_species,
                species_info_list,
                tInit=0,
-               tSpan=500, #400 for relaxed to tensed
-               desiredInterval=100,
-                cutoff=list("CPC"=4), #for heatmap color bar
+               tSpan=100, #400 for relaxed to tensed
+               desiredInterval=10,
+               cutoff=list("CPC"=11), #for heatmap color bar
               #  cutoff=3, #for heatmap color bar
                funcPath,
                importPath,
                exportPath_new,
                kt_width[i],
-              movie = FALSE,
+               movie = FALSE,
                lineplots=TRUE,
                KK_dist_relaxed = 0.575,
                KK_dist_tensed = 1.15,
