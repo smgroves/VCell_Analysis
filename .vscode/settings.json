@@ -1,3 +1,5 @@
 {
-    "julia.environmentPath": "/Users/smgroves/Documents/GitHub/VCell_Analysis"
+    "julia.environmentPath": "/Users/smgroves/Documents/GitHub/VCell_Analysis",
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda"
 }

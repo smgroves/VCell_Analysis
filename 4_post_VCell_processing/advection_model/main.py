@@ -1,0 +1,49 @@
+#%%
+from plot_vcml_velocity import VCMLVelocityPlotter
+
+#%%
+plotter = VCMLVelocityPlotter("./models/_02_23_26_CPC_metacentric_transition_MCF10A_chr19_PMP1.vcml")
+plotter.plot_1d("pH3_CPCa", axis="X", slice_val=1.8)    # line plot
+plotter.plot_2d("pH3_CPCa", axis="X")                   # 2D heatmap
+plotter.compare_species(["pH3_CPCa","pH2A"], axis="X")     # subplots
+# %%
+plotter.use_simspec("Spatial Gaussian X no cross product")
+plotter.overlay_vcell_csv(
+    "H2A",
+    csv_path="./models/SimID_307011475_0__Slice_XY_0_H2A_velocityX_0000.csv",
+    axis="x",
+    fixed_coord=1.8,     # y slice through KT band
+    # save_path="overlay.png"
+)
+# %%
+from plot_vcml_velocity import compare_custom_velocity
+
+CSV = "./models/SimID_307011475_0__Slice_XY_0_H2A_velocityX_0000.csv"
+KT  = (1.65, 1.95, 0.0, 0.075, 1.225, 1.3)  # kin_y1, kin_y2, L_x1, L_x2, R_x1, R_x2
+#%%
+# # 1. VCell-style string (&&, ^) with named params
+compare_custom_velocity(
+    CSV,
+    "(((x - x_mid) / delT * exp(( - ((x - x_mid) ^ 2.0) / (2.0 * (sigma_x_X ^ 2.0)))) / (exp((( - (x_L_L - x_mid) ^ 2.0) / (2.0 * (sigma_x_X ^ 2.0))))) * ((y >= kin_y1) && (y <= kin_y2) && (x >= 0.3625) && (x <= 0.9375))) + ( - max_vel * ((y >= kin_y1) && (y <= kin_y2) && (x < 0.3625))) + (max_vel * ((y >= kin_y1) && (y <= kin_y2) && (x > 0.9375))))",
+    # "(((x - x_mid) / delT * exp(( - ((x - x_mid) ^ 2.0) / (2.0 * (sigma_x_X ^ 2.0)))) *((y >= kin_y1) && (y <= kin_y2) && (x >= 0.3625) && (x <= 0.9375))) + ( - max_vel * ((y >= kin_y1) && (y <= kin_y2) && (x < 0.3625))) + (max_vel * ((y >= kin_y1) && (y <= kin_y2) && (x > 0.9375))))",
+    # "(((x - x_mid) / delT * exp(( - ((x - x_mid) ^ 2.0) / (2.0 * (sigma_x_X ^ 2.0)))) *((y >= kin_y1) && (y <= kin_y2) && (x >= 0.3625) && (x <= 0.9375))) + ( - max_vel * ((y >= kin_y1) && (y <= kin_y2) && (x < 0.3625))) + (max_vel * ((y >= kin_y1) && (y <= kin_y2) && (x > 0.9375))))",
+   
+    extra_params={"x_mid": 0.65, "delT": 17.1, "kin_y1": 1.65, "kin_y2": 1.95, "sigma_x_X": 0.2875, "x_L_L": 0.3625, "max_vel": 0.0167},
+    axis="x", fixed_coord=1.8, kt_bounds=KT,
+)
+
+# # 2. Python/numpy string (np., **, standard comparisons)
+# compare_custom_velocity(
+#     CSV,
+#     "(x - 0.65) / 17.1 * (y >= 1.65) * (y <= 1.95)",
+#     axis="x", fixed_coord=1.8, kt_bounds=KT,
+# )
+
+# x_mid = 0.65
+# # 3. Python callable
+# compare_custom_velocity(
+#     CSV,
+#     lambda x, y: (x - x_mid) / 17.1 * (y >= 1.65) * (y <= 1.95),
+#     axis="x", fixed_coord=1.8, kt_bounds=KT,
+# )
+# %%
