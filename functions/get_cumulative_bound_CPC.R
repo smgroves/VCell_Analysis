@@ -67,7 +67,7 @@ get_cumulative_bound_CPC <- function(
     dataPoint <- formatC(as.integer(t), width = 4, flag = "0")
     
     # Find the matching file for bound_CPC
-    file_pattern <- paste("[A-Za-z0-9_]*_Slice_XY_\\d", "bound_CPC", dataPoint, sep = "_")
+    file_pattern <- paste("[A-Za-z0-9_]*_Slice_XY_\\d", "bound_CPC_FUNCTION", dataPoint, sep = "_")
     matched_file <- grep(file_pattern, list.files(simdir), value = TRUE)
     
     if (length(matched_file) == 0) {
