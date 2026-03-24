@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 # Define your grid and function
-x = np.linspace(3.5, 5.2 , 100)
-y = np.linspace(5.5, 20, 100)
+x = np.linspace(3.5, 10 , 100)
+y = np.linspace(4, 20, 100)
 X, Y = np.meshgrid(x, y)
 Z = ((3-np.sqrt(3))/6)*(Y - X) + X
 
@@ -34,9 +34,17 @@ for state, shape,size in zip(['relaxed','tensed'], ['o', 'X'],[200,70]):
     except FileNotFoundError:
         print(f"File for {sim} not found. Skipping this simulation.")
 
+sim = f"CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_17_144x144_"
+
+df = pd.read_csv(f'/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/summary_output/{sim}_summary.csv',header = 0, index_col=0)
+names = {'increasing':'increasing', 'decreasing':'decreasing','stable':'stable', np.nan:'dissolved'}
+sns.scatterplot(x=df['min'], y=df['max'],
+                hue=[names[i] for i in df['trend']], hue_order=['increasing', 'decreasing', "stable", "dissolved"], palette=['green','red','orange','black'], alpha=0.7,
+                marker='^', s=100, edgecolor='black', legend='full')
+
 plt.colorbar(contour)
-plt.xlim(3.7, 5.2)
-plt.ylim(5.5, 19)
+# plt.xlim(3.7, 5.2)
+# plt.ylim(5.5, 19) 
 plt.ylabel('Condensate Well Concentration (max)')
 plt.xlabel('Soluble Well Concentration (min)')
 plt.title('Spinodal Point with Simulation Results (o = relaxed, x = tensed)')

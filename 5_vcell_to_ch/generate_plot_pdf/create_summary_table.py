@@ -92,12 +92,11 @@ def analyze_radius_trend(radius_data_file, actual_final_time):
         print(f"Error analyzing {radius_data_file}: {e}")
         return np.nan, np.nan, np.nan, np.nan
 
-def analyze_single_droplet(tt, rr, actual_final_time):
+def analyze_single_droplet(tt, rr, actual_final_time, n_points=10):
     """Analyze trend for a single droplet"""
-    # Get final radius (even if NaN)
     if len(rr) == 0:
         return np.nan, np.nan, np.nan, np.nan
-    
+
     # Find the last time at which the droplet existed (non-NaN radius)
     valid_idx = ~np.isnan(rr)
     if np.any(valid_idx):
@@ -106,32 +105,25 @@ def analyze_single_droplet(tt, rr, actual_final_time):
     else:
         last_time = np.nan
         return np.nan, np.nan, np.nan, last_time
-    
-    # Check if droplet survived to the end
-    # If last_time doesn't equal the simulation end time, everything should be NaN
-    time_tolerance = (tt[1] - tt[0]) * 0.5  # Half a timestep tolerance for floating point comparison
+
+    # If droplet disappeared before the end, return NaNs
+    time_tolerance = (tt[1] - tt[0]) * 0.5
     if abs(last_time - actual_final_time) > time_tolerance:
-        # Droplet disappeared before the end
         return np.nan, np.nan, np.nan, last_time
-    
-    # Droplet survived to the end - now analyze it
+
+    # Droplet survived to the end
     final_radius = rr[-1]
-    
-    # For trend calculation, only use non-NaN values
-    if not np.any(valid_idx) or np.sum(valid_idx) < 2:
-        return final_radius, np.nan, np.nan, last_time
-    
-    # Get valid points
+
     valid_tt = tt[valid_idx]
     valid_rr = rr[valid_idx]
-    
+
     if len(valid_rr) < 2:
         return final_radius, np.nan, np.nan, last_time
-    
-    # Calculate trend on all valid points
+
+    # Overall linear trend
     coeffs_all = np.polyfit(valid_tt, valid_rr, 1)
     slope_all = coeffs_all[0]
-    
+
     # Classify initial trend
     if abs(slope_all) < 1e-4:
         trend = 'stable'
@@ -139,30 +131,35 @@ def analyze_single_droplet(tt, rr, actual_final_time):
     elif slope_all > 0:
         trend = 'increasing'
         slope = slope_all
-    else:  # slope_all < 0
-        # Negative trend detected - check last 10 points
-        if len(valid_rr) >= 10:
-            last_10_tt = valid_tt[-10:]
-            last_10_rr = valid_rr[-10:]
-            
-            # Calculate trend on last 10 points
-            coeffs_last10 = np.polyfit(last_10_tt, last_10_rr, 1)
-            slope_last10 = coeffs_last10[0]
-            
-            # If last 10 points are positive or stable, override the trend
-            if abs(slope_last10) < 1e-4:
-                trend = 'stable'
-                slope = slope_last10
-            elif slope_last10 > 0:
-                trend = 'increasing'
-                slope = slope_last10
+    else:
+        # Negative overall trend — check concavity of last n_points
+        if len(valid_rr) >= n_points:
+            last_tt = valid_tt[-n_points:]
+            last_rr = valid_rr[-n_points:]
+
+            if len(last_tt) >= 3:
+                # Normalize time to improve polyfit conditioning
+                t_mid = last_tt.mean()
+                t_scale = last_tt.std() or 1.0
+                last_tt_norm = (last_tt - t_mid) / t_scale
+
+                coeffs_quad = np.polyfit(last_tt_norm, last_rr, 2)
+                curvature = coeffs_quad[0]  # a in at^2 + bt + c
+
+                if curvature > 0:
+                    trend = 'concave_up'    # dissolution decelerating / recovering
+                elif curvature < 0:
+                    trend = 'concave_down'  # dissolution accelerating
+                else:
+                    trend = 'decreasing'
             else:
                 trend = 'decreasing'
-                slope = slope_all  # Use overall slope for decreasing
+
+            slope = slope_all
         else:
             trend = 'decreasing'
             slope = slope_all
-    
+
     return final_radius, trend, slope, last_time
 
 def create_summary_table(intdir, output_csv, actual_final_time=None):
