@@ -3,15 +3,16 @@ from pathlib import Path
 import glob
 
 # Configuration
-FOLDER_NAME = "CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_scan_y_0.1_17_144x144_"
-SIM_SET = "03_23_2026"
+FOLDER_NAME = "CPC_all_03_30_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_KT_Bar_pull_simplified_17_144x144_"
+SIM_SET = "04_03_2026"
 BASEDIR = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch"
 ICDIR = os.path.join(BASEDIR, "IC", SIM_SET)
 OUTDIR = os.path.join(BASEDIR, "output", SIM_SET, FOLDER_NAME)
 INTDIR = os.path.join(BASEDIR, "int", SIM_SET, FOLDER_NAME)
 SCRIPTDIR = os.path.join(BASEDIR, "generate_plot_pdf")
 SOLVERDIR = os.path.join(BASEDIR, "CahnHilliard_MATLAB_solvers")
-MATLAB_BIN = "/Applications/MATLAB_R2023b.app/bin/maca64/MATLAB"  # maca64 for Apple Silicon
+# maca64 for Apple Silicon
+MATLAB_BIN = "/Applications/MATLAB_R2023b.app/bin/maca64/MATLAB"
 DT = 2.5e-5
 DT_OUT = 10
 STEPS = 2000
@@ -21,6 +22,8 @@ ACTUAL_FINAL_TIME = DT * (STEPS)  # Total simulation time
 os.makedirs(INTDIR, exist_ok=True)
 
 # Find all initial condition CSV files matching the folder name
+
+
 def find_ic_files(icdir, folder_name):
     """Find all initial condition CSV files matching pattern FOLDER_NAME*max_*min.csv"""
     pattern = os.path.join(icdir, f"{folder_name}*max_*min.csv")
@@ -35,9 +38,12 @@ def find_ic_files(icdir, folder_name):
         print(f"  ... and {len(prefixes) - 5} more")
     return prefixes
 
+
 IC_SIMULATIONS = find_ic_files(ICDIR, FOLDER_NAME)
 
 # Find all simulation prefixes by looking for movie.mp4 files
+
+
 def find_simulation_prefixes(outdir):
     """Find all unique simulation prefixes from movie.mp4 files"""
     movie_files = glob.glob(os.path.join(outdir, "*movie.mp4"))
@@ -54,10 +60,12 @@ def find_simulation_prefixes(outdir):
         print(f"  ... and {len(prefixes) - 5} more")
     return prefixes
 
+
 SIMULATIONS = find_simulation_prefixes(OUTDIR)
 
 if not SIMULATIONS and not IC_SIMULATIONS:
-    raise ValueError(f"No simulation files or IC files found in {OUTDIR} or {ICDIR}")
+    raise ValueError(
+        f"No simulation files or IC files found in {OUTDIR} or {ICDIR}")
 
 # IMPORTANT: Use IC_SIMULATIONS as the target list
 # This ensures new IC files trigger new simulations
@@ -69,7 +77,7 @@ print(f"  - To be run: {len(ALL_SIMS) - len(SIMULATIONS)}")
 
 rule all:
     input:
-        os.path.join(SCRIPTDIR, f"summary_output/{FOLDER_NAME}_analysis.pdf"),      
+        os.path.join(SCRIPTDIR, f"summary_output/{FOLDER_NAME}_analysis.pdf"),
         os.path.join(SCRIPTDIR, f"summary_output/{FOLDER_NAME}_summary.csv")
 
 rule run_ch_simulation:
@@ -159,7 +167,7 @@ rule python_analysis:
 
 rule combine_pdfs:
     input:
-        expand(os.path.join(INTDIR, "{simulation}analysis_plots.npz"), 
+        expand(os.path.join(INTDIR, "{simulation}analysis_plots.npz"),
                simulation=ALL_SIMS)
     output:
         os.path.join(SCRIPTDIR, f"summary_output/{FOLDER_NAME}_analysis.pdf")
