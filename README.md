@@ -1,5 +1,7 @@
 # VCell_Analysis
 
+**Note: All code was written by humans. Claude was used to generate READMEs and tutorials for general use.**
+
 Computational pipeline for studying **inner centromeric condensate dynamics** during mitosis, with a focus on the Chromosomal Passenger Complex (CPC). The pipeline integrates multi-source RNA-seq data, reaction-diffusion PDE simulations in VCell, and Cahn-Hilliard phase-field modeling to study how CPC localizes to and is maintained at the inner centromere.
 
 ## Pipeline Overview
