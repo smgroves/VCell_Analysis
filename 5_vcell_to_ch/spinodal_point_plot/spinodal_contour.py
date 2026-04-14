@@ -34,10 +34,10 @@ for state, shape,size in zip(['relaxed','tensed'], ['o', 'X'],[200,70]):
     except FileNotFoundError:
         print(f"File for {sim} not found. Skipping this simulation.")
 
-sim = f"CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_17_144x144_"
+sim = f"CPC_all_03_30_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_KT_Bar_pull_simplified_17_144x144_"
 
 df = pd.read_csv(f'/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/summary_output/{sim}_summary.csv',header = 0, index_col=0)
-names = {'increasing':'increasing', 'decreasing':'decreasing','stable':'stable', np.nan:'dissolved'}
+names = {'increasing':'increasing', 'decreasing':'decreasing','stable':'stable', np.nan:'dissolved', "concave_up":"stable", "concave_down":"decreasing"}
 sns.scatterplot(x=df['min'], y=df['max'],
                 hue=[names[i] for i in df['trend']], hue_order=['increasing', 'decreasing', "stable", "dissolved"], palette=['green','red','orange','black'], alpha=0.7,
                 marker='^', s=100, edgecolor='black', legend='full')
