@@ -8,7 +8,7 @@ plotter = VCMLVelocityPlotter(
 # plotter.plot_1d("pH3_CPCa", axis="X", slice_val=1.8)    # line plot
 plotter.plot_2d("pH3_CPCa")                   # 2D heatmap
 # %%
-plotter.use_simspec("Spatial Gaussian X no cross product")
+plotter.use_simspec("2_Spatial Gaussian X no cross product")
 plotter.overlay_vcell_csv(
     "H2A",
     csv_path="./models/SimID_307011475_0__Slice_XY_0_H2A_velocityX_0000.csv",
@@ -85,3 +85,7 @@ compare_custom_velocity(
 )
 
 # %%
+plotter.use_simspec("5_Spatial Gaussian X and Y")
+plotter.plot_1d("pH3_CPCa", component="X", axis="x")
+# %%
+#['1_Spatial', '3_Spatial Gaussian X', '2_Spatial Gaussian X no cross product', '5_Spatial Gaussian X and Y', '4_Spatial Gaussian X and Y no cross product', '6_Spatial Gaussian X and Y_KT_Bar_pull']
