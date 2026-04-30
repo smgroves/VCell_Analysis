@@ -439,31 +439,31 @@ for f, m, s in zip(folder_names, model_name, simulation_name):
 # #####################################################
 # # New simulations for 3/23/2026 - transition sims
 # #####################################################
-# outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/04_20_2026"
-# if not os.path.exists(outdir):
-#     os.makedirs(outdir)
-# folder_names = [["SimID_307783801_2__exported_0.3"],["SimID_310814270_0__exported_t_20"],["SimID_310814270_2__exported_t_60"]]
-# model_name = ['02_23_26 CPC_metacentric_transition_MCF10A_chr19_PMP1','02_23_26 CPC_metacentric_transition_MCF10A_chr19_PMP1','02_23_26 CPC_metacentric_transition_MCF10A_chr19_PMP1']
-# simulation_name = ['03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_Scale_y_scan_0.3', '03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_20s', '03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_60s']
+outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/04_20_2026"
+if not os.path.exists(outdir):
+    os.makedirs(outdir)
+folder_names = [["SimID_307783801_2__exported_0.3"],["SimID_310814270_0__exported_t_20"],["SimID_310814270_2__exported_t_60"]]
+model_name = ['02_23_26 CPC_metacentric_transition_MCF10A_chr19_PMP1','02_23_26 CPC_metacentric_transition_MCF10A_chr19_PMP1','02_23_26 CPC_metacentric_transition_MCF10A_chr19_PMP1']
+simulation_name = ['03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_Scale_y_scan_0.3', '03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_20s', '03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_60s']
 
-# # ["SimID_307783801_0__exported"]] #["SimID_307783305_0__exported"],
-# # folder_names = [["SimID_308691339_0__exported"]]
-# # model_name = ['02_23_26 CPC_metacentric_transition_MCF10A_chr19_PMP1']
-# # '03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y'
-# # simulation_name = [
-# #     '03_30_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_KT_Bar_pull_simplified']
-# for f, m, s in zip(folder_names, model_name, simulation_name):
-#     print(f, m, s)
-#     for min_mix in min_mixes:
-#         for rescaling_factor in rescaling_factors:
-#         # if spinodal point is greater than 6:
-#             X = min_mix
-#             Y = rescaling_factor
-#             Z = ((3-np.sqrt(3))/6)*(Y - X) + X
-#             if (Z > 6) and (Z < 7.4):
-#                 ma, mi = rescale_vcell_output_neg1_pos1(f, in_dir, outdir, model_name=m, simulation_name=s, timepoint=17,
-#                                                         timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
-#                 print(f"min_mix: {min_mix}, rescaling_factor: {rescaling_factor}, max: {ma}, min: {mi}")
+# ["SimID_307783801_0__exported"]] #["SimID_307783305_0__exported"],
+# folder_names = [["SimID_308691339_0__exported"]]
+# model_name = ['02_23_26 CPC_metacentric_transition_MCF10A_chr19_PMP1']
+# '03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y'
+# simulation_name = [
+#     '03_30_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_KT_Bar_pull_simplified']
+for f, m, s in zip(folder_names, model_name, simulation_name):
+    print(f, m, s)
+    for min_mix in min_mixes:
+        for rescaling_factor in rescaling_factors:
+        # if spinodal point is greater than 6:
+            X = min_mix
+            Y = rescaling_factor
+            # Z = ((3-np.sqrt(3))/6)*(Y - X) + X
+            # if (Z > 6) and (Z < 7.4):
+            ma, mi = rescale_vcell_output_neg1_pos1(f, in_dir, outdir, model_name=m, simulation_name=s, timepoint=17,
+                                                    timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+            print(f"min_mix: {min_mix}, rescaling_factor: {rescaling_factor}, max: {ma}, min: {mi}")
 
 #####################################################
 # New simulations for 4/22/2026 - Monse sims
