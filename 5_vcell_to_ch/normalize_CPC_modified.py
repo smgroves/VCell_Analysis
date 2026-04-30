@@ -442,9 +442,9 @@ for f, m, s in zip(folder_names, model_name, simulation_name):
 outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/04_20_2026"
 if not os.path.exists(outdir):
     os.makedirs(outdir)
-folder_names = [["SimID_307783801_2__exported_0.3"],["SimID_310814270_0__exported_t_20"],["SimID_310814270_2__exported_t_60"]]
-model_name = ['02_23_26 CPC_metacentric_transition_MCF10A_chr19_PMP1','02_23_26 CPC_metacentric_transition_MCF10A_chr19_PMP1','02_23_26 CPC_metacentric_transition_MCF10A_chr19_PMP1']
-simulation_name = ['03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_Scale_y_scan_0.3', '03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_20s', '03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_60s']
+folder_names = [["SimID_310814270_4__exported"],["SimID_310814270_2__exported_t_60"]] #["SimID_307783801_2__exported_0.3"],
+model_name = ['02_23_26 CPC_metacentric_transition_MCF10A_chr19_PMP1','02_23_26 CPC_metacentric_transition_MCF10A_chr19_PMP1'] #'02_23_26 CPC_metacentric_transition_MCF10A_chr19_PMP1',
+simulation_name = ['03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_120s', '03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_60s'] #'03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_Scale_y_scan_0.3', 
 
 # ["SimID_307783801_0__exported"]] #["SimID_307783305_0__exported"],
 # folder_names = [["SimID_308691339_0__exported"]]
