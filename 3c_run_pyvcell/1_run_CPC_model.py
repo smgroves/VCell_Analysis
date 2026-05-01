@@ -1,4 +1,3 @@
-# %%
 import sys
 import importlib
 import time
@@ -28,7 +27,7 @@ import pyvcell.vcml as vc
 # Record the start time
 start_time = time.perf_counter()
 
-# %% load model from vcml file
+# load model from vcml file
 ########################################
 vcml_file = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_models/vcml/_09_16_25_CPC_metacentric_relaxed_model_v2.vcml"
 bio_model = vc.load_vcml_file(vcml_file)
@@ -36,7 +35,7 @@ bio_model = vc.load_vcml_file(vcml_file)
 
 model = bio_model.model
 # print(bio_model)
-# %% run a single simulation
+# run a single simulation
 ########################################
 sim = bio_model.applications[0].simulations[0]
 print(sim.mesh_size)

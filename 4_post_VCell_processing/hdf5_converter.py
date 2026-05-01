@@ -13,15 +13,15 @@ if True:
     dir_path = sys.argv[2]
     model_name = sys.argv[3]
     simulation_name = sys.argv[4]
-    width = int(sys.argv[5])
+    # width = int(sys.argv[5])
 
-    if len(sys.argv) > 6:
+    if len(sys.argv) > 5:
         parser = argparse.ArgumentParser()
         parser.add_argument('file_name', metavar='N')
         parser.add_argument('dir_path', metavar='N')
         parser.add_argument('model_name', metavar='N')
         parser.add_argument('simulation_name', metavar='N')
-        parser.add_argument('width', metavar='N', type=int)
+        # parser.add_argument('width', metavar='N', type=int)
         parser.add_argument(
             "--species",  # name on the CLI - drop the `--` for positional/required parameters
             nargs="*",  # 0 or more values expected => creates a list
@@ -34,7 +34,7 @@ if True:
         dir_path = args.dir_path
         model_name = args.model_name
         simulation_name = args.simulation_name
-        width = args.width
+        # width = args.width
         species_list = args.species
         print(species_list)
     else:
@@ -52,7 +52,7 @@ else:
 
 # TODO Add code to notify if something in the list isn't showing up in the H5 file
 def convert_hdf5_to_csv(
-    file_name, dir_path="", model_name="", simulation_name="", species_list=[], width=64
+    file_name, dir_path="", model_name="", simulation_name="", species_list=[]
 ):
     if len(species_list) == 0:
         default_species = [
@@ -117,8 +117,10 @@ def convert_hdf5_to_csv(
     with h5py.File(f"{dir_path}/{file_name}", "r") as h5:
         print(len(h5.keys()), "simulation(s) found")
         for sim_key in h5.keys():
+            print(sim_key)
             sim_key_name = "_".join(sim_key.split(
                 "[")[1].split("]")[0].split(",")[0:2])
+            # sim_key_name = "_".join(file_name.split("_")[1:3])
             print(sim_key_name)
             output_folder = f"{dir_path}/SimID_{sim_key_name}__exported"
             # make directory if it doesn't exist
@@ -126,9 +128,9 @@ def convert_hdf5_to_csv(
                 os.makedirs(output_folder)
             timesteps = h5[sim_key]["TIMES"][:]
             for key in h5[sim_key].keys():
+                print(key)
                 if key in default_species:
                     try:
-                        print(key)
                         # convert 3D numpy array to multiple 2D numpy arrays
                         arr = h5[sim_key][key]["DataValues (XYT)"][:]
                         for i in range(arr.shape[2]):
@@ -142,8 +144,12 @@ def convert_hdf5_to_csv(
                                 f"2D Slice for variable {key} at time {timesteps[i]} in plane XY at Z = 0 \n \n"
                                 "X in rows, Y in columns \n"
                             )
+                            if key in default_functions:
+                                filename = f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_FUNCTION_{i:04d}.csv"
+                            else:
+                                filename = f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_{i:04d}.csv"
                             with open(
-                                f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_{i:04d}.csv",
+                                filename,
                                 "w",
                             ) as f:
                                 f.write(header_text)
@@ -151,25 +157,27 @@ def convert_hdf5_to_csv(
                             df = pd.DataFrame(arr[:, :, i])
                             if key in default_functions:
                                 df.to_csv(
-                                    f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_FUNCTION_{i:04d}.csv",
+                                    filename,
                                     index=False,
                                     mode="a",
                                     header=False,
                                 )
                             else:
                                 df.to_csv(
-                                    f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_{i:04d}.csv",
+                                    filename,
                                     index=False,
                                     mode="a",
                                     header=False,
                                 )
+                        # remaining = default_species.remove(key)
                     except ValueError:
-                        pass
+                        print("Error processing key: ", key)
+        # print("Species not found in H5: ", remaining)
 
 
 if __name__ == "__main__":
     t1 = time.time()
     convert_hdf5_to_csv(file_name, dir_path, model_name,
-                        simulation_name, species_list, width)
+                        simulation_name, species_list)
     t2 = time.time()
     print("Processing took ", (t2 - t1), " seconds")

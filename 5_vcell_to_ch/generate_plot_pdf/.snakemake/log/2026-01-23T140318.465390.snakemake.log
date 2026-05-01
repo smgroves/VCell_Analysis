@@ -1,0 +1,44 @@
+Assuming unrestricted shared filesystem usage.
+host: Sarahs-iMac.local
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+combine_pdfs        1
+total               2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Jan 23 14:03:18 2026]
+localrule combine_pdfs:
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/all_simulations_analysis.pdf
+    jobid: 1
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/all_simulations_analysis.pdf
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Shell command: 
+        python /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/create_combined_pdf.py             --outdir /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026             --output /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/all_simulations_analysis.pdf
+        
+Waiting at most 5 seconds for missing files:
+/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/all_simulations_analysis.pdf (missing locally)
+MissingOutputException in rule combine_pdfs in file "/Users/smgroves/Documents/Github/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/Snakefile", line 73:
+Job 1  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/all_simulations_analysis.pdf (missing locally, parent dir contents: calculate_level_set_radius.m, .snakemake, create_combined_pdf.py, Snakefile, analyze_single_simulation.py)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Fri Jan 23 14:03:25 2026]
+Error in rule combine_pdfs:
+    message: None
+    jobid: 1
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/all_simulations_analysis.pdf
+    shell:
+        
+        python /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/create_combined_pdf.py             --outdir /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/01_16_2026             --output /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/all_simulations_analysis.pdf
+        
+        (command exited with non-zero exit code)
+Complete log(s): /Users/smgroves/Documents/Github/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/.snakemake/log/2026-01-23T140318.465390.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

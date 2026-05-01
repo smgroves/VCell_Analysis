@@ -1,0 +1,62 @@
+Assuming unrestricted shared filesystem usage.
+host: Sarahs-iMac.local
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+combine_pdfs           1
+python_analysis        2
+total                  4
+
+Select jobs to execute...
+Execute 2 jobs...
+[Sat Jan 24 14:30:56 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minanalysis_plots.npz
+    jobid: 2
+    reason: Forced execution
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+[Sat Jan 24 14:30:56 2026]
+localrule python_analysis:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minfinal_phi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minradius_data.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minanalysis_plots.npz
+    jobid: 4
+    reason: Forced execution
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+[Sat Jan 24 14:30:58 2026]
+Finished jobid: 4 (Rule: python_analysis)
+1 of 4 steps (25%) done
+[Sat Jan 24 14:30:58 2026]
+Finished jobid: 2 (Rule: python_analysis)
+2 of 4 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Jan 24 14:30:58 2026]
+localrule combine_pdfs:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minanalysis_plots.npz
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/test_snakemake_analysis.pdf
+    jobid: 1
+    reason: Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minanalysis_plots.npz, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minanalysis_plots.npz
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+[Sat Jan 24 14:31:00 2026]
+Finished jobid: 1 (Rule: combine_pdfs)
+3 of 4 steps (75%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Jan 24 14:31:00 2026]
+localrule all:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/test_snakemake_analysis.pdf
+    jobid: 0
+    reason: Input files updated by another job: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/test_snakemake_analysis.pdf
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+[Sat Jan 24 14:31:00 2026]
+Finished jobid: 0 (Rule: all)
+4 of 4 steps (100%) done
+Complete log(s): /Users/smgroves/Documents/Github/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/.snakemake/log/2026-01-24T143056.006832.snakemake.log

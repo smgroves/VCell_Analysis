@@ -1,0 +1,3 @@
+ValueError in file "/Users/smgroves/Documents/Github/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/Snakefile", line 35:
+No simulation files found in /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/01_16_2026/output/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_
+  File "/Users/smgroves/Documents/Github/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/Snakefile", line 35, in <module>

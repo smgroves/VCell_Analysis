@@ -1,0 +1,96 @@
+Assuming unrestricted shared filesystem usage.
+host: Sarahs-iMac.local
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+combine_pdfs            1
+matlab_level_set        2
+python_analysis         2
+total                   6
+
+Select jobs to execute...
+Execute 2 jobs...
+[Fri Jan 23 14:09:33 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minradius_data.csv
+    jobid: 3
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minradius_data.csv; Code has changed since last execution
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Shell command: 
+        /Applications/MATLAB_R2023b.app/bin/matlab -batch "cd('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf');                               calculate_level_set_radius('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minphi.csv',                                                           2.5e-05,                                                           10,                                                           '/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minradius_data.csv')"
+        
+[Fri Jan 23 14:09:33 2026]
+localrule matlab_level_set:
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minradius_data.csv
+    jobid: 5
+    reason: Missing output files: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minradius_data.csv; Code has changed since last execution
+    wildcards: simulation=CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9min
+    resources: tmpdir=/var/folders/qg/8dr16mq572j_ksgn8_d2g59h0000gn/T
+Shell command: 
+        /Applications/MATLAB_R2023b.app/bin/matlab -batch "cd('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf');                               calculate_level_set_radius('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minphi.csv',                                                           2.5e-05,                                                           10,                                                           '/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minradius_data.csv')"
+        
+RuleException:
+CalledProcessError in file "/Users/smgroves/Documents/Github/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/Snakefile", line 47:
+Command 'set -euo pipefail;  
+        /Applications/MATLAB_R2023b.app/bin/matlab -batch "cd('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf');                               calculate_level_set_radius('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minphi.csv',                                                           2.5e-05,                                                           10,                                                           '/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minradius_data.csv')"' returned non-zero exit status 1.
+RuleException:
+CalledProcessError in file "/Users/smgroves/Documents/Github/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/Snakefile", line 47:
+Command 'set -euo pipefail;  
+        /Applications/MATLAB_R2023b.app/bin/matlab -batch "cd('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf');                               calculate_level_set_radius('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minphi.csv',                                                           2.5e-05,                                                           10,                                                           '/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minradius_data.csv')"' returned non-zero exit status 1.
+[Fri Jan 23 14:09:33 2026]
+Error in rule matlab_level_set:
+    message: None
+    jobid: 5
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minradius_data.csv
+    shell:
+        
+        /Applications/MATLAB_R2023b.app/bin/matlab -batch "cd('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf');                               calculate_level_set_radius('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minphi.csv',                                                           2.5e-05,                                                           10,                                                           '/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minradius_data.csv')"
+        
+        (command exited with non-zero exit code)
+[Fri Jan 23 14:09:33 2026]
+Error in rule matlab_level_set:
+    message: None
+    jobid: 3
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minradius_data.csv
+    shell:
+        
+        /Applications/MATLAB_R2023b.app/bin/matlab -batch "cd('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf');                               calculate_level_set_radius('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minphi.csv',                                                           2.5e-05,                                                           10,                                                           '/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minradius_data.csv')"
+        
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Fri Jan 23 14:09:33 2026]
+Error in rule matlab_level_set:
+    message: None
+    jobid: 3
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minradius_data.csv
+    shell:
+        
+        /Applications/MATLAB_R2023b.app/bin/matlab -batch "cd('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf');                               calculate_level_set_radius('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minphi.csv',                                                           2.5e-05,                                                           10,                                                           '/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__18max_4.9minradius_data.csv')"
+        
+        (command exited with non-zero exit code)
+[Fri Jan 23 14:09:33 2026]
+Error in rule matlab_level_set:
+    message: None
+    jobid: 5
+    input: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minphi.csv, /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minmovie.mp4
+    output: /Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minradius_data.csv
+    shell:
+        
+        /Applications/MATLAB_R2023b.app/bin/matlab -batch "cd('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf');                               calculate_level_set_radius('/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minphi.csv',                                                           2.5e-05,                                                           10,                                                           '/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/output/test_snakemake/CPC_all_11_26_25_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144__17max_4.9minradius_data.csv')"
+        
+        (command exited with non-zero exit code)
+Complete log(s): /Users/smgroves/Documents/Github/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/.snakemake/log/2026-01-23T140933.049861.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
