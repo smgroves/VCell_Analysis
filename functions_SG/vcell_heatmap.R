@@ -7,6 +7,7 @@ vcell_heatmap <- function(
     tInit=0, # in s
     tSpan, # in s
     tInterval, # in s, what set in VCell
+    trange=NULL, # in s, if you want to specify the time points to plot; if NULL, will use tInit, tSpan, and desiredInterval to create trange
     desiredInterval, # in s, what you want the data to be spaced by
     chromWidth=1.6, #um
     chromHeight=3.5, #um
@@ -106,7 +107,15 @@ vcell_heatmap <- function(
   # initialize variables
   n_SimID<-length(SimID)
   n_t<-(tSpan-tInit)/desiredInterval+1
-  trange<-seq(from=tInit/tInterval,to=tSpan/tInterval,length.out=n_t)
+  #if trange isn't NULL, use it; otherwise use tInit, tSpan, and desiredInterval to create trange
+
+  if(is.null(trange)){
+    trange<-seq(from=tInit/tInterval,to=tSpan/tInterval,length.out=n_t)
+  }else{
+    trange<-trange
+    n_t<-length(trange)
+
+  }
   
   plist<-list()
   L <- list()
