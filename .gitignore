@@ -86,9 +86,6 @@ functions/.Rhistory
 5_vcell_to_ch/output/11_25_2025/11_24_25_metacentric_tensed_MCF10A_100_/11_24_25_metacentric_tensed_MCF10A_100_180x180__8.4max_0minphi.csv
 5_vcell_to_ch/output/11_25_2025/11_24_25_metacentric_tensed_MCF10A_100_/11_24_25_metacentric_tensed_MCF10A_100_180x180__8.4max_1.5minphi.csv
 *.hdf5
-.DS_Store
-.DS_Store
-.DS_Store
 *.lock
 *.log
 5_vcell_to_ch/generate_plot_pdf/.snakemake/*
@@ -100,3 +97,18 @@ functions/.Rhistory
 
 *.patch
 .claude/worktrees/serene-bhaskara/
+3c_run_pyvcell/workspace/out_dir_xg6nz3w6/SimID_1006880647_0_00.zip
+3c_run_pyvcell/venv_vcell/lib/python3.12/site-packages/libvcell/lib/libvcell.dylib
+vcell_out/FROM_RIVANNA/_09_16_25_CPC_metacentric_relaxed_model/_09_16_25_CPC_metacentric_relaxed_model.sedml/SimID_1323233441_0_00.zip
+vcell_out/FROM_RIVANNA/_09_16_25_CPC_metacentric_relaxed_model/_09_16_25_CPC_metacentric_relaxed_model.sedml/SimID_2087014122_0_00.zip
+vcell_out/FROM_RIVANNA/_09_16_25_CPC_metacentric_relaxed_model/tsk_0_0_job_0_results.h5
+vcell_out/FROM_RIVANNA/_09_16_25_CPC_metacentric_relaxed_model.zip
+vcell_out/SimID_300540363_0__exported.hdf5
+.git/objects/pack/pack-a440ecfcdb377a17a07ec6715f7413f7641ac745.pack
+.git/objects/pack/pack-c30fe9dd364ba1a9cbbbb0ca76f49f863a3a050c.pack
+.git/objects/pack/pack-bbf9db436aba5cccebd199ddb3c2fdd87e5849eb.pack
+.git/objects/pack/pack-9ed2dd9da1d45e06b81fb3885863771532137499.pack
+.git/objects/pack/pack-1ce26a61804b2cddca69164a0cb2a7108ee220d8.pack
+.git/objects/pack/pack-e51195dd3d0fb96b01764b81a1acd1debbb10cc9.pack
+.git/objects/pack/pack-7151f83ccef7b3c5d08af1c1ea3dc62748bbe312.pack
+0001-new-sims.patch

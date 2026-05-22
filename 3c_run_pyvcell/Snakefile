@@ -2,3 +2,7 @@
 # Eventually, we will want to run this pipeline for multiple models, but for now we will just run it for one model.
 # The input data for this pipeline is a VCell model file (in .vcml format) and a set of initial conditions for the model (in .csv format).
 # The output of this pipeline will be a set of simulation results for each set of initial conditions, which will be saved in a specified output directory.
+
+# rules
+# 1. run_pyvcell: This rule will run pyvcell on the input model file and initial conditions, and save the simulation results in the output directory.
+# 2. generate transition model: this rule will generate a transition model from the relaxed model. 
