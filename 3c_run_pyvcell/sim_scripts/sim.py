@@ -4,8 +4,16 @@ from pathlib import Path
 from pyvcell.sim_results.result import Result
 import pyvcell.vcml as vc
 
+# parameters we will want to be open to the user for parameter scans
+# IC
+# kintetic parameters
+# chromosome type/size + combinatorial other changes
+# - length
+# - scaling factor
+# kinetochore location
 
-def run_simulation(biomodel, simulation, run_name: str, fields=None, local = True) -> Result:
+
+def run_simulation(biomodel, simulation, run_name: str, fields=None, local=True) -> Result:
     """Run a simulation and save output to a named directory.
     pyvcell automatically saves to a randomized directory; this function renames that directory to something more meaningful.
     Parameters:
@@ -20,11 +28,12 @@ def run_simulation(biomodel, simulation, run_name: str, fields=None, local = Tru
 
         result = vc.simulate(biomodel, simulation, fields=fields)
     else:
-        pass #placeholder for remote execution code; once I figure out what the outputs look like this will be an option
+        pass  # placeholder for remote execution code; once I figure out what the outputs look like this will be an option
 
     named_dir = result.solver_output_dir.parent / run_name
     if named_dir.exists():
-        raise FileExistsError(f"Run '{run_name}' already exists at {named_dir}. Choose a different name or delete it first.")
+        raise FileExistsError(
+            f"Run '{run_name}' already exists at {named_dir}. Choose a different name or delete it first.")
     result.solver_output_dir.rename(named_dir)
 
     # Return a fresh Result pointing at the renamed directory
@@ -39,9 +48,11 @@ def load_result(run_name: str, workspace: str | Path | None = None) -> Result:
     if not named_dir.exists():
         raise FileNotFoundError(f"No run named '{run_name}' found in {ws}")
 
-    fvinput = next((f for f in os.listdir(named_dir) if f.endswith(".fvinput")), None)
+    fvinput = next((f for f in os.listdir(named_dir)
+                   if f.endswith(".fvinput")), None)
     if fvinput is None:
-        raise FileNotFoundError(f"No .fvinput file found in {named_dir} — directory may be incomplete")
+        raise FileNotFoundError(
+            f"No .fvinput file found in {named_dir} — directory may be incomplete")
 
     sim_id = int(fvinput.split("_")[1])
     job_id = int(fvinput.split("_")[2])

@@ -13,7 +13,7 @@ This step should:
 - run the model with the initial conditions from the CSV
 - output concentrations of species for set timepoints for relaxed state
 
-### 3. Transiiton simulation
+### 3. Transition simulation
 - check if a vcml file already exists for the transition model; if available, load
 - if no file, use field data and adapted model and save to vcml
 - run a transition simulation 
