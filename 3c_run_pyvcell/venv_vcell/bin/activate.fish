@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /Users/smgroves/Documents/Github/VCell_Analysis/3c_run_pyvcell/venv_vcell
+set -gx VIRTUAL_ENV /Users/smgroves/Documents/GitHub/VCell_Analysis/3c_run_pyvcell/venv_vcell
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

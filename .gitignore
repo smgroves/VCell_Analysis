@@ -112,3 +112,7 @@ vcell_out/SimID_300540363_0__exported.hdf5
 .git/objects/pack/pack-e51195dd3d0fb96b01764b81a1acd1debbb10cc9.pack
 .git/objects/pack/pack-7151f83ccef7b3c5d08af1c1ea3dc62748bbe312.pack
 0001-new-sims.patch
+/3c_run_pyvcell/venv_vcell
+/3c_run_pyvcell/venv_vcell/bin
+/3c_run_pyvcell/venv_vcell/bin
+*.pyc

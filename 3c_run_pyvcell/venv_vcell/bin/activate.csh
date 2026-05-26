@@ -9,7 +9,7 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV /Users/smgroves/Documents/Github/VCell_Analysis/3c_run_pyvcell/venv_vcell
+setenv VIRTUAL_ENV /Users/smgroves/Documents/GitHub/VCell_Analysis/3c_run_pyvcell/venv_vcell
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/"bin":$PATH"
