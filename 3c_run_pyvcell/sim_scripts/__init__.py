@@ -4,3 +4,4 @@ from .sim import *
 from .process import *
 from .utils import *
 from .plot import *
+from .chromosome import *

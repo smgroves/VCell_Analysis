@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 from pyvcell.sim_results.result import Result
 import pyvcell.vcml as vc
+import shutil
 
 # parameters we will want to be open to the user for parameter scans
 # IC
@@ -13,7 +14,7 @@ import pyvcell.vcml as vc
 # kinetochore location
 
 
-def run_simulation(biomodel, simulation, run_name: str, fields=None, local=True) -> Result:
+def run_simulation(biomodel, simulation, run_name: str, fields=None, local=True, overwrite=False) -> Result:
     """Run a simulation and save output to a named directory.
     pyvcell automatically saves to a randomized directory; this function renames that directory to something more meaningful.
     Parameters:
@@ -29,13 +30,25 @@ def run_simulation(biomodel, simulation, run_name: str, fields=None, local=True)
         result = vc.simulate(biomodel, simulation, fields=fields)
     else:
         pass  # placeholder for remote execution code; once I figure out what the outputs look like this will be an option
-
+    print("Simulation completed. Processing results...")
     named_dir = result.solver_output_dir.parent / run_name
     if named_dir.exists():
-        raise FileExistsError(
-            f"Run '{run_name}' already exists at {named_dir}. Choose a different name or delete it first.")
+        if overwrite:
+            print(
+                f"Warning: Run '{run_name}' already exists at {named_dir} and will be overwritten. Continue? (y/n)")
+            choice = input().lower()
+            if choice != 'y':
+                raise FileExistsError(
+                    f"Run '{run_name}' already exists at {named_dir}. Choose a different name or delete it first.")
+            else:
+                # delete named_dir and all its contents
+                shutil.rmtree(named_dir)
+        else:
+            raise FileExistsError(
+                f"Run '{run_name}' already exists at {named_dir} and overwrite = False. Choose a different name or delete it first.")
+    print("Saved simulation output to temporary directory:", result.solver_output_dir)
     result.solver_output_dir.rename(named_dir)
-
+    print("Renamed output directory to:", named_dir)
     # Return a fresh Result pointing at the renamed directory
     return Result(solver_output_dir=named_dir, sim_id=result.sim_id, job_id=result.job_id)
 

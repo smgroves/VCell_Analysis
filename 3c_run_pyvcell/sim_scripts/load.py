@@ -1,9 +1,11 @@
-#includes functions for loading and comparing VCell models using pyvcell
+# includes functions for loading and comparing VCell models using pyvcell
 # Author: Sarah Groves 05/21/2026
 
 import pyvcell.vcml as vc
 
 import re
+
+
 def load_model(vcml_file):
     """
     Load a VCell model from a .vcml file.
@@ -15,15 +17,42 @@ def load_model(vcml_file):
     bio_model: The loaded VCell model.
     """
     bio_model = vc.load_vcml_file(vcml_file)
-    #print details about the loaded model
+    # print details about the loaded model
     print(f"Model '{bio_model.name}' loaded successfully.")
     print(f"Compartments: {[c.name for c in bio_model.model.compartments]}")
     print(f"Number of species: {len(bio_model.model.species)}")
     print(f"Number of reactions: {len(bio_model.model.reactions)}")
-    print(f"Applications: {sorted([app.name for app in bio_model.applications])}")
+    print(
+        f"Applications: {sorted([app.name for app in bio_model.applications])}")
     return bio_model
 
 
+def add_initial_conditions(ic_df, biomodel, application_name):
+    """
+    Load initial conditions from a dataframe into a VCell model application.
+
+    Parameters:
+    ic_df (pd.DataFrame): A dataframe containing species names and their corresponding initial concentrations. 
+    The dataframe should have columns 'species' and 'initial_concentration'.
+    biomodel: The VCell model to update.
+    application_name: The name of the application within the model to update.
+
+    Returns:
+    updated_biomodel: The VCell model with updated initial conditions.
+    """
+    app = biomodel.get_application(application_name)
+    for index, row in ic_df.iterrows():
+        species_name = row['species']
+        init_conc = row['initial_concentration']
+        sm = app.get_species_mapping(species_name)
+        if sm is not None:
+            sm.init_conc = init_conc
+            print(
+                f"Updated initial concentration of '{species_name}' to {init_conc} in application '{application_name}'.")
+        else:
+            print(
+                f"Warning: Species '{species_name}' not found in application '{application_name}'. Skipping.")
+    return biomodel
 
 
 def compare_reactions(model1, model2, name1, name2):
@@ -92,7 +121,7 @@ def count_parameter_usage(biomodel, param_name: str) -> dict[str, list[str]]:
     """Find everywhere a global parameter name is referenced across a biomodel."""
     model = biomodel.model
     hits: dict[str, list[str]] = {
-         "model_parameters": [],
+        "model_parameters": [],
         "reactions": [],
         "species_mappings": [],
         "compartment_mappings": [],
@@ -119,22 +148,25 @@ def count_parameter_usage(biomodel, param_name: str) -> dict[str, list[str]]:
         for sm in app.species_mappings:
             exprs = [sm.init_conc, sm.diff_coef] + list(sm.boundary_values)
             if any(_matches(e) for e in exprs if isinstance(e, str)):
-                hits["species_mappings"].append(f"{app.name} / {sm.species_name}")
+                hits["species_mappings"].append(
+                    f"{app.name} / {sm.species_name}")
 
         # 4. Compartment size expressions
         for cm in app.compartment_mappings:
             if _matches(cm.size_exp):
-                hits["compartment_mappings"].append(f"{app.name} / {cm.compartment_name}")
+                hits["compartment_mappings"].append(
+                    f"{app.name} / {cm.compartment_name}")
 
         # 5. Application-level parameter overrides
         for ap in app.application_parameters:
             if _matches(ap.value):
-                hits["application_parameters"].append(f"{app.name} / {ap.name}")
-    
+                hits["application_parameters"].append(
+                    f"{app.name} / {ap.name}")
 
     return hits
 
-def compare_models(biomodel1, biomodel2, name1= None, name2=None, verbose = 1):
+
+def compare_models(biomodel1, biomodel2, name1=None, name2=None, verbose=1):
     """
     Compare two VCell models and identify differences in their structure and parameters.
 
@@ -146,10 +178,10 @@ def compare_models(biomodel1, biomodel2, name1= None, name2=None, verbose = 1):
     Returns:
     differences: A list of differences between the two models, including differences in compartments, species, reactions, and parameters.
     """
-    #grab names of each model for reporting
+    # grab names of each model for reporting
     if name1 is None:
         name1 = biomodel1.name
-    
+
     if name2 is None:
         name2 = biomodel2.name
 
@@ -168,16 +200,19 @@ def compare_models(biomodel1, biomodel2, name1= None, name2=None, verbose = 1):
     if compartments1 != compartments2:
         for comp in compartments1.symmetric_difference(compartments2):
             if comp in compartments1:
-                comp_differences.append(f"Compartment '{comp}' is present in {name1} but not in {name2}.")
+                comp_differences.append(
+                    f"Compartment '{comp}' is present in {name1} but not in {name2}.")
             else:
-                comp_differences.append(f"Compartment '{comp}' is present in {name2} but not in {name1}.")
-    if verbose>0: 
+                comp_differences.append(
+                    f"Compartment '{comp}' is present in {name2} but not in {name1}.")
+    if verbose > 0:
         for comp in compartments1.intersection(compartments2):
             if biomodel1.model.get_compartment(comp).dim != biomodel2.model.get_compartment(comp).dim:
-                comp_differences.append(f"Compartment '{comp}' dimensions differ: \n\t {name1}={biomodel1.model.get_compartment(comp).dim} \n\t {name2}={biomodel2.model.get_compartment(comp).dim}).")
+                comp_differences.append(
+                    f"Compartment '{comp}' dimensions differ: \n\t {name1}={biomodel1.model.get_compartment(comp).dim} \n\t {name2}={biomodel2.model.get_compartment(comp).dim}).")
     if len(comp_differences) == 0:
         comp_differences.append("Compartments are identical.")
-    else:   
+    else:
         print("Compartment differences:")
         for i in comp_differences:
             print("..." + i)
@@ -189,9 +224,11 @@ def compare_models(biomodel1, biomodel2, name1= None, name2=None, verbose = 1):
     if species1 != species2:
         for sp in species1.symmetric_difference(species2):
             if sp in species1:
-                spec_differences.append(f"Species '{sp}' is present in {name1} but not in {name2}.")
+                spec_differences.append(
+                    f"Species '{sp}' is present in {name1} but not in {name2}.")
             else:
-                spec_differences.append(f"Species '{sp}' is present in {name2} but not in {name1}.")
+                spec_differences.append(
+                    f"Species '{sp}' is present in {name2} but not in {name1}.")
     if len(spec_differences) == 0:
         spec_differences.append("Species are identical.")
     else:
@@ -201,7 +238,6 @@ def compare_models(biomodel1, biomodel2, name1= None, name2=None, verbose = 1):
 
     # Compare reactions
     compare_reactions(biomodel1.model, biomodel2.model, name1, name2)
-        
 
     # Compare parameters
     print("Parameter differences:")
@@ -213,50 +249,52 @@ def compare_models(biomodel1, biomodel2, name1= None, name2=None, verbose = 1):
             if param in parameters1:
                 usage = count_parameter_usage(biomodel1, param)
                 len_usage = sum(len(locations) for locations in usage.values())
-                if ((len_usage> 0) and (verbose == 0)) or (verbose >0):
-                    print(f"...Parameter '{param}' is present in {name1} but not in {name2} (used in {len_usage} places)" ) 
-                if verbose>0:
+                if ((len_usage > 0) and (verbose == 0)) or (verbose > 0):
+                    print(
+                        f"...Parameter '{param}' is present in {name1} but not in {name2} (used in {len_usage} places)")
+                if verbose > 0:
                     for location, names in usage.items():
                         if len(names) > 0:
                             print(f"\t{location}: {len(names)}")
                         else:
                             if verbose > 1:
                                 print(f"\t{location}: 0")
-                        if verbose > 1: 
+                        if verbose > 1:
                             for n in names:
                                 print(f"\t{n}")
             else:
 
                 usage = count_parameter_usage(biomodel2, param)
                 len_usage = sum(len(locations) for locations in usage.values())
-                if ((len_usage > 0) and (verbose == 0)) or (verbose >0):
-                    print(f"...Parameter '{param}' is present in {name2} but not in {name1} (used in {len_usage} places)" )
-                if verbose>0:
+                if ((len_usage > 0) and (verbose == 0)) or (verbose > 0):
+                    print(
+                        f"...Parameter '{param}' is present in {name2} but not in {name1} (used in {len_usage} places)")
+                if verbose > 0:
                     for location, names in usage.items():
                         if len(names) > 0:
                             print(f"\t{location}: {len(names)}")
                         else:
                             if verbose > 1:
                                 print(f"\t{location}: 0")
-                        if verbose > 1: 
+                        if verbose > 1:
                             for n in names:
                                 print(f"\t{n}")
     for param in parameters1.intersection(parameters2):
         if biomodel1.model.parameter_values[param] != biomodel2.model.parameter_values[param]:
             usage = count_parameter_usage(biomodel2, param)
             len_usage = sum(len(locations) for locations in usage.values())
-            if ((len_usage > 0) and (verbose == 0)) or (verbose >0):
-                print(f"...Parameter '{param}' differs in value: \n\t {name1}={biomodel1.model.parameter_values[param]} \n\t {name2}= {biomodel2.model.parameter_values[param]}")
-                if verbose >1:
-                    print(f"\t used in {len_usage} place(s)" )
-            if verbose>0:
+            if ((len_usage > 0) and (verbose == 0)) or (verbose > 0):
+                print(
+                    f"...Parameter '{param}' differs in value: \n\t {name1}={biomodel1.model.parameter_values[param]} \n\t {name2}= {biomodel2.model.parameter_values[param]}")
+                if verbose > 1:
+                    print(f"\t used in {len_usage} place(s)")
+            if verbose > 0:
                 for location, names in usage.items():
                     if len(names) > 0:
                         print(f"\t{location}: {len(names)}")
                     else:
                         if verbose > 1:
                             print(f"\t{location}: 0")
-                    if verbose > 1: 
+                    if verbose > 1:
                         for n in names:
                             print(f"\t{n}")
-
