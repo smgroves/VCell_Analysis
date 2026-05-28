@@ -10,14 +10,16 @@ init(autoreset=True) # Automatically resets color after every print
 
 #TODO:
 ## make a telocentric version
-# make a csv to read in parameter scans, etc.
+# make a csv to read in parameter scans, etc.; add a suffix to the folder names that takes in param scan values, etc. for better organization and to avoid overwriting results
 #read in IC csv
 #make an option to not run tensed
 
 #TODO: option to run plotting code
 # TODO: run in a loop on rivanna: all chr and all phases 
+#TODO: add R plotting code; use input variables from here to run the code
 # TODO: organize plots with tensed/relaxed folder inside results dir, and with subfolders for each chromosome and phase.
 #TODO: make a pdf of all heatmaps combined
+#TODO: fix plot for troubleshooting regions in r code; calculations are correct but plot is not
 
 # load model from vcml file
 ########################################
