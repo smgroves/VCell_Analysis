@@ -8,11 +8,15 @@ import pandas as pd
 from colorama import Fore, Style, init
 init(autoreset=True) # Automatically resets color after every print
 
+chr = "chr19"
+phase = "PMP1"
+KT_loc = "metacentric"
+run_tensed = True
+run_transition = False
+
 #TODO:
-## make a telocentric version
-# make a csv to read in parameter scans, etc.; add a suffix to the folder names that takes in param scan values, etc. for better organization and to avoid overwriting results
+# make a csv to read in parameter scans, etc.
 #read in IC csv
-#make an option to not run tensed
 
 #TODO: option to run plotting code
 # TODO: run in a loop on rivanna: all chr and all phases 
@@ -22,9 +26,12 @@ init(autoreset=True) # Automatically resets color after every print
 #TODO: fix plot for troubleshooting regions in r code; calculations are correct but plot is not
 # TODO: Sgo1 abundance and Bub1 catalytic activity perturbations 
 
+########################################
 # load model from vcml file
 ########################################
 vcml_file_relaxed = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_models/vcml/_005_20_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1.vcml"
+bio_model = ss.load_model(vcml_file_relaxed)
+
 # this model should have rxns, parameters, compartments, and at least one application as defaults.
 
 #output name convention:
@@ -39,23 +46,14 @@ vcml_file_relaxed = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_model
 # - during a specific phase: PMP1, PMP2, PMP3, PMP4, or Metaphase
 
 #%%
-bio_model = ss.load_model(vcml_file_relaxed)
-chr = "chr19"
-phase = "PMP1"
-KT_loc = "metacentric"
-relaxed_model = ss.build_chromosome(relaxed_model=bio_model, chr=chr, phase=phase, KT_loc=KT_loc)
-
-# relaxed_model = bio_model
-# set testing params
-# sim = relaxed_model.applications[0].simulations[0]
-# sim.duration = 30.0 #this will be set for relaxed and tensed models
-# sim.output_time_step = 10.0
-#%%
+########################################
 # run each simulation of relaxed and tensed
 ########################################
-# make a csv file for each simulation with the gridpoints, chr#, phase, length, scaling factor,
-#
+# output a csv file for each simulation with the gridpoints, chr#, phase, length, scaling factor
+# save vcml files in output_dir for each simulation for reproducibility
+
 state ="relaxed"
+relaxed_model = ss.build_chromosome(relaxed_model=bio_model, chr=chr, phase=phase, KT_loc=KT_loc)
 sim = relaxed_model.applications[0].simulations[0]
 print(f"{Fore.GREEN}Running relaxed model simulation with sim.duration={sim.duration} and sim.output_time_step={sim.output_time_step}...{Style.RESET_ALL}")
 result_relaxed = ss.run_simulation(biomodel=relaxed_model, simulation=sim.name,
@@ -63,15 +61,16 @@ result_relaxed = ss.run_simulation(biomodel=relaxed_model, simulation=sim.name,
 print(result_relaxed.solver_output_dir)
 result_relaxed.plotter.plot_slice_2d(10, "CPCa", 0)
 
-state="tensed"
-print(f"{Fore.GREEN}Building tensed model from relaxed model...{Style.RESET_ALL}")
-tensed_model = ss.build_tensed_model(relaxed_model, application="Spatial")
-sim = tensed_model.applications[0].simulations[0]
-print(f"{Fore.GREEN}Running tensed model simulation with sim.duration={sim.duration} and sim.output_time_step={sim.output_time_step}...{Style.RESET_ALL}")
-result_tensed = ss.run_simulation(biomodel=tensed_model, simulation=sim.name,
+if run_tensed:
+    state="tensed"
+    print(f"{Fore.GREEN}Building tensed model from relaxed model...{Style.RESET_ALL}")
+    tensed_model = ss.build_tensed_model(relaxed_model, application="Spatial")
+    sim = tensed_model.applications[0].simulations[0]
+    print(f"{Fore.GREEN}Running tensed model simulation with sim.duration={sim.duration} and sim.output_time_step={sim.output_time_step}...{Style.RESET_ALL}")
+    result_tensed = ss.run_simulation(biomodel=tensed_model, simulation=sim.name,
                                   run_name=f"_005_20_26_CPC_metacentric_tensed_MCF10A_{chr}_{phase}_{state}", fields=None, local=True, overwrite=True)
-print(result_tensed.solver_output_dir)
-result_tensed.plotter.plot_slice_2d(10, "CPCa", 0)
+    print(result_tensed.solver_output_dir)
+    result_tensed.plotter.plot_slice_2d(10, "CPCa", 0)
 
 # print(f"{Fore.GREEN}Building transition model from relaxed model...{Style.RESET_ALL}")
 # transition_model = ss.build_transition_model(
