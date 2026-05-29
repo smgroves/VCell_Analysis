@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 
-def MCF10A_metaphase_chromosomes():
-    # chromosome length in metaphase
+def metaphase_chromosomes():
+    # chromosome length in metaphase #check where these are coming from
     chromosome_dict = {
         "chr1": [7.544134, 0.04106778919],
         "chr2": [7.339197848, 0.03995218405],

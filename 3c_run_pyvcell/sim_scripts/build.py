@@ -13,11 +13,11 @@ from colorama import Fore, Style, init
 init(autoreset=True) # Automatically resets color after every print
 
 
-def build_chromosome(relaxed_model, chr='chr19', phase="Metaphase"):
+def build_chromosome(relaxed_model, chr='chr19', phase="Metaphase", KT_loc="metacentric"):
     '''
     Adapt a relaxed model to a specific chromosome size by updating the geometry and scaling kinetic parameters accordingly.`
     '''
-    chromosome_dict = MCF10A_metaphase_chromosomes()
+    chromosome_dict = metaphase_chromosomes()
 
     #take only first decimal for chr_length
     pmp_lengths = calculate_pmp_length_df(chromosome_dict)
@@ -54,6 +54,14 @@ def build_chromosome(relaxed_model, chr='chr19', phase="Metaphase"):
 
         # update kinetochore compartments to match new geometry
         void = geo.subvolumes["name" == 'void']
+        if KT_loc == "metacentric":
+            relaxed_model.set_parameter_value("kin_y1", "((chrH / 2) - (kinH / 2))")
+            relaxed_model.set_parameter_value("kin_y2", "((chrH / 2) + (kinH / 2))")
+        elif KT_loc == "telocentric":
+            relaxed_model.set_parameter_value("kin_y1", 0)
+            relaxed_model.set_parameter_value("kin_y2", "kinH") # keep same kinetochore height as metacentric case, just move to end of chromosome
+        else:
+            raise ValueError("Invalid KT_loc value. Must be 'metacentric' or 'telocentric'.")
         void.analytic_expr = f'(((x >= 0.0) && (x < L_kin_x1) && (y >= kin_y1) && (y <= kin_y2)) || ((x > R_kin_x2) && (x <= chrW) && (y >=kin_y1) && (y <= kin_y2)))'
         expr = replace_geo_expr_param_to_numeric(void.analytic_expr,
                                                  relaxed_model.model)
