@@ -41,9 +41,10 @@ if True:
         species_list = []
 
 else:
-    # Use example data
+    # Use example data (update these paths for your machine)
+    from pathlib import Path
     file_name = "SimID_259656558_0__exported.hdf5"
-    dir_path = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/"
+    dir_path = str(Path.home() / "Box" / "CPC_Model_Project" / "VCell_Exports")
     model_name = "08_21_23_CPC_relaxed_RefModel_TTK_phos_PLK1a transactiv_sarah"
     simulation_name = (
         "08_21_23_relaxed_RefModel_TTK_phos_PLK1a_20Pac transactiv_KmTTK_5.4"

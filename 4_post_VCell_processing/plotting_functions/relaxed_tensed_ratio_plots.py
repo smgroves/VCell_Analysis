@@ -2,9 +2,12 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
-in_dir = "/Users/smgroves/Box/CPC_Model_Project/vcell_plots"
 import matplotlib as m
 import os
+from pathlib import Path
+
+# Default input directory; override by passing in_dir to the functions below
+in_dir = str(Path.home() / "Box" / "CPC_Model_Project" / "vcell_plots")
 
 
 def relaxed_tensed_plots(species, relaxed_model, tensed_model, in_dir, location = 'ic',column = "Sum_Active", active = 'active',

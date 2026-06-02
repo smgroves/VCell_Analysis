@@ -23,9 +23,11 @@ import matplotlib.pyplot as plt
 
 
 # else:
-# Use example data
+# Use example data (paths computed relative to this script's location)
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parent.parent
 model_name = "_09_16_25_CPC_metacentric_relaxed_model"
-dir_path = f"/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/FROM_RIVANNA/{model_name}"
+dir_path = str(_REPO_ROOT / "vcell_out" / "FROM_RIVANNA" / model_name)
 file_name = "reports.h5"
 sedml_name = model_name
 species_list=[]

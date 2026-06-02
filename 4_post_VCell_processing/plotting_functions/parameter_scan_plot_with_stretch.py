@@ -2,12 +2,14 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
-in_dir = "/Users/smgroves/Box/CPC_Model_Project/vcell_plots"
 import matplotlib as m
 import os
+from pathlib import Path
+
+# Default input directory; adjust for your machine
+in_dir = str(Path.home() / "Box" / "CPC_Model_Project" / "vcell_plots")
 
 name_folder = "RefModel_base_sim_relaxed_v_tensed"
-in_dir = f"/Users/smgroves/Box/CPC_Model_Project/vcell_plots"
 plot_list = ["04_02_24_tensed_RefModel","03_21_24_relaxed_RefModel_64rxns"]
 species = "CPC"
 name_list = ['Proper attachments','Improper attachments']

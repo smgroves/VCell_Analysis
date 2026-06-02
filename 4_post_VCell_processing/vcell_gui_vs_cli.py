@@ -6,18 +6,24 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import os
+from pathlib import Path
+
+# Anchor paths relative to this script and the user's home directory
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+_BOX = Path.home() / "Box" / "CPC_Model_Project"
+
 # for each simulation, for each species, plot the initial frame side by side
 simID = "264596882"
 param_scan = 0
-gui_dir = f'/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/SimID_{simID}_0__exported' #base
+gui_dir = str(_BOX / "VCell_Exports" / f"SimID_{simID}_0__exported")  #base
 #SimID_264596885_0__exported CPCi IC scan
-# cli_dir = '/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/_10_16_23/simulations/_10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv/data'
-cli_dir = "/Users/smgroves/Box/CPC_Model_Project/VCell_Rivanna_Exports/MaybeFixedResults_from_Logan_03_15_24_TEST_CPC_tensed/_10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv/data"
+# cli_dir = str(_REPO_ROOT / "vcell_out" / "_10_16_23" / "simulations" / "_10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv" / "data")
+cli_dir = str(_BOX / "VCell_Rivanna_Exports" / "MaybeFixedResults_from_Logan_03_15_24_TEST_CPC_tensed" / "_10_16_23_tensed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv" / "data")
 default_species = ["Bub1a", "Bub1a_his","CPCa","CPCi", "H2A", "H3", "Haspina","Haspini","Knl1","Mps1a","Mps1i", "Ndc80",
             "Ndc80_Mps1a", "Ndc80_Mps1i", "Ndc80_pMps1a", "Ndc80_pMps1i", "pH2A","pH2A_Sgo1","pH2A_Sgo1_CPCa","pH2A_Sgo1_CPCi",
             "pH2A_Sgo1_pH3_CPCa", "pH2A_Sgo1_pH3_CPCi", "pH3","pH3_CPCa","pH3_CPCi","pKnl1","pKnl1_Bub1a","Plk1a","Plk1i",
             "pMps1a", "pMps1i", "pNdc80", "pNdc80_Mps1a", "pNdc80_Mps1i", "pNdc80_pMps1a", "pNdc80_pMps1i", "Sgo1"]
-output = f"/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/cli_vs_gui_04_05_24/"
+output = str(_REPO_ROOT / "vcell_out" / "cli_vs_gui_04_05_24") + "/"
 try:
     os.mkdir(output)
 except FileExistsError: pass
