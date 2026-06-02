@@ -2,10 +2,12 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
-
-in_dir = "/Users/smgroves/Box/CPC_Model_Project/vcell_plots"
 import matplotlib as m
 import os
+from pathlib import Path
+
+# Default input directory; override by passing in_dir to the functions below
+in_dir = str(Path.home() / "Box" / "CPC_Model_Project" / "vcell_plots")
 
 
 def lineplot(
@@ -239,14 +241,10 @@ def plot_across_models(
     name_folder="",
 ):
     print("Plotting across models")
-    if os.path.isdir(
-        f"/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/figures/lineplot_across_sims/{name_folder}"
-    ):
+    if os.path.isdir(f"./figures/lineplot_across_sims/{name_folder}"):
         pass
     else:
-        os.makedirs(
-            f"/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/figures/lineplot_across_sims/{name_folder}"
-        )
+        os.makedirs(f"./figures/lineplot_across_sims/{name_folder}")
         print(f"Made folder {name_folder}")
     # plot_list = sorted(plot_list)
     plot_data = pd.DataFrame()
@@ -381,7 +379,7 @@ def plot_across_models(
 
 ## TO DO
 name_folder = "RefModel_base_sim_relaxed_v_tensed"
-in_dir = f"/Users/smgroves/Box/CPC_Model_Project/vcell_plots"
+in_dir = str(Path.home() / "Box" / "CPC_Model_Project" / "vcell_plots")
 plot_list = ["04_02_24_tensed_RefModel", "03_21_24_relaxed_RefModel_64rxns"]
 plot_across_models(
     "CPC",

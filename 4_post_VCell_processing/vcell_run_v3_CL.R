@@ -15,9 +15,11 @@ lapply(packages, require, character.only = TRUE, quietly=TRUE)
 tic("total")
 
 
-# CHANGE Paths for rivanna version
-# funcPath<-"/Users/smgroves/Documents/Github/VCell_Analysis/functions_CLI"
-funcPath<-"/Users/smgroves/Documents/GitHub/VCell_Analysis/functions_CLI"
+# Compute funcPath relative to this script's location (works with Rscript on any machine)
+args_all <- commandArgs(trailingOnly = FALSE)
+script_path <- normalizePath(sub("--file=", "", args_all[grep("--file=", args_all)]), mustWork = FALSE)
+script_dir  <- dirname(script_path)
+funcPath    <- normalizePath(file.path(script_dir, "..", "functions_CLI"), mustWork = FALSE)
 
 # importPath<-"/Users/smgroves/Box/CPC_Model_Project/VCell_Exports"
 # importPath<- "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/_06_23_23_model1/base_model_KdpNdc80pMps1___kpp___0_1_scan1/"

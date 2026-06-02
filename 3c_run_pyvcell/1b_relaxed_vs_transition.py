@@ -70,7 +70,7 @@ ss.export_arrays_to_csv(
     times=result_relaxed.time_points,
     sim_id=f"{result_relaxed.sim_id}_{result_relaxed.job_id}",
     run_name=result_relaxed.solver_output_dir.name,
-    output_dir=result_relaxed.solver_output_dir / "exported",
+    output_dir=result_relaxed.solver_output_dir / f"SimID_{result_relaxed.sim_id}_{result_relaxed.job_id}__exported",
 )
 
 if run_tensed:
@@ -92,7 +92,7 @@ if run_tensed:
         times=result_tensed.time_points,
         sim_id=f"{result_tensed.sim_id}_{result_tensed.job_id}",
         run_name=result_tensed.solver_output_dir.name,
-        output_dir=result_tensed.solver_output_dir / "exported",
+        output_dir=result_tensed.solver_output_dir / f"SimID_{result_tensed.sim_id}_{result_tensed.job_id}__exported",
     )
 
 # print(f"{Fore.GREEN}Building transition model from relaxed model...{Style.RESET_ALL}")

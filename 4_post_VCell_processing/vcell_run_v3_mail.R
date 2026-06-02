@@ -15,10 +15,11 @@ lapply(packages, require, character.only = TRUE)
 tic("total")
 
 
-# CHANGE
-funcPath<-"/Users/smgroves/Documents/Github/VCell_Analysis/functions"
-importPath<-"/Users/smgroves/Box/CPC_Model_Project/VCell_Exports"
-exportPath<-"/Users/smgroves/Box/CPC_Model_Project/vcell_plots"
+# Paths — funcPath anchored to the repo; data paths use the user's home directory
+# (adjust the Box sub-path below if Box Sync uses a different folder name on your machine)
+funcPath   <- normalizePath(file.path(dirname(rstudioapi::getSourceEditorContext()$path), "..", "functions"), mustWork = FALSE)
+importPath <- file.path(path.expand("~"), "Box", "CPC_Model_Project", "VCell_Exports")
+exportPath <- file.path(path.expand("~"), "Box", "CPC_Model_Project", "vcell_plots")
 # # #For metaphase chromosomes
 chromWidth=1.3 #um
 chromHeight=4.5 #um

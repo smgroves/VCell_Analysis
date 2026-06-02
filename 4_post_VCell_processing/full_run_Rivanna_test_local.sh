@@ -6,7 +6,11 @@ MODEL_NAME=MaybeFixedResults
 
 SEDML_NAME=TEST_10_16_23_CPC_tensed_RefModel_128x64_to_omex_SBML_units
 
-OUTPUT=/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/${MODEL_NAME}
+# Compute repo root relative to this script so paths work on any machine
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+OUTPUT="${REPO_DIR}/vcell_out/${MODEL_NAME}"
 
 echo $OUTPUT
 

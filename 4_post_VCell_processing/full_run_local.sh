@@ -9,11 +9,15 @@
 MODEL_NAME=_06_23_23_model1
 MODEL=${MODEL_NAME}.omex
 
+# Compute repo root relative to this script so paths work on any machine
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
 # SIF=/home/${USER}/vcell_misc/vcell_sif.sif
 # ${SIF}, /path/to/save/singularity-image.sif
 # INPUT=/scratch/${USER}/vcell_in/${MODEL}
 # ${INPUT}, /path/to/input/omex/file.omex
-OUTPUT=/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_out/${MODEL_NAME}
+OUTPUT="${REPO_DIR}/vcell_out/${MODEL_NAME}"
 mkdir ${OUTPUT}
 # ${OUTPUT}, /path/to/output/folder
 

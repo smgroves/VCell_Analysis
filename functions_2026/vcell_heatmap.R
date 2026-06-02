@@ -19,7 +19,7 @@ vcell_heatmap <- function(
   
   # misc
   folderVar <- 0
-  leader <- 10
+  leader <- 10  # CSVs have a 10-line header matching hdf5_converter.py format
   offset <- NULL
   
   pattern<-paste("[A-Za-z0-9_]*","exported",sep="")

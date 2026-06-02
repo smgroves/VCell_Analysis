@@ -110,7 +110,7 @@ line_plot <- function(
 
   # misc
   folderVar <- 0
-  leader <- 10
+  leader <- 10  # CSVs have a 10-line header matching hdf5_converter.py format
   offset <- NULL
   
   

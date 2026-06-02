@@ -188,6 +188,40 @@ def get_species_array(
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Internal CSV writer
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _write_csv(
+    arr: np.ndarray,
+    label: str,
+    t_val: float,
+    times: list[float],
+    sim_id: str,
+    run_name: str,
+    all_labels: list[str],
+    out: Path,
+    t_idx: int,
+) -> None:
+    """Write a single 2-D array to a CSV with the 10-line hdf5_converter header."""
+    header = (
+        f"Model: {run_name}\n"
+        f"Simulation: {sim_id}\n"
+        f"(SimID_{sim_id} (PDE Simulation)) \n"
+        f"Sim time range ({times[0]} {times[-1]}) (saved timepoints {len(times)}) \n"
+        f"Number of variables {len(all_labels)} \n"
+        f"Variable names {all_labels} \n"
+        " \n"
+        f"2D Slice for variable {label} at time {t_val} in plane XY at Z = 0 \n"
+        " \n"
+        "X in rows, Y in columns \n"
+    )
+    fname = out / f"SimID_{sim_id}__Slice_XY_0_{label}_{t_idx:04d}.csv"
+    with open(fname, "w") as fh:
+        fh.write(header)
+    pd.DataFrame(arr).to_csv(fname, index=False, header=False, mode="a")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Main export function
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -195,6 +229,7 @@ def export_result_to_csv(
     result: Result,
     species_list: Optional[list[str]] = None,
     output_dir: Optional[Union[str, Path]] = None,
+    include_summary_functions: bool = True,
 ) -> Path:
     """Export simulation results to CSV files, one per variable per timepoint.
 
@@ -206,8 +241,9 @@ def export_result_to_csv(
 
         SimID_{sim_id}_{job_id}__Slice_XY_0_{label}_{t_idx:04d}.csv
 
-    and contains a plain-text metadata header followed by the 2-D spatial
-    array (X rows, Y columns) with no pandas index or column headers.
+    and contains a 10-line plain-text metadata header followed by the 2-D
+    spatial array (X rows, Y columns) with no pandas index or column headers —
+    exactly the format expected by the R plotting pipeline (``skip = 10``).
 
     Parameters
     ----------
@@ -221,8 +257,14 @@ def export_result_to_csv(
         Labels absent from the zarr are skipped and reported.
     output_dir : str | Path | None
         Destination folder.  Defaults to
-        ``<solver_output_dir>/exported/``, i.e. a subfolder inside the
-        simulation's workspace directory.
+        ``<solver_output_dir>/SimID_{sim_id}_{job_id}__exported/``
+        so that the R pipeline can find the files when given
+        ``sims = "SimID_{sim_id}_{job_id}_"``.
+    include_summary_functions : bool
+        When ``True`` (default), automatically compute
+        :func:`compute_summary_functions` (``CPC_all``, ``bound_CPC``, etc.)
+        and write those CSVs into the same output folder.  This ensures R
+        does not fail with a missing-file error for these variables.
 
     Returns
     -------
@@ -235,17 +277,13 @@ def export_result_to_csv(
 
         result = ss.run_simulation(biomodel, sim.name, run_name="my_run")
         out = ss.export_result_to_csv(result)
-        # CSVs are at workspace/my_run/exported/SimID_*__Slice_XY_0_CPCa_0000.csv, …
-
-    Notes
-    -----
-    Composite summary functions (``CPC_all``, ``CPCa_total``, etc.) are
-    **not** stored in the zarr.  Use :func:`compute_summary_functions` to
-    derive them from species arrays, then pass the result to
-    :func:`export_arrays_to_csv`.
+        # CSVs land in workspace/my_run/SimID_{id}_{job}__exported/
     """
     solver_dir = Path(result.solver_output_dir)
-    out = Path(output_dir) if output_dir is not None else solver_dir / "exported"
+    sim_id = f"{result.sim_id}_{result.job_id}"
+    run_name = solver_dir.name
+    default_out = solver_dir / f"SimID_{sim_id}__exported"
+    out = Path(output_dir) if output_dir is not None else default_out
     out.mkdir(parents=True, exist_ok=True)
 
     # build label → channel map
@@ -254,8 +292,6 @@ def export_result_to_csv(
 
     z = result.zarr_dataset          # (T, C, Z, X, Y)
     times = result.time_points       # list[float]
-    sim_id = f"{result.sim_id}_{result.job_id}"
-    run_name = solver_dir.name
 
     found: list[str] = []
     missing: list[str] = []
@@ -271,34 +307,27 @@ def export_result_to_csv(
         for t_idx, t_val in enumerate(times):
             # zarr[time, channel, z_slice, X, Y] → squeeze z → (X, Y)
             arr = np.asarray(z[t_idx, ch_idx, 0, :, :])
+            _write_csv(arr, label, t_val, times, sim_id, run_name, export_labels, out, t_idx)
 
-            header = (
-                f"Run: {run_name}\n"
-                f"SimID: {sim_id}\n"
-                f"Sim time range ({times[0]} {times[-1]}) "
-                f"(saved timepoints {len(times)})\n"
-                f"2D Slice for variable {label} at time {t_val} "
-                f"in plane XY at Z = 0\n"
-                "X in rows, Y in columns\n"
-            )
-            fname = out / f"SimID_{sim_id}__Slice_XY_0_{label}_{t_idx:04d}.csv"
-            with open(fname, "w") as fh:
-                fh.write(header)
-            pd.DataFrame(arr).to_csv(fname, index=False, header=False, mode="a")
-
-    print(
-        f"Exported {len(found)} variable(s) × {len(times)} timepoint(s) → {out}"
-    )
+    print(f"Exported {len(found)} species × {len(times)} timepoint(s) → {out}")
     if missing:
-        _summary_missing = [m for m in missing if m in SUMMARY_FUNCTIONS]
-        _other_missing = [m for m in missing if m not in SUMMARY_FUNCTIONS]
-        if _other_missing:
-            print(f"  Warning – labels not found in zarr (skipped): {_other_missing}")
-        if _summary_missing:
-            print(
-                f"  Note – summary functions not in zarr (use compute_summary_functions): "
-                f"{_summary_missing}"
-            )
+        _other = [m for m in missing if m not in SUMMARY_FUNCTIONS]
+        _funcs = [m for m in missing if m in SUMMARY_FUNCTIONS]
+        if _other:
+            print(f"  Warning – labels not found in zarr (skipped): {_other}")
+        if _funcs:
+            print(f"  Note – summary functions not in zarr: {_funcs} (will be computed below)")
+
+    if include_summary_functions:
+        funcs = compute_summary_functions(result)
+        export_arrays_to_csv(
+            arrays=funcs,
+            times=times,
+            sim_id=sim_id,
+            run_name=run_name,
+            output_dir=out,
+        )
+
     return out
 
 
@@ -335,23 +364,12 @@ def export_arrays_to_csv(
     out = Path(output_dir)
     out.mkdir(parents=True, exist_ok=True)
 
+    all_labels = list(arrays.keys())
     for label, arr in arrays.items():
         for t_idx, t_val in enumerate(times):
-            header = (
-                f"Run: {run_name}\n"
-                f"SimID: {sim_id}\n"
-                f"Sim time range ({times[0]} {times[-1]}) "
-                f"(saved timepoints {len(times)})\n"
-                f"2D Slice for variable {label} at time {t_val} "
-                f"in plane XY at Z = 0\n"
-                "X in rows, Y in columns\n"
-            )
-            fname = out / f"SimID_{sim_id}__Slice_XY_0_{label}_FUNCTION_{t_idx:04d}.csv"
-            with open(fname, "w") as fh:
-                fh.write(header)
-            pd.DataFrame(arr[t_idx]).to_csv(fname, index=False, header=False, mode="a")
+            _write_csv(arr[t_idx], label, t_val, times, sim_id, run_name, all_labels, out, t_idx)
 
-    print(f"Exported {len(arrays)} function(s) × {len(times)} timepoint(s) → {out}")
+    print(f"Exported {len(arrays)} summary function(s) × {len(times)} timepoint(s) → {out}")
     return out
 
 

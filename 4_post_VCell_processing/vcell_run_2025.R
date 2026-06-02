@@ -6,9 +6,12 @@ tic("total")
 
 
 # CHANGE: Folder paths
-funcPath<-"../functions_2026"
-importPath<-"../workspace/"
-exportPath<-"../workspace/"
+# Compute absolute paths relative to this script so they work on any machine
+# and remain stable after setwd() calls inside the helper functions.
+script_dir  <- normalizePath(dirname(rstudioapi::getSourceEditorContext()$path), mustWork = FALSE)
+funcPath    <- normalizePath(file.path(script_dir, "..", "functions_2026"), mustWork = FALSE)
+importPath  <- normalizePath(file.path(script_dir, "..", "workspace"),      mustWork = FALSE)
+exportPath  <- normalizePath(file.path(script_dir, "..", "workspace"),      mustWork = FALSE)
 
 # Functions
 functions<-list.files(funcPath,recursive=TRUE)
@@ -112,22 +115,21 @@ species_info_list[[11]] <- c("pH3S10rep", "Inactive Species", "Active Species", 
 # Model type, goes on the left of the heatmap
 # Change
 kt_width = c(
-  "Metacentric_Relaxed",
+  "Metacentric_Relaxed"
 )
 
 # All simulation IDs
 # Change
 sims <- c(
-  "SimID_1105102268_0_",
+  "SimID_1105102268_0_"
   )
 
 # Folder naming corresponding to specific simulation ID
 # Change
 var <- c(
-  "_005_20_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1_compare",
+  "_005_20_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1_compare"
 )
 #########################################################
-
 
 for(i in 1:length(sims)){
   if(file.exists(importPath) == TRUE){
@@ -137,9 +139,10 @@ for(i in 1:length(sims)){
     
     print(sweep_name)
     
+    importPath_new <- file.path(importPath, sweep_name)
 
-    dir.create(file.path(exportPath, sweep_name, "exported"))
-    exportPath_new <- paste(exportPath, sweep_name, "plots", sep="/")
+    dir.create(file.path(exportPath, sweep_name, "exported"), recursive = TRUE, showWarnings = FALSE)
+    exportPath_new <- file.path(exportPath, sweep_name, "plots")
 
     
     save_plots(sims[i],
@@ -156,7 +159,7 @@ for(i in 1:length(sims)){
                alternative_range <- c(0, 1, 3, 5, 10, 20), #alternative desired time points to be plotted on heatmaps
                cutoff=list("CPC"=12), #for heatmap color bar
                funcPath,
-               importPath,
+               importPath_new,
                exportPath_new,
                kt_width[i],
                movie = FALSE,

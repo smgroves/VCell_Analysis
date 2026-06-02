@@ -20,10 +20,10 @@ column = "Sum_Active"
 name = None
 
 
-if os.path.isdir(f"/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/figures/lineplot_across_sims/{name_folder}"):
+if os.path.isdir(f"./figures/lineplot_across_sims/{name_folder}"):
     pass
 else:
-    os.makedirs(f"/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/figures/lineplot_across_sims/{name_folder}")
+    os.makedirs(f"./figures/lineplot_across_sims/{name_folder}")
     print(f"Made folder {name_folder}")
 # plot_list = sorted(plot_list)
 plot_data = pd.DataFrame()
@@ -149,7 +149,7 @@ ax2.legend(loc = "lower right")
 
 # finally, adjust everything a bit to make it prettier (this just moves everything, best to try and iterate)
 f.subplots_adjust(left=0.1, right=0.9, bottom=0.1, top=0.9)
-plt.savefig(f"/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/figures/lineplot_across_sims/{name_folder}/{name_plot}-{species}_loc-{location}_with_stretch_split_small.pdf")
+plt.savefig(f"./figures/lineplot_across_sims/{name_folder}/{name_plot}-{species}_loc-{location}_with_stretch_split_small.pdf")
 
 # f.tight_layout()
 plt.show()

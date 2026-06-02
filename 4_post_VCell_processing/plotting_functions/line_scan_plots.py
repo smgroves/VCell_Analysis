@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import os
 import pathlib
 import re
+from pathlib import Path
 from sklearn.metrics import auc
 
 # for some species, make a line plot of the horizontal and vertical axes of the heatmap
@@ -175,7 +176,7 @@ def line_scan_plot(
             plt.show()
 
 
-outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/figures"
+outdir = str(Path(__file__).resolve().parent / "figures")
 # # sim = {"SimID_270423544_0__exported":"04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan0",
 # #        "SimID_270423544_1__exported":"04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan1",
 # #        "SimID_270423544_2__exported":"04_01_24_relaxed_RefModel_Bub1_his_kd_0.001_Knl1_scan2"}
@@ -202,7 +203,7 @@ outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/plotting_functions/fig
 # species = 'CPC'
 # line_scan_plot(species, sim, indir, out_dir=outdir, name = "Sgo1_CPC_synergy", save=True, ymax = 6, tSpan = 500)
 
-indir = "/Users/smgroves/Box/CPC_Model_Project/VCell_Exports/data_for_comparisons"
+indir = str(Path.home() / "Box" / "CPC_Model_Project" / "VCell_Exports" / "data_for_comparisons")
 sim = {
     "SimID_278800752_0__exported": "11_06_24_relaxed_RefModel_MonseData_Sgo1_down_0",
     "SimID_278800752_1__exported": "11_06_24_relaxed_RefModel_MonseData_Sgo1_down_0.006",
