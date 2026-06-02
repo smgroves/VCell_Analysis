@@ -61,6 +61,18 @@ result_relaxed = ss.run_simulation(biomodel=relaxed_model, simulation=sim.name,
 print(result_relaxed.solver_output_dir)
 result_relaxed.plotter.plot_slice_2d(10, "CPCa", 0)
 
+# Export spatial CSVs (one per species per timepoint) to workspace/run_name/exported/
+ss.export_result_to_csv(result_relaxed)
+# Also compute and export composite summary functions (CPC_all, CPCa_total, etc.)
+funcs_relaxed = ss.compute_summary_functions(result_relaxed)
+ss.export_arrays_to_csv(
+    arrays=funcs_relaxed,
+    times=result_relaxed.time_points,
+    sim_id=f"{result_relaxed.sim_id}_{result_relaxed.job_id}",
+    run_name=result_relaxed.solver_output_dir.name,
+    output_dir=result_relaxed.solver_output_dir / "exported",
+)
+
 if run_tensed:
     state="tensed"
     print(f"{Fore.GREEN}Building tensed model from relaxed model...{Style.RESET_ALL}")
@@ -72,6 +84,17 @@ if run_tensed:
     print(result_tensed.solver_output_dir)
     result_tensed.plotter.plot_slice_2d(10, "CPCa", 0)
 
+    # Export spatial CSVs to workspace/run_name/exported/
+    ss.export_result_to_csv(result_tensed)
+    funcs_tensed = ss.compute_summary_functions(result_tensed)
+    ss.export_arrays_to_csv(
+        arrays=funcs_tensed,
+        times=result_tensed.time_points,
+        sim_id=f"{result_tensed.sim_id}_{result_tensed.job_id}",
+        run_name=result_tensed.solver_output_dir.name,
+        output_dir=result_tensed.solver_output_dir / "exported",
+    )
+
 # print(f"{Fore.GREEN}Building transition model from relaxed model...{Style.RESET_ALL}")
 # transition_model = ss.build_transition_model(
 #     relaxed_model=relaxed_model, field_data_dir="_005_20_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1_test_run", application="Spatial", t_transition=30)
@@ -80,5 +103,14 @@ if run_tensed:
 #                                       run_name="_005_20_26_CPC_metacentric_transition_MCF10A_chr19_PMP1__from_pyvcell_test_run", fields=None, local=True, overwrite=True)
 # print(result_transition.solver_output_dir)
 # result_transition.plotter.plot_slice_2d(10, "CPCa", 0)
+# ss.export_result_to_csv(result_transition)
+# funcs_transition = ss.compute_summary_functions(result_transition)
+# ss.export_arrays_to_csv(
+#     arrays=funcs_transition,
+#     times=result_transition.time_points,
+#     sim_id=f"{result_transition.sim_id}_{result_transition.job_id}",
+#     run_name=result_transition.solver_output_dir.name,
+#     output_dir=result_transition.solver_output_dir / "exported",
+# )
 
 # %%
