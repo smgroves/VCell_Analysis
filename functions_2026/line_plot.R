@@ -200,22 +200,27 @@ line_plot <- function(
     
     for(q in 1:length(all_species)){
 
-      
-      matrix <- L[[q]]
-      
-      left_kinetochore <-matrix[y1:y2, x1:x2]
-      right_kinetochore <-matrix[y1:y2, x5:x6]
-      inner_centromere <-matrix[y1:y2, x3:x4]
-      background <- matrix[y1_bg:y2_bg, x7:x8]
-      
-      
-      lk <- mean(left_kinetochore)
-      rk <- mean(right_kinetochore)
-      ic <- mean(inner_centromere)
-      kt <- mean(lk, rk)
-      bg <- mean(background)
-      
-      
+      mat <- L[[q]]
+
+      # Skip species that failed to load (NULL matrix)
+      if (is.null(mat)) {
+        kt_species[[q]][z+1] <- NA
+        ic_species[[q]][z+1] <- NA
+        bg_species[[q]][z+1] <- NA
+        next
+      }
+
+      left_kinetochore  <- mat[y1:y2, x1:x2]
+      right_kinetochore <- mat[y1:y2, x5:x6]
+      inner_centromere  <- mat[y1:y2, x3:x4]
+      background        <- mat[y1_bg:y2_bg, x7:x8]
+
+      lk <- mean(left_kinetochore,  na.rm = TRUE)
+      rk <- mean(right_kinetochore, na.rm = TRUE)
+      ic <- mean(inner_centromere,  na.rm = TRUE)
+      kt <- mean(c(lk, rk),         na.rm = TRUE)  # was mean(lk, rk) → wrong: treated rk as trim arg
+      bg <- mean(background,        na.rm = TRUE)
+
       kt_species[[q]][z+1] <- kt
       ic_species[[q]][z+1] <- ic
       bg_species[[q]][z+1] <- bg
@@ -545,8 +550,7 @@ line_plot <- function(
     if(length(active_ic) < n_highlight){
       highlight_active_ic <- filtered_active_ic %>% select(all_of(active_ic))
     }else{
-      highlight_active_ic <- filtered_active_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      highlight_active_ic <- filtered_active_ic %>% select(all_of(order(highlight_active_ic, decreasing = TRUE))[1:n_highlight])
+      highlight_active_ic <- filtered_active_ic %>% select(all_of(order(colMax(filtered_active_ic), decreasing = TRUE))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -604,8 +608,7 @@ line_plot <- function(
     if(length(active_ic) < n_highlight){
       highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(active_ic))
     }else{
-      highlight_inactive_ic <- filtered_inactive_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(order(highlight_inactive_ic, decreasing = TRUE))[1:n_highlight])
+      highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(order(colMax(filtered_inactive_ic), decreasing = TRUE))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -662,8 +665,7 @@ line_plot <- function(
     if(length(active_kt) < n_highlight){
       highlight_active_kt <- filtered_active_kt %>% select(all_of(active_kt))
     }else{
-      highlight_active_kt <- filtered_active_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      highlight_active_kt <- filtered_active_kt %>% select(all_of(order(highlight_active_kt, decreasing = TRUE))[1:n_highlight])
+      highlight_active_kt <- filtered_active_kt %>% select(all_of(order(colMax(filtered_active_kt), decreasing = TRUE))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -721,8 +723,7 @@ line_plot <- function(
     if(length(active_kt) < n_highlight){
       highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(active_kt))
     }else{
-      highlight_inactive_kt <- filtered_inactive_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(order(highlight_inactive_kt, decreasing = TRUE))[1:n_highlight])
+      highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(order(colMax(filtered_inactive_kt), decreasing = TRUE))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -774,8 +775,7 @@ line_plot <- function(
     if(length(ic) < n_highlight){
       highlight_ic <- filtered_ic %>% select(all_of(ic))
     }else{
-      highlight_ic <- filtered_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      highlight_ic <- filtered_ic %>% select(all_of(order(highlight_ic, decreasing = TRUE))[1:n_highlight])
+      highlight_ic <- filtered_ic %>% select(all_of(order(colMax(filtered_ic), decreasing = TRUE))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -833,8 +833,7 @@ line_plot <- function(
     if(length(kt) < n_highlight){
       highlight_kt <- filtered_kt %>% select(all_of(kt))
     }else{
-      highlight_kt <- filtered_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
-      highlight_kt <- filtered_kt %>% select(all_of(order(highlight_kt, decreasing = TRUE))[1:n_highlight])
+      highlight_kt <- filtered_kt %>% select(all_of(order(colMax(filtered_kt), decreasing = TRUE))[1:n_highlight])
     }
     
     # Add in Time and Sum

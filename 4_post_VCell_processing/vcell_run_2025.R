@@ -111,24 +111,28 @@ species_info_list[[10]] <- c("pNDC80_total", "Inactive Species", "Active Species
 species_info_list[[11]] <- c("pH3S10rep", "Inactive Species", "Active Species", "pH3S10 reporter", FALSE, FALSE, TRUE, FALSE)
 
 # ---------------- SIMULATION SPECIFICS ---------------
+# CHANGE the two vectors below — that is all that is needed.
+#
+# var      – workspace folder name(s); one entry per simulation run
+# kt_width – label for each run used in plot titles and region logic
+#            ("Metacentric_Relaxed", "Metacentric_Tensed", etc.)
+#
+# The SimID is detected automatically from the .fvinput file in each folder.
 
-# Model type, goes on the left of the heatmap
-# Change
-kt_width = c(
-  "Metacentric_Relaxed"
-)
-
-# All simulation IDs
-# Change
-sims <- c(
-  "SimID_1105102268_0_"
-  )
-
-# Folder naming corresponding to specific simulation ID
-# Change
 var <- c(
-  "_005_20_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1_compare"
+  # "_005_20_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1_compare",
+  "_005_20_26_CPC_metacentric_tensed_MCF10A_chr19_PMP1__from_pyvcell_compare"
 )
+
+kt_width <- c(
+  # "Metacentric_Relaxed",
+  "Metacentric_Tensed"
+  
+)
+
+# Auto-detect SimID from each workspace folder from pyvcell output — no manual entry needed
+sims <- sapply(var, get_sim_id, workspace_path = importPath, USE.NAMES = FALSE)
+message("Detected SimIDs: ", paste(sims, collapse = ", "))
 #########################################################
 
 for(i in 1:length(sims)){
@@ -184,4 +188,15 @@ for(i in 1:length(sims)){
   # kt_width      = kt_width[i]
   # )
 }
+# 
+# # Collect a specific heatmap across several models
+# collect_plots(
+#   plot_name      = "all CPC_heatmap",
+#   var            = c(
+#     "_005_20_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1_compare",
+#     "_005_20_26_CPC_metacentric_tensed_MCF10A_chr19_PMP1_compare"
+#   ),
+#   workspace_path = importPath
+# )
+# # → saves  workspace/all_CPC_heatmap_combined.pdf
 

@@ -222,8 +222,7 @@ vcell_heatmap <- function(
   ##heatmap
   
   p<-ggplot(data=dataMat2,aes(x=X, y=Y, fill=C))+
-    ggrastr::rasterise(geom_tile(), dpi = 600) +
-    # geom_tile()+
+    geom_tile()+
     facet_grid(factor(ID_long,levels=ID_lev,labels=ID_labs) ~ factor(t_long,levels=t_lev,labels=t_labs), switch="y",labeller = label_wrap_gen(width = 10, multi_line = TRUE))+
     coord_fixed(ratio = 1, xlim = NULL, ylim = NULL, expand = TRUE, clip = "on")+
     # scale_fill_gradientn(name=legend_name,limits=c(0,maxColor),breaks=c(0,round(maxColor/2,digits=0),maxColor),labels=labelString,colors=c("black","blueviolet","blue","cyan","green","yellow","orange","red"),na.value="grey100")+

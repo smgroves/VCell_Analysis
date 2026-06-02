@@ -76,14 +76,17 @@ check_regions <- function(x1, x2, x3, x4, x5, x6,
   # convert matrix row->plot y so that image has row 1 at top:
   df$y_plot <- nrowM - df$y + 1
   
-  # rectangles: convert matrix indices to plotting coordinates
-  # We'll draw rectangle edges exactly around pixel centers.
+  # rectangles: convert matrix indices to plotting coordinates.
+  # Each pixel at y_plot = nrowM - row + 1 occupies the area
+  # [y_plot - 0.5, y_plot + 0.5], so the region spanning rows y1..y2 occupies
+  # y_plot values (nrowM-y2+1) through (nrowM-y1+1), giving:
+  #   ymin = (nrowM - y2 + 1) - 0.5 = nrowM - y2 + 0.5
+  #   ymax = (nrowM - y1 + 1) + 0.5 = nrowM - y1 + 1.5
   rects <- data.frame(
     xmin = c(x1, x3, x5) - 0.5,
     xmax = c(x2, x4, x6) + 0.5,
-    # since we inverted Y, compute ymin/ymax in plotting coordinates:
     ymin = nrowM - c(y2, y2, y2) + 0.5,
-    ymax = nrowM - c(y1, y1, y1) + 0.5,
+    ymax = nrowM - c(y1, y1, y1) + 1.5,   # was + 0.5; +1.5 includes the top pixel row
     region = c("Left_KT", "Inner_Centromere", "Right_KT")
   )
   
@@ -108,21 +111,15 @@ check_regions <- function(x1, x2, x3, x4, x5, x6,
     scale_color_manual(values = c("Left_KT" = "red", "Inner_Centromere" = "blue", "Right_KT" = "red"),
                        guide = guide_legend(title = "Regions"))
   
-  # also compute summary counts in each region and print
-  counts <- sapply(1:nrow(rects), function(i) {
-    rx <- (ceiling(rects$xmin[i] + 0.5)) : (floor(rects$xmax[i] - 0.5))
-    # convert back to matrix row index space (undo y_plot inversion)
-    ry_plot <- (ceiling(rects$ymin[i] - 0.5)):(floor(rects$ymax[i] + 0.5))
-    # convert plot y back to matrix y:
-    ry <- nrowM - ry_plot + 1
-    # clamp
-    rx <- rx[rx >= 1 & rx <= ncolM]
-    ry <- ry[ry >= 1 & ry <= nrowM]
-    if (length(rx) == 0 || length(ry) == 0) return(0L)
-    sum(bin[ry, rx])
-  })
-  
-  names(counts) <- rects$region
+  # Counts: slice the binary matrix directly with the original row/column indices.
+  # bin[row, col] where row = x-dimension (y1:y2) and col = y-dimension (x1:x2).
+  # This avoids any round-trip through y_plot coordinates.
+  ry <- y1:y2
+  counts <- c(
+    Left_KT          = sum(bin[ry, x1:x2]),
+    Inner_Centromere = sum(bin[ry, x3:x4]),
+    Right_KT         = sum(bin[ry, x5:x6])
+  )
   if (verbose) {
     message("Counts of '1' in regions:")
     print(counts)

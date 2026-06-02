@@ -97,13 +97,31 @@ DEFAULT_SPECIES: list[str] = [
 
 # Composite summary functions (NOT stored in zarr; compute with
 # compute_summary_functions() and pass to export_arrays_to_csv() if needed).
+# These are conservation-law totals derived from the model species list.
 SUMMARY_FUNCTIONS: list[str] = [
-    "CPC_all",
-    "CPCa_total",
-    "CPCi_total",
-    "pH2_all",
-    "bound_CPC",
-    "bound_active_CPC",
+    # ── CPC / INCENP-Aurora ────────────────────────────────
+    "CPC_all",           # all CPC forms
+    "CPCa_total",        # all active CPC forms
+    "CPCi_total",        # all inactive CPC forms
+    "bound_CPC",         # chromatin-bound CPC (active + inactive)
+    "bound_active_CPC",  # chromatin-bound active CPC
+    # ── Histone marks ─────────────────────────────────────
+    "pH2_all",           # all phospho-H2A forms
+    "H2A_total",         # all H2A forms (free + phospho + complexed)
+    "H3_total",          # all H3-Thr3 forms (H3, pH3, + CPC complexes)
+    # ── NDC80 ─────────────────────────────────────────────
+    "pNDC80_total",      # all phospho-NDC80 forms
+    "NDC80_total",       # all NDC80 forms (free + phospho + TTK complexes)
+    # ── TTK (Mps1) ────────────────────────────────────────
+    "TTK_total",         # all TTK forms (free + phospho + NDC80 complexes)
+    # ── KNL1 / BUB1 ───────────────────────────────────────
+    "KNL1_total",        # KNL1 + pKNL1 + pKNL1:BUB1a
+    "BUB1_total",        # BUB1a + BUB1a:pKNL1
+    # ── SGO1 ──────────────────────────────────────────────
+    "SGO1_total",        # all SGO1 forms (free + pH2A:SGO1 + CPC complexes)
+    # ── Kinases ───────────────────────────────────────────
+    "HASPIN_total",      # HASPINa + HASPINi
+    "PLK1_total",        # PLK1a + PLK1i
 ]
 
 
@@ -424,40 +442,114 @@ def compute_summary_functions(result: Result) -> dict[str, np.ndarray]:
         """Fetch (T, X, Y) array for *label*."""
         return get_species_array(result, label)
 
+    # ── CPC / INCENP-Aurora ────────────────────────────────────────────────────
+    # All CPC forms: free active, free inactive, bound to H3/pH3/pH2A:SGO1/SGO1
     CPC_all = (
-        _g("CPCa") + _g("pH2A_SGO1_CPCa") + _g("H3_CPCa") + _g("pH3_CPCa")
-        + _g("SGO1_CPCa")
-        + _g("CPCi") + _g("pH2A_SGO1_CPCi") + _g("H3_CPCi") + _g("pH3_CPCi")
-        + _g("SGO1_CPCi")
-    )
-    CPCa_total = (
-        _g("CPCa") + _g("pH2A_SGO1_CPCa") + _g("H3_CPCa")
-        + _g("pH3_CPCa") + _g("SGO1_CPCa")
-    )
-    CPCi_total = (
-        _g("CPCi") + _g("pH2A_SGO1_CPCi") + _g("H3_CPCi")
-        + _g("pH3_CPCi") + _g("SGO1_CPCi")
-    )
-    bound_CPC = (
-        _g("pH2A_SGO1_CPCa") + _g("pH2A_SGO1_CPCi")
-        + _g("H3_CPCa") + _g("H3_CPCi")
+        _g("CPCa") + _g("CPCi")
+        + _g("H3_CPCa")  + _g("H3_CPCi")
         + _g("pH3_CPCa") + _g("pH3_CPCi")
+        + _g("pH2A_SGO1_CPCa") + _g("pH2A_SGO1_CPCi")
         + _g("SGO1_CPCa") + _g("SGO1_CPCi")
     )
-    bound_active_CPC = (
-        _g("pH2A_SGO1_CPCa") + _g("H3_CPCa")
-        + _g("pH3_CPCa") + _g("SGO1_CPCa")
+    CPCa_total = (                          # all active CPC forms
+        _g("CPCa")
+        + _g("H3_CPCa") + _g("pH3_CPCa")
+        + _g("pH2A_SGO1_CPCa") + _g("SGO1_CPCa")
     )
-    pH2_all = (
+    CPCi_total = (                          # all inactive CPC forms
+        _g("CPCi")
+        + _g("H3_CPCi") + _g("pH3_CPCi")
+        + _g("pH2A_SGO1_CPCi") + _g("SGO1_CPCi")
+    )
+    bound_CPC = (                           # chromatin-bound CPC (active + inactive)
+        _g("H3_CPCa")  + _g("H3_CPCi")
+        + _g("pH3_CPCa") + _g("pH3_CPCi")
+        + _g("pH2A_SGO1_CPCa") + _g("pH2A_SGO1_CPCi")
+        + _g("SGO1_CPCa") + _g("SGO1_CPCi")
+    )
+    bound_active_CPC = (                    # chromatin-bound active CPC only
+        _g("H3_CPCa") + _g("pH3_CPCa")
+        + _g("pH2A_SGO1_CPCa") + _g("SGO1_CPCa")
+    )
+
+    # ── Histone marks ──────────────────────────────────────────────────────────
+    pH2_all = (                             # all phospho-H2A forms
         _g("pH2A") + _g("pH2A_SGO1")
         + _g("pH2A_SGO1_CPCa") + _g("pH2A_SGO1_CPCi")
     )
+    H2A_total = (                           # conservation: all H2A forms
+        _g("H2A") + _g("pH2A") + _g("pH2A_SGO1")
+        + _g("pH2A_SGO1_CPCa") + _g("pH2A_SGO1_CPCi")
+    )
+    H3_total = (                            # conservation: all H3-Thr3 forms
+        _g("H3") + _g("H3_CPCa") + _g("H3_CPCi")
+        + _g("pH3") + _g("pH3_CPCa") + _g("pH3_CPCi")
+    )
+
+    # ── NDC80 ──────────────────────────────────────────────────────────────────
+    pNDC80_total = (                        # all phospho-NDC80 forms
+        _g("pNDC80")
+        + _g("pNDC80_TTKa") + _g("pNDC80_TTKi")
+        + _g("pNDC80_pTTKa") + _g("pNDC80_pTTKi")
+    )
+    NDC80_total = (                         # conservation: all NDC80 forms
+        _g("NDC80") + _g("pNDC80")
+        + _g("NDC80_TTKa")  + _g("NDC80_TTKi")
+        + _g("NDC80_pTTKa") + _g("NDC80_pTTKi")
+        + _g("pNDC80_TTKa")  + _g("pNDC80_TTKi")
+        + _g("pNDC80_pTTKa") + _g("pNDC80_pTTKi")
+    )
+
+    # ── TTK (Mps1) ─────────────────────────────────────────────────────────────
+    TTK_total = (                           # conservation: all TTK forms
+        _g("TTKa") + _g("TTKi") + _g("pTTKa") + _g("pTTKi")
+        + _g("NDC80_TTKa")  + _g("NDC80_TTKi")
+        + _g("NDC80_pTTKa") + _g("NDC80_pTTKi")
+        + _g("pNDC80_TTKa")  + _g("pNDC80_TTKi")
+        + _g("pNDC80_pTTKa") + _g("pNDC80_pTTKi")
+    )
+
+    # ── KNL1 / BUB1 ────────────────────────────────────────────────────────────
+    KNL1_total = (                          # conservation: all KNL1 forms
+        _g("KNL1") + _g("pKNL1") + _g("pKNL1_bub1a")
+    )
+    BUB1_total = (                          # conservation: all BUB1a forms
+        _g("BUB1a") + _g("BUB1a_pknl1")
+    )
+
+    # ── SGO1 ───────────────────────────────────────────────────────────────────
+    SGO1_total = (                          # conservation: all SGO1 forms
+        _g("SGO1") + _g("pH2A_SGO1")
+        + _g("SGO1_CPCa") + _g("SGO1_CPCi")
+        + _g("pH2A_SGO1_CPCa") + _g("pH2A_SGO1_CPCi")
+    )
+
+    # ── Kinases ────────────────────────────────────────────────────────────────
+    HASPIN_total = _g("HASPINa") + _g("HASPINi")
+    PLK1_total   = _g("PLK1a")   + _g("PLK1i")
 
     return {
+        # CPC
         "CPC_all":          CPC_all,
         "CPCa_total":       CPCa_total,
         "CPCi_total":       CPCi_total,
         "bound_CPC":        bound_CPC,
         "bound_active_CPC": bound_active_CPC,
+        # Histone marks
         "pH2_all":          pH2_all,
+        "H2A_total":        H2A_total,
+        "H3_total":         H3_total,
+        # NDC80
+        "pNDC80_total":     pNDC80_total,
+        "NDC80_total":      NDC80_total,
+        # TTK
+        "TTK_total":        TTK_total,
+        # KNL1 / BUB1
+        "KNL1_total":       KNL1_total,
+        "BUB1_total":       BUB1_total,
+        # SGO1
+        "SGO1_total":       SGO1_total,
+        # Kinases
+        "HASPIN_total":     HASPIN_total,
+        "PLK1_total":       PLK1_total,
     }
