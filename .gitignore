@@ -116,3 +116,4 @@ vcell_out/SimID_300540363_0__exported.hdf5
 /3c_run_pyvcell/venv_vcell/bin
 /3c_run_pyvcell/venv_vcell/bin
 *.pyc
+*.pyc

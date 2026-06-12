@@ -168,16 +168,18 @@ def build_transition_model(relaxed_model,
     add_param(model, "delT", 17.1)
     add_param(model, "t_transition", t_transition)
     # KT distance from relaxed to tensed
-    add_param(model, "max_vel", 0.2875 / 17.1)
+    add_param(model, "KT_distance_move", "(KK_disSim-KK_disRef) / 2.0")
+    add_param(model, "max_vel", "KT_distance_move/delT")
+    add_param(model, "L_kin_x2_relaxed", "x_mid - KK_disRef/2")
+    add_param(model, "R_kin_x1_relaxed", "x_mid + KK_disRef/2")
     # advection
-    add_param(model, "sigma_y", 0.15)
-    add_param(model, "sigma_x", 0.2875)
-    add_param(model, "norm_x", 'exp(( - ((L_kin_x2 - x_mid) ^ 2.0) / (2.0 * (sigma_x ^ 2.0))))')
-    add_param(model, "y_mid", '(chrH / 2.0)')
-    # model.add_model_parameter("x_L", L_kin_x2)
-    # model.add_model_parameter("x_R", R_kin_x1)
-
-    add_param(model, "scale_y", 0.5)
+    add_param(model, "sigma_y", "kinH/2")
+    add_param(model, "sigma_x", "KT_distance_move")
+    add_param(model, "scale_y", 0.3)
+    add_param(model, "norm_x", 'exp(( - ((L_kin_x2_relaxed - x_mid) ^ 2.0) / (2.0 * (sigma_x ^ 2.0))))')
+    add_param(model, "y_mid", "chrH/2")
+    x_velocity = "((((x - x_mid) / delT) * exp(( - ((x - x_mid) ^ 2.0) / (2.0 * (sigma_x ^ 2.0)))) / norm_X * exp(( - ((y - y_mid) ^ 2.0) / (2.0 * (sigma_y ^ 2.0)))) * ((x >= L_kin_x2_relaxed) && (x <= R_kin_x1_relaxed))) + ( - max_vel * exp(( - ((y - y_mid) ^ 2.0) / (2.0 * (sigma_y ^ 2.0)))) * (x < L_kin_x2_relaxed)) + (max_vel * exp(( - ((y - y_mid) ^ 2.0) / (2.0 * (sigma_y ^ 2.0)))) * (x > R_kin_x1_relaxed)))* (t <= delT)"
+    y_velocity = "( - (y - y_mid) / delT * scale_y * exp(( - ((y - y_mid) ^ 2.0) / (2.0 * (sigma_y ^ 2.0)))))* (t <= delT)"
 
     # 2. update initial conditions in transition model using field data from relaxed model
     app = transition_model.applications[0]
@@ -185,9 +187,15 @@ def build_transition_model(relaxed_model,
         sm.init_conc = f"vcField('{field_data_dir}', '{sm.species_name}', t_transition, 'Volume')"
 
     # 3. update velocities for advecting species
-    kt_bound_species = []
-    chromatin_bound_species = []
+    kt_bound_species = ["BUB1a_pknl1","KNL1","NDC80","NDC80_pTTKa","NDC80_pTTKi","NDC80_TTKa","NDC80_TTKi",'pKNL1','pKNL1_bub1a',"pNDC80","pNDC80_pTTKa","pNDC80_pTTKi","pNDC80_TTKa","pNDC80_TTKi"]
+    chromatin_bound_species = ["H3","H2A","pH3","pH2A","H3_CPCa","H3_CPCi",'H3S10rep',"I","pH2A_SGO1","pH2A_SGO1_CPCa",'pH2A_SGO1_CPCi','pH3_CPCa','pH3_CPCi','pH3S10rep']
     # placeholder for now -- add velocities for kt and chromatin bound species
+    for my_species_name in kt_bound_species:
+        app.get_species_mapping(my_species_name).velocity_x = x_velocity
+        app.get_species_mapping(my_species_name).velocity_y = y_velocity
+    for my_species_name in chromatin_bound_species:
+        app.get_species_mapping(my_species_name).velocity_x = x_velocity
+        app.get_species_mapping(my_species_name).velocity_y = y_velocity
 
     # update application sim parameters for transition sim
     sim = app.simulations[0]

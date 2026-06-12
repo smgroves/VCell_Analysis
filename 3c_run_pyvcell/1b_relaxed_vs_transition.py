@@ -23,13 +23,11 @@ run_transition = False
 #TODO: add R plotting code; use input variables from here to run the code
 # TODO: organize plots with tensed/relaxed folder inside results dir, and with subfolders for each chromosome and phase.
 #TODO: make a pdf of all heatmaps combined
-#TODO: fix plot for troubleshooting regions in r code; calculations are correct but plot is not
-# TODO: Sgo1 abundance and Bub1 catalytic activity perturbations 
 
 ########################################
 # load model from vcml file
 ########################################
-vcml_file_relaxed = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_models/vcml/_005_20_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1.vcml"
+vcml_file_relaxed = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_models/vcml/_006_04_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1.vcml"
 bio_model = ss.load_model(vcml_file_relaxed)
 
 # this model should have rxns, parameters, compartments, and at least one application as defaults.
