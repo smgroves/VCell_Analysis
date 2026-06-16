@@ -9,6 +9,7 @@ save_plots <- function(
     tInit,
     tSpan,
     desiredInterval,
+    nHeatmaps = 7,
     alternative_range,
     funcPath,
     importPath,
@@ -45,6 +46,7 @@ save_plots <- function(
       tSpan=tSpan,
       tInterval=10,
       desiredInterval=desiredInterval,
+      nHeatmaps = nHeatmaps,
       alternative_range,
       importPath=importPath,
       exportPath=exportPath)

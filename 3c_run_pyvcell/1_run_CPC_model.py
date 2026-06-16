@@ -1,16 +1,20 @@
 #%%
+from cmath import phase
 import sys
 import importlib
 import time
+from colorama import Fore
 import numpy as np
 import pyvcell.vcml as vc
 import sim_scripts as ss
+from colorama import Style, init
+init(autoreset=True) # Automatically resets color after every print
 # Record the start time
-start_time = time.perf_counter()
 
 # load model from vcml file
 ########################################
-vcml_file = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_models/vcml/_02_23_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1.vcml"
+model_name = "_006_02_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1"
+vcml_file = f"/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_models/vcml/{model_name}.vcml"
 bio_model = ss.load_model(vcml_file)
 
 # print(patches.verify_patch())
@@ -19,28 +23,15 @@ bio_model = ss.load_model(vcml_file)
 # print(bio_model)
 # run a single simulation
 ########################################
-sim = bio_model.applications[0].simulations[0]
-print(sim.mesh_size)
-bio_model.applications[0].simulations[0].duration = 20.0
-bio_model.applications[0].simulations[0].output_time_step = 10.0
+for i in [0,1]:
+    sim = bio_model.applications[0].simulations[i]
+    print(sim.mesh_size)
 
-#%%
-# sims = [sim for app in bio_model.applications for sim in app.simulations]
-
-result = vc.simulate(biomodel=bio_model, simulation=sim.name)
-
-print(result.solver_output_dir)
-print([c.label for c in result.channel_data])
-
-result.plotter.plot_slice_2d(time_index=3, channel_id="CPCa")
-result.plotter.plot_concentrations()
-result.cleanup()
-
-# Record the end time
-end_time = time.perf_counter()
-
-# Calculate the elapsed time
-elapsed_time = end_time - start_time
-
-print(f"Simulations executed in {elapsed_time:.6f} seconds")
+    sim = bio_model.applications[0].simulations[0]
+    print(f"{Fore.GREEN}Running relaxed {sim.name} with sim.duration={sim.duration} and sim.output_time_step={sim.output_time_step}...{Style.RESET_ALL}")
+    results  = ss.run_simulation(biomodel= bio_model, simulation=sim.name,
+                                    run_name=f"{model_name}_{sim.name}", fields=None, local=True, overwrite=True)
+    print(results.solver_output_dir)
+    results.plotter.plot_slice_2d(10, "CPCa", 0)
+    ss.export_result_to_csv(results)
 

@@ -86,12 +86,17 @@ line_plot <- function(
     y2_new <- floor(center_px + half_px) #74
     y1_bg_new <- ceiling((y1_new/2) - half_px) #26
     y2_bg_new <- floor((y1_new/2) + half_px) #37
+    y1_ch_new <- ceiling(dataDim[1] / 4)*3 #102
+    y2_ch_new <- y1_ch_new + (KT_height) * pixels_per_um - 1 #113
     
     # clamp to valid indices
     y1 <- max(1, y1_new) # 63
     y2 <- min(dataDim[1], y2_new) #74
     y1_bg <- max(1, y1_bg_new) #26 
     y2_bg <- min(dataDim[1], y2_bg_new) #37
+    y1_ch <- max(1, y1_ch_new) # #102
+    y2_ch <- min(dataDim[1], y2_ch_new) #113
+    
     
   } else if (grepl("telocentric", kt_width, ignore.case = TRUE)) {
     # from 0 um (top) to 0.3 um
@@ -99,18 +104,22 @@ line_plot <- function(
     y2_new <- ceiling(KT_height * pixels_per_um) #12
     y1_bg_new <- ceiling((y1_new/2) - half_px) #28
     y2_bg_new <- floor((y1_new/2) + half_px) -1 #39
+    y1_ch_new <- ceiling(dataDim[1] / 4)*3 #102
+    y2_ch_new <- y1_ch_new + (KT_height) * pixels_per_um - 1 #113
     
     # clamp
     y1 <- max(1, y1_new) #1
     y2 <- min(dataDim[1], max(1, y2_new)) #12
     y1_bg <- max(1, y1_bg_new) # 28
     y2_bg <- min(dataDim[1], y2_bg_new) #39
+    y1_ch <- max(1, y1_ch_new) # #102
+    y2_ch <- min(dataDim[1], y2_ch_new) #113
     
   }
 
   # misc
   folderVar <- 0
-  leader <- 10  # CSVs have a 10-line header matching hdf5_converter.py format
+  leader <- 10
   offset <- NULL
   
   
@@ -129,13 +138,15 @@ line_plot <- function(
   kt_species <- vector("list", length(all_species))
   ic_species <- vector("list", length(all_species))
   bg_species <- vector("list", length(all_species))
+  ch_species <- vector("list", length(all_species))
   L <- list()
   
   # Initialize empty vectors for each species
   for (i in 1:length(all_species)) {
-    kt_species[[i]] <- vector("numeric", ((tSpan/10) + 1))
-    ic_species[[i]] <- vector("numeric", ((tSpan/10) + 1))
-    bg_species[[i]] <- vector("numeric", ((tSpan/10) + 1))
+    kt_species[[i]] <- vector("numeric", ((tSpan) + 1))
+    ic_species[[i]] <- vector("numeric", ((tSpan) + 1))
+    bg_species[[i]] <- vector("numeric", ((tSpan) + 1))
+    ch_species[[i]] <- vector("numeric", ((tSpan) + 1))
   }
   
    
@@ -153,7 +164,7 @@ line_plot <- function(
 
   
   # data processing
-  for(z in 0:(tSpan/10)){
+  for(z in 0:(tSpan)){
     
     t <- z
     
@@ -166,7 +177,6 @@ line_plot <- function(
     }else if(nchar(dataPoint)==3){
       dataPoint<-paste("0",dataPoint,sep="")
     }
-    
     
     
     for(specie in 1:length(all_species)){
@@ -200,30 +210,28 @@ line_plot <- function(
     
     for(q in 1:length(all_species)){
 
-      mat <- L[[q]]
-
-      # Skip species that failed to load (NULL matrix)
-      if (is.null(mat)) {
-        kt_species[[q]][z+1] <- NA
-        ic_species[[q]][z+1] <- NA
-        bg_species[[q]][z+1] <- NA
-        next
-      }
-
-      left_kinetochore  <- mat[y1:y2, x1:x2]
-      right_kinetochore <- mat[y1:y2, x5:x6]
-      inner_centromere  <- mat[y1:y2, x3:x4]
-      background        <- mat[y1_bg:y2_bg, x7:x8]
-
-      lk <- mean(left_kinetochore,  na.rm = TRUE)
-      rk <- mean(right_kinetochore, na.rm = TRUE)
-      ic <- mean(inner_centromere,  na.rm = TRUE)
-      kt <- mean(c(lk, rk),         na.rm = TRUE)  # was mean(lk, rk) → wrong: treated rk as trim arg
-      bg <- mean(background,        na.rm = TRUE)
-
+      
+      matrix <- L[[q]]
+      
+      left_kinetochore <-matrix[y1:y2, x1:x2]
+      right_kinetochore <-matrix[y1:y2, x5:x6]
+      inner_centromere <-matrix[y1:y2, x3:x4]
+      background <-matrix[y1_bg:y2_bg, x7:x8]
+      cohesin <-matrix[y1_ch:y2_ch, x3:x4]
+      
+      
+      lk <- mean(left_kinetochore)
+      rk <- mean(right_kinetochore)
+      ic <- mean(inner_centromere)
+      kt <- mean(lk, rk)
+      bg <- mean(background)
+      ch <- mean(cohesin)
+      
+      
       kt_species[[q]][z+1] <- kt
       ic_species[[q]][z+1] <- ic
       bg_species[[q]][z+1] <- bg
+      ch_species[[q]][z+1] <- ch
     }
     
   }
@@ -250,40 +258,52 @@ line_plot <- function(
   }
   
   data_ic <- data.frame(
-    Time = 0:(tSpan/10),
-    Species = rep(species, each = ((tSpan/10) + 1)),
+    Time = 0:(tSpan),
+    Species = rep(species, each = ((tSpan) + 1)),
     IC = unlist(ic_species[(pointer + 1):(pointer + length(species))])
   )
   
   data_kt <- data.frame(
-    Time = 0:(tSpan/10),
-    Species = rep(species, each = ((tSpan/10) + 1)),
+    Time = 0:(tSpan),
+    Species = rep(species, each = ((tSpan) + 1)),
     KT = unlist(kt_species[(pointer + 1):(pointer + length(species))])
   )
   
   data_bg <- data.frame(
-    Time = 0:(tSpan/10),
-    Species = rep(species, each = ((tSpan/10) + 1)),
+    Time = 0:(tSpan),
+    Species = rep(species, each = ((tSpan) + 1)),
     BG = unlist(bg_species[(pointer + 1):(pointer + length(species))])
+  )
+  
+  data_ch <- data.frame(
+    Time = 0:(tSpan),
+    Species = rep(species, each = ((tSpan) + 1)),
+    CH = unlist(ch_species[(pointer + 1):(pointer + length(species))])
   )
   
   # Reshape to wide
   data_ic <- reshape(data_ic, idvar = "Time", timevar = "Species", direction = "wide")
   data_kt <- reshape(data_kt, idvar = "Time", timevar = "Species", direction = "wide")
   data_bg <- reshape(data_bg, idvar = "Time", timevar = "Species", direction = "wide")
+  data_ch <- reshape(data_ch, idvar = "Time", timevar = "Species", direction = "wide")
+  
   
   # Rename columns
   colnames(data_ic)[2:ncol(data_ic)] <- gsub("IC.", "", colnames(data_ic)[2:ncol(data_ic)])
   colnames(data_kt)[2:ncol(data_kt)] <- gsub("KT.", "", colnames(data_kt)[2:ncol(data_kt)])
   colnames(data_bg)[2:ncol(data_bg)] <- gsub("BG.", "", colnames(data_bg)[2:ncol(data_bg)])
+  colnames(data_ch)[2:ncol(data_ch)] <- gsub("CH.", "", colnames(data_ch)[2:ncol(data_ch)])
   
-  # Get active and inactive df for IC, KT, and BG
+  
+  # Get active and inactive df for IC, KT, BG, CH
   data_inactive_ic <- data_ic %>% select("Time", ends_with('i'))
   data_active_ic <- data_ic %>% select(-c(colnames(data_inactive_ic %>% select(-c('Time')))))
   data_inactive_kt <- data_kt %>% select("Time", ends_with('i'))
   data_active_kt <- data_kt %>% select(-c(colnames(data_inactive_kt %>% select(-c('Time')))))
   data_inactive_bg <- data_bg %>% select("Time", ends_with('i'))
   data_active_bg <- data_bg %>% select(-c(colnames(data_inactive_bg %>% select(-c('Time')))))
+  data_inactive_ch <- data_ch %>% select("Time", ends_with('i'))
+  data_active_ch <- data_ch %>% select(-c(colnames(data_inactive_ch %>% select(-c('Time')))))
   
   # Get all active and inactive species
   active_species <- colnames(data_active_ic %>% select(-c('Time')))
@@ -296,42 +316,54 @@ line_plot <- function(
       data_inactive_ic$Sum_Inactive <- rowSums(data_inactive_ic[, 2:(length(inactive_species)+1)], na.rm = TRUE)
       data_inactive_kt$Sum_Inactive <- rowSums(data_inactive_kt[, 2:(length(inactive_species)+1)], na.rm = TRUE)
       data_inactive_bg$Sum_Inactive <- rowSums(data_inactive_bg[, 2:(length(inactive_species)+1)], na.rm = TRUE)
+      data_inactive_ch$Sum_Inactive <- rowSums(data_inactive_ch[, 2:(length(inactive_species)+1)], na.rm = TRUE)
+      
     }
     
     if (ncol(data_inactive_kt) == 2){
       data_inactive_ic$Sum_Inactive <- data_inactive_ic[, 2:(length(inactive_species)+1)]
       data_inactive_kt$Sum_Inactive <- data_inactive_kt[, 2:(length(inactive_species)+1)]
       data_inactive_bg$Sum_Inactive <- data_inactive_bg[, 2:(length(inactive_species)+1)]
+      data_inactive_ch$Sum_Inactive <- data_inactive_ch[, 2:(length(inactive_species)+1)]
+      
     }
     
     if (ncol(data_inactive_kt) < 2){
       data_inactive_ic$Sum_Inactive <- 0
       data_inactive_kt$Sum_Inactive <- 0
       data_inactive_bg$Sum_Inactive <- 0
+      data_inactive_ch$Sum_Inactive <- 0
     }
     
     if (ncol(data_active_kt) > 2){
       data_active_ic$Sum_Active <- rowSums(data_active_ic[, 2:(length(active_species)+1)], na.rm = TRUE)
       data_active_kt$Sum_Active <- rowSums(data_active_kt[, 2:(length(active_species)+1)], na.rm = TRUE)
       data_active_bg$Sum_Active <- rowSums(data_active_bg[, 2:(length(active_species)+1)], na.rm = TRUE)
+      data_active_ch$Sum_Active <- rowSums(data_active_ch[, 2:(length(active_species)+1)], na.rm = TRUE)
+      
     }
     
     if (ncol(data_active_kt) == 2){
       data_active_ic$Sum_Active <- data_active_ic[, 2:(length(active_species)+1)]
       data_active_kt$Sum_Active <- data_active_kt[, 2:(length(active_species)+1)]
       data_active_bg$Sum_Active <- data_active_bg[, 2:(length(active_species)+1)]
+      data_active_ch$Sum_Active <- data_active_ch[, 2:(length(active_species)+1)]
+      
     }
     
     if (ncol(data_active_kt) < 2){
       data_active_ic$Sum_Active <- 0
       data_active_kt$Sum_Active <- 0
       data_active_gb$Sum_Active <- 0
+      data_active_ch$Sum_Active <- 0
+      
     }
     
   }else if(total==TRUE){
     data_ic$Total <- rowSums(data_ic[, 2:(length(species) + 1)], na.rm = TRUE)
     data_kt$Total <- rowSums(data_kt[, 2:(length(species) + 1)], na.rm = TRUE)
     data_bg$Total <- rowSums(data_bg[, 2:(length(species) + 1)], na.rm = TRUE)
+    data_ch$Total <- rowSums(data_ch[, 2:(length(species) + 1)], na.rm = TRUE)
   } 
   
   
@@ -408,7 +440,7 @@ line_plot <- function(
       geom_line(data = active_ic_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
       labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
       ggtitle(paste(speciesActive, "concentration at inner centromere")) +
-      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_x_continuous(breaks = seq(0, (tSpan), 10), labels = seq(0, tSpan, 10))+ #10 was 100
       scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
       scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
       theme(panel.background = element_rect(fill = "transparent"),
@@ -427,7 +459,7 @@ line_plot <- function(
       geom_line(data = inactive_ic_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
       labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
       ggtitle(paste(speciesInactive, "concentration at inner centromere")) +
-      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_x_continuous(breaks = seq(0, (tSpan), 10), labels = seq(0, tSpan, 10))+
       scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
       scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
       theme(panel.background = element_rect(fill = "transparent"),
@@ -445,7 +477,7 @@ line_plot <- function(
       geom_line(data = active_kt_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
       labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
       ggtitle(paste(speciesActive, "concentration at kinetochore")) +
-      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_x_continuous(breaks = seq(0, (tSpan), 10), labels = seq(0, tSpan, 10))+
       scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
       scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
       theme(panel.background = element_rect(fill = "transparent"),
@@ -463,7 +495,7 @@ line_plot <- function(
       geom_line(data = inactive_kt_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
       labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
       ggtitle(paste(speciesInactive, "concentration at kinetochore")) +
-      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_x_continuous(breaks = seq(0, (tSpan), 10), labels = seq(0, tSpan, 10))+
       scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
       scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
       theme(panel.background = element_rect(fill = "transparent"),
@@ -491,7 +523,7 @@ line_plot <- function(
       geom_line(data = ic_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
       labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
       ggtitle(paste(speciesFull, "at inner centromere")) +
-      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_x_continuous(breaks = seq(0, (tSpan), 10), labels = seq(0, tSpan, 10))+
       scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
       scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
       theme(panel.background = element_rect(fill = "transparent"),
@@ -517,7 +549,7 @@ line_plot <- function(
       geom_line(data = kt_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
       labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
       ggtitle(paste(speciesFull, "at kinetochore")) +
-      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_x_continuous(breaks = seq(0, (tSpan), 10), labels = seq(0, tSpan, 10))+
       scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
       scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
       theme(panel.background = element_rect(fill = "transparent"),
@@ -550,7 +582,8 @@ line_plot <- function(
     if(length(active_ic) < n_highlight){
       highlight_active_ic <- filtered_active_ic %>% select(all_of(active_ic))
     }else{
-      highlight_active_ic <- filtered_active_ic %>% select(all_of(order(colMax(filtered_active_ic), decreasing = TRUE))[1:n_highlight])
+      highlight_active_ic <- filtered_active_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
+      highlight_active_ic <- filtered_active_ic %>% select(all_of(order(highlight_active_ic, decreasing = TRUE))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -582,7 +615,7 @@ line_plot <- function(
       geom_line(data = highlight_active_ic_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
       labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
       ggtitle(paste(speciesActive, "concentration at inner centromere")) +
-      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_x_continuous(breaks = seq(0, (tSpan), 10), labels = seq(0, tSpan, 10))+
       scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
       scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
       theme(panel.background = element_rect(fill = "transparent"),
@@ -608,7 +641,8 @@ line_plot <- function(
     if(length(active_ic) < n_highlight){
       highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(active_ic))
     }else{
-      highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(order(colMax(filtered_inactive_ic), decreasing = TRUE))[1:n_highlight])
+      highlight_inactive_ic <- filtered_inactive_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
+      highlight_inactive_ic <- filtered_inactive_ic %>% select(all_of(order(highlight_inactive_ic, decreasing = TRUE))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -640,7 +674,7 @@ line_plot <- function(
       geom_line(data = highlight_inactive_ic_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
       labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
       ggtitle(paste(speciesActive, "concentration at inner centromere")) +
-      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_x_continuous(breaks = seq(0, (tSpan), 10), labels = seq(0, tSpan, 10))+
       scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
       scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
       theme(panel.background = element_rect(fill = "transparent"),
@@ -665,7 +699,8 @@ line_plot <- function(
     if(length(active_kt) < n_highlight){
       highlight_active_kt <- filtered_active_kt %>% select(all_of(active_kt))
     }else{
-      highlight_active_kt <- filtered_active_kt %>% select(all_of(order(colMax(filtered_active_kt), decreasing = TRUE))[1:n_highlight])
+      highlight_active_kt <- filtered_active_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
+      highlight_active_kt <- filtered_active_kt %>% select(all_of(order(highlight_active_kt, decreasing = TRUE))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -697,7 +732,7 @@ line_plot <- function(
       geom_line(data = highlight_active_kt_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
       labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
       ggtitle(paste(speciesActive, "concentration at inner centromere")) +
-      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_x_continuous(breaks = seq(0, (tSpan), 10), labels = seq(0, tSpan, 10))+
       scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
       scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
       theme(panel.background = element_rect(fill = "transparent"),
@@ -723,7 +758,8 @@ line_plot <- function(
     if(length(active_kt) < n_highlight){
       highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(active_kt))
     }else{
-      highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(order(colMax(filtered_inactive_kt), decreasing = TRUE))[1:n_highlight])
+      highlight_inactive_kt <- filtered_inactive_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
+      highlight_inactive_kt <- filtered_inactive_kt %>% select(all_of(order(highlight_inactive_kt, decreasing = TRUE))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -755,7 +791,7 @@ line_plot <- function(
       geom_line(data = highlight_inactive_kt_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
       labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
       ggtitle(paste(speciesActive, "concentration at inner centromere")) +
-      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_x_continuous(breaks = seq(0, (tSpan), 10), labels = seq(0, tSpan, 10))+
       scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
       scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
       theme(panel.background = element_rect(fill = "transparent"),
@@ -775,7 +811,8 @@ line_plot <- function(
     if(length(ic) < n_highlight){
       highlight_ic <- filtered_ic %>% select(all_of(ic))
     }else{
-      highlight_ic <- filtered_ic %>% select(all_of(order(colMax(filtered_ic), decreasing = TRUE))[1:n_highlight])
+      highlight_ic <- filtered_ic %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
+      highlight_ic <- filtered_ic %>% select(all_of(order(highlight_ic, decreasing = TRUE))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -813,7 +850,7 @@ line_plot <- function(
       geom_line(data = highlight_ic_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
       labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
       ggtitle(paste(speciesFull, "at inner centromere")) +
-      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_x_continuous(breaks = seq(0, (tSpan), 10), labels = seq(0, tSpan, 10))+
       scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
       scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
       theme(panel.background = element_rect(fill = "transparent"),
@@ -833,7 +870,8 @@ line_plot <- function(
     if(length(kt) < n_highlight){
       highlight_kt <- filtered_kt %>% select(all_of(kt))
     }else{
-      highlight_kt <- filtered_kt %>% select(all_of(order(colMax(filtered_kt), decreasing = TRUE))[1:n_highlight])
+      highlight_kt <- filtered_kt %>% summarise_if(is.numeric, list(~ max(., na.rm=TRUE)))
+      highlight_kt <- filtered_kt %>% select(all_of(order(highlight_kt, decreasing = TRUE))[1:n_highlight])
     }
     
     # Add in Time and Sum
@@ -870,7 +908,7 @@ line_plot <- function(
       geom_line(data = highlight_kt_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
       labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
       ggtitle(paste(speciesFull, "at kinetochore")) +
-      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_x_continuous(breaks = seq(0, (tSpan), 10), labels = seq(0, tSpan, 10))+
       scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
       scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
       theme(panel.background = element_rect(fill = "transparent"),
@@ -901,7 +939,7 @@ line_plot <- function(
       geom_line(data = ic_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
       labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
       ggtitle(paste(speciesFull, "at inner centromere")) +
-      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_x_continuous(breaks = seq(0, (tSpan), 10), labels = seq(0, tSpan, 10))+
       scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
       scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
       theme(panel.background = element_rect(fill = "transparent"),
@@ -925,7 +963,7 @@ line_plot <- function(
       geom_line(data = kt_long, aes(x = Time, y = Concentration, color = Species, linetype = Species), linewidth = linewidth) +
       labs(x = "Time (s)", y = TeX("Concentration ($\\mu$M)")) +
       ggtitle(paste(speciesFull, "at kinetochore")) +
-      scale_x_continuous(breaks = seq(0, (tSpan/10), 10), labels = seq(0, tSpan, 100))+
+      scale_x_continuous(breaks = seq(0, (tSpan), 10), labels = seq(0, tSpan, 10))+
       scale_color_manual(values = setNames(species_plot_data$Color, species_plot_data$Species)) +
       scale_linetype_manual(values = setNames(species_plot_data$Linetype, species_plot_data$Species)) +
       theme(panel.background = element_rect(fill = "transparent"),
@@ -968,11 +1006,12 @@ line_plot <- function(
     write.csv(data_inactive_kt, paste(exportPath,paste0("data/data_inactive_kt_",identity,".csv"),sep="/"), row.names = FALSE)
     write.csv(data_active_bg, paste(exportPath,paste0("data/data_active_bg_",identity,".csv"),sep="/"), row.names = FALSE)
     write.csv(data_inactive_bg, paste(exportPath,paste0("data/data_inactive_bg_",identity,".csv"),sep="/"), row.names = FALSE)
+    write.csv(data_active_ch, paste(exportPath,paste0("data/data_active_ch_",identity,".csv"),sep="/"), row.names = FALSE)
+    write.csv(data_inactive_ch, paste(exportPath,paste0("data/data_inactive_ch_",identity,".csv"),sep="/"), row.names = FALSE)
     write.csv(data_ic, paste(exportPath,paste0("data/data_ic_",identity,".csv"),sep="/"), row.names = FALSE)
     write.csv(data_kt, paste(exportPath,paste0("data/data_kt_",identity,".csv"),sep="/"), row.names = FALSE)
     write.csv(data_bg, paste(exportPath,paste0("data/data_bg_",identity,".csv"),sep="/"), row.names = FALSE)
-    
-    
+    write.csv(data_ch, paste(exportPath,paste0("data/data_ch_",identity,".csv"),sep="/"), row.names = FALSE)
     setwd(importPath)
     
     

@@ -6,8 +6,8 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 VCELL_OUT="${REPO_DIR}/vcell_out"
-VCEll_EXPORTS="${HOME}/Box/CPC_Model_Project/VCell_Exports"
-BOX_RIVANNA="${HOME}/Box/CPC_Model_Project/VCell_Rivanna_Exports"
+VCEll_EXPORTS="${HOME}/Box/Research/CPC_Model_Project/VCell_Exports"
+BOX_RIVANNA="${HOME}/Box/Research/CPC_Model_Project/VCell_Rivanna_Exports"
 #
 #8/22/23
 python hdf5_converter.py "SimID_259717016_0__exported.hdf5" "${VCEll_EXPORTS}/" "08_21_23_CPC_relaxed_RefModel_Mps1_phos_Plk1a transactiv_sarah" "08_21_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac transactiv_KmMps1_5.4"
@@ -243,3 +243,10 @@ python hdf5_converter.py "SimID_310898765_0__exported.hdf5" "${VCEll_EXPORTS}" "
 python hdf5_converter.py "SimID_310973215_0__exported.hdf5" "${VCEll_EXPORTS}" "04_21_26_metacentric_relaxed_MCF10A_chr19_PMP1_Monse" "04_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_FOXM1_II" 
 
 python hdf5_converter.py "_005_20_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1_compare/SimID_1105102268_0_.hdf5" "${REPO_DIR}/workspace" "_005_20_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1_compare" "_005_20_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1_compare"
+
+# June 13 2026
+
+python hdf5_converter.py "SimID_316157798_0__exported.hdf5" "${VCEll_EXPORTS}" "06_10_26_metacentric_transition_tensed_MCF10A_chr19_PMP1" "06_10_26_metacentric_transition_tensed_MCF10A_chr19_PMP1" 
+
+python hdf5_converter.py "SimID_316157808_0__exported.hdf5" "${VCEll_EXPORTS}" "06_10_26_metacentric_transition_tensed_MCF10A_chr19_PMP1" "06_10_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_transition_scan" 
+

@@ -7,6 +7,7 @@ vcell_heatmap <- function(
     tInit=0, # in s
     tSpan, # in s
     tInterval, # in s, what set in VCell
+    nHeatmaps,
     desiredInterval, # in s, what you want the data to be spaced by
     alternative_range, #the desired time points to be plotted
     xdiv=3, # number of divisions desired on x axis of output plot
@@ -19,7 +20,7 @@ vcell_heatmap <- function(
   
   # misc
   folderVar <- 0
-  leader <- 10  # CSVs have a 10-line header matching hdf5_converter.py format
+  leader <- 10
   offset <- NULL
   
   pattern<-paste("[A-Za-z0-9_]*","exported",sep="")
@@ -36,7 +37,8 @@ vcell_heatmap <- function(
   
   # initialize variables
   n_SimID<-length(SimID)
-  n_t<-(tSpan-tInit)/desiredInterval+1
+  n_t<- nHeatmaps
+  # n_t<-(tSpan-tInit)/desiredInterval+1
   
   if (is.null(alternative_range)) {
     trange<-seq(from=tInit/tInterval,to=tSpan/tInterval,length.out=n_t)
@@ -154,8 +156,8 @@ vcell_heatmap <- function(
   if (is.null(alternative_range)) {
     t_short<-seq(from=tInit,to=tSpan,length.out=n_t)
     }else {
-    t_short = alternative_range*10}
-  t_equal_str<-"t (s) ="
+    t_short = (alternative_range/2)*(24/60)}
+  t_equal_str<-"t (m) ="
   
   t_labs[1] <- paste(t_equal_str,t_short[1])
   t_labs[2:length(t_short)]<-t_short[2:length(t_short)]
@@ -222,7 +224,8 @@ vcell_heatmap <- function(
   ##heatmap
   
   p<-ggplot(data=dataMat2,aes(x=X, y=Y, fill=C))+
-    geom_tile()+
+    ggrastr::rasterise(geom_tile(), dpi = 600) +
+    # geom_tile()+
     facet_grid(factor(ID_long,levels=ID_lev,labels=ID_labs) ~ factor(t_long,levels=t_lev,labels=t_labs), switch="y",labeller = label_wrap_gen(width = 10, multi_line = TRUE))+
     coord_fixed(ratio = 1, xlim = NULL, ylim = NULL, expand = TRUE, clip = "on")+
     # scale_fill_gradientn(name=legend_name,limits=c(0,maxColor),breaks=c(0,round(maxColor/2,digits=0),maxColor),labels=labelString,colors=c("black","blueviolet","blue","cyan","green","yellow","orange","red"),na.value="grey100")+
