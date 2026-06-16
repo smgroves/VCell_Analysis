@@ -13,8 +13,11 @@ KT_loc = "metacentric"
 ########################################
 # load model from vcml file
 ########################################
-vcml_file_relaxed = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_models/vcml/_006_10_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1.vcml"
+vcml_file_relaxed = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_models/vcml/_006_13_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1_fortransition.vcml"
 relaxed_model = ss.load_model(vcml_file_relaxed)
-transition_model = ss.build_transition_model(relaxed_model=relaxed_model, field_data_dir="_006_10_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1", application="Spatial", t_transition=100)
+transition_model = ss.build_transition_model(relaxed_model=relaxed_model, field_data_dir="_006_13_26_PMP1_relaxed", application="Spatial", t_transition=0)
 #save transition_model to vcml file
-vc.write_vcml_file(transition_model, "_006_10_26_CPC_metacentric_transition_MCF10A_chr19_PMP1.vcml")
+with open("log.txt", "w") as f:
+    f.write(vc.VcmlWriter().write_vcml(document=vc.VCMLDocument(biomodel=transition_model)))
+f.close()
+vc.write_vcml_file(transition_model, "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_models/vcml/_006_13_26_CPC_metacentric_transition_tensed_MCF10A_chr19_PMP1_from_pyvcell.vcml")

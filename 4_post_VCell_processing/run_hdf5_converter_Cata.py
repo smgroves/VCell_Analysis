@@ -22,7 +22,7 @@ simID = np.array([
 for i in range(len(models)):
 	subprocess.run([
 		"python",
-		"/Users/smgroves/Documents/GitHub/VCell_Analysis/4_post_VCell_processing/hdf5_converter.py",
+		"/Users/smgroves/Documents/GitHub/VCell_Analysis/4_post_VCell_processing/hdf5_converter_Cata.py",
         	f"{simID[i]}.hdf5",
         	VCEll_EXPORTS,
         	models[i],

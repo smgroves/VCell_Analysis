@@ -2,12 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 import numpy as np
-# in_dir = "/Users/catalinaalvarez/Documents/cpc_data_2023/"
-# folder_name = 'SimID_261879028_0__exported'
-# model_name = "10_16_23_CPC_relaxed_RefModel_128x64"
-# simulation_name = "10_16_23_relaxed_RefModel_Mps1_phos_Plk1a_20Pac_transactiv"
-# outdir = '/Users/smgroves/Documents/GitHub/Cahn_Hilliard_Model/data/'
-# timepoint = 500
+
 
 
 def pad_with(vector, pad_width, iaxis, kwargs):
@@ -468,19 +463,16 @@ rescaling_factor = 15.8
 #####################################################
 # New simulations for 4/22/2026 - Monse sims
 #####################################################
-outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/04_22_2026"
+outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/06_16_2026"
 if not os.path.exists(outdir):
     os.makedirs(outdir)
 
 # python hdf5_converter.py "SimID_310051691_0__exported.hdf5" '/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/VCell_Exports' "04_21_26_metacentric_relaxed_MCF10A_chr19_PMP1_Monse" "04_13_26_metacentric_relaxed_MCF10A_chr19_PMP1"
 # python hdf5_converter.py "SimID_310898765_0__exported.hdf5" '/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/VCell_Exports' "04_21_26_metacentric_relaxed_MCF10A_chr19_PMP1_Monse" "04_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_FOXM1"
 # python hdf5_converter.py "SimID_310973215_0__exported.hdf5" '/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/VCell_Exports' "04_21_26_metacentric_relaxed_MCF10A_chr19_PMP1_Monse" "04_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_FOXM1_II"
-folder_names = [["SimID_310051691_0__exported"], [
-    "SimID_310898765_0__exported"], ["SimID_310973215_0__exported"]]
-model_name = ['04_21_26_metacentric_relaxed_MCF10A_chr19_PMP1_Monse',
-              '04_21_26_metacentric_relaxed_MCF10A_chr19_PMP1_Monse', '04_21_26_metacentric_relaxed_MCF10A_chr19_PMP1_Monse']
-simulation_name = ['04_13_26_metacentric_relaxed_MCF10A_chr19_PMP1',
-                   '04_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_FOXM1', '04_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_FOXM1_II']
+folder_names = [["SimID_316455468_0__exported"]]
+model_name = ['06_13_26 CPC_metacentric_transition_tensed_MCF10A_chr19_PMP1']
+simulation_name = ['06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0']
 
 # [4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6]
 min_mixes = [4, 4.5, 5, 5.5, 6]  # min (x axis in plot)

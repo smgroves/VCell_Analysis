@@ -146,7 +146,8 @@ def build_tensed_model(relaxed_model, application="Spatial"):
 def build_transition_model(relaxed_model,
                            field_data_dir,
                            application="Spatial",
-                           t_transition = 100):
+                           t_transition = 0,
+                           high_t_res =False):
     """
     Build a transition model from a relaxed model.
     Parameters:
@@ -159,13 +160,15 @@ def build_transition_model(relaxed_model,
 
     # start with tensed model as the base for the transition model, since we want to keep the updated geometry and parameters
     tensed_model = build_tensed_model(relaxed_model, application)
+    #moves KT void and changes KK_disSim to 1.15
     transition_model = tensed_model.model_copy(deep=True)
 
     # 1. Update parameters
     model = transition_model.model
 
     # sim params
-    add_param(model, "delT", 17.1)
+    delT = 17.1/24
+    add_param(model, "delT", delT)
     add_param(model, "t_transition", t_transition)
     # KT distance from relaxed to tensed
     add_param(model, "KT_distance_move", "(KK_disSim-KK_disRef) / 2.0")
@@ -178,7 +181,7 @@ def build_transition_model(relaxed_model,
     add_param(model, "scale_y", 0.3)
     add_param(model, "norm_x", 'exp(( - ((L_kin_x2_relaxed - x_mid) ^ 2.0) / (2.0 * (sigma_x ^ 2.0))))')
     add_param(model, "y_mid", "chrH/2")
-    x_velocity = "((((x - x_mid) / delT) * exp(( - ((x - x_mid) ^ 2.0) / (2.0 * (sigma_x ^ 2.0)))) / norm_X * exp(( - ((y - y_mid) ^ 2.0) / (2.0 * (sigma_y ^ 2.0)))) * ((x >= L_kin_x2_relaxed) && (x <= R_kin_x1_relaxed))) + ( - max_vel * exp(( - ((y - y_mid) ^ 2.0) / (2.0 * (sigma_y ^ 2.0)))) * (x < L_kin_x2_relaxed)) + (max_vel * exp(( - ((y - y_mid) ^ 2.0) / (2.0 * (sigma_y ^ 2.0)))) * (x > R_kin_x1_relaxed)))* (t <= delT)"
+    x_velocity = "((((x - x_mid) / delT) * exp(( - ((x - x_mid) ^ 2.0) / (2.0 * (sigma_x ^ 2.0)))) / norm_x * exp(( - ((y - y_mid) ^ 2.0) / (2.0 * (sigma_y ^ 2.0)))) * ((x >= L_kin_x2_relaxed) && (x <= R_kin_x1_relaxed))) + ( - max_vel * exp(( - ((y - y_mid) ^ 2.0) / (2.0 * (sigma_y ^ 2.0)))) * (x < L_kin_x2_relaxed)) + (max_vel * exp(( - ((y - y_mid) ^ 2.0) / (2.0 * (sigma_y ^ 2.0)))) * (x > R_kin_x1_relaxed)))* (t <= delT)"
     y_velocity = "( - (y - y_mid) / delT * scale_y * exp(( - ((y - y_mid) ^ 2.0) / (2.0 * (sigma_y ^ 2.0)))))* (t <= delT)"
 
     # 2. update initial conditions in transition model using field data from relaxed model
@@ -200,7 +203,9 @@ def build_transition_model(relaxed_model,
     # update application sim parameters for transition sim
     sim = app.simulations[0]
 
-    sim.duration = 20.0
-    sim.output_time_step = 1.0
+    if high_t_res:
+        sim.duration = np.ceil(delT)
+        sim.output_time_step = np.round(delT / 17.1, 2)
+
 
     return transition_model
