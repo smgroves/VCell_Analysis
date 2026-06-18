@@ -29,9 +29,8 @@ vcell_heatmap <- function(
   
   pattern<-paste("[A-Za-z0-9_]*","exported",sep="")
   cond<-grepl(pattern,SimID)
-  print(SimID)
   SimID<-ifelse(cond,SimID,paste(SimID,"exported",sep="_"))
-  print(SimID)
+  message(sprintf("vcell_heatmap: SimID = %s", SimID))
   
   clamped = FALSE
   clampConc<-0
@@ -86,42 +85,44 @@ vcell_heatmap <- function(
     X<-rep(X,times=n_SimID*n_t)
     Y<-rep(yAxis,each=col_diff)
     Y<-rep(Y,times=n_SimID*n_t)
-    
+
+    # Cache directory listing once per SimID — avoids n_species × n_t filesystem scans
+    all_files_hm <- list.files(dataFolder)
+
     # data processing
     for(z in 1:length(trange)){
-      
+
       t <- trange[z]
-      
-      # convert timepoint to string
-      dataPoint<-as.character(round(x=t,digits=0))
-      if(nchar(dataPoint)==1){
-        dataPoint<-paste("000",dataPoint,sep="")
-      }else if(nchar(dataPoint)==2){
-        dataPoint<-paste("00",dataPoint,sep="")
-      }else if(nchar(dataPoint)==3){
-        dataPoint<-paste("0",dataPoint,sep="")
-      }
-      
+
+      # convert timepoint to zero-padded 4-digit string
+      dataPoint <- formatC(round(t), width = 4, flag = "0")
+
       # match the correct data files in the dataFolder
       if(length(dataFolder)>1){
         return("ERROR: This function does not have the capability to read data in different folders yet.")
       }else{
         if(clamped==FALSE){
-          print(dataPoint)
+          message(sprintf("  t = %s", dataPoint))
           for(i in 1:length(species)){
-            print(species[i])
             pattern <- paste("[A-Za-z0-9_]*_Slice_XY_\\d", species[i], dataPoint, sep="_")
-            matched  <- grep(pattern, list.files(dataFolder), value = TRUE)
+            matched  <- grep(pattern, all_files_hm, value = TRUE)
             if (length(matched) > 0) {
               # normal case: read the pre-existing CSV
-              L[[i]] <- data.matrix(read.csv(
-                paste(importPath, dataFolder, matched, sep="/"),
-                header=FALSE, skip=leader))[row_1:row_2, col_1:col_2]
+              L[[i]] <- tryCatch(
+                data.matrix(read.csv(
+                  paste(importPath, dataFolder, matched, sep="/"),
+                  header=FALSE, skip=leader))[row_1:row_2, col_1:col_2],
+                error = function(e) {
+                  warning(paste0("vcell_heatmap: could not read '", matched,
+                                 "' (", conditionMessage(e), ") — skipping"))
+                  NULL
+                }
+              )
             } else if (!is.null(compute_functions) && species[i] %in% names(compute_functions)) {
               # fallback: sum component species loaded from their own CSVs
               comp_mats <- lapply(compute_functions[[species[i]]], function(comp) {
                 cp      <- paste("[A-Za-z0-9_]*_Slice_XY_\\d", comp, dataPoint, sep="_")
-                cm      <- grep(cp, list.files(dataFolder), value = TRUE)
+                cm      <- grep(cp, all_files_hm, value = TRUE)
                 if (length(cm) > 0)
                   tryCatch(
                     data.matrix(read.csv(paste(importPath, dataFolder, cm, sep="/"),
@@ -165,7 +166,7 @@ vcell_heatmap <- function(
         
         # transform M to format it for the heatmap function geomtile()
         M_transform<-as.vector(t(M))
-        print(paste("Max (uM):",max(M_transform)))
+        # max per timepoint — suppress for cleaner output; uncomment to debug: message(sprintf("  Max (uM): %.3f", max(M_transform)))
         Clist[[count]]<-M_transform
         
         count<-count+1
@@ -192,14 +193,14 @@ vcell_heatmap <- function(
   ID_long<-as.character(rep(ID_short,each=dataDim[1]*dataDim[2]*n_t))
   
   # concentration
-  C<-as.vector(sapply(Clist,as.vector))
+  C <- unlist(Clist)
   dataMat<-data.frame(cbind(X,Y,C))
   dataMat2<-cbind(ID_long,t_long,dataMat)
   
   ID_lev<-levels(factor(as.numeric(ID_short)))
   t_lev<-levels(factor(as.numeric(t_short)))
   # t_labs<-paste(t_equal_str,t_short,t_unit_str)
-  print(t_labs)
+  # print(t_labs)
   
   
   #define our own maxcolor
@@ -217,7 +218,7 @@ vcell_heatmap <- function(
         maxColor=ceiling(max(C))}
     }
   }
-  print(c("MaxColor: ", maxColor))
+  message(sprintf("  MaxColor = %s", maxColor))
   
   xbreaks<-seq(0, chromWidth, chromWidth/(xdiv-1))
   xlabs<-c(as.character(round(0)),as.character(round(xbreaks[2:length(xbreaks)],digits=1)))

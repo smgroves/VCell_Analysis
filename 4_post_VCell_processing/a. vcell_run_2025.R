@@ -139,8 +139,8 @@ kt_width = c(
     # "Metacentric_Relaxed",
     # "Metacentric_Relaxed",
     # "Metacentric_Relaxed",
-  "Metacentric_Tensed",
-    "Metacentric_Relaxed",
+  # "Metacentric_Tensed",
+    # "Metacentric_Relaxed",
     "Metacentric_Tensed"
     # "Metacentric_Tensed"
   # "Telocentric_Relaxed"
@@ -156,8 +156,8 @@ kt_width = c(
 sims <- c(
   # "SimID_316523023_0__exported",
   # "SimID_316523021_0__exported",
-  "SimID_316523018_0__exported",
-  "SimID_316230588_0__exported",
+  # "SimID_316523018_0__exported",
+  # "SimID_316230588_0__exported",
   "SimID_316524429_0__exported"
   )
 
@@ -166,11 +166,23 @@ sims <- c(
 var <- c(
   # "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_5min",
   # "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0_high_t_res",
-  "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0",
-  "06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1",
+  # "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0",
+  # "06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1",
   "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0_from_pyvcell"
   
   
+)
+
+
+compute_functions <- list(
+  bound_CPC        = c("pH2A_SGO1_CPCa", "H3_CPCa", "pH3_CPCa", "SGO1_CPCa",
+                       "pH2A_SGO1_CPCi", "H3_CPCi", "pH3_CPCi", "SGO1_CPCi"),
+  bound_active_CPC = c("pH2A_SGO1_CPCa", "H3_CPCa", "pH3_CPCa", "SGO1_CPCa"),
+  CPC_all          = c("CPCa", "pH2A_SGO1_CPCa", "H3_CPCa", "pH3_CPCa", "SGO1_CPCa",
+                       "CPCi", "pH2A_SGO1_CPCi", "H3_CPCi", "pH3_CPCi", "SGO1_CPCi"),
+  CPCa_total       = c("CPCa", "pH2A_SGO1_CPCa", "H3_CPCa", "pH3_CPCa", "SGO1_CPCa"),
+  pNDC80_total     = c("pNDC80", "pNDC80_TTKi", "pNDC80_pTTKi", "pNDC80_TTKa", "pNDC80_pTTKa"),
+  pKNL1_all        = c("pKNL1", "pKNL1_bub1a")
 )
 #########################################################
 
@@ -212,7 +224,9 @@ for(i in 1:length(sims)){
                KK_dist_tensed = 1.15,
                KT_width= 0.075,
                KT_height = 0.3, #0.3 um in model
-               cohesin_width = 0.1) #0.1 um in model
+               cohesin_width = 0.1,
+               compute_functions = compute_functions
+    ) #0.1 um in model
 
   }
 

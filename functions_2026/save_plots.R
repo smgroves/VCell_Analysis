@@ -17,8 +17,11 @@ save_plots <- function(
     kt_width,
     cutoff = NULL,
     compute_functions = NULL,
+    save_data = FALSE,
     movie = TRUE,
     lineplots = TRUE,
+    heatmap_devices = c("png", "pdf"),
+    heatmap_show_plot = TRUE,
     KK_dist_relaxed = 0.575,
     KK_dist_tensed = 1.15,
     KT_width= 0.075,
@@ -51,7 +54,9 @@ save_plots <- function(
       alternative_range,
       importPath=importPath,
       exportPath=exportPath,
-      compute_functions=compute_functions)
+      compute_functions=compute_functions,
+      devices=heatmap_devices,
+      show_plot=heatmap_show_plot)
 
   }
 
@@ -88,6 +93,7 @@ save_plots <- function(
         exportPath=exportPath,
         kt_width = kt_width,
         compute_functions=compute_functions,
+        save_data=save_data,
         KK_dist_relaxed = KK_dist_relaxed,
         KK_dist_tensed = KK_dist_tensed,
         KT_width= KT_width,
