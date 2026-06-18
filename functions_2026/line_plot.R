@@ -202,7 +202,10 @@ line_plot <- function(
                    header=FALSE, skip=leader))[row_1:row_2, col_1:col_2]
       },
       error = function(e){
-        warning(paste0("SimID ", SimID, ": missing species '", all_species[specie], "' — setting to NA"))
+        # Only warn if there is no compute_functions fallback for this species
+        if (is.null(compute_functions) || !(all_species[specie] %in% names(compute_functions))) {
+          warning(paste0("SimID ", SimID, ": missing species '", all_species[specie], "' — setting to NA"))
+        }
       }
       )
     }

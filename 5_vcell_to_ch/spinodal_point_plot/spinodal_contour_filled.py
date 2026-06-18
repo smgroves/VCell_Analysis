@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.colors import ListedColormap
-sims = ["manual_edit_CPC_all_02_23_26_metacentric_relaxed_MCF10A_chr19_PMP1_60_144x144",
-        "manual_edit_CPC_all_02_23_26_metacentric_relaxed_MCF10A_chr19_PMP1_120_144x144"]
+sims = ["CPC_all_06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_100_136x136",
+        "CPC_all_06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0_100_136x136"]
 # "manual_edit_CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_20s_17_144x144",
 # "manual_edit_CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_60s_17_144x144",
 #         "manual_edit_CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_120s_17_144x144",
@@ -14,7 +14,7 @@ sims = ["manual_edit_CPC_all_02_23_26_metacentric_relaxed_MCF10A_chr19_PMP1_60_1
 #         "manual_edit_CPC_all_02_23_26_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144"]
 for sim in sims:
     x = np.linspace(3.5, 7.5, 100)
-    y = np.linspace(7, 17, 100)
+    y = np.linspace(9.5, 18.5, 100)
     X, Y = np.meshgrid(x, y)
     Z = ((3-np.sqrt(3))/6)*(Y - X) + X
 
@@ -39,8 +39,9 @@ for sim in sims:
         header=0, index_col=0
     )
     df = df[
-        df['min'].isin([4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2, 6.4, 6.6, 6.8, 7]) &
-        df['max'].isin([8, 9, 10, 11, 12, 13, 14, 15, 16])
+        # df['min'].isin([4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2, 6.4, 6.6, 6.8, 7]) &
+        df['min'].isin([4, 4.5, 5, 5.5, 6, 6.5, 7]) &
+        df['max'].isin([10, 11, 12, 13, 14, 15, 16, 17, 18])
     ]
 
     names = {
@@ -98,7 +99,7 @@ for sim in sims:
     # ax.legend(handles=patches, loc='center left', bbox_to_anchor=(1, 0.5))
 
     ax.set_xlim(3.9, 6.1)
-    ax.set_ylim(7.5, 16.5)
+    ax.set_ylim(9.5, 18.5)
     ax.set_ylabel('Condensate Well Concentration (max)')
     ax.set_xlabel('Soluble Well Concentration (min)')
     # ax.set_title('Spinodal Point with Simulation Results')

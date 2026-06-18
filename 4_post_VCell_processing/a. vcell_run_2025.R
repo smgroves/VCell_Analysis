@@ -41,6 +41,8 @@ bound_CPC <- c("bound_CPC")
 bound_active_CPC <- c("bound_active_CPC")
 pNDC80_species <- c("pNDC80", "pNDC80_TTKi", "pNDC80_pTTKi", "pNDC80_TTKa", "pNDC80_pTTKa")
 pNDC80_total <- c("pNDC80_total")
+NDC80 <- c("NDC80")
+
 pH3S10rep <- c("pH3S10rep")
 pKNL1 <- c("pKNL1")
 HASPINi <- c("HASPINi")
@@ -51,33 +53,36 @@ pKNL1_all <- c("pKNL1", "pKNL1_bub1a")
 
 # How many heat maps to return
 # Change
-H <- 7
+H <- 1
 
 heatmap_species <- vector("list", H)
 heatmap_info_list <- vector("list", H)
 
 # Change, IN ORDER
-heatmap_species[[1]] <- CPC_species
-heatmap_species[[2]] <- bound_CPC
-heatmap_species[[3]] <- bound_active_CPC
-heatmap_species[[4]] <- pH3_species
-heatmap_species[[5]] <- pH2A_species
-heatmap_species[[6]] <- SGO1_species
-heatmap_species[[7]] <- pH3S10rep
+# heatmap_species[[1]] <- CPC_species
+# heatmap_species[[2]] <- bound_CPC
+# heatmap_species[[3]] <- bound_active_CPC
+# heatmap_species[[4]] <- pH3_species
+# heatmap_species[[5]] <- pH2A_species
+# heatmap_species[[6]] <- SGO1_species
+# heatmap_species[[7]] <- pH3S10rep
+heatmap_species[[1]] <- NDC80 
+
 
 # Change, name of plot in plot directory, also name in heatmap, IN ORDER
-heatmap_info_list[[1]] <- c("all CPC")
-heatmap_info_list[[2]] <- c("all bound CPC")
-heatmap_info_list[[3]] <- c("all bound active CPC")
-heatmap_info_list[[4]] <- c("all pH3")
-heatmap_info_list[[5]] <- c("all pH2A")
-heatmap_info_list[[6]] <- c("all SGO1")
-
-heatmap_info_list[[7]] <- c("all pH3S10rep")
+# heatmap_info_list[[1]] <- c("all CPC")
+# heatmap_info_list[[2]] <- c("all bound CPC")
+# heatmap_info_list[[3]] <- c("all bound active CPC")
+# heatmap_info_list[[4]] <- c("all pH3")
+# heatmap_info_list[[5]] <- c("all pH2A")
+# heatmap_info_list[[6]] <- c("all SGO1")
+# 
+# heatmap_info_list[[7]] <- c("all pH3S10rep")
+heatmap_info_list[[1]] <- c("NDC80")
 
 
 # ---------------- LINE PLOTS ---------------
-L <- 16
+L <- 0
 
 all_data <- vector("list", L)
 species_info_list <- vector("list", L)
@@ -140,7 +145,7 @@ kt_width = c(
     # "Metacentric_Relaxed",
     # "Metacentric_Relaxed",
   # "Metacentric_Tensed",
-    # "Metacentric_Relaxed",
+    # "Metacentric_Relaxed"
     "Metacentric_Tensed"
     # "Metacentric_Tensed"
   # "Telocentric_Relaxed"
@@ -155,20 +160,20 @@ kt_width = c(
 
 sims <- c(
   # "SimID_316523023_0__exported",
-  # "SimID_316523021_0__exported",
+  "SimID_316523021_0__exported"
   # "SimID_316523018_0__exported",
-  # "SimID_316230588_0__exported",
-  "SimID_316524429_0__exported"
+  # "SimID_316230588_0__exported"
+  # "SimID_316524429_0__exported"
   )
 
 # Folder naming corresponding to specific simulation ID
 # Change
 var <- c(
   # "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_5min",
-  # "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0_high_t_res",
+  "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0_high_t_res"
   # "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0",
-  # "06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1",
-  "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0_from_pyvcell"
+  # "06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1"
+  # "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0_from_pyvcell"
   
   
 )
@@ -212,8 +217,8 @@ for(i in 1:length(sims)){
                desiredInterval=1,
                nHeatmaps = 7,
                # alternative_range <- NULL, #when equal spacing is enough on heatmaps
-               alternative_range <- c(0, 10, 20, 25, 30, 40, 50), #alternative desired time points to be plotted on heatmaps
-               cutoff=list("CPC"=11), #for heatmap color bar
+               alternative_range <- c(0, 2, 7, 10, 12, 17, 20), #alternative desired time points to be plotted on heatmaps
+               # cutoff=list("CPC"=11), #for heatmap color bar
                funcPath,
                importPath,
                exportPath_new,

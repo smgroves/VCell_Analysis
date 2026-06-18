@@ -218,6 +218,11 @@ vcell_heatmap <- function(
         maxColor=ceiling(max(C))}
     }
   }
+  # Fallback: if cutoff_color was NULL/empty or all concentrations are 0/NA
+  if (is.null(maxColor) || !is.finite(maxColor) || maxColor <= 0) {
+    maxColor <- max(C, na.rm = TRUE)
+    if (!is.finite(maxColor) || maxColor <= 0) maxColor <- 1
+  }
   message(sprintf("  MaxColor = %s", maxColor))
   
   xbreaks<-seq(0, chromWidth, chromWidth/(xdiv-1))
