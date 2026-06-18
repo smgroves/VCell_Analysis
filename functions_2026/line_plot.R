@@ -136,24 +136,35 @@ line_plot <- function(
   # show plot
   print(region_check$plot)
   
-  kt_species <- vector("list", length(all_species))
-  ic_species <- vector("list", length(all_species))
-  bg_species <- vector("list", length(all_species))
-  ch_species <- vector("list", length(all_species))
   L <- list()
-  
-  # Initialize empty vectors for each species
-  for (i in 1:length(all_species)) {
-    kt_species[[i]] <- vector("numeric", ((tSpan) + 1))
-    ic_species[[i]] <- vector("numeric", ((tSpan) + 1))
-    bg_species[[i]] <- vector("numeric", ((tSpan) + 1))
-    ch_species[[i]] <- vector("numeric", ((tSpan) + 1))
-  }
   
    
   # change working directory
   setwd(importPath)
-  
+
+  # Cache directory listing once — avoids 40 × (tSpan+1) filesystem reads
+  all_files <- list.files(SimID)
+
+  # Detect which timepoints actually have CSV files so we skip empty iterations.
+  # Filenames end with a 4-digit timepoint index, e.g. _CPCa_0010.csv
+  tpoint_str        <- regmatches(all_files, regexpr("\\d{4}(?=\\.csv$)", all_files, perl = TRUE))
+  actual_timepoints <- sort(unique(as.integer(tpoint_str)))
+  n_tp              <- length(actual_timepoints)
+  message(sprintf("SimID %s: found %d timepoints (%s ... %s)",
+                  SimID, n_tp,
+                  min(actual_timepoints), max(actual_timepoints)))
+
+  kt_species <- vector("list", length(all_species))
+  ic_species <- vector("list", length(all_species))
+  bg_species <- vector("list", length(all_species))
+  ch_species <- vector("list", length(all_species))
+  for (i in seq_along(all_species)) {
+    kt_species[[i]] <- rep(NA_real_, n_tp)
+    ic_species[[i]] <- rep(NA_real_, n_tp)
+    bg_species[[i]] <- rep(NA_real_, n_tp)
+    ch_species[[i]] <- rep(NA_real_, n_tp)
+  }
+
   custom_colors <- c("#e41a1c",
                      "#377eb8", 
                      "#4daf4a", 
@@ -164,40 +175,33 @@ line_plot <- function(
   
 
   
-  # data processing
-  for(z in 0:(tSpan)){
-    
-    t <- z
-    
-    # convert timepoint to string
-    dataPoint<-as.character(round(x=t,digits=0))
-    if(nchar(dataPoint)==1){
-      dataPoint<-paste("000",dataPoint,sep="")
-    }else if(nchar(dataPoint)==2){
-      dataPoint<-paste("00",dataPoint,sep="")
-    }else if(nchar(dataPoint)==3){
-      dataPoint<-paste("0",dataPoint,sep="")
-    }
-    
-    
+  # data processing — iterate only over timepoints that have CSV files
+  for(tp_idx in seq_along(actual_timepoints)){
+
+    z <- actual_timepoints[tp_idx]
+    message(sprintf("  [%d/%d] t = %d", tp_idx, n_tp, z))
+
+    # convert timepoint to zero-padded 4-digit string
+    dataPoint <- formatC(z, width = 4, flag = "0")
+
+    # Reset L so stale matrices from the previous timepoint don't carry forward
+    L <- vector("list", length(all_species))
+
     for(specie in 1:length(all_species)){
       pattern<-paste("[A-Za-z0-9_]*_Slice_XY_\\d",
                      all_species[specie],
                      dataPoint,
                      sep="_")
-      
-      
+
       tryCatch(
-        
       expr = {
-      # read the csv file to a matrix, M
-      L[[specie]]<-data.matrix(read.csv(paste(importPath,SimID,grep(pattern, list.files(SimID), value = TRUE),sep="/"),header=FALSE,skip=leader))[row_1:row_2,col_1:col_2]
+        matched <- grep(pattern, all_files, value = TRUE)  # grep cached list, not disk
+        L[[specie]] <- data.matrix(
+          read.csv(paste(importPath, SimID, matched, sep="/"),
+                   header=FALSE, skip=leader))[row_1:row_2, col_1:col_2]
       },
       error = function(e){
         warning(paste0("SimID ", SimID, ": missing species '", all_species[specie], "' — setting to NA"))
-      },
-      finally = {
-        
       }
       )
     }
@@ -223,13 +227,7 @@ line_plot <- function(
 
       matrix <- L[[q]]
 
-      if (is.null(matrix)) {
-        kt_species[[q]][z+1] <- NA
-        ic_species[[q]][z+1] <- NA
-        bg_species[[q]][z+1] <- NA
-        ch_species[[q]][z+1] <- NA
-        next
-      }
+      if (is.null(matrix)) next
 
       left_kinetochore <-matrix[y1:y2, x1:x2]
       right_kinetochore <-matrix[y1:y2, x5:x6]
@@ -246,18 +244,21 @@ line_plot <- function(
       ch <- mean(cohesin, na.rm=TRUE)
       
       
-      kt_species[[q]][z+1] <- kt
-      ic_species[[q]][z+1] <- ic
-      bg_species[[q]][z+1] <- bg
-      ch_species[[q]][z+1] <- ch
+      kt_species[[q]][tp_idx] <- kt
+      ic_species[[q]][tp_idx] <- ic
+      bg_species[[q]][tp_idx] <- bg
+      ch_species[[q]][tp_idx] <- ch
     }
     
   }
-  
+
+  message(sprintf("Data loaded. Building %d line plots...", length(all_data)))
+
   for (sp in 1:length(all_data)){
     #Example: species_info_list[[1]] <- c("CPC", "Inactive CPC", "Active CPC", "CPC Activation", TRUE, FALSE, FALSE, TRUE)
-    
+
     identity = species_info_list[[sp]][1] #Specifies the File name for saving plot, ex. CPC_plot
+    message(sprintf("  [%d/%d] %s", sp, length(all_data), identity))
     speciesInactive = species_info_list[[sp]][2] #Specifies the Title on plots with only inactive species
     speciesActive = species_info_list[[sp]][3] #Specifies the Title on plots with only active species
     speciesFull = species_info_list[[sp]][4] #Specifies the Title on plots with both active and inactive species
@@ -276,41 +277,34 @@ line_plot <- function(
   }
   
   data_ic <- data.frame(
-    Time = 0:(tSpan),
-    Species = rep(species, each = ((tSpan) + 1)),
-    IC = unlist(ic_species[(pointer + 1):(pointer + length(species))])
+    Time    = actual_timepoints,
+    Species = rep(species, each = n_tp),
+    IC      = unlist(ic_species[(pointer + 1):(pointer + length(species))])
   )
-  
+
   data_kt <- data.frame(
-    Time = 0:(tSpan),
-    Species = rep(species, each = ((tSpan) + 1)),
-    KT = unlist(kt_species[(pointer + 1):(pointer + length(species))])
+    Time    = actual_timepoints,
+    Species = rep(species, each = n_tp),
+    KT      = unlist(kt_species[(pointer + 1):(pointer + length(species))])
   )
-  
+
   data_bg <- data.frame(
-    Time = 0:(tSpan),
-    Species = rep(species, each = ((tSpan) + 1)),
-    BG = unlist(bg_species[(pointer + 1):(pointer + length(species))])
+    Time    = actual_timepoints,
+    Species = rep(species, each = n_tp),
+    BG      = unlist(bg_species[(pointer + 1):(pointer + length(species))])
   )
-  
+
   data_ch <- data.frame(
-    Time = 0:(tSpan),
-    Species = rep(species, each = ((tSpan) + 1)),
-    CH = unlist(ch_species[(pointer + 1):(pointer + length(species))])
+    Time    = actual_timepoints,
+    Species = rep(species, each = n_tp),
+    CH      = unlist(ch_species[(pointer + 1):(pointer + length(species))])
   )
   
-  # Reshape to wide
-  data_ic <- reshape(data_ic, idvar = "Time", timevar = "Species", direction = "wide")
-  data_kt <- reshape(data_kt, idvar = "Time", timevar = "Species", direction = "wide")
-  data_bg <- reshape(data_bg, idvar = "Time", timevar = "Species", direction = "wide")
-  data_ch <- reshape(data_ch, idvar = "Time", timevar = "Species", direction = "wide")
-  
-  
-  # Rename columns
-  colnames(data_ic)[2:ncol(data_ic)] <- gsub("IC.", "", colnames(data_ic)[2:ncol(data_ic)])
-  colnames(data_kt)[2:ncol(data_kt)] <- gsub("KT.", "", colnames(data_kt)[2:ncol(data_kt)])
-  colnames(data_bg)[2:ncol(data_bg)] <- gsub("BG.", "", colnames(data_bg)[2:ncol(data_bg)])
-  colnames(data_ch)[2:ncol(data_ch)] <- gsub("CH.", "", colnames(data_ch)[2:ncol(data_ch)])
+  # Reshape to wide (pivot_wider uses Species values directly as column names)
+  data_ic <- as.data.frame(pivot_wider(data_ic, id_cols = "Time", names_from = "Species", values_from = "IC"))
+  data_kt <- as.data.frame(pivot_wider(data_kt, id_cols = "Time", names_from = "Species", values_from = "KT"))
+  data_bg <- as.data.frame(pivot_wider(data_bg, id_cols = "Time", names_from = "Species", values_from = "BG"))
+  data_ch <- as.data.frame(pivot_wider(data_ch, id_cols = "Time", names_from = "Species", values_from = "CH"))
   
   
   # Get active and inactive df for IC, KT, BG, CH
