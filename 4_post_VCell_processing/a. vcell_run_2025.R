@@ -139,8 +139,9 @@ kt_width = c(
     # "Metacentric_Relaxed",
     # "Metacentric_Relaxed",
     # "Metacentric_Relaxed",
-    # "Metacentric_Relaxed"
-    "Metacentric_Tensed"
+  "Metacentric_Tensed",
+    "Metacentric_Relaxed"
+    # "Metacentric_Tensed",
     # "Metacentric_Tensed"
   # "Telocentric_Relaxed"
   # "Telocentric_Tensed"
@@ -151,18 +152,22 @@ kt_width = c(
 
 # All simulation IDs
 # Change
+
 sims <- c(
-  # "SimID_316428962_4__exported",
-  # "SimID_316428962_5__exported",
-  # "SimID_316428962_6__exported"
-"SimID_316455468_0__exported"
+  # "SimID_316523023_0__exported",
+  # "SimID_316523021_0__exported",
+  "SimID_316523018_0__exported",
+  "SimID_316230588_0__exported"
   )
 
 # Folder naming corresponding to specific simulation ID
 # Change
 var <- c(
-  "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0"
-
+  # "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_5min",
+  # "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0_high_t_res",
+  "06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0",
+  "06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1"
+  
 )
 #########################################################
 

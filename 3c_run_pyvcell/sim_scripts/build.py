@@ -55,11 +55,11 @@ def build_chromosome(relaxed_model, chr='chr19', phase="Metaphase", KT_loc="meta
         # update kinetochore compartments to match new geometry
         void = geo.subvolumes["name" == 'void']
         if KT_loc == "metacentric":
-            relaxed_model.set_parameter_value("kin_y1", "((chrH / 2) - (kinH / 2))")
-            relaxed_model.set_parameter_value("kin_y2", "((chrH / 2) + (kinH / 2))")
+            relaxed_model.model.set_parameter_value("kin_y1", "((chrH / 2) - (kinH / 2))")
+            relaxed_model.model.set_parameter_value("kin_y2", "((chrH / 2) + (kinH / 2))")
         elif KT_loc == "telocentric":
-            relaxed_model.set_parameter_value("kin_y1", 0)
-            relaxed_model.set_parameter_value("kin_y2", "kinH") # keep same kinetochore height as metacentric case, just move to end of chromosome
+            relaxed_model.model.set_parameter_value("kin_y1", 0)
+            relaxed_model.model.set_parameter_value("kin_y2", "kinH") # keep same kinetochore height as metacentric case, just move to end of chromosome
         else:
             raise ValueError("Invalid KT_loc value. Must be 'metacentric' or 'telocentric'.")
         void.analytic_expr = f'(((x >= 0.0) && (x < L_kin_x1) && (y >= kin_y1) && (y <= kin_y2)) || ((x > R_kin_x2) && (x <= chrW) && (y >=kin_y1) && (y <= kin_y2)))'
@@ -209,3 +209,82 @@ def build_transition_model(relaxed_model,
 
 
     return transition_model
+
+def build_double_chromosome(relaxed_model, application="Spatial", left = "relaxed", right = "relaxed"):
+    """
+    Build a double chromosome model from a relaxed model.
+    Parameters:
+    relaxed_model: The relaxed VCell model.
+    application: The application name for the relaxed model.
+    Returns:
+    double_chromosome_model: The generated double chromosome model.
+    """
+
+    double_model = relaxed_model.model_copy(deep=True)
+    model = double_model.model
+    app = double_model.applications[0]
+    geo = app.geometry
+    #update geometry to be double width
+    geo.extent = [geo.extent[0] * 2, geo.extent[1], geo.extent[2]]
+
+    # update [0-4] void regions and 1 chr region appropriately based on passed left and right
+    void = geo.subvolumes["name" == 'void']
+    chr = geo.subvolumes["name" == 'chr']
+    if left == "relaxed":
+        expr_template_L = f'(((x >= 0.0) && (x < L_kin_x1) && (y >= kin_y1) && (y <= kin_y2)) || ((x > R_kin_x2) && (x <= chrW) && (y >=kin_y1) && (y <= kin_y2)))'
+    elif left == "tensed":
+        expr_template_L = ""
+    
+    if right == "relaxed":
+        expr_template_R = f'(((x >= chrW) && (x < L_kin_x1+chrW) && (y >= kin_y1) && (y <= kin_y2)) || ((x > R_kin_x2+chrW) && (x <= chrW+chrW) && (y >=kin_y1) && (y <= kin_y2)))'
+    elif right == "tensed":
+        expr_template_R = ""
+
+    if expr_template_L == "":
+        expr_template = expr_template_R
+    elif expr_template_R == "":
+        expr_template = expr_template_L
+    else:
+        expr_template = f'{expr_template_L} || {expr_template_R}'
+    expr = replace_geo_expr_param_to_numeric(expr_template, model)
+    void.analytic_expr = expr
+
+    #update localization of initial conditions for each species
+    #all diffusible species should have the same concentration as before
+    #all localized species should be mapped to the new geometry
+
+    #build dictionary based on left and right parameters
+    #H2A, H3, HASPINi, I, KNL1, NDC80
+    species_dict = { "KNL1":"", "NDC80":""}
+    species_dict["HASPINi"] = "HASPIN_ic*(((x >= L_has_x3) && (x <= R_has_x4))) || (((x >= L_has_x3 +chrW) && (x <= R_has_x4 +chrW)))"
+
+    if (left == "relaxed") and (right == "relaxed"):
+        species_dict["KNL1"] ="KNL1_ic * (((x >= R_kin_x1) && (x <= R_kin_x2) && (y >= kin_y1) && (y <= kin_y2)) ||((x >= L_kin_x1) && (x <= L_kin_x2) && (y >= kin_y1) && (y <= kin_y2)) || ((x >= (R_kin_x1 + chrW)) && (x <= (R_kin_x2 + chrW)) && (y >= kin_y1) && (y <= kin_y2)) ||((x >= (L_kin_x1 + chrW)) && (x <= (L_kin_x2 + chrW)) && (y >= kin_y1) && (y <= kin_y2)))"
+        species_dict["NDC80"]="NDC80_ic * (((x >= R_kin_x1) && (x <= R_kin_x2) && (y >= kin_y1) && (y <= kin_y2)) ||((x >= L_kin_x1) && (x <= L_kin_x2) && (y >= kin_y1) && (y <= kin_y2)) || ((x >= (R_kin_x1 + chrW)) && (x <= (R_kin_x2 + chrW)) && (y >= kin_y1) && (y <= kin_y2)) ||((x >= (L_kin_x1 + chrW)) && (x <= (L_kin_x2 + chrW)) && (y >= kin_y1) && (y <= kin_y2)))"
+    print(species_dict.values())
+
+    #add initial concentrations for each species
+    for species in species_dict.keys():
+        sm = app.get_species_mapping(species)
+        sm.init_conc = species_dict[species]
+        print("Updated initial concentrations:")
+        print(f"Species: {species}, Initial Concentration: {sm.init_conc}")
+
+    #update mesh size
+    sim = app.simulations[0]
+
+    sim.mesh_size = [sim.mesh_size[0] * 2, sim.mesh_size[1], sim.mesh_size[2]]
+
+    
+    fig, axes = plt.subplots(figsize=(12, 5), ncols=2)
+
+    plot_2d_geo(relaxed_model.applications[0].geometry,
+                ax=axes[0],
+                title="Relaxed Geometry")
+
+    plot_2d_geo(geo, ax=axes[1], title=f"Double Geometry for {left} and {right}")
+
+    plt.tight_layout()
+    plt.show()
+
+    return double_model

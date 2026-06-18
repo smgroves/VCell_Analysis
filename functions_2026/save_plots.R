@@ -16,6 +16,7 @@ save_plots <- function(
     exportPath,
     kt_width,
     cutoff = NULL,
+    compute_functions = NULL,
     movie = TRUE,
     lineplots = TRUE,
     KK_dist_relaxed = 0.575,
@@ -49,7 +50,8 @@ save_plots <- function(
       nHeatmaps = nHeatmaps,
       alternative_range,
       importPath=importPath,
-      exportPath=exportPath)
+      exportPath=exportPath,
+      compute_functions=compute_functions)
 
   }
 
@@ -85,6 +87,7 @@ save_plots <- function(
         importPath=importPath,
         exportPath=exportPath,
         kt_width = kt_width,
+        compute_functions=compute_functions,
         KK_dist_relaxed = KK_dist_relaxed,
         KK_dist_tensed = KK_dist_tensed,
         KT_width= KT_width,

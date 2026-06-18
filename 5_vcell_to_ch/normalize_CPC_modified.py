@@ -463,20 +463,20 @@ rescaling_factor = 15.8
 #####################################################
 # New simulations for 4/22/2026 - Monse sims
 #####################################################
-outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/06_16_2026"
+outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/06_17_2026"
 if not os.path.exists(outdir):
     os.makedirs(outdir)
 
 # python hdf5_converter.py "SimID_310051691_0__exported.hdf5" '/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/VCell_Exports' "04_21_26_metacentric_relaxed_MCF10A_chr19_PMP1_Monse" "04_13_26_metacentric_relaxed_MCF10A_chr19_PMP1"
 # python hdf5_converter.py "SimID_310898765_0__exported.hdf5" '/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/VCell_Exports' "04_21_26_metacentric_relaxed_MCF10A_chr19_PMP1_Monse" "04_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_FOXM1"
 # python hdf5_converter.py "SimID_310973215_0__exported.hdf5" '/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/VCell_Exports' "04_21_26_metacentric_relaxed_MCF10A_chr19_PMP1_Monse" "04_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_FOXM1_II"
-folder_names = [["SimID_316455468_0__exported"]]
-model_name = ['06_13_26 CPC_metacentric_transition_tensed_MCF10A_chr19_PMP1']
-simulation_name = ['06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0']
+folder_names = [["SimID_316523018_0__exported"],["SimID_316230588_0__exported"]]
+model_name = ['06_13_26 CPC_metacentric_transition_tensed_MCF10A_chr19_PMP1',"06_13_26 CPC_metacentric_relaxed_MCF10A_chr19_PMP1"]
+simulation_name = ['06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0',"06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1"]
 
 # [4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6]
-min_mixes = [4, 4.5, 5, 5.5, 6]  # min (x axis in plot)
-rescaling_factors = [8, 9, 10, 11, 12, 13, 14, 15, 16]  # max (y axis in plot)
+min_mixes = [4, 4.5, 5, 5.5, 6, 6.5, 7]  # min (x axis in plot)
+rescaling_factors = [10, 11, 12, 13, 14, 15, 16, 17, 18]  # max (y axis in plot)
 
 for f, m, s in zip(folder_names, model_name, simulation_name):
     print(f, m, s)

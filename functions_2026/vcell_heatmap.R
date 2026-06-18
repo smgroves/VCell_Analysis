@@ -13,7 +13,11 @@ vcell_heatmap <- function(
     xdiv=3, # number of divisions desired on x axis of output plot
     ydiv=3, # number of divisions desired on y axis of output plot
     importPath="/Users/catalinaalvarez/Google\ Drive/My\ Drive/UVA/Research/JanesLab/CPC_project/Manuscript/Paper_simulations/vcell_data",
-    exportPath="/Users/catalinaalvarez/Desktop/"){ 
+    exportPath="/Users/catalinaalvarez/Desktop/",
+    compute_functions = NULL,  # named list: target_species -> c(component_species, ...)
+    devices = c("png", "pdf"), # which formats to save; omit "pdf" for large/wide datasets
+    show_plot = TRUE           # set FALSE to skip print(p) to the Plots pane
+    ){
   
   #####################################################################################
 
@@ -106,12 +110,28 @@ vcell_heatmap <- function(
           print(dataPoint)
           for(i in 1:length(species)){
             print(species[i])
-            pattern<-paste("[A-Za-z0-9_]*_Slice_XY_\\d",
-                           species[i],
-                           dataPoint,
-                           sep="_")
-            # read the csv file to a matrix, M
-            L[[i]]<-data.matrix(read.csv(paste(importPath,dataFolder,grep(pattern, list.files(dataFolder), value = TRUE),sep="/"),header=FALSE,skip=leader))[row_1:row_2,col_1:col_2]
+            pattern <- paste("[A-Za-z0-9_]*_Slice_XY_\\d", species[i], dataPoint, sep="_")
+            matched  <- grep(pattern, list.files(dataFolder), value = TRUE)
+            if (length(matched) > 0) {
+              # normal case: read the pre-existing CSV
+              L[[i]] <- data.matrix(read.csv(
+                paste(importPath, dataFolder, matched, sep="/"),
+                header=FALSE, skip=leader))[row_1:row_2, col_1:col_2]
+            } else if (!is.null(compute_functions) && species[i] %in% names(compute_functions)) {
+              # fallback: sum component species loaded from their own CSVs
+              comp_mats <- lapply(compute_functions[[species[i]]], function(comp) {
+                cp      <- paste("[A-Za-z0-9_]*_Slice_XY_\\d", comp, dataPoint, sep="_")
+                cm      <- grep(cp, list.files(dataFolder), value = TRUE)
+                if (length(cm) > 0)
+                  tryCatch(
+                    data.matrix(read.csv(paste(importPath, dataFolder, cm, sep="/"),
+                                         header=FALSE, skip=leader))[row_1:row_2, col_1:col_2],
+                    error = function(e) NULL)
+                else NULL
+              })
+              comp_mats <- Filter(Negate(is.null), comp_mats)
+              if (length(comp_mats) > 0) L[[i]] <- Reduce(`+`, comp_mats)
+            }
           }
           
           # set any negative concentration values to zero
@@ -260,34 +280,35 @@ vcell_heatmap <- function(
   
   exportFilename<-paste(speciesName, "heatmap", sep="_")
 
-  # save graph to png file
-  ggsave(
-    paste(exportFilename,"png",sep="."),
-    plot = p,
-    device = "png",
-    path = exportPath,
-    scale = 1,
-    width = 10,
-    height = 5,
-    units = "in",
-    dpi = 300
-    # limitsize = TRUE
+  if ("png" %in% devices) {
+    ggsave(
+      paste(exportFilename, "png", sep="."),
+      plot   = p,
+      device = "png",
+      path   = exportPath,
+      scale  = 1,
+      width  = 10,
+      height = 5,
+      units  = "in",
+      dpi    = 300
     )
-  
-  ggsave(
-    paste(exportFilename,"pdf",sep="."),
-    plot = p,
-    device = "pdf",
-    path = exportPath,
-    scale = 1,
-    width = 10,
-    height = 5,
-    units = "in",
-    dpi = 600
-    # limitsize = TRUE
-  )
-  
-  print(p)
-  return(list(nlist,M))
+  }
+
+  if ("pdf" %in% devices) {
+    ggsave(
+      paste(exportFilename, "pdf", sep="."),
+      plot   = p,
+      device = "pdf",
+      path   = exportPath,
+      scale  = 1,
+      width  = 10,
+      height = 5,
+      units  = "in",
+      dpi    = 600
+    )
+  }
+
+  if (show_plot) print(p)
+  return(list(nlist, M))
 }
 

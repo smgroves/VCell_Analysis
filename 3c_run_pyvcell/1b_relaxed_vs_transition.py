@@ -27,7 +27,7 @@ run_transition = False
 ########################################
 # load model from vcml file
 ########################################
-vcml_file_relaxed = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_models/vcml/_006_04_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1.vcml"
+vcml_file_relaxed = "/Users/smgroves/Documents/GitHub/VCell_Analysis/vcell_models/vcml/_006_13_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1_fortransition.vcml"
 bio_model = ss.load_model(vcml_file_relaxed)
 
 # this model should have rxns, parameters, compartments, and at least one application as defaults.
@@ -55,7 +55,7 @@ relaxed_model = ss.build_chromosome(relaxed_model=bio_model, chr=chr, phase=phas
 sim = relaxed_model.applications[0].simulations[0]
 print(f"{Fore.GREEN}Running relaxed model simulation with sim.duration={sim.duration} and sim.output_time_step={sim.output_time_step}...{Style.RESET_ALL}")
 result_relaxed = ss.run_simulation(biomodel=relaxed_model, simulation=sim.name,
-                                   run_name=f"_005_20_26_CPC_metacentric_relaxed_MCF10A_{chr}_{phase}_{state}", fields=None, local=True, overwrite=True)
+                                   run_name=f"_006_13_26_CPC_metacentric_{state}_MCF10A_{chr}_{phase}", fields=None, local=True, overwrite=True)
 print(result_relaxed.solver_output_dir)
 result_relaxed.plotter.plot_slice_2d(10, "CPCa", 0)
 
@@ -69,7 +69,7 @@ if run_tensed:
     sim = tensed_model.applications[0].simulations[0]
     print(f"{Fore.GREEN}Running tensed model simulation with sim.duration={sim.duration} and sim.output_time_step={sim.output_time_step}...{Style.RESET_ALL}")
     result_tensed = ss.run_simulation(biomodel=tensed_model, simulation=sim.name,
-                                  run_name=f"_005_20_26_CPC_metacentric_tensed_MCF10A_{chr}_{phase}_{state}", fields=None, local=True, overwrite=True)
+                                  run_name=f"_006_13_26_CPC_metacentric_{state}_MCF10A_{chr}_{phase}", fields=None, local=True, overwrite=True)
     print(result_tensed.solver_output_dir)
     result_tensed.plotter.plot_slice_2d(10, "CPCa", 0)
 
@@ -77,15 +77,15 @@ if run_tensed:
     ss.export_result_to_csv(result_tensed)
 
 
-# print(f"{Fore.GREEN}Building transition model from relaxed model...{Style.RESET_ALL}")
-# transition_model = ss.build_transition_model(
-#     relaxed_model=relaxed_model, field_data_dir="_005_20_26_CPC_metacentric_relaxed_MCF10A_chr19_PMP1_test_run", application="Spatial", t_transition=30)
-# print(f"{Fore.GREEN}Running transition model simulation...{Style.RESET_ALL}")
-# result_transition = ss.run_simulation(biomodel=transition_model, simulation=sim.name,
-#                                       run_name="_005_20_26_CPC_metacentric_transition_MCF10A_chr19_PMP1__from_pyvcell_test_run", fields=None, local=True, overwrite=True)
-# print(result_transition.solver_output_dir)
-# result_transition.plotter.plot_slice_2d(10, "CPCa", 0)
-# ss.export_result_to_csv(result_transition)
+print(f"{Fore.GREEN}Building transition model from relaxed model...{Style.RESET_ALL}")
+transition_model = ss.build_transition_model(
+    relaxed_model=relaxed_model, field_data_dir=f"_006_13_26_CPC_metacentric_relaxed_MCF10A_{chr}_{phase}", application="Spatial", t_transition=30)
+print(f"{Fore.GREEN}Running transition model simulation...{Style.RESET_ALL}")
+result_transition = ss.run_simulation(biomodel=transition_model, simulation=sim.name,
+                                      run_name="_006_13_26_CPC_metacentric_transition_tensed_MCF10A_{chr}_{phase}", fields=None, local=True, overwrite=True)
+print(result_transition.solver_output_dir)
+result_transition.plotter.plot_slice_2d(10, "CPCa", 0)
+ss.export_result_to_csv(result_transition)
 
 
 # %%

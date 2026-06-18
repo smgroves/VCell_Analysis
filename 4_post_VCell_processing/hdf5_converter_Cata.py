@@ -141,7 +141,7 @@ def convert_hdf5_to_csv(
                             ) as f:
                                 f.write(header_text)
                                 f.close()
-                            df = pd.DataFrame(arr[:, 0:64, i]) #changed for cytoplasmic simulations
+                            df = pd.DataFrame(arr[:, :, i]) #changed for cytoplasmic simulations
                             df.to_csv(
                                 f"{output_folder}/SimID_{sim_key_name}__Slice_XY_0_{key}_{i:04d}.csv",
                                 index=False,
