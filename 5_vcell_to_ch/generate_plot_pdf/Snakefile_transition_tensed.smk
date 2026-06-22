@@ -3,7 +3,7 @@ from pathlib import Path
 import glob
 
 # Configuration
-FOLDER_NAME = "CPC_all_06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0_100_136x136__"
+FOLDER_NAME = "CPC_all_06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0_25_136x136__"
 SIM_SET = "06_17_2026"
 BASEDIR = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch"
 ICDIR = os.path.join(BASEDIR, "IC", SIM_SET)
@@ -12,8 +12,8 @@ INTDIR = os.path.join(BASEDIR, "int", SIM_SET, FOLDER_NAME)
 SCRIPTDIR = os.path.join(BASEDIR, "generate_plot_pdf")
 SOLVERDIR = os.path.join(BASEDIR, "CahnHilliard_MATLAB_solvers")
 # maca64 for Apple Silicon
-# MATLAB_BIN = "/Applications/MATLAB_R2023b.app/bin/maca64/MATLAB"
-MATLAB_BIN = "/Applications/MATLAB_R2023a.app/bin/maci64/MATLAB" #for Mac
+MATLAB_BIN = "/Applications/MATLAB_R2023b.app/bin/maca64/MATLAB"
+# MATLAB_BIN = "/Applications/MATLAB_R2023a.app/bin/maci64/MATLAB" #for Mac
 
 DT = 2.5e-5
 DT_OUT = 10

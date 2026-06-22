@@ -464,6 +464,8 @@ rescaling_factor = 15.8
 # New simulations for 4/22/2026 - Monse sims
 #####################################################
 outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/06_17_2026"
+in_dir = '/Users/smgroves/Library/CloudStorage/Box-Box/Research/JanesLab/CPC_Model_Project/VCell_Exports/'
+
 if not os.path.exists(outdir):
     os.makedirs(outdir)
 
@@ -482,7 +484,30 @@ for f, m, s in zip(folder_names, model_name, simulation_name):
     print(f, m, s)
     for min_mix in min_mixes:
         for rescaling_factor in rescaling_factors:
-            ma, mi = rescale_vcell_output_neg1_pos1(f, in_dir, outdir, model_name=m, simulation_name=s, timepoint=100,
-                                                    timestep=10, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+            ma, mi = rescale_vcell_output_neg1_pos1(f, in_dir, outdir, model_name=m, simulation_name=s, timepoint=25,
+                                                    timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
             print(
                 f"min_mix: {min_mix}, rescaling_factor: {rescaling_factor}, max: {ma}, min: {mi}")
+
+
+# folder_names = ["SimID_316523023_0__exported"]
+# model_name = '06_13_26 CPC_metacentric_transition_tensed_MCF10A_chr19_PMP1'
+# simulation_name = '06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_5min'
+
+# for min_mix in min_mixes:
+#     for rescaling_factor in rescaling_factors:
+#         ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=2,
+#                                                 timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+#         print(
+#             f"min_mix: {min_mix}, rescaling_factor: {rescaling_factor}, max: {ma}, min: {mi}")
+
+# folder_names = ["SimID_316230588_0__exported"]
+# model_name = '06_13_26 CPC_metacentric_relaxed_MCF10A_chr19_PMP1'
+# simulation_name = '06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1'
+
+# for min_mix in min_mixes:
+#     for rescaling_factor in rescaling_factors:
+#         ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=27,
+#                                                 timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+#         print(
+#             f"min_mix: {min_mix}, rescaling_factor: {rescaling_factor}, max: {ma}, min: {mi}")
