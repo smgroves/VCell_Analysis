@@ -3,7 +3,7 @@ from pathlib import Path
 import glob
 
 # Configuration
-FOLDER_NAME = "CPC_all_06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_25_136x136__"
+FOLDER_NAME = "CPC_all_06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_27_136x136__"
 SIM_SET = "06_17_2026"
 BASEDIR = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch"
 ICDIR = os.path.join(BASEDIR, "IC", SIM_SET)

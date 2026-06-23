@@ -14,10 +14,12 @@ tic("total")
 # CHANGE: Folder paths
 script_dir  <- normalizePath(dirname(rstudioapi::getSourceEditorContext()$path), mustWork = FALSE)
 funcPath<-"/Users/smgroves/Documents/GitHub/VCell_Analysis/functions_2026"
-importPath<-"/Users/smgroves/Library/CloudStorage/Box-Box/Research/CPC_Model_Project/VCell_Exports"
-exportPath<-"/Users/smgroves/Library/CloudStorage/Box-Box/Research/CPC_Model_Project/vcell_plots"
+importPath<-"/Users/smgroves/Library/CloudStorage/Box-Box/Research/JanesLab/CPC_Model_Project/VCell_Exports"
+exportPath<-"/Users/smgroves/Library/CloudStorage/Box-Box/Research/JanesLab/CPC_Model_Project/vcell_plots"
 
-
+    ##NEEED
+# latex2exp     
+# pdftools
 
 # Source helper functions
 functions <- file.path(funcPath, list.files(funcPath, recursive = TRUE))
@@ -86,12 +88,12 @@ kt_width <- c(
 
 # CHANGE: SimID folder names (inside the workspace subfolder)
 sims <- c(
-  "SimID_316534873_0__exported" 
+  "SimID_316812427_0__exported" 
 )
 
 # CHANGE: workspace subfolder names (one per sim, same order as sims)
 var <- c(
-  "_006_13_26_CPC_metacentric_double_relaxed_MCF10A_chr19_PMP1"
+  "06_19_26_metacentric_MCF10A_double_tensed_relaxed_chr19_PMP1"
 )
 
 # CHANGE: heatmap time points (index into the saved timepoints)

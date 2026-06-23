@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.colors import ListedColormap
-sims = ["CPC_all_06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_100_136x136",
-        "CPC_all_06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0_100_136x136"]
+sims = ["CPC_all_06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_25_136x136_",
+        "CPC_all_06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0_25_136x136_"]
 # "manual_edit_CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_20s_17_144x144",
 # "manual_edit_CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_60s_17_144x144",
 #         "manual_edit_CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_120s_17_144x144",
@@ -98,8 +98,8 @@ for sim in sims:
     #            for c in category_order]
     # ax.legend(handles=patches, loc='center left', bbox_to_anchor=(1, 0.5))
 
-    ax.set_xlim(3.9, 6.1)
-    ax.set_ylim(9.5, 18.5)
+    # ax.set_xlim(3.9, 6.1)
+    # ax.set_ylim(9.5, 18.5)
     ax.set_ylabel('Condensate Well Concentration (max)')
     ax.set_xlabel('Soluble Well Concentration (min)')
     # ax.set_title('Spinodal Point with Simulation Results')
