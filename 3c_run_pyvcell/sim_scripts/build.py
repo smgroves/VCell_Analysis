@@ -3,6 +3,7 @@
 # Author: Sarah Groves 05/21/2026
 
 from matplotlib.style import use
+from numpy import mean
 import pyvcell.vcml as vc
 from .load import *
 from .plot import *
@@ -288,3 +289,120 @@ def build_double_chromosome(relaxed_model, application="Spatial", left = "relaxe
     plt.show()
 
     return double_model
+
+def get_all_numeric_parameters(biomodel):
+    """
+    Returns a flat dict of all numeric parameters that can be perturbed:
+      - global model parameters
+      - kinetics parameters (keyed as "reaction.param")
+      - species initial conditions per application (keyed as "app/species.init_conc")
+    String expressions and vcField references are skipped.
+    """
+    params = {}
+
+    # # Global model parameters
+
+
+    # # Kinetics parameters
+    # # for rxn in biomodel.model.reactions:
+    # #     if rxn.kinetics:
+    # #         for p in rxn.kinetics.kinetics_parameters:
+    # #             if isinstance(p.value, (int, float)):
+    # #                 params[f"{rxn.name}.{p.name}"] = p.value
+
+    # # Initial conditions
+    # for app in biomodel.applications:
+    #     for sm in app.species_mappings:
+    #         if isinstance(sm.init_conc, (int, float)):
+    #             params[f"{app.name}/{sm.species_name}.init_conc"] = sm.init_conc
+    
+        #kinetic params 
+    # kinetic = [  'Dapp', 'Dapp_kt', 'alpha_kt',  'KdpNDC80TTK', 'phiNDC80', 'KdpNDC80pTTK']
+    
+    kinetic = ['Dcyt',"kcatCPC",'KmCPC','KdH3', 'KdpH3','kcatPLK1', 'KmPLK1',"alpha","kcatH2AH3","KmH2AH3","KdSgo1","KdpH2ASgo1",'kcisCPC',   'kcisTTK', 'kcatTTK',  'KmTTK',
+               "KdNDC80TTK","KdNDC80pTTK","kpp_ref",'kcatplk1','Kmplk1',"kbind",'kcatCPCsub','KmCPCsub','kppCPC','kcatTTKsub','kmTTKsub','phiNdc80','Da','Da_kt','alpha_kt']
+
+
+    # ic params
+    #if the parameter name includes the word "copiespc" add to ic_list
+    ic_list = []
+    for p in biomodel.model.model_parameters:
+        if "copiespc" in p.name:
+            ic_list.append(p.name)
+
+    for p in biomodel.model.model_parameters:
+        # if isinstance(p.value, (int, float)):
+        if (p.name in kinetic) or (p.name in ic_list):
+            params[p.name] = p.value
+
+    if len(params) != len(kinetic) + len(ic_list):
+        print("Not all parameters were found.")
+        #print missing
+        for k in kinetic + ic_list:
+            if k not in params:
+                print(f"Missing parameter: {k}")
+    return params
+
+
+
+def perturb_parameters(biomodel, cv = .1, cv_kinetic = None, cv_ic = None, seed: int | None = None) -> tuple:
+    """
+    Resolve all kinetics parameters to numbers, perturb each by a lognormal
+    factor with the given CV, and set them as literal floats in a deep copy.
+
+    Returns (perturbed_biomodel, perturbed_values_dict) so you can record
+    exactly what was set.
+    """
+
+    rng = np.random.default_rng(seed)
+    if cv_kinetic is None:
+        cv_kinetic = cv
+    if cv_ic is None:
+        cv_ic = cv
+
+    sigma_kinetic = np.sqrt(np.log(1 + cv_kinetic**2))
+    sigma_ic = np.sqrt(np.log(1 + cv_ic**2))
+
+    perturbed_model = biomodel.model_copy(deep=True)
+    perturbed_values = {}
+
+
+    #kinetic params 
+    # kinetic = [  'Dapp', 'Dapp_kt', 'alpha_kt',  'KdpNDC80TTK', 'phiNDC80', 'KdpNDC80pTTK']
+    
+    kinetic = ['Dcyt',"kcatCPC",'KmCPC','KdH3', 'KdpH3','kcatPLK1', 'KmPLK1',"alpha","kcatH2AH3","KmH2AH3","KdSgo1","KdpH2ASgo1",'kcisCPC',   'kcisTTK', 'kcatTTK',  'KmTTK',
+               "KdNDC80TTK","KdNDC80pTTK","kpp_ref",'kcatplk1','Kmplk1',"kbind",'kcatCPCsub','KmCPCsub','kppCPC','kcatTTKsub','kmTTKsub','phiNDC80','Da','Da_kt','alpha_kt']
+
+
+    # ic params
+    #if the parameter name includes the word "copiespc" add to ic_list
+    ic_list = []
+    for p in perturbed_model.model.model_parameters:
+        if "copiespc" in p.name:
+            ic_list.append(p.name)
+
+    for p in perturbed_model.model.model_parameters:
+        if (p.name in kinetic) or (p.name in ic_list):
+            if isinstance(p.value, (int, float)):
+                key = f"{p.name}"
+                if p.name in kinetic:
+                    sigma = sigma_kinetic
+                else:
+                    sigma = sigma_ic
+                new_val = p.value * rng.lognormal(mean=0, sigma=sigma)
+                p.value = new_val
+                perturbed_values[key] = new_val
+            # if its a string, add multiplier to the string
+            elif isinstance(p.value, str):
+                key = f"{p.name}"
+                if p.name in kinetic:
+                    sigma = sigma_kinetic
+                else:
+                    sigma = sigma_ic
+                multiplier = rng.lognormal(mean=0, sigma=sigma)
+                new_val = f"({p.value})*{multiplier}"
+                perturbed_values[key] = new_val
+
+
+
+    return perturbed_model, perturbed_values
