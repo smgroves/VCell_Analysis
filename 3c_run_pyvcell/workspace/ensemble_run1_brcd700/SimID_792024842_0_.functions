@@ -1,0 +1,353 @@
+##---------------------------------------------
+##  /Users/smgroves/Documents/Github/VCell_Analysis/3c_run_pyvcell/workspace/out_dir_gns0lacy/SimID_792024842_0_.functions
+##---------------------------------------------
+
+BUB1_ic; 4.444792387859608; ; Volume_VariableType; false
+chromosome::BUB1a_diffusionRate; 0.9984782042956091; ; Volume_Region_VariableType; false
+chromosome::BUB1a_init_uM; 4.444792387859608; ; Volume_Region_VariableType; false
+chromosome::BUB1a_pknl1_diffusionRate; (0.010487621751648473 * ((10.0 + t) ^ -0.5630157603479803)); ; Volume_Region_VariableType; false
+chr_vol; 1.1282271; ; Volume_VariableType; false
+CPC_ic; 5.509015538322488; ; Volume_VariableType; false
+chromosome::CPCa_diffusionRate; 0.9984782042956091; ; Volume_Region_VariableType; false
+chromosome::CPCa_init_uM; 0.02912573522513959; ; Volume_Region_VariableType; false
+chromosome::CPCi_diffusionRate; 0.9984782042956091; ; Volume_Region_VariableType; false
+CPCi_frac; 0.4; ; Volume_VariableType; false
+chromosome::CPCi_init_uM; 0.01941715681675973; ; Volume_Region_VariableType; false
+cyt_vol; 1.0817729; ; Volume_VariableType; false
+Da; 0.024; ; Volume_VariableType; false
+Da_kt; 0.024; ; Volume_VariableType; false
+Dslow_histones; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_VariableType; false
+Dslow_kt; (0.010487621751648473 * ((10.0 + t) ^ -0.5630157603479803)); ; Volume_VariableType; false
+chromosome::H2A_diffusionRate; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_Region_VariableType; false
+chromosome::H2A_init_uM; ((48.0 * ((y < 1.55) || (y > 1.8499999999999999))) + (108.0 * ((y >= 1.55) && (y <= 1.8499999999999999)))); ; Volume_VariableType; false
+chromosome::H3_CPCa_diffusionRate; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_Region_VariableType; false
+chromosome::H3_CPCi_diffusionRate; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_Region_VariableType; false
+chromosome::H3_diffusionRate; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_Region_VariableType; false
+chromosome::H3_init_uM; ((120.0 * ((y < 1.55) || (y > 1.8499999999999999))) + (120.0 * ((y >= 1.55) && (y <= 1.8499999999999999)))); ; Volume_VariableType; false
+chromosome::H3S10rep_diffusionRate; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_Region_VariableType; false
+chromosome::H3S10rep_init_uM; 120.0; ; Volume_Region_VariableType; false
+has_vol; 0.17; ; Volume_VariableType; false
+hasH; 3.4; ; Volume_VariableType; false
+hasL; 0.5; ; Volume_VariableType; false
+HASPIN_ic; 8.464609292228547; ; Volume_VariableType; false
+chromosome::HASPINa_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+chromosome::HASPINi_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+chromosome::HASPINi_init_uM; (8.464609292228547 * ((x >= 0.6) && (x <= 0.7000000000000001))); ; Volume_VariableType; false
+Havail_arms; 0.4; ; Volume_VariableType; false
+Havail_cent; 0.9; ; Volume_VariableType; false
+Histone_densadj; 1.0; ; Volume_VariableType; false
+Histone_ic; 120.0; ; Volume_VariableType; false
+chromosome::I_diffusionRate; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_Region_VariableType; false
+chromosome::I_init_uM; ((72.0 * ((y < 1.55) || (y > 1.8499999999999999))) + (12.0 * ((y >= 1.55) && (y <= 1.8499999999999999)))); ; Volume_VariableType; false
+chromosome::J_BUB1a_pknl1_unbinding; (1.0704460971992262 * BUB1a_pknl1); ; Volume_VariableType; false
+chromosome::J_CPC_cis_activation; ((1.1567859394645722E-7 * CPCi) - (6.4816626371044E-4 * CPCa)); ; Volume_VariableType; false
+chromosome::J_CPC_trans_activation_panCPCa; (0.020358557942811578 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * CPCi / (2109.22121783843 + CPCi)); ; Volume_VariableType; false
+chromosome::J_H2A_phos_BUB1a; (1.4826993845399 * BUB1a * H2A / ((11.10101261893354 * (1.0 + (0.22459682055922164 * I))) + H2A)); ; Volume_VariableType; false
+chromosome::J_H2A_phos_BUB1a_pknl1; (35.5847852289576 * BUB1a_pknl1 * H2A / ((11.10101261893354 * (1.0 + (0.22459682055922164 * I))) + H2A)); ; Volume_VariableType; false
+chromosome::J_H3_CPC_cis_activation; ((2.776286254714973E-6 * H3_CPCi) - (0.01555599032905056 * H3_CPCa)); ; Volume_VariableType; false
+chromosome::J_H3_CPC_trans_activation_panCPCa; (0.020358557942811578 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * H3_CPCi / (87.88421740993459 + H3_CPCi)); ; Volume_VariableType; false
+chromosome::J_H3_CPCa_binding; ((0.22300960358317212 * H3 * CPCa) - (2.2067070814830805 * H3_CPCa)); ; Volume_VariableType; false
+chromosome::J_H3_CPCi_binding; ((0.22300960358317212 * H3 * CPCi) - (2.2067070814830805 * H3_CPCi)); ; Volume_VariableType; false
+chromosome::J_H3_phos_HASPINa; (11.208 * HASPINa * H3 / (2.391 + H3)); ; Volume_VariableType; false
+chromosome::J_H3S10rep_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * H3S10rep / (23.875623412876646 + H3S10rep)); ; Volume_VariableType; false
+chromosome::J_HASPIN_activation_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * HASPINi / (23.875623412876646 + HASPINi)); ; Volume_VariableType; false
+chromosome::J_HASPIN_activation_PLK1a; (10.983261575457433 * PLK1a * HASPINi / (74.90944633068429 + HASPINi)); ; Volume_VariableType; false
+chromosome::J_HASPIN_deactivation; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * HASPINa); ; Volume_VariableType; false
+chromosome::J_KNL1_phos_panTTK; (0.03276310540268806 * (TTKa + pTTKa + (24.0 * NDC80_TTKa) + (24.0 * NDC80_pTTKa) + (24.0 * pNDC80_TTKa) + (24.0 * pNDC80_pTTKa)) * KNL1 / (20.494666394370423 + KNL1)); ; Volume_VariableType; false
+chromosome::J_KNL1_phos_PLK1a; (1.338577152210612 * PLK1a * KNL1 / (82.57558915784647 + KNL1)); ; Volume_VariableType; false
+chromosome::J_NDC80_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * NDC80 / (23.875623412876646 + NDC80)); ; Volume_VariableType; false
+chromosome::J_NDC80_pTTK_cis_activation; ((0.0011698707704874973 * pNDC80_pTTKi) - (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pNDC80_pTTKa)); ; Volume_VariableType; false
+chromosome::J_NDC80_pTTK_trans_activation; (1.4475102630803633 * (TTKa + pTTKa + (24.0 * NDC80_TTKa) + (24.0 * NDC80_pTTKa) + (24.0 * pNDC80_TTKa) + (24.0 * pNDC80_pTTKa)) * NDC80_pTTKi / (58.86362182191829 + NDC80_pTTKi)); ; Volume_VariableType; false
+chromosome::J_NDC80_pTTKa_binding; ((0.22300960358317212 * NDC80 * pTTKa) - (1.2579942548806688 * NDC80_pTTKa)); ; Volume_VariableType; false
+chromosome::J_NDC80_pTTKa_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * NDC80_pTTKa); ; Volume_VariableType; false
+chromosome::J_NDC80_pTTKa_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * NDC80_pTTKa / (23.875623412876646 + NDC80_pTTKa)); ; Volume_VariableType; false
+chromosome::J_NDC80_pTTKi_binding; ((0.22300960358317212 * NDC80 * pTTKi) - (1.2579942548806688 * NDC80_pTTKi)); ; Volume_VariableType; false
+chromosome::J_NDC80_pTTKi_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * NDC80_pTTKi); ; Volume_VariableType; false
+chromosome::J_NDC80_pTTKi_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * NDC80_pTTKi / (23.875623412876646 + NDC80_pTTKi)); ; Volume_VariableType; false
+chromosome::J_NDC80_TTK_cis_activation; ((0.0011698707704874973 * NDC80_TTKi) - (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * NDC80_TTKa)); ; Volume_VariableType; false
+chromosome::J_NDC80_TTK_trans_activation; (1.4475102630803633 * (TTKa + pTTKa + (24.0 * NDC80_TTKa) + (24.0 * NDC80_pTTKa) + (24.0 * pNDC80_TTKa) + (24.0 * pNDC80_pTTKa)) * NDC80_TTKi / (58.86362182191829 + NDC80_TTKi)); ; Volume_VariableType; false
+chromosome::J_NDC80_TTKa_binding; ((0.22300960358317212 * NDC80 * TTKa) - (46.070537282565724 * NDC80_TTKa)); ; Volume_VariableType; false
+chromosome::J_NDC80_TTKa_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * NDC80_TTKa / (23.875623412876646 + NDC80_TTKa)); ; Volume_VariableType; false
+chromosome::J_NDC80_TTKa_phos_PLK1a; (10.983261575457433 * PLK1a * NDC80_TTKa / (74.90944633068429 + NDC80_TTKa)); ; Volume_VariableType; false
+chromosome::J_NDC80_TTKa_phosalt_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * NDC80_TTKa / (23.875623412876646 + NDC80_TTKa)); ; Volume_VariableType; false
+chromosome::J_NDC80_TTKi_binding; ((0.22300960358317212 * NDC80 * TTKi) - (46.070537282565724 * NDC80_TTKi)); ; Volume_VariableType; false
+chromosome::J_NDC80_TTKi_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * NDC80_TTKi / (23.875623412876646 + NDC80_TTKi)); ; Volume_VariableType; false
+chromosome::J_NDC80_TTKi_phos_PLK1a; (10.983261575457433 * PLK1a * NDC80_TTKi / (74.90944633068429 + NDC80_TTKi)); ; Volume_VariableType; false
+chromosome::J_NDC80_TTKi_phosalt_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * NDC80_TTKi / (23.875623412876646 + NDC80_TTKi)); ; Volume_VariableType; false
+chromosome::J_pH2A_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pH2A); ; Volume_VariableType; false
+chromosome::J_pH2A_SGO1_binding; ((0.22300960358317212 * pH2A * SGO1) - (0.5823490279006829 * pH2A_SGO1)); ; Volume_VariableType; false
+chromosome::J_pH2A_SGO1_CPC_cis_activation; ((2.776286254714973E-6 * pH2A_SGO1_CPCi) - (0.01555599032905056 * pH2A_SGO1_CPCa)); ; Volume_VariableType; false
+chromosome::J_pH2A_SGO1_CPC_trans_activation_panCPCa; (0.020358557942811578 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * pH2A_SGO1_CPCi / (87.88421740993459 + pH2A_SGO1_CPCi)); ; Volume_VariableType; false
+chromosome::J_pH2A_SGO1_CPCa_binding; ((0.22300960358317212 * pH2A_SGO1 * CPCa) - (0.2621224482109758 * pH2A_SGO1_CPCa)); ; Volume_VariableType; false
+chromosome::J_pH2A_SGO1_CPCi_binding; ((0.22300960358317212 * CPCi * pH2A_SGO1) - (0.2621224482109758 * pH2A_SGO1_CPCi)); ; Volume_VariableType; false
+chromosome::J_pH3_CPC_cis_activation; ((2.776286254714973E-6 * pH3_CPCi) - (0.01555599032905056 * pH3_CPCa)); ; Volume_VariableType; false
+chromosome::J_pH3_CPC_trans_activation_panCPCa; (0.020358557942811578 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * pH3_CPCi / (87.88421740993459 + pH3_CPCi)); ; Volume_VariableType; false
+chromosome::J_pH3_CPCa_binding; ((0.22300960358317212 * CPCa * pH3) - (0.4985294723358532 * pH3_CPCa)); ; Volume_VariableType; false
+chromosome::J_pH3_CPCi_binding; ((0.22300960358317212 * CPCi * pH3) - (0.4985294723358532 * pH3_CPCi)); ; Volume_VariableType; false
+chromosome::J_pH3_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pH3); ; Volume_VariableType; false
+chromosome::J_pH3S10rep_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pH3S10rep); ; Volume_VariableType; false
+chromosome::J_pKNL1_BUB1a_binding; (0.22300960358317212 * pKNL1 * BUB1a); ; Volume_VariableType; false
+chromosome::J_pKNL1_bub1a_unbinding; (1.0704460971992262 * pKNL1_bub1a); ; Volume_VariableType; false
+chromosome::J_pKNL1_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pKNL1); ; Volume_VariableType; false
+chromosome::J_PLK1_activation_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * PLK1i / (573.0149619090395 + PLK1i)); ; Volume_VariableType; false
+chromosome::J_PLK1_deactivation; (0.009650757056521466 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * PLK1a); ; Volume_VariableType; false
+chromosome::J_pNDC80_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pNDC80); ; Volume_VariableType; false
+chromosome::J_pNDC80_pTTK_cis_activation; ((0.0011698707704874973 * pNDC80_pTTKi) - (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pNDC80_pTTKa)); ; Volume_VariableType; false
+chromosome::J_pNDC80_pTTK_trans_activation; (1.4475102630803633 * (TTKa + pTTKa + (24.0 * NDC80_TTKa) + (24.0 * NDC80_pTTKa) + (24.0 * pNDC80_TTKa) + (24.0 * pNDC80_pTTKa)) * pNDC80_pTTKi / (58.86362182191829 + pNDC80_pTTKi)); ; Volume_VariableType; false
+chromosome::J_pNDC80_pTTKa_binding; ((0.22300960358317212 * pNDC80 * pTTKa) - (0.12579942548806688 * pNDC80_pTTKa)); ; Volume_VariableType; false
+chromosome::J_pNDC80_pTTKa_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pNDC80_pTTKa); ; Volume_VariableType; false
+chromosome::J_pNDC80_pTTKa_dephosalt; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pNDC80_pTTKa); ; Volume_VariableType; false
+chromosome::J_pNDC80_pTTKi_binding; ((0.22300960358317212 * pNDC80 * pTTKi) - (0.12579942548806688 * pNDC80_pTTKi)); ; Volume_VariableType; false
+chromosome::J_pNDC80_pTTKi_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pNDC80_pTTKi); ; Volume_VariableType; false
+chromosome::J_pNDC80_pTTKi_dephosalt; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pNDC80_pTTKi); ; Volume_VariableType; false
+chromosome::J_pNDC80_TTK_cis_activation; ((0.0011698707704874973 * pNDC80_TTKi) - (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pNDC80_TTKa)); ; Volume_VariableType; false
+chromosome::J_pNDC80_TTK_trans_activation; (1.4475102630803633 * (TTKa + pTTKa + (24.0 * NDC80_TTKa) + (24.0 * NDC80_pTTKa) + (24.0 * pNDC80_TTKa) + (24.0 * pNDC80_pTTKa)) * pNDC80_TTKi / (58.86362182191829 + pNDC80_TTKi)); ; Volume_VariableType; false
+chromosome::J_pNDC80_TTKa_binding; ((0.22300960358317212 * pNDC80 * TTKa) - (4.607053728256573 * pNDC80_TTKa)); ; Volume_VariableType; false
+chromosome::J_pNDC80_TTKa_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pNDC80_TTKa); ; Volume_VariableType; false
+chromosome::J_pNDC80_TTKa_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * pNDC80_TTKa / (23.875623412876646 + pNDC80_TTKa)); ; Volume_VariableType; false
+chromosome::J_pNDC80_TTKa_phos_PLK1a; (10.983261575457433 * PLK1a * pNDC80_TTKa / (74.90944633068429 + pNDC80_TTKa)); ; Volume_VariableType; false
+chromosome::J_pNDC80_TTKi_binding; ((0.22300960358317212 * pNDC80 * TTKi) - (4.607053728256573 * pNDC80_TTKi)); ; Volume_VariableType; false
+chromosome::J_pNDC80_TTKi_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pNDC80_TTKi); ; Volume_VariableType; false
+chromosome::J_pNDC80_TTKi_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * pNDC80_TTKi / (23.875623412876646 + pNDC80_TTKi)); ; Volume_VariableType; false
+chromosome::J_pNDC80_TTKi_phos_PLK1a; (10.983261575457433 * PLK1a * pNDC80_TTKi / (74.90944633068429 + pNDC80_TTKi)); ; Volume_VariableType; false
+chromosome::J_pTTK_cis_activation; ((4.8744615436979055E-5 * pTTKi) - (0.009650757056521466 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pTTKa)); ; Volume_VariableType; false
+chromosome::J_pTTK_trans_activation; (1.4475102630803633 * (TTKa + pTTKa + (24.0 * NDC80_TTKa) + (24.0 * NDC80_pTTKa) + (24.0 * pNDC80_TTKa) + (24.0 * pNDC80_pTTKa)) * pTTKi / (1412.7269237260389 + pTTKi)); ; Volume_VariableType; false
+chromosome::J_pTTKa_dephos; (0.009650757056521466 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pTTKa); ; Volume_VariableType; false
+chromosome::J_pTTKi_dephos; (0.009650757056521466 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * pTTKi); ; Volume_VariableType; false
+chromosome::J_SGO1_CPC_cis_activation; ((1.1567859394645722E-7 * SGO1_CPCi) - (6.4816626371044E-4 * SGO1_CPCa)); ; Volume_VariableType; false
+chromosome::J_SGO1_CPC_trans_activation_panCPCa; (0.020358557942811578 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * SGO1_CPCi / (2109.22121783843 + SGO1_CPCi)); ; Volume_VariableType; false
+chromosome::J_SGO1_CPCa_binding; ((0.009292066815965505 * SGO1 * CPCa) - (4.550736948107219E-4 * SGO1_CPCa)); ; Volume_VariableType; false
+chromosome::J_SGO1_CPCa_pH2A_binding; ((0.22300960358317212 * SGO1_CPCa * pH2A) - (0.5823490279006829 * pH2A_SGO1_CPCa)); ; Volume_VariableType; false
+chromosome::J_SGO1_CPCi_binding; ((0.009292066815965505 * SGO1 * CPCi) - (4.550736948107219E-4 * SGO1_CPCi)); ; Volume_VariableType; false
+chromosome::J_SGO1_CPCi_pH2A_binding; ((0.22300960358317212 * SGO1_CPCi * pH2A) - (0.5823490279006829 * pH2A_SGO1_CPCi)); ; Volume_VariableType; false
+chromosome::J_TTK_cis_activation; ((4.8744615436979055E-5 * TTKi) - (0.009650757056521466 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa))) * TTKa)); ; Volume_VariableType; false
+chromosome::J_TTK_trans_activation; (1.4475102630803633 * (TTKa + pTTKa + (24.0 * NDC80_TTKa) + (24.0 * NDC80_pTTKa) + (24.0 * pNDC80_TTKa) + (24.0 * pNDC80_pTTKa)) * TTKi / (1412.7269237260389 + TTKi)); ; Volume_VariableType; false
+chromosome::J_TTKa_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * TTKa / (573.0149619090395 + TTKa)); ; Volume_VariableType; false
+chromosome::J_TTKa_phos_PLK1a; (10.983261575457433 * PLK1a * TTKa / (1797.826711936423 + TTKa)); ; Volume_VariableType; false
+chromosome::J_TTKi_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa)) * TTKi / (573.0149619090395 + TTKi)); ; Volume_VariableType; false
+chromosome::J_TTKi_phos_PLK1a; (10.983261575457433 * PLK1a * TTKi / (1797.826711936423 + TTKi)); ; Volume_VariableType; false
+chromosome::kcat; 11.208; ; Volume_Region_VariableType; false
+chromosome::Kf_BUB1a_pknl1_unbinding; 1.0704460971992262; ; Volume_Region_VariableType; false
+chromosome::Kf_CPC_cis_activation; 1.1567859394645722E-7; ; Volume_Region_VariableType; false
+chromosome::Kf_H3_CPC_cis_activation; 2.776286254714973E-6; ; Volume_Region_VariableType; false
+chromosome::Kf_H3_CPCa_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_H3_CPCi_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_HASPIN_deactivation; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_NDC80_pTTK_cis_activation; 0.0011698707704874973; ; Volume_Region_VariableType; false
+chromosome::Kf_NDC80_pTTKa_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_NDC80_pTTKa_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_NDC80_pTTKi_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_NDC80_pTTKi_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_NDC80_TTK_cis_activation; 0.0011698707704874973; ; Volume_Region_VariableType; false
+chromosome::Kf_NDC80_TTKa_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_NDC80_TTKi_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_pH2A_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_pH2A_SGO1_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_pH2A_SGO1_CPC_cis_activation; 2.776286254714973E-6; ; Volume_Region_VariableType; false
+chromosome::Kf_pH2A_SGO1_CPCa_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_pH2A_SGO1_CPCi_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_pH3_CPC_cis_activation; 2.776286254714973E-6; ; Volume_Region_VariableType; false
+chromosome::Kf_pH3_CPCa_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_pH3_CPCi_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_pH3_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_pH3S10rep_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_pKNL1_BUB1a_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_pKNL1_bub1a_unbinding; 1.0704460971992262; ; Volume_Region_VariableType; false
+chromosome::Kf_pKNL1_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_PLK1_deactivation; (0.009650757056521466 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_pNDC80_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_pNDC80_pTTK_cis_activation; 0.0011698707704874973; ; Volume_Region_VariableType; false
+chromosome::Kf_pNDC80_pTTKa_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_pNDC80_pTTKa_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_pNDC80_pTTKa_dephosalt; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_pNDC80_pTTKi_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_pNDC80_pTTKi_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_pNDC80_pTTKi_dephosalt; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_pNDC80_TTK_cis_activation; 0.0011698707704874973; ; Volume_Region_VariableType; false
+chromosome::Kf_pNDC80_TTKa_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_pNDC80_TTKa_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_pNDC80_TTKi_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_pNDC80_TTKi_dephos; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_pTTK_cis_activation; 4.8744615436979055E-5; ; Volume_Region_VariableType; false
+chromosome::Kf_pTTKa_dephos; (0.009650757056521466 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_pTTKi_dephos; (0.009650757056521466 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kf_SGO1_CPC_cis_activation; 1.1567859394645722E-7; ; Volume_Region_VariableType; false
+chromosome::Kf_SGO1_CPCa_binding; 0.009292066815965505; ; Volume_Region_VariableType; false
+chromosome::Kf_SGO1_CPCa_pH2A_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_SGO1_CPCi_binding; 0.009292066815965505; ; Volume_Region_VariableType; false
+chromosome::Kf_SGO1_CPCi_pH2A_binding; 0.22300960358317212; ; Volume_Region_VariableType; false
+chromosome::Kf_TTK_cis_activation; 4.8744615436979055E-5; ; Volume_Region_VariableType; false
+KiacH2A; 4.452422779227724; ; Volume_VariableType; false
+kin_vol; 0.0225; ; Volume_VariableType; false
+kin_y1; 1.55; ; Volume_VariableType; false
+kin_y2; 1.8499999999999999; ; Volume_VariableType; false
+kinL; 0.5; ; Volume_VariableType; false
+chromosome::Km_app_H2A_phos_BUB1a; (11.10101261893354 * (1.0 + (0.22459682055922164 * I))); ; Volume_VariableType; false
+chromosome::Km_app_H2A_phos_BUB1a_pknl1; (11.10101261893354 * (1.0 + (0.22459682055922164 * I))); ; Volume_VariableType; false
+chromosome::Km_CPC_trans_activation_panCPCa; 2109.22121783843; ; Volume_Region_VariableType; false
+chromosome::Km_H3_CPC_trans_activation_panCPCa; 87.88421740993459; ; Volume_Region_VariableType; false
+chromosome::Km_H3_phos_HASPINa; 2.391; ; Volume_Region_VariableType; false
+chromosome::Km_H3S10rep_phos_panCPCa; 23.875623412876646; ; Volume_Region_VariableType; false
+chromosome::Km_HASPIN_activation_panCPCa; 23.875623412876646; ; Volume_Region_VariableType; false
+chromosome::Km_HASPIN_activation_PLK1a; 74.90944633068429; ; Volume_Region_VariableType; false
+chromosome::Km_KNL1_phos_panTTK; 20.494666394370423; ; Volume_Region_VariableType; false
+chromosome::Km_KNL1_phos_PLK1a; 82.57558915784647; ; Volume_Region_VariableType; false
+chromosome::Km_NDC80_phos_panCPCa; 23.875623412876646; ; Volume_Region_VariableType; false
+chromosome::Km_NDC80_pTTK_trans_activation; 58.86362182191829; ; Volume_Region_VariableType; false
+chromosome::Km_NDC80_pTTKa_phos_panCPCa; 23.875623412876646; ; Volume_Region_VariableType; false
+chromosome::Km_NDC80_pTTKi_phos_panCPCa; 23.875623412876646; ; Volume_Region_VariableType; false
+chromosome::Km_NDC80_TTK_trans_activation; 58.86362182191829; ; Volume_Region_VariableType; false
+chromosome::Km_NDC80_TTKa_phos_panCPCa; 23.875623412876646; ; Volume_Region_VariableType; false
+chromosome::Km_NDC80_TTKa_phos_PLK1a; 74.90944633068429; ; Volume_Region_VariableType; false
+chromosome::Km_NDC80_TTKa_phosalt_panCPCa; 23.875623412876646; ; Volume_Region_VariableType; false
+chromosome::Km_NDC80_TTKi_phos_panCPCa; 23.875623412876646; ; Volume_Region_VariableType; false
+chromosome::Km_NDC80_TTKi_phos_PLK1a; 74.90944633068429; ; Volume_Region_VariableType; false
+chromosome::Km_NDC80_TTKi_phosalt_panCPCa; 23.875623412876646; ; Volume_Region_VariableType; false
+chromosome::Km_pH2A_SGO1_CPC_trans_activation_panCPCa; 87.88421740993459; ; Volume_Region_VariableType; false
+chromosome::Km_pH3_CPC_trans_activation_panCPCa; 87.88421740993459; ; Volume_Region_VariableType; false
+chromosome::Km_PLK1_activation_panCPCa; 573.0149619090395; ; Volume_Region_VariableType; false
+chromosome::Km_pNDC80_pTTK_trans_activation; 58.86362182191829; ; Volume_Region_VariableType; false
+chromosome::Km_pNDC80_TTK_trans_activation; 58.86362182191829; ; Volume_Region_VariableType; false
+chromosome::Km_pNDC80_TTKa_phos_panCPCa; 23.875623412876646; ; Volume_Region_VariableType; false
+chromosome::Km_pNDC80_TTKa_phos_PLK1a; 74.90944633068429; ; Volume_Region_VariableType; false
+chromosome::Km_pNDC80_TTKi_phos_panCPCa; 23.875623412876646; ; Volume_Region_VariableType; false
+chromosome::Km_pNDC80_TTKi_phos_PLK1a; 74.90944633068429; ; Volume_Region_VariableType; false
+chromosome::Km_pTTK_trans_activation; 1412.7269237260389; ; Volume_Region_VariableType; false
+chromosome::Km_SGO1_CPC_trans_activation_panCPCa; 2109.22121783843; ; Volume_Region_VariableType; false
+chromosome::Km_TTK_trans_activation; 1412.7269237260389; ; Volume_Region_VariableType; false
+chromosome::Km_TTKa_phos_panCPCa; 573.0149619090395; ; Volume_Region_VariableType; false
+chromosome::Km_TTKa_phos_PLK1a; 1797.826711936423; ; Volume_Region_VariableType; false
+chromosome::Km_TTKi_phos_panCPCa; 573.0149619090395; ; Volume_Region_VariableType; false
+chromosome::Km_TTKi_phos_PLK1a; 1797.826711936423; ; Volume_Region_VariableType; false
+chromosome::KNL1_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+KNL1_ic; 227.99343185190756; ; Volume_VariableType; false
+chromosome::KNL1_init_uM; (227.99343185190756 * (((x >= 0.9375) && (x <= 1.0125) && (y >= 1.55) && (y <= 1.8499999999999999)) || ((x >= 0.28750000000000003) && (x <= 0.36250000000000004) && (y >= 1.55) && (y <= 1.8499999999999999)))); ; Volume_VariableType; false
+chromosome::kpp; (0.009650757056521466 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::kppKT; (0.009650757056521466 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kr_CPC_cis_activation; 6.4816626371044E-4; ; Volume_Region_VariableType; false
+chromosome::Kr_H3_CPC_cis_activation; 0.01555599032905056; ; Volume_Region_VariableType; false
+chromosome::Kr_H3_CPCa_binding; 2.2067070814830805; ; Volume_Region_VariableType; false
+chromosome::Kr_H3_CPCi_binding; 2.2067070814830805; ; Volume_Region_VariableType; false
+chromosome::Kr_NDC80_pTTK_cis_activation; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kr_NDC80_pTTKa_binding; 1.2579942548806688; ; Volume_Region_VariableType; false
+chromosome::Kr_NDC80_pTTKi_binding; 1.2579942548806688; ; Volume_Region_VariableType; false
+chromosome::Kr_NDC80_TTK_cis_activation; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kr_NDC80_TTKa_binding; 46.070537282565724; ; Volume_Region_VariableType; false
+chromosome::Kr_NDC80_TTKi_binding; 46.070537282565724; ; Volume_Region_VariableType; false
+chromosome::Kr_pH2A_SGO1_binding; 0.5823490279006829; ; Volume_Region_VariableType; false
+chromosome::Kr_pH2A_SGO1_CPC_cis_activation; 0.01555599032905056; ; Volume_Region_VariableType; false
+chromosome::Kr_pH2A_SGO1_CPCa_binding; 0.2621224482109758; ; Volume_Region_VariableType; false
+chromosome::Kr_pH2A_SGO1_CPCi_binding; 0.2621224482109758; ; Volume_Region_VariableType; false
+chromosome::Kr_pH3_CPC_cis_activation; 0.01555599032905056; ; Volume_Region_VariableType; false
+chromosome::Kr_pH3_CPCa_binding; 0.4985294723358532; ; Volume_Region_VariableType; false
+chromosome::Kr_pH3_CPCi_binding; 0.4985294723358532; ; Volume_Region_VariableType; false
+chromosome::Kr_pNDC80_pTTK_cis_activation; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kr_pNDC80_pTTKa_binding; 0.12579942548806688; ; Volume_Region_VariableType; false
+chromosome::Kr_pNDC80_pTTKi_binding; 0.12579942548806688; ; Volume_Region_VariableType; false
+chromosome::Kr_pNDC80_TTK_cis_activation; (0.2316181693565152 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kr_pNDC80_TTKa_binding; 4.607053728256573; ; Volume_Region_VariableType; false
+chromosome::Kr_pNDC80_TTKi_binding; 4.607053728256573; ; Volume_Region_VariableType; false
+chromosome::Kr_pTTK_cis_activation; (0.009650757056521466 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+chromosome::Kr_SGO1_CPC_cis_activation; 6.4816626371044E-4; ; Volume_Region_VariableType; false
+chromosome::Kr_SGO1_CPCa_binding; 4.550736948107219E-4; ; Volume_Region_VariableType; false
+chromosome::Kr_SGO1_CPCa_pH2A_binding; 0.5823490279006829; ; Volume_Region_VariableType; false
+chromosome::Kr_SGO1_CPCi_binding; 4.550736948107219E-4; ; Volume_Region_VariableType; false
+chromosome::Kr_SGO1_CPCi_pH2A_binding; 0.5823490279006829; ; Volume_Region_VariableType; false
+chromosome::Kr_TTK_cis_activation; (0.009650757056521466 * (0.5 + ((SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa) / (7.054718839480593 + SGO1 + pH2A_SGO1 + pH2A_SGO1_CPCi + pH2A_SGO1_CPCa + SGO1_CPCi + SGO1_CPCa)))); ; Volume_VariableType; false
+L_has_x3; 0.6; ; Volume_VariableType; false
+L_kin_x1; 0.28750000000000003; ; Volume_VariableType; false
+L_kin_x2; 0.36250000000000004; ; Volume_VariableType; false
+chromosome::NDC80_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+NDC80_ic; 462.9308705286039; ; Volume_VariableType; false
+chromosome::NDC80_init_uM; (462.9308705286039 * (((x >= 0.9375) && (x <= 1.0125) && (y >= 1.55) && (y <= 1.8499999999999999)) || ((x >= 0.28750000000000003) && (x <= 0.36250000000000004) && (y >= 1.55) && (y <= 1.8499999999999999)))); ; Volume_VariableType; false
+chromosome::NDC80_pTTKa_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+chromosome::NDC80_pTTKi_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+chromosome::NDC80_TTKa_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+chromosome::NDC80_TTKi_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+chromosome::pH2A_diffusionRate; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_Region_VariableType; false
+chromosome::pH2A_SGO1_CPCa_diffusionRate; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_Region_VariableType; false
+chromosome::pH2A_SGO1_CPCi_diffusionRate; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_Region_VariableType; false
+chromosome::pH2A_SGO1_diffusionRate; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_Region_VariableType; false
+chromosome::pH3_CPCa_diffusionRate; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_Region_VariableType; false
+chromosome::pH3_CPCi_diffusionRate; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_Region_VariableType; false
+chromosome::pH3_diffusionRate; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_Region_VariableType; false
+chromosome::pH3S10rep_diffusionRate; (0.011061530753464737 * ((10.0 + t) ^ -0.5391028852723027)); ; Volume_Region_VariableType; false
+chromosome::pKNL1_bub1a_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+chromosome::pKNL1_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+PLK1_ic; 17.568225080420905; ; Volume_VariableType; false
+chromosome::PLK1a_diffusionRate; 0.9984782042956091; ; Volume_Region_VariableType; false
+chromosome::PLK1a_init_uM; 1.7568225080420907; ; Volume_Region_VariableType; false
+chromosome::PLK1i_diffusionRate; 0.9984782042956091; ; Volume_Region_VariableType; false
+PLK1i_frac; 0.9; ; Volume_VariableType; false
+chromosome::PLK1i_init_uM; 15.811402572378816; ; Volume_Region_VariableType; false
+chromosome::pNDC80_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+chromosome::pNDC80_pTTKa_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+chromosome::pNDC80_pTTKi_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+chromosome::pNDC80_TTKa_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+chromosome::pNDC80_TTKi_diffusionRate; 0.0; ; Volume_Region_VariableType; false
+prebound_frac; 0.9911884634007256; ; Volume_VariableType; false
+chromosome::pTTKa_diffusionRate; 0.9984782042956091; ; Volume_Region_VariableType; false
+chromosome::pTTKi_diffusionRate; 0.9984782042956091; ; Volume_Region_VariableType; false
+R_has_x4; 0.7000000000000001; ; Volume_VariableType; false
+R_kin_x1; 0.9375; ; Volume_VariableType; false
+R_kin_x2; 1.0125; ; Volume_VariableType; false
+chromosome::SGO1_CPCa_diffusionRate; 0.9984782042956091; ; Volume_Region_VariableType; false
+chromosome::SGO1_CPCa_init_uM; 3.276283587768353; ; Volume_Region_VariableType; false
+chromosome::SGO1_CPCi_diffusionRate; 0.9984782042956091; ; Volume_Region_VariableType; false
+chromosome::SGO1_CPCi_init_uM; 2.1841890585122354; ; Volume_Region_VariableType; false
+chromosome::SGO1_diffusionRate; 0.9984782042956091; ; Volume_Region_VariableType; false
+SGO1_ic; 7.054718839480593; ; Volume_VariableType; false
+chromosome::SGO1_init_uM; 1.5942461932000045; ; Volume_Region_VariableType; false
+chromosome::Size_chr; vcRegionVolume('chromosome'); ; Volume_Region_VariableType; false
+void::Size_void; vcRegionVolume('void'); ; Volume_Region_VariableType; false
+chromosome_void_membrane::sobj_void1_chromosome0_size; vcRegionArea('chromosome_void_membrane'); ; Membrane_Region_VariableType; false
+chromosome_void_membrane::sobj_void2_chromosome0_size; vcRegionArea('chromosome_void_membrane'); ; Membrane_Region_VariableType; false
+TTK_ic; 2.1942462945695818; ; Volume_VariableType; false
+chromosome::TTKa_diffusionRate; 0.9984782042956091; ; Volume_Region_VariableType; false
+chromosome::TTKa_init_uM; 0.21942462945695818; ; Volume_Region_VariableType; false
+chromosome::TTKi_diffusionRate; 0.9984782042956091; ; Volume_Region_VariableType; false
+TTKi_frac; 0.9; ; Volume_VariableType; false
+chromosome::TTKi_init_uM; 1.9748216651126236; ; Volume_Region_VariableType; false
+vcell_downscaling; 0.041666666666666664; ; Volume_VariableType; false
+chromosome::Vmax_CPC_trans_activation_panCPCa; (0.020358557942811578 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_H2A_phos_BUB1a; (1.4826993845399 * BUB1a); ; Volume_VariableType; false
+chromosome::Vmax_H2A_phos_BUB1a_pknl1; (35.5847852289576 * BUB1a_pknl1); ; Volume_VariableType; false
+chromosome::Vmax_H3_CPC_trans_activation_panCPCa; (0.020358557942811578 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_H3_phos_HASPINa; (11.208 * HASPINa); ; Volume_VariableType; false
+chromosome::Vmax_H3S10rep_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_HASPIN_activation_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_HASPIN_activation_PLK1a; (10.983261575457433 * PLK1a); ; Volume_VariableType; false
+chromosome::Vmax_KNL1_phos_panTTK; (0.03276310540268806 * (TTKa + pTTKa + (24.0 * NDC80_TTKa) + (24.0 * NDC80_pTTKa) + (24.0 * pNDC80_TTKa) + (24.0 * pNDC80_pTTKa))); ; Volume_VariableType; false
+chromosome::Vmax_KNL1_phos_PLK1a; (1.338577152210612 * PLK1a); ; Volume_VariableType; false
+chromosome::Vmax_NDC80_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_NDC80_pTTK_trans_activation; (1.4475102630803633 * (TTKa + pTTKa + (24.0 * NDC80_TTKa) + (24.0 * NDC80_pTTKa) + (24.0 * pNDC80_TTKa) + (24.0 * pNDC80_pTTKa))); ; Volume_VariableType; false
+chromosome::Vmax_NDC80_pTTKa_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_NDC80_pTTKi_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_NDC80_TTK_trans_activation; (1.4475102630803633 * (TTKa + pTTKa + (24.0 * NDC80_TTKa) + (24.0 * NDC80_pTTKa) + (24.0 * pNDC80_TTKa) + (24.0 * pNDC80_pTTKa))); ; Volume_VariableType; false
+chromosome::Vmax_NDC80_TTKa_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_NDC80_TTKa_phos_PLK1a; (10.983261575457433 * PLK1a); ; Volume_VariableType; false
+chromosome::Vmax_NDC80_TTKa_phosalt_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_NDC80_TTKi_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_NDC80_TTKi_phos_PLK1a; (10.983261575457433 * PLK1a); ; Volume_VariableType; false
+chromosome::Vmax_NDC80_TTKi_phosalt_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_pH2A_SGO1_CPC_trans_activation_panCPCa; (0.020358557942811578 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_pH3_CPC_trans_activation_panCPCa; (0.020358557942811578 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_PLK1_activation_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_pNDC80_pTTK_trans_activation; (1.4475102630803633 * (TTKa + pTTKa + (24.0 * NDC80_TTKa) + (24.0 * NDC80_pTTKa) + (24.0 * pNDC80_TTKa) + (24.0 * pNDC80_pTTKa))); ; Volume_VariableType; false
+chromosome::Vmax_pNDC80_TTK_trans_activation; (1.4475102630803633 * (TTKa + pTTKa + (24.0 * NDC80_TTKa) + (24.0 * NDC80_pTTKa) + (24.0 * pNDC80_TTKa) + (24.0 * pNDC80_pTTKa))); ; Volume_VariableType; false
+chromosome::Vmax_pNDC80_TTKa_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_pNDC80_TTKa_phos_PLK1a; (10.983261575457433 * PLK1a); ; Volume_VariableType; false
+chromosome::Vmax_pNDC80_TTKi_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_pNDC80_TTKi_phos_PLK1a; (10.983261575457433 * PLK1a); ; Volume_VariableType; false
+chromosome::Vmax_pTTK_trans_activation; (1.4475102630803633 * (TTKa + pTTKa + (24.0 * NDC80_TTKa) + (24.0 * NDC80_pTTKa) + (24.0 * pNDC80_TTKa) + (24.0 * pNDC80_pTTKa))); ; Volume_VariableType; false
+chromosome::Vmax_SGO1_CPC_trans_activation_panCPCa; (0.020358557942811578 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_TTK_trans_activation; (1.4475102630803633 * (TTKa + pTTKa + (24.0 * NDC80_TTKa) + (24.0 * NDC80_pTTKa) + (24.0 * pNDC80_TTKa) + (24.0 * pNDC80_pTTKa))); ; Volume_VariableType; false
+chromosome::Vmax_TTKa_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_TTKa_phos_PLK1a; (10.983261575457433 * PLK1a); ; Volume_VariableType; false
+chromosome::Vmax_TTKi_phos_panCPCa; (0.7189083661580573 * (CPCa + (24.0 * H3_CPCa) + (24.0 * pH3_CPCa) + SGO1_CPCa + (24.0 * pH2A_SGO1_CPCa))); ; Volume_VariableType; false
+chromosome::Vmax_TTKi_phos_PLK1a; (10.983261575457433 * PLK1a); ; Volume_VariableType; false
+chromosome::vobj_chromosome0_size; vcRegionVolume('chromosome'); ; Volume_Region_VariableType; false
+void::vobj_void1_size; vcRegionVolume('void'); ; Volume_Region_VariableType; false
+void::vobj_void2_size; vcRegionVolume('void'); ; Volume_Region_VariableType; false
+x_mid; 0.65; ; Volume_VariableType; false
+
