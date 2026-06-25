@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.colors import ListedColormap
-sims = ["CPC_all_06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_25_136x136_",
-        "CPC_all_06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0_25_136x136_"]
+sims = ["CPC_all_06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_HASPINInh_99_50_136x136_",
+        "CPC_all_06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_HASPINInh_97P_50_136x136_"]
 # "manual_edit_CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_20s_17_144x144",
 # "manual_edit_CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_60s_17_144x144",
 #         "manual_edit_CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_120s_17_144x144",

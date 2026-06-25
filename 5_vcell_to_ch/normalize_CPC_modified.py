@@ -73,7 +73,10 @@ def rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name="", 
     elif (timepoint < 100) and (timestep == 10):
         timeslice_id = "000" + str(int(timepoint/timestep))
     elif (timepoint < 100) and (timestep == 1):
-        timeslice_id = "00" + str(int(timepoint/timestep))
+        if timepoint < 10:
+            timeslice_id = "000" + str(int(timepoint/timestep))
+        else:
+            timeslice_id = "00" + str(int(timepoint/timestep))
     else:
         timeslice_id = "00" + str(int(timepoint/timestep))
 
@@ -85,7 +88,7 @@ def rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name="", 
                     if timeslice_id in file:
                         name = file.split(
                             "0_")[-1].split(f"_{timeslice_id}.csv")[0]
-                        print(name)
+                        print(f"Reading file: {file}")
                         data[f"{name}_{folder_name}"] = pd.read_csv(os.path.join(in_dir, folder_name, file), sep=",",
                                                                     skiprows=10, header=None)
 
@@ -99,6 +102,7 @@ def rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name="", 
 
             if species_name in file:
                 if timeslice_id in file:
+                    print(f"Reading file: {file}")
 
                     name = file.split(
                         "0_")[-1].split(f"_{timeslice_id}.csv")[0]
@@ -115,24 +119,22 @@ def rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name="", 
     sum_data_array = sum_data_array/len(folder_names)
 
     # sum_data_array = sum_data_array/rescaling_factor
-    print(sum_data_array.max())
-    print(sum_data_array.min())
+    print(f"\tSum data array max: {sum_data_array.max()}")
+    print(f"\tSum data array min: {sum_data_array.min()}")
     orig_max = sum_data_array.max()
     orig_min = sum_data_array.min()
 
     sum_data_array = (sum_data_array - min_mix) / \
         (rescaling_factor - min_mix)
-    print(sum_data_array.max())
-    print(sum_data_array.min())
+
 
     for r_idx, row in enumerate(sum_data_array):
         for c_idx, value in enumerate(row):
             if value == (- min_mix)/(rescaling_factor - min_mix):
                 sum_data_array[r_idx][c_idx] = 0
 
-    print(sum_data_array.max())
-    print(sum_data_array.min())
-
+    print(f"\tSum data array max after normalization: {sum_data_array.max()}")
+    print(f"\tSum data array min after normalization: {sum_data_array.min()}")
     # pad the sides of the array with zeros so it is square
     width = sum_data_array.shape[0]-sum_data_array.shape[1]
     sum_data_array = (np.pad(
@@ -141,8 +143,8 @@ def rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name="", 
     nrows = sum_data_array.shape[0]
     ncols = sum_data_array.shape[1]
     sum_data_array = (2*sum_data_array) - 1
-    print(sum_data_array.max())
-    print(sum_data_array.min())
+    print(f"\tSum data array max after final transformation to [-1, 1]: {sum_data_array.max()}")
+    print(f"\tSum data array min after final transformation to [-1, 1]: {sum_data_array.min()}")
 
     np.savetxt(os.path.join(
         outdir, f"{species_name}_{simulation_name}_{timepoint}_{nrows}x{ncols}_{suffix}.csv"), sum_data_array, delimiter=",")
@@ -463,7 +465,7 @@ rescaling_factor = 15.8
 #####################################################
 # New simulations for 4/22/2026 - Monse sims
 #####################################################
-outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/06_23_2026"
+outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/06_17_2026"
 in_dir = '/Users/smgroves/Library/CloudStorage/Box-Box/Research/JanesLab/CPC_Model_Project/VCell_Exports/'
 
 if not os.path.exists(outdir):
@@ -490,7 +492,7 @@ rescaling_factors = [10, 11, 12, 13, 14, 15, 16, 17, 18]  # max (y axis in plot)
 #             ma, mi = rescale_vcell_output_neg1_pos1(f, in_dir, outdir, model_name=m, simulation_name=s, timepoint=50,
 #                                                     timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
 #             print(
-#                 f"min_mix: {min_mix}, rescaling_factor: {rescaling_factor}, max: {ma}, min: {mi}")
+#                 f"min_mix: {min_mix}, rescaling_factor: {rescaling_factor}, Untransformed Data max: {ma}, Untransformed Data min: {mi}")
 
 
 folder_names = ["SimID_316523023_0__exported"]
@@ -502,7 +504,7 @@ for min_mix in min_mixes:
         ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=2,
                                                 timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
         print(
-            f"min_mix: {min_mix}, rescaling_factor: {rescaling_factor}, max: {ma}, min: {mi}")
+            f"min_mix: {min_mix}, rescaling_factor: {rescaling_factor}, Untransformed Data max: {ma}, Untransformed Data min: {mi}")
 
 # folder_names = ["SimID_316230588_0__exported"]
 # model_name = '06_13_26 CPC_metacentric_relaxed_MCF10A_chr19_PMP1'
@@ -513,4 +515,4 @@ for min_mix in min_mixes:
 #         ma, mi = rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name=model_name, simulation_name=simulation_name, timepoint=27,
 #                                                 timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
 #         print(
-#             f"min_mix: {min_mix}, rescaling_factor: {rescaling_factor}, max: {ma}, min: {mi}")
+#             f"min_mix: {min_mix}, rescaling_factor: {rescaling_factor}, Untransformed Data max: {ma}, Untransformed Data min: {mi}")

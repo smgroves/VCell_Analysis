@@ -44,8 +44,5 @@ for i in range(20):
     result = ss.run_simulation(perturbed_model, sim.name, run_name=f"ensemble_run{i}_brcd{brcd}")
     ss.export_result_to_csv(result)
 
-    records.append({"run": i, "seed":brcd,"cv": cv, "result_dir": str(result.solver_output_dir), **values})
-
-df = pd.DataFrame(records)
-df.to_csv("ensemble_parameters.csv", index=False)
-# %%
+    row = pd.DataFrame([{"run": i, "seed": brcd, "cv": cv, "result_dir": str(result.solver_output_dir), **values}])
+    row.to_csv("ensemble_parameters.csv", mode='a', header=(i == 0), index=False)
