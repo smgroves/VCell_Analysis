@@ -44,7 +44,7 @@ plt.clabel(contour_Z49, fmt={6.2: 'Z = 6.2'}, inline=True, fontsize=10)
 # sim = f"CPC_all_03_30_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_KT_Bar_pull_simplified_17_144x144_"
 sim = f"CPC_all_04_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_100_144x144_"
 # sim = f"manual_edit_CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_Scale_y_scan_0.3_17_144x144_"
-df = pd.read_csv(f'/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/summary_output/{sim}_summary.csv',header = 0, index_col=0)
+df = pd.read_csv(f'/Users/catalinaalvarez/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/summary_output/{sim}_summary.csv',header = 0, index_col=0)
 df = df[df['min'].isin([4, 4.2, 4.5, 4.4, 4.6, 4.8, 5, 5.2, 5.4,5.5, 5.6, 5.8, 6, 6.2, 6.4, 6.6,6.6, 6.8, 7]) & df['max'].isin([8, 9, 10, 11, 12, 13, 14, 15, 16])]
 
 names = {'increasing':'increasing', 'decreasing':'decreasing','stable':'stable', np.nan:'dissolved', "concave_up":"stable", "concave_down":"decreasing"}
@@ -60,5 +60,5 @@ plt.ylim(7, 17)
 plt.ylabel('Condensate Well Concentration (max)')
 plt.xlabel('Soluble Well Concentration (min)')
 # plt.title('Spinodal Point with Simulation Results (o = relaxed, x = tensed, ^ = transition)')
-plt.savefig(f'/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/spinodal_point_plot/{sim}_full.png', dpi=300, bbox_inches='tight', transparent = True)
+plt.savefig(f'/Users/catalinaalvarez/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/spinodal_point_plot/{sim}_full.png', dpi=300, bbox_inches='tight', transparent = True)
 plt.show()
