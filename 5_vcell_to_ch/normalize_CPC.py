@@ -463,26 +463,37 @@ rescaling_factor = 15.8
 #####################################################
 # New simulations for 4/22/2026 - Monse sims
 #####################################################
+<<<<<<< Updated upstream:5_vcell_to_ch/normalize_CPC.py
 outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/06_17_2026"
 in_dir = '/Users/smgroves/Library/CloudStorage/Box-Box/Research/JanesLab/CPC_Model_Project/VCell_Exports/'
 
+=======
+outdir = "/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/IC/06_18_2026"
+>>>>>>> Stashed changes:5_vcell_to_ch/normalize_CPC_modified.py
 if not os.path.exists(outdir):
     os.makedirs(outdir)
 
 # python hdf5_converter.py "SimID_310051691_0__exported.hdf5" '/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/VCell_Exports' "04_21_26_metacentric_relaxed_MCF10A_chr19_PMP1_Monse" "04_13_26_metacentric_relaxed_MCF10A_chr19_PMP1"
 # python hdf5_converter.py "SimID_310898765_0__exported.hdf5" '/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/VCell_Exports' "04_21_26_metacentric_relaxed_MCF10A_chr19_PMP1_Monse" "04_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_FOXM1"
 # python hdf5_converter.py "SimID_310973215_0__exported.hdf5" '/Users/smgroves/Library/CloudStorage/Box-Box/CPC_Model_Project/VCell_Exports' "04_21_26_metacentric_relaxed_MCF10A_chr19_PMP1_Monse" "04_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_FOXM1_II"
+<<<<<<< Updated upstream:5_vcell_to_ch/normalize_CPC.py
 # folder_names = [["SimID_316523018_0__exported"],["SimID_316230588_0__exported"]]
 # simulation_name = ['06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0',"06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1"]
 
 # folder_names = [["SimID_316428868_3__exported"], ["SimID_316428868_4__exported"]]
 # model_name = ['06_13_26 CPC_metacentric_relaxed_MCF10A_chr19_PMP1',"06_13_26 CPC_metacentric_relaxed_MCF10A_chr19_PMP1"]
 # simulation_name = ['06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_HASPINInh_97P',"06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_HASPINInh_99"]
+=======
+folder_names = [["SimID_316523023_0__exported"]]#,["SimID_316230588_0__exported"]]
+model_name = ['06_13_26 CPC_metacentric_transition_tensed_MCF10A_chr19_PMP1']#,"06_13_26 CPC_metacentric_relaxed_MCF10A_chr19_PMP1"]
+simulation_name = ['06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_5min']#,"06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1"]
+>>>>>>> Stashed changes:5_vcell_to_ch/normalize_CPC_modified.py
 
 # [4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6]
 min_mixes = [4, 4.5, 5, 5.5, 6, 6.5, 7]  # min (x axis in plot)
 rescaling_factors = [10, 11, 12, 13, 14, 15, 16, 17, 18]  # max (y axis in plot)
 
+<<<<<<< Updated upstream:5_vcell_to_ch/normalize_CPC.py
 # for f, m, s in zip(folder_names, model_name, simulation_name):
 #     print(f, m, s)
 #     for min_mix in min_mixes:
@@ -514,3 +525,13 @@ for min_mix in min_mixes:
 #                                                 timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
 #         print(
 #             f"min_mix: {min_mix}, rescaling_factor: {rescaling_factor}, Untransformed Data max: {ma}, Untransformed Data min: {mi}")
+=======
+for f, m, s in zip(folder_names, model_name, simulation_name):
+    print(f, m, s)
+    for min_mix in min_mixes:
+        for rescaling_factor in rescaling_factors:
+            ma, mi = rescale_vcell_output_neg1_pos1(f, in_dir, outdir, model_name=m, simulation_name=s, timepoint=25,
+                                                    timestep=1, min_mix=min_mix, rescaling_factor=rescaling_factor, suffix=f"_{rescaling_factor}max_{min_mix}min", species_name="CPC_all")
+            print(
+                f"min_mix: {min_mix}, rescaling_factor: {rescaling_factor}, max: {ma}, min: {mi}")
+>>>>>>> Stashed changes:5_vcell_to_ch/normalize_CPC_modified.py
