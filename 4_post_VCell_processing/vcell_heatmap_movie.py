@@ -319,6 +319,8 @@ if __name__ == "__main__":
     bound_CPC        = ["bound_CPC"]
     bound_active_CPC = ["bound_active_CPC"]
     pH3S10rep        = ["pH3S10rep"]
+    NDC80            = ["NDC80"]
+    NDC80_all        = ["NDC80_all"]
 
     # R-side compute_functions: used when the species CSV does not exist on disk
     compute_functions = {
@@ -333,16 +335,20 @@ if __name__ == "__main__":
         "pH3_all":            ["pH3", "pH3_CPCa", "pH3_CPCi"],
         "pH2A_all":           ["pH2A", "pH2A_SGO1", "pH2A_SGO1_CPCa", "pH2A_SGO1_CPCi"],
         "SGO1_all":           ["SGO1", "pH2A_SGO1", "pH2A_SGO1_CPCi", "pH2A_SGO1_CPCa", "SGO1_CPCi", "SGO1_CPCa"],  
+        "NDC80_all":           ["NDC80","NDC80_pTTKa","NDC80_pTTKi","NDC80_TTKi","NDC80_TTKa",
+                                "pNDC80_pTTKa","pNDC80_pTTKi","pNDC80_TTKi","pNDC80_TTKa"],
+    
     }
 
     heatmap_groups = [
         # (CPC_species,      "all_CPC",             compute_functions),
         # (bound_CPC,        "all_bound_CPC",        compute_functions),
         # (bound_active_CPC, "all_bound_active_CPC", compute_functions),
-        (pH3_species,      "all_pH3",              compute_functions),
-        (pH2A_species,     "all_pH2A",             compute_functions),
-        (SGO1_species,     "all_SGO1",             compute_functions),
-        (pH3S10rep,        "pH3S10rep",            None),
+        # (pH3_species,      "all_pH3",              compute_functions),
+        # (pH2A_species,     "all_pH2A",             compute_functions),
+        # (SGO1_species,     "all_SGO1",             compute_functions),
+        # (pH3S10rep,        "pH3S10rep",            None),
+        (NDC80_all,           "NDC80_all",                compute_functions),
     ]
 
     # ── simulations to process ─────────────────────────────────────────────────

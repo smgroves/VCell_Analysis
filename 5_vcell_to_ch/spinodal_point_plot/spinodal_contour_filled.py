@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.colors import ListedColormap
-sims = ["CPC_all_06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_25_136x136_",
-        "CPC_all_06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_0_25_136x136_"]
+sims = ["CPC_all_06_13_26_metacentric_relaxed_MCF10A_chr19_PMP1_27_136x136_",
+        "CPC_all_06_13_26_metacentric_transition_tensed_MCF10A_chr19_PMP1_t_5min_2_136x136_"]
 # "manual_edit_CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_20s_17_144x144",
 # "manual_edit_CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_60s_17_144x144",
 #         "manual_edit_CPC_all_03_21_26_metacentric_transition_MCF10A_chr19_PMP1_Gaussian_X_and_Y_t_transition_120s_17_144x144",
@@ -35,7 +35,7 @@ for sim in sims:
 
     print(f"Processing {sim}...")
     df = pd.read_csv(
-        f'/Users/catalinaalvarez/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/summary_output/{sim}__summary.csv',
+        f'/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/generate_plot_pdf/summary_output/{sim}__summary.csv',
         header=0, index_col=0
     )
     # df = df[
@@ -105,7 +105,7 @@ for sim in sims:
     # ax.set_title('Spinodal Point with Simulation Results')
 
     plt.savefig(
-        f'/Users/catalinaalvarez/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/spinodal_point_plot/{sim}_filled_small.png',
+        f'/Users/smgroves/Documents/GitHub/VCell_Analysis/5_vcell_to_ch/spinodal_point_plot/{sim}_filled_small.png',
         dpi=300, bbox_inches='tight', transparent=False
     )
     plt.close()
