@@ -132,8 +132,6 @@ def rescale_vcell_output_neg1_pos1(folder_names, in_dir, outdir, model_name="", 
         for c_idx, value in enumerate(row):
             if value == (- min_mix)/(rescaling_factor - min_mix):
                 sum_data_array[r_idx][c_idx] = 0
-
-    print(f"\tSum data array max after normalization: {sum_data_array.max()}")
     print(f"\tSum data array min after normalization: {sum_data_array.min()}")
     # pad the sides of the array with zeros so it is square
     width = sum_data_array.shape[0]-sum_data_array.shape[1]
