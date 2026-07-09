@@ -174,12 +174,14 @@ def build_transition_model(relaxed_model,
     # KT distance from relaxed to tensed
     add_param(model, "KT_distance_move", "(KK_disSim-KK_disRef) / 2.0")
     add_param(model, "max_vel", "KT_distance_move/delT")
+    #assymetry may be coming from problem with L_kin_x1, Cata has the same problem and she sets it to edge, which equals 0; doesn't work to directly set as 0
+    # kin_y1: telomere_edge 
     add_param(model, "L_kin_x2_relaxed", "x_mid - KK_disRef/2")
     add_param(model, "R_kin_x1_relaxed", "x_mid + KK_disRef/2")
     # advection
     add_param(model, "sigma_y", "kinH/2")
     add_param(model, "sigma_x", "KT_distance_move")
-    add_param(model, "scale_y", 0.3)
+    add_param(model, "scale_y", 0.3) #CHANGE TO .2 IN FINAL VERSION
     add_param(model, "norm_x", 'exp(( - ((L_kin_x2_relaxed - x_mid) ^ 2.0) / (2.0 * (sigma_x ^ 2.0))))')
     add_param(model, "y_mid", "chrH/2")
     x_velocity = "((((x - x_mid) / delT) * exp(( - ((x - x_mid) ^ 2.0) / (2.0 * (sigma_x ^ 2.0)))) / norm_x * exp(( - ((y - y_mid) ^ 2.0) / (2.0 * (sigma_y ^ 2.0)))) * ((x >= L_kin_x2_relaxed) && (x <= R_kin_x1_relaxed))) + ( - max_vel * exp(( - ((y - y_mid) ^ 2.0) / (2.0 * (sigma_y ^ 2.0)))) * (x < L_kin_x2_relaxed)) + (max_vel * exp(( - ((y - y_mid) ^ 2.0) / (2.0 * (sigma_y ^ 2.0)))) * (x > R_kin_x1_relaxed)))* (t <= delT)"
